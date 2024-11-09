@@ -1,0 +1,92 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Elimina la barra de desplazamiento horizontal */
+}
+
+.header {
+    background-color: #3c3636; /* Fondo oscuro */
+    padding: 0 20px; /* Espaciado en los lados del header */
+    color: #ff4d4d; /* Color del texto en rojo */
+    font-family: Arial, sans-serif;
+    border-radius: 12px; /* Redondeo de las esquinas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra del header */
+    width: 100%; /* Asegura que tome todo el ancho */
+    margin: 0; /* Elimina márgenes */
+    box-sizing: border-box; /* Incluye padding y border en el tamaño total */
+    min-height: 120px; /* Altura minima del header */
+    display: flex; /* Establece un contenedor flex */
+    align-items: center; /* Centra verticalmente los elementos */
+    position: sticky;
+    top: 0;
+}
+
+.header-container {
+    display: flex ;
+    justify-content: space-between; /* Alinea los elementos de forma separada */
+    align-items: center; /* Centra los elementos verticalmente */
+    width: 100%; /* Asegura que ocupe todo el ancho */
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+
+.logo-container {
+    flex: 0 0 auto; /* Asegura que el logo no crezca ni se reduzca */
+    margin: 0; /* Elimina cualquier margen */
+    padding: 0; /* Elimina cualquier padding */
+}
+
+.logo {
+    height: 60%;
+    max-height: 80px; /* Altura máxima para el logo */
+    width: auto; /* Asegura que la imagen no se estire */
+}
+
+.search-bar {
+    flex: 1 1 auto; /* Permite que la barra crezca y se reduzca según el espacio disponible */
+    max-width: 500px; /* Limita el ancho máximo al contenedor */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 10px; /* Opcional: añade margen para mantener separación */
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px 15px; /* Añade más padding para mejor apariencia */
+    font-size: 16px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+}
+
+.user-cart-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center; /* Centra verticalmente */
+}
+
+.login-icon, .cart-icon {
+    width: auto;
+    height: 60%;
+    max-height: 80px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column; /* Cambia la disposición a columnas */
+        align-items: center;
+        padding: 10px 20px; /* Añade espacio interno */
+        width: 100%; /* Asegura que ocupe todo el ancho */
+    }
+    .search-bar {
+        width: 90%; /* Asegura que la barra de búsqueda se ajuste a pantallas más pequeñas */
+        margin-top: 10px;
+        margin-bottom: 10px; /* Añade un poco de margen vertical para separación */
+    }
+    .user-cart-container, .logo-container {
+        margin-top: 10px; /* Asegura separación entre los elementos en vista móvil */
+        justify-content: center; /* Centra los íconos */
+    }
+}
