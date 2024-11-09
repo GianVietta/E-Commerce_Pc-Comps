@@ -1,0 +1,71 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Elimina la barra de desplazamiento horizontal */
+}
+
+.footer {
+  background-color: #3c3636; /* Fondo oscuro */
+  padding: 20px;
+  color: #ff4d4d; /* Color del texto en rojo */
+  text-align: center;
+  font-family: Arial, sans-serif;
+  border-radius: 12px; /* Redondeo de las esquinas */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra del footer */
+  width: 100%; /* Asegura que tome todo el ancho */
+  margin: 0; /* Elimina márgenes */
+  box-sizing: border-box; /* Incluye padding y border en el tamaño total */
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  max-width: 1200px; /* Centra el contenido interno */
+  margin: 0 auto;
+}
+
+.footer-section {
+  flex: 1;
+  margin: 10px;
+  min-width: 200px;
+}
+
+.footer-section h4 {
+  margin-bottom: 10px;
+  color: #ff4d4d; /* Color de los títulos en rojo */
+}
+
+.footer-section a {
+  display: block;
+  color: #ff4d4d; /* Color de los enlaces en rojo */
+  text-decoration: none;
+  margin-bottom: 5px;
+}
+
+.footer-section a:hover {
+  color: #ff6666; /* Color más claro en el hover de los enlaces */
+}
+
+.social-icons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.icon {
+  width: 24px; /* Ajusta el tamaño según sea necesario */
+  height: 24px;
+  transition: transform 0.3s;
+}
+
+.icon:hover {
+  transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
