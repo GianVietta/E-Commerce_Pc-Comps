@@ -1,0 +1,77 @@
+<div>
+    <form [formGroup]="form" (ngSubmit)="addProduct()">
+        <div class="name-field">  
+            <label for="name">Nombre del producto:</label>
+            <input type="text" formControlName="name" id="name">
+            <div class="name-field-errors">
+                <div *ngIf="form.get('name')?.hasError('required') && form.get('name')?.touched">
+                    El nombre del producto es obligatorio.
+                </div>
+                <div *ngIf="form.get('name')?.hasError('minLength') && form.get('name')?.touched">
+                    El nombre debe tener un minimo de 3 caracteres.
+                </div>
+            </div>
+        </div>
+        <div class="price-field">
+            <label for="price">Precio del producto</label>
+            <input type="text" id="price" formControlName="price">
+            <div class="price-field-errors">
+                <div *ngIf="form.get('price')?.hasError('required') && form.get('price')?.touched">
+                    El precio es obligatorio.
+                </div>
+                <div *ngIf="form.get('price')?.hasError('pattern') && form.get('price')?.touched">
+                    El precio debe contener solo numeros.
+                </div>
+            </div>
+        </div>
+        <div class="brand-field">
+            <label for="brand">Marca del Producto</label>
+            <input type="text" id="brand" formControlName="brand">
+            <div class="brand-field-errors">
+                <div *ngIf="form.get('brand')?.hasError('required') && form.get('brand')?.touched">
+                    La marca del producto es obligatoria.
+                </div>
+                <div *ngIf="form.get('brand')?.hasError('minLength') && form.get('brand')?.touched">
+                    La marca debe tener un minimo de 3 caracteres.
+                </div>
+            </div>
+        </div>
+        <div class="description-field">
+            <label for="description">Descripcion del Producto</label>
+            <input type="text" id="description" formControlName="description">
+            <div class="description-field-errors">
+                <div *ngIf="form.get('description')?.hasError('required') && form.get('description')?.touched">
+                    La descripcion del producto es obligatoria.
+                </div>
+                <div *ngIf="form.get('description')?.hasError('minLength') && form.get('description')?.touched">
+                    La descripcion debe tener un minimo de 30 caracteres.
+                </div>
+            </div>
+        </div>
+        <div class="category-field">
+            <label for="category">Categoria del producto</label>
+            <select name="category" id="category" formControlName="category">
+                <option value="" disabled selected>Seleccione una categoria</option>
+                <option *ngFor="let category of categorias" value="category">{{category}}</option>
+            </select>
+            <div class="category-field-errors">  
+                <div *ngIf="form.get('category')?.hasError('required') && form.get('category')?.touched">
+                    Debes elegir una categoria
+                </div>
+            </div>  
+        </div>
+        <div class="img-field">
+            <label for="img">URL de Imagen:</label>
+            <input id="img" formControlName="img" type="text" placeholder="Ingrese la URL de la imagen" />
+            <div class="img-field-errors">
+                <div *ngIf="form.get('img')?.hasError('required') && form.get('img')?.touched">
+                    La imagen es obligatoria
+                </div>
+                <div *ngIf="form.get('img')?.hasError('pattern') && form.get('img')?.touched">
+                    Por favor, ingrese una URL válida.
+                </div>
+            </div>
+        </div>
+        <button type="submit" >Guardar Producto</button>
+    </form>
+</div>
