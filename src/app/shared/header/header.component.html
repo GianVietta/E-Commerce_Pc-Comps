@@ -9,8 +9,13 @@
       <div class="user-cart-container"> 
         <!--Aca hay que agregar los routerLink del login y del carrito, 
         tambien agregar la funcionalidad de cambio de icono segun el login-->
-            <img src="resources/icons/header/login.svg" alt="Login" class="login-icon"> 
-            <img src="resources/icons/header/cart.svg" alt="Carrito" class="cart-icon">
+            <img src="resources/icons/header/login.svg"
+             alt="Login"
+             class="login-icon"
+             (click)="login()"> 
+            <img src="resources/icons/header/cart.svg" 
+              alt="Carrito" 
+              class="cart-icon">
       </div>
     </div>
 </header>
