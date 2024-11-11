@@ -1,0 +1,25 @@
+app-product-carousel{
+    margin: 25px;
+}
+
+img{
+    max-width: 100%;
+    object-fit: fill;
+    display: block;
+    animation: aparecer both;
+    animation-timeline: view();
+    animation-range: cover 5% cover 95%;
+}
+
+
+@keyframes aparecer {
+    0%{
+        opacity: 0;
+    }
+    65%{
+        opacity: 100;
+    }
+    100%{
+        opacity: 0;
+    }
+}

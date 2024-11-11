@@ -25,7 +25,7 @@ export class NewProductComponent {
     form= this.fb.nonNullable.group({
       id:[],
       name: [``, [Validators.required, Validators.minLength(3)]],
-      price: [``,[Validators.required,Validators.pattern('^[0-9]+$')]],
+      price: [0,[Validators.required,Validators.pattern('^[0-9]+$')]],
       brand: [``,[Validators.required, Validators.minLength(3)]],
       description: [``,[Validators.required, Validators.minLength(30)]],
       category: [``,Validators.required],

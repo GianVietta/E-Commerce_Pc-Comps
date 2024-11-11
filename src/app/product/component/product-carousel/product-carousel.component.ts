@@ -57,8 +57,11 @@ export class ProductCarouselComponent implements OnInit {
     console.log('Productos filtrados:', this.filteredProducts);
   }
 
-  viewProductDetails(productId: number) {
-    this.router.navigate(['/product', productId]);
+  viewProductDetails(productId: string) {
+    console.log("hola que tal");
   }
 
+  addToCart(productId : string){
+    console.log("agregado al carrito");
+  }
 }

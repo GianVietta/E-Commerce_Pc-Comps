@@ -3,42 +3,94 @@
     margin: 0;
     padding: 0;
   }
-  
+
   .product-card {
-    background-color: #eee;
+    position: relative;
+    background-color: #fff;
     border-radius: 10px;
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
-    margin: 50px 5px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+    margin: 30px 5px;
     padding: 15px;
     height: 400px;
-    width: 300px;
+    width: 280px;
     flex-shrink: 0;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor:pointer;
+    opacity: 1;
+    transition: opacity 0.3s ease;
   }
+
+  .product-card:hover{
+    opacity: 0.65;
+  }
+
 
   .product-card img {
     max-width: 100%;
     border-radius: 5px;
-    margin: 10px 0;
-    height: 75%;
-    object-fit: cover;
+    margin: 8px 0;
+    height: 180px;
+    object-fit: contain;
   }
   
   .category {
-    font-size: 12px;
+    font-size: 10px;
     color: gray;
     text-transform: uppercase;
   }
   
   .price {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
     color: #333;
   }
 
+  .product-name {
+    font-size: 16px; 
+    font-weight: bold;
+    color: #333;
+    max-height: 40px;
+    overflow: hidden;
+  }
+  
+  .cart-button {
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+    border:none;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+    font-size: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+  }
+  
+  .product-card:hover .cart-button {
+    z-index: 3;
+  }
+  
+  .cart-button img{
+    width: 25px;
+    height: 17px;
+  }
+  
+  .cart-button:hover {
+    background-color: #3c3636;
+    opacity: 0.8;
+  }
+  .cart-button:hover ~ .product-card {
+    opacity: 1;
+  }
+
 
   ::ng-deep .p-carousel .p-carousel-prev, 
-::ng-deep .p-carousel .p-carousel-next {
+  ::ng-deep .p-carousel .p-carousel-next {
   font-size: 25px; 
   color: #555; 
   background-color: transparent; 
@@ -55,5 +107,5 @@
 }
 
 ::ng-deep .p-carousel .p-carousel-indicators {
-    display: none; /* Oculta los puntos de paginación */
+    display: none; 
   }
