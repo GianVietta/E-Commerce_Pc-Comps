@@ -1,12 +1,36 @@
 {
-    "products":[
-
-    ],
-    "cart":[
-
-    ],
-    "sales":[
-        
-    ]
-
+  "products": [
+    {
+      "id": "p001",
+      "name": "Teclado Mecánico RGB",
+      "price": 75.99,
+      "brand": "HyperTech",
+      "description": "Teclado mecánico con retroiluminación RGB personalizable, switches azules y estructura de aluminio.",
+      "category": "Periféricos",
+      "img": "https://statics.qloud.com.ar/megasoft-argentina-04-2020/124_25-07-2024-03-07-56-tkl413.webp"
+    },
+    {
+      "id": "p002",
+      "name": "Mouse Inalámbrico Gamer",
+      "price": 49.99,
+      "brand": "ProMouse",
+      "description": "Mouse ergonómico inalámbrico con sensor óptico de alta precisión, 7 botones programables y luz LED.",
+      "category": "Fuente",
+      "img": "https://sologamerbolivia.com/cdn/shop/products/G203.png?v=1673969270&width=533"
+    }
+  ],
+  "cart": [
+    {
+      "id": "1",
+      "idUser": "1",
+      "totalAmount": 227.96999999999997,
+      "products": [
+        {
+          "idProduct": "p001",
+          "quantity": 3
+        }
+      ]
+    }
+  ],
+  "sales": []
 }

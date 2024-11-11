@@ -1,0 +1,131 @@
+/* Contenedor con márgenes */
+.container {
+    margin-top: 1.5rem; /* mt-4 */
+    width: 100%;
+}
+
+/* Lista de elementos */
+.list-group {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+/* Elemento de la lista (Cuchillo) */
+.list-group-item {
+    display: flex;
+    justify-content: space-between; /* Alineación horizontal de los botones */
+    align-items: center; /* Alineación vertical de los botones */
+    padding: 1rem; /* Espaciado alrededor del contenido */
+    border: 1px solid #dee2e6; /* Similar a la borda predeterminada de Bootstrap */
+    border-radius: 0.25rem; /* Redondeo de bordes */
+    background-color: #ffffff;
+    margin-bottom: 0.5rem; /* Separación entre elementos */
+}
+
+/* Contenido del cuchillo */
+.d-flex {
+    display: flex;
+}
+
+.flex-grow-1 {
+    flex-grow: 1; /* Permite que ocupe todo el espacio disponible */
+}
+
+.align-items-center {
+    align-items: center; /* Centra verticalmente el contenido */
+}
+
+.me-3 {
+    margin-right: 1rem; /* Margen derecho entre elementos */
+}
+
+span {
+    display: inline-block;
+    font-size: 1rem;
+    color: #495057;
+}
+
+strong {
+    font-weight: bold;
+}
+
+/* Alineación de los botones a la derecha */
+.flex-column {
+    flex-direction: column;
+}
+
+.align-items-end {
+    align-items: flex-end; /* Alinea los botones a la derecha */
+}
+
+/* Estilos de los botones */
+.btn {
+    border: none; /* Remueve los bordes si no son necesarios */
+    background-color: transparent; /* Fondo transparente si no es un botón especial */
+    cursor: pointer;
+}
+
+.btn-sm {
+    font-size: 0.875rem;
+    padding: 0.25rem 0.5rem;
+}
+
+/* Botón de eliminar (rojo) */
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+
+/* Botón de detalles (amarillo) */
+.btn-warning {
+    background-color: #ffc107;
+    border-color: #ffc107;
+}
+
+.btn-warning:hover {
+    background-color: #e0a800;
+    border-color: #d39e00;
+}
+/* Para las imágenes dentro de los botones */
+.icon-img {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
+
+.me-2 {
+    margin-right: 0.5rem; /* Margen derecho para separar botones */
+}
+/* Margen inferior en el botón eliminar */
+.mb-2 {
+    margin-bottom: 0.5rem;
+}
+.mt-3 {
+    font-size: 1.4rem; /* Ajusta el tamaño que prefieras */
+}
+.pay-button{
+    display: flex;
+    justify-content: center; /* Centrado horizontal */
+    align-items: center; /* Centrado vertical */
+    width: 100%; /* Asegura que ocupe todo el ancho disponible */
+}
+.pay-centered-button {
+    padding: 10px 20px; /* Tamaño del botón */
+    font-size: 16px; /* Tamaño del texto */
+    cursor: pointer; /* Muestra un puntero al pasar por encima */
+    background-color: #007bff; /* Color de fondo (azul) */
+    color: white; /* Color del texto */
+    border: none; /* Remueve el borde del botón */
+    border-radius: 5px; /* Bordes redondeados */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Transiciones suaves */
+}
+/* Efecto hover: cambio de color de fondo y ligera animación */
+.pay-centered-button:hover {
+    background-color: #0056b3; /* Color de fondo al pasar el ratón (azul más oscuro) */
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño del botón */
+}
