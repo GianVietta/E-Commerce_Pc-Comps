@@ -1,22 +1,427 @@
 {
   "products": [
     {
-      "id": "p001",
-      "name": "Teclado Mecánico RGB",
-      "price": 75.99,
-      "brand": "HyperTech",
-      "description": "Teclado mecánico con retroiluminación RGB personalizable, switches azules y estructura de aluminio.",
-      "category": "Periféricos",
-      "img": "https://statics.qloud.com.ar/megasoft-argentina-04-2020/124_25-07-2024-03-07-56-tkl413.webp"
+      "id": "7c4ed463-5417-422b-87f5-434abfd11483",
+      "name": "GTX 1650 NVIDIA",
+      "price": "170",
+      "brand": "ASUS",
+      "description": "About this item Digital Max Resolution:7680 x 4320 The ASUS TUF Gaming GeForce GTX 1650 is built with the breakthrough graphics performance of the award-winning NVIDIA Turing architecture to supercharge your favorite games. Ultra-fast GDDR6 with over 50% more memory bandwidth for high-speed gaming. Auto Extreme Manufacturing uses automation to enhance reliability. TUF compatibility testing ensures TUF Gaming and TUF Gaming alliance components work together flawlessly. Protective backplate secures components during transportation and installation.",
+      "category": "Tarjeta de video",
+      "img": "https://acdn.mitiendanube.com/stores/256/529/products/placa-de-video-asus-1650-oc-4gb-ddr61-360341cf28ac95b1da16244588256421-1024-1024.png"
     },
     {
-      "id": "p002",
-      "name": "Mouse Inalámbrico Gamer",
-      "price": 49.99,
-      "brand": "ProMouse",
-      "description": "Mouse ergonómico inalámbrico con sensor óptico de alta precisión, 7 botones programables y luz LED.",
+      "id": "f26c398e-4602-4f8f-ab4e-095585111e39",
+      "name": "I5 10400",
+      "price": "120",
+      "brand": "Intel",
+      "description": "About this item 6 Cores / 12 Threads Socket type LGA 1200 Up to 4. 3 GHz Compatible with Intel 400 series chipset based motherboards Intel Optane Memory support Cooler included",
+      "category": "CPU",
+      "img": "https://m.media-amazon.com/images/I/5109QxQi0IL._AC_SX466_.jpg"
+    },
+    {
+      "id": "2479f6d9-6ba5-4e45-b0eb-54daf3abb873",
+      "name": "A520M-A PRO Gaming",
+      "price": "70",
+      "brand": "MSI",
+      "description": "About this item Support 3rd Gen AMD Ryzen Desktop Processors and AMD Ryzen 4000 G-Series Desktop Processors Supports DDR4 Memory, up to 4600(OC) MHz Turbo M.2: Running at PCI-E Gen3 x4 maximizes performance for NVMe based SSDs Audio Boost: Reward your ears with studio grade sound quality Dragon Center: A brand new software which integrates all MSI exclusive tools with user friendly user interface",
+      "category": "MotherBoard",
+      "img": "https://m.media-amazon.com/images/I/81LKKjLD1pL._AC_SX679_.jpg"
+    },
+    {
+      "id": "fe30f1b2-e0f1-4046-86ae-60547c8e12bf",
+      "name": "Gaming GeForce RTX 3060",
+      "price": "295",
+      "brand": "MSI",
+      "description": "About this item Chipset: NVIDIA GeForce RTX 3060 Video Memory: 12GB GDDR6 Memory Interface: 192-bit Output: DisplayPort x 3 (v1.4a) / HDMI 2.1 x 1.Avoid using unofficial software Digital maximum resolution: 7680 x 4320",
+      "category": "Tarjeta de video",
+      "img": "https://m.media-amazon.com/images/I/61nCY30R4iL._AC_SX679_.jpg"
+    },
+    {
+      "id": "36575c1f-b5a5-4e16-a1a4-1e966ad08fd8",
+      "name": "T-Force Delta RGB DDR4 16GB (2x8GB) 3200MHz",
+      "price": "47",
+      "brand": "TEAMGROUP",
+      "description": "About this item Full frame 120° ultra wide angle lighting. Built-in Force Flow RGB lighting effect. Supports ASUS Aura Sync software synchronization. Supports variety kinds of lighting control software. Aluminum alloy heat spreader with asymmetric minimalist design. Supports XMP2.0 one-click overclocking technology. Compatible with both Intel & AMD motherboards. QVL approved by all mainstream motherboard manufacturers. Latest JEDEC RC 2.0 PCB. Energy saving 1.2V~1.4V ultra low working voltage. Lifetime warranty. Free Technical Support and Customer Service on TEAMGROUP's official website. Precautions: 1. Before purchasing memory products, please refer to the QVL(Qualified Vendor List) compatibility list first of the motherboard. 2. The quality of the CPU memory controller (IMC) and the version from the BIOS of motherboard may both potentially affect the operating frequency of the memory.",
+      "category": "RAM",
+      "img": "https://m.media-amazon.com/images/I/71KvpD-WuNL._AC_SX466_PIbundle-2,TopRight,0,0_SH20_.jpg"
+    },
+    {
+      "id": "fde324fa-ed7b-42a7-b5a8-db028e34d4d4",
+      "name": "BarraCuda 1TB Internal Hard Drive HDD",
+      "price": "50",
+      "brand": "Seagate",
+      "description": "About this item Store more, compute faster, and do it confidently with the proven reliability of BarraCuda internal hard drives Build a powerhouse gaming computer or desktop setup with a variety of capacities and form factors The go to SATA hard drive solution for nearly every PC application from music to video to photo editing to PC gaming Confidently rely on internal hard drive technology backed by 20 years of innovation Enjoy long term peace of mind with the included two year limited warranty",
+      "category": "Almacenamiento",
+      "img": "https://m.media-amazon.com/images/I/619Zbk3-e0L._AC_SX466_.jpg"
+    },
+    {
+      "id": "9ff24fed-2bdd-4cd0-a7a6-970f91b59e1f",
+      "name": "750W Fully Modular ARGB Power Supply",
+      "price": "75",
+      "brand": "GAMEMAX",
+      "description": "About this item 80 Plus Gold Certified: 750W power supply delivers 90% or higher efficiency under typical loads. Achieve power savings and reduced heat, ensuring peak performance while cutting costs. ATX 3.0 & PCIe 5.0 Ready: It allows a remarkable 200% total power excursion and 300% GPU power excursion, ensuring full compatibility with high-performance NVIDIA 40 series graphics cards. The package includes a 12VHPWR Cable for hassle-free installation and future upgrades. 100% Japanese Capacitors: Crafted with premium Japanese capacitors for long-lasting reliability and stable output with 5V/3.3V DC-DC. Offering peace of mind with a 5-year warranty. ARGB SYNC: Elevate your rig's style with ARGB SYNC, seamlessly integrating vibrant lighting effects with the A-RGB software of most mainstream motherboards. Whisper-Quiet Fan: The ATX power supply is equipped with a 140mm ultra-quiet fan that maintains excellent heat dissipation without producing disturbing noise. Fully Modular: 750 watt power supply features a fully modular design that optimizes airflow and minimizes clutter. Enjoy seamless organization.",
       "category": "Fuente",
-      "img": "https://sologamerbolivia.com/cdn/shop/products/G203.png?v=1673969270&width=533"
+      "img": "https://m.media-amazon.com/images/I/81DlwsvmCbL._AC_SX466_.jpg"
+    },
+    {
+      "id": "c399312a-13d3-4493-9790-a8cf34c870c9",
+      "name": "Core i7-14700F",
+      "price": "317",
+      "brand": "Intel",
+      "description": "About this item 20 cores (8 P-cores + 12 E-cores) and 28 threads Performance hybrid architecture integrates two core microarchitectures, prioritizing and distributing workloads to optimize performance Up to 5.4 GHz unlocked. 33MB Cache Compatible with Intel 600-series (with potential BIOS update) and 700-series chipset-based motherboards PCIe 5.0 & 4.0 support. DDR4 and DDR5 Memory support. RM1 thermal solution included. Discrete graphics required.",
+      "category": "CPU",
+      "img": "https://m.media-amazon.com/images/I/51EL514uLrL._AC_SX679_.jpg"
+    },
+    {
+      "id": "127ce2fb-8cbd-4401-bdf7-593a6f40e633",
+      "name": "Ryzen 5 5500 6-Core, 12-Thread",
+      "price": "84",
+      "brand": "AMD",
+      "description": "About this item Item Package Dimension: 5.43L x 5.27W x 2.86H inches Item Package Weight - 0.97 Pounds Item Package Quantity - 1 Product Type - COMPUTER PROCESSOR",
+      "category": "CPU",
+      "img": "https://m.media-amazon.com/images/I/51So7GoGvxL._AC_SX466_.jpg"
+    },
+    {
+      "id": "84f7d50f-8531-4e53-9b8c-219952960dea",
+      "name": "Ryzen 7 5800X 8-core, 16-Thread",
+      "price": "162",
+      "brand": "AMD",
+      "description": "About this item AMD's fastest 8 core processor for mainstream desktop, with 16 procesing threads. OS Support-Windows 10 64-Bit Edition Can deliver elite 100-plus FPS performance in the world's most popular games Cooler not included, high-performance cooler recommended 4.7 GHz Max Boost, unlocked for overclocking, 36 MB of cache, DDR-3200 support For the advanced Socket AM4 platform, can support PCIe 4.0 on X570 and B550 motherboards System Memory Specification: Up to 3200MHz",
+      "category": "CPU",
+      "img": "https://m.media-amazon.com/images/I/61IIbwz-+ML._AC_SX466_.jpg"
+    },
+    {
+      "id": "cea94ce6-53e5-4399-afc1-74ec520d2b1f",
+      "name": "Ryzen 9 5900X 12-core, 24-Thread",
+      "price": "228",
+      "brand": "AMD",
+      "description": "About this item The world's best gaming desktop processor, with 12 cores and 24 processing threads Can deliver elite 100-plus FPS performance in the world's most popular games Cooler not included, high-performance cooler recommended. Max Temperature- 90°C 4.8 GHz Max Boost, unlocked for overclocking, 70 MB of cache, DDR-3200 support For the advanced Socket AM4 platform, can support PCIe 4.0 on X570 and B550 motherboards",
+      "category": "CPU",
+      "img": "https://m.media-amazon.com/images/I/51S-lEYQZJL._AC_SX466_.jpg"
+    },
+    {
+      "id": "cae07e80-fe9e-4bae-90c5-304a948abb52",
+      "name": "Core i9-12900KF Gaming Desktop Processor 16 Cores",
+      "price": "282",
+      "brand": "Intel",
+      "description": "About this item Built for the Next Generation of Gaming. Game and multitask without compromise powered by Intel’s performance hybrid architecture on an unlocked processor. Discrete graphics required Compatible with Intel 600 series and 700 series chipset-based motherboards The processor features Socket LGA-1700 socket for installation on the PCB 30 MB of L3 cache memory provides excellent hit rate in short access time enabling improved system performance 10 nm enables improved performance per watt and micro architecture makes it power-efficient Intel 7 Architecture enables improved performance per watt and micro architecture makes it power-efficient",
+      "category": "CPU",
+      "img": "https://m.media-amazon.com/images/I/51CUAct4KVL._AC_SX466_.jpg"
+    },
+    {
+      "id": "9c22f108-b8d3-4836-8792-81cb0cdd88bc",
+      "name": "X870-PLUS WiFi AMD AM5 X870 ATX Motherboard",
+      "price": "310",
+      "brand": "ASUS TUF Gaming",
+      "description": "About this item Ready for Advanced AI PC: Designed for the future of AI computing, with the power and connectivity needed for demanding AI applications AMD AM5 Socket: Ready for AMD Socket AM5 for AMD Ryzen 9000 & 8000 & 7000 Series Desktop Processors Enhanced Power Solution: 16+2+1, 80A SPS power stages, 8-layer PCB, ProCool connectors, alloy chokes and durable capacitors for stable power delivery Intelligent Control: ASUS-exclusive AI Overclocking, AI Cooling II, and AEMP to simplify setup and improve performance Overclocking Technologies: Dynamic OC Switcher, Core Flex and PBO Enhancement Latest M.2 Support: Two onboard PCIe 5.0 M.2 slots and two PCIe 4.0 M.2 slots, with massive M.2 heatsinks Ultrafast Connectivity: Wi-Fi 7, PCIe 5.0 x16 slot, Realtek 2.5Gb Ethernet, dual USB4 (40Gbps) Type-C ports, front USB 20Gbps Type-C with PD Fast Charge Support Comprehensive Cooling: Enlarged VRM and M.2 heatsinks, PCH heatsink, hybrid fan headers and Fan Xpert 4 with AI Cooling II DIY-Friendly Design: PCIe Slot Q-Release, M.2 Q-Latch, Q-Antenna, BIOS FlashBack button, Q-LED, Pre-mounted I/O shield, Q-Dashboard",
+      "category": "MotherBoard",
+      "img": "https://m.media-amazon.com/images/I/8142EMqsPdL._AC_SX679_.jpg"
+    },
+    {
+      "id": "04330a5d-02a9-4571-96be-6ac093752552",
+      "name": "B550-F Gaming WiFi II AMD AM4 (3rd Gen Ryzen) ATX Motherboard",
+      "price": "160",
+      "brand": "Asus ROG Strix",
+      "description": "About this item AM4 socket: Ready for AMD Ryzen 3000 and 5000 series, plus 5000 and 4000 G-series desktop processors.Bluetooth v5.2 Best gaming connectivity: PCIe 4.0-ready, dual M.2 slots, USB 3.2 Gen 2 Type-C, plus HDMI 2.1 and DisplayPort 1.2 output Smooth networking: On-board WiFi 6E (802.11ax) and Intel 2.5 Gb Ethernet with ASUS LANGuard Robust power solution: 12+2 teamed power stages with ProCool power connector, high-quality alloy chokes and durable capacitors Renowned software: Bundled 60 days AIDA64 Extreme subscription and intuitive UEFI BIOS dashboard",
+      "category": "MotherBoard",
+      "img": "https://m.media-amazon.com/images/I/81S9D7bqEzL._AC_SX679_.jpg"
+    },
+    {
+      "id": "a5029723-a24f-463c-81cf-d88057c693df",
+      "name": "B650 Eagle AX AM5 LGA 1718 AMD B650 ATX",
+      "price": "160",
+      "brand": "GIGABYTE",
+      "description": "About this item AMD AM5 Socket: Supports AMD Ryzen 7000 Series Processors DDR5 Compatible: 4*SMD DIMMs with AMD EXPO & Intel XMP Memory Module Support Unparalleled Performance: 12+2+2 Phases Digital VRM Solution Advanced Thermal Design & M.2 Thermal Guard: To Ensure VRM Power Stability & M.2 SSD Performance Stable Connectivity: 1*PCIe 5.0 + 2*PCIe 4.0 M.2, USB 3.2 Gen 2x2 Type-C",
+      "category": "MotherBoard",
+      "img": "https://m.media-amazon.com/images/I/71ipZ0RboTL._AC_SX679_.jpg"
+    },
+    {
+      "id": "2a8ea0b6-eb86-49ae-b250-e5fc69e2cb41",
+      "name": "B650 AORUS Elite AX AMD B650 ATX Motherboard",
+      "price": "200",
+      "brand": "GIGABYTE",
+      "description": "About this item 5-Year Warranty AMD AM5 Socket: Supports AMD Ryzen 7000 Series Processors DDR5 Compatible: 4DIMMs with AMD EXPO and Intel XMP Memory Module Support Commanding Power Design: Twin 14 plus2 plus1 Phases with 70A Power Stage Digital VRM Solution, 8-Layer 2X Copper PCB Cutting-Edge Thermal Design: 6mm Heatpipe, Fully Covered MOSFET Heatsinks, M.2 Thermal Guard, PCIe Ultra Durable Armor Next Gen Connectivity: PCIe 5.0, PCIe 5.0 NVMe x4 M.2, Front and rear USB-C EZ-Latch: PCIe 5.0 and M.2 Connectors with a Quick Release and Screwless Design Fast Networking: 2.5GbE LAN, WiFi 6E, BT5 Dynamic Audio: Hi-Fi Audio with High-End Audio Capacitors Fine Tuning Features: RGB FUSION, Supports Addressable LED and RGB LED Strips, Smart Fan 6, Multi-key for Reset/RGB Switch/Direct to BIOS/Safe Mode, Q-Flash Plus - Update BIOS without installing CPU, Memory, and GPU",
+      "category": "MotherBoard",
+      "img": "https://m.media-amazon.com/images/I/81JFKzNyl+L._AC_SX679_.jpg"
+    },
+    {
+      "id": "ae19089e-6329-4984-ac36-03d864ac52a9",
+      "name": "RAM 64GB Kit (2x32GB) DDR5 5600MHz",
+      "price": "150",
+      "brand": "Crucial Pro",
+      "description": "About this item Downclock capable for systems that only support 5200MHz or 4800MHz Compatible with 12th & 13th Gen Intel Core and AMD Ryzen 7000 Series desktop CPUs Intel XMP 3.0 and AMD EXPO supported for easy performance recovery Game at higher frame rates, multitask better, improve productivity ECC type = non-ECC, form factor = UDIMM, pin count = 288-pins, PC speed = PC5-44800, voltage = 1.1V, rank and configuration = 2Rx8",
+      "category": "RAM",
+      "img": "https://m.media-amazon.com/images/I/51qZqQI02oL._AC_SX466_PIbundle-2,TopRight,0,0_SH20_.jpg"
+    },
+    {
+      "id": "0749997b-f5df-4743-8d20-001be9a5bad1",
+      "name": "32GB (2x16GB) ARES RGB DDR4 RAM 3600MT/s",
+      "price": "80",
+      "brand": "Lexar",
+      "description": "About this item Delivering blazing-fast DDR4 overclocked performance to elevate your gaming experience Full range RGB support – customize your colors and effects with a vibrant RGB light bar Features an aluminum heat spreader and wing design for optimal heat dissipation Customize your RGB with Lexar RGB Sync to match your build perfectly Designed for the latest Intel XMP 2.0 and AMD Ryzen platform CL18-22-22-42 Lifetime limited warranty",
+      "category": "RAM",
+      "img": "https://m.media-amazon.com/images/I/51QpTRhJz0L._AC_SX466_PIbundle-2,TopRight,0,0_SH20_.jpg"
+    },
+    {
+      "id": "8d9ba590-7b86-45ba-9329-e062d911a6fc",
+      "name": "DDR4 RAM 32GB (2x16GB) 3200MHz",
+      "price": "52",
+      "brand": "CORSAIR VENGEANCE LPX",
+      "description": "About this item Hand-sorted memory chips ensure high performance with generous overclocking headroom VENGEANCE LPX is optimized for wide compatibility with the latest Intel and AMD DDR4 motherboards A low-profile height of just 34mm ensures that VENGEANCE LPX even fits in most small-form-factor builds A solid aluminum heatspreader efficiently dissipates heat from each module so that they consistently run at high clock speeds Supports Intel XMP 2.0 for simple one-setting installation and setup Available in multiple colors to match the style of your system Overclocking overhead is limited by operating temperature. The unique design of the VENGEANCE LPX heat spreader optimally pulls heat away from the ICs and into your system’s cooling path, so you can push it harder",
+      "category": "RAM",
+      "img": "https://m.media-amazon.com/images/I/61wCOVcyvFL._AC_SX466_.jpg"
+    },
+    {
+      "id": "c37f54d1-b0dc-45ee-aaed-25a95bfd5daa",
+      "name": "G.SKILL Trident Z RGB Series",
+      "price": "85",
+      "brand": "DDR4 RAM 64GB (2x32GB) 3600MT/s",
+      "description": "About this item Trident Z RGB Series, designed specifically for AMD Ryzen B550 and X570 Series; Intel Z390, Z490 and newer. 64GB kit containing 2 x 32GB modules, DDR4-3600, 288-Pin, CAS Latency CL18 (18-22-22-42) at 1.35V Brand: G.SKILL, Series: Trident Z RGB, Model: F4-3600C18D-64GTZR ECC: No, Dual Channel Kit, Color: Multi, Recommended Use: High Performance or Gaming Memory XMP profile support to reach up to the rated overclock speed, or run at default JEDEC profile speed Rated XMP frequency & stability depends on MB & CPU capability Check G.Skill QVL or RAM Configurator on the G.Skill website for validated motherboards Do not mix memory kits. Memory kits are sold in matched kits that are designed to run together as a set. Mixing memory kits will result in stability issues or system failure.",
+      "category": "RAM",
+      "img": "https://m.media-amazon.com/images/I/61WZdLnrPkL._AC_SX466_PIbundle-2,TopRight,0,0_SH20_.jpg"
+    },
+    {
+      "id": "b15318d4-88e6-4118-a582-435da2444921",
+      "name": "NVIDIA GeForce RTX 3060 V2 OC Edition 12GB GDDR6 Gaming Graphics Card",
+      "price": "300",
+      "brand": "ASUS Dual",
+      "description": "About this item NVIDIA Ampere Streaming Multiprocessors: The building blocks for the world’s fastest, most efficient GPU, the all-new Ampere SM brings 2X the FP32 throughput and improved power efficiency. 2nd Generation RT Cores: Experience 2X the throughput of 1st gen RT Cores, plus concurrent RT and shading for a whole new level of ray tracing performance. 3rd Generation Tensor Cores: Get up to 2X the throughput with structural sparsity and advanced AI algorithms such as DLSS. Now with support for up to 8K resolution, these cores deliver a massive boost in game performance and all-new AI capabilities. OC mode: Boost clock 1867 MHz (OC mode)/ 1837 MHz (Gaming mode) Axial-Tech Fan Design features a smaller fan hub that facilitates longer blades and a barrier ring that increases downward air pressure.",
+      "category": "Tarjeta de video",
+      "img": "https://m.media-amazon.com/images/I/81si2RRaWUS._AC_SX679_.jpg"
+    },
+    {
+      "id": "f472dd74-765a-4615-bfdd-214f093660a6",
+      "name": "GeForce RTX 4070 Ti Super 16G Ventus 3X Black OC Graphics Card",
+      "price": "840",
+      "brand": "MSI",
+      "description": "About this item Chipset: GeForce RTX 4070 Ti Super Extreme Clock / Memory: 2655 MHz / 21 Gbps Video Memory: 16GB GDDR6X Memory Interface: 256-bit Output: DisplayPort x 2 (v1.4a) / HDMI x 2 (2.1a)",
+      "category": "Tarjeta de video",
+      "img": "https://m.media-amazon.com/images/I/71WmGWSol1L._AC_SX466_.jpg"
+    },
+    {
+      "id": "13f1d208-e9fa-482c-8f48-caa31111780c",
+      "name": "Gaming GeForce RTX™ 4090 OG OC Edition Gaming Graphics Card",
+      "price": "1980",
+      "brand": "ASUS TUF",
+      "description": "About this item OC mode: up to 2595 MHz (boost clock)/up to 2565 MHz (Game Clock) Powered by NVIDIA DLSS3, ultra-efficient Ada Lovelace arch, and full ray tracing. 4th Generation Tensor Cores: Up to 4x performance with DLSS 3 vs. brute-force rendering 3rd Generation RT Cores: Up to 2X ray tracing performance Axial-tech fan design has been tuned with a reversed central fan direction for less turbulence",
+      "category": "Tarjeta de video",
+      "img": "https://m.media-amazon.com/images/I/81-Q4kEcj5L._AC_SX679_.jpg"
+    },
+    {
+      "id": "4643e596-f25c-4dfd-81e8-41e87a8c8a66",
+      "name": "GeForce RTX 4060 Eagle OC 8G Graphics Card",
+      "price": "305",
+      "brand": "GIGABYTE",
+      "description": "About this item Powered by NVIDIA DLSS 3, ultra-efficient Ada Lovelace architechture, and full ray tracing 4th Generation Tensor Cores: Up to 4x performance with DLSS 3 3rd Generation RT Cores: Up to 2x ray tracing performance Powered by GeForce RTX 4060 Integrated with 8GB GDDR6 128-bit memory interface WINDFORCE Cooling System, Dual BIOS, Protection metal back plate",
+      "category": "Tarjeta de video",
+      "img": "https://m.media-amazon.com/images/I/71g2Lc8urJL._AC_SX679_.jpg"
+    },
+    {
+      "id": "ae15a01c-c04d-4203-87bb-04bcebe60fd2",
+      "name": "Radeon RX 550 4GB GDDR5 ITX Computer PC Gaming Video Graphics Card",
+      "price": "84",
+      "brand": "maxsun AMD",
+      "description": "About this item AMD Radeon RX 550 Chipset, Silver plated PCB & all solid capacitors provide lower temperature, higher efficiency & stability 9CM unique fan provide low noise and huge airflow for your GPU GPU Boost Clock / Memory Speed : up to 1183 MHz / 4GB GDDR5 / 6000 MHz Memory, Stream Processors 512, Perfect for 3D CAD/CAM working, video and photo editing, Video Games @1080p Support: DirectX 12, Shader Model 5.0, OpenGL 4.6/4.5, 4K Video Decode",
+      "category": "Tarjeta de video",
+      "img": "https://m.media-amazon.com/images/I/61-PIBx43BL._AC_SX679_.jpg"
+    },
+    {
+      "id": "2c8d87c8-a9b4-463a-9760-b470eebbe456",
+      "name": "990 PRO w/ Heatsink SSD 2TB, PCIe Gen4 M.2 2280 Internal Solid State Hard Drive",
+      "price": "170",
+      "brand": "SAMSUNG",
+      "description": "About this item BLAZING SPEED. COOL VICTORY: Consider this a cheat code; Our Samsung 990 PRO Gen 4 with Heatsink SSD helps you reach near max performance* with lightning-fast speeds and Heatsink for improved temperature control REACH THE NEXT LEVEL: Gen4 steps up with faster transfer speeds and high-performance bandwidth; With a more than 55% improvement in random performance compared to 980 PRO, it’s here for heavy computing and faster loading THE FASTEST SSD FROM THE WORLD'S #1 FLASH MEMORY BRAND**: The speed you need for any occasion; With read and write speeds up to 7450/6900 MB/s* you’ll reach near max performance of PCIe 4.0*** powering through for any use PLAY WITHOUT LIMITS: Give yourself some space with storage capacities from 1TB to 4TB; Sync all your saves and reign supreme in gaming, video editing, data analysis and more MADE w/ PS5 IN MIND: Ultra-slim Integrated Heatsink is designed to dissipate heat from your device to stabilize its temperature and prevent performance issues; It’s compatible with PlayStation 5 and PCI-SIG D8 standard desktops and laptops",
+      "category": "Almacenamiento",
+      "img": "https://m.media-amazon.com/images/I/715zWolPNVL._AC_SX466_.jpg"
+    },
+    {
+      "id": "d1f2d2ac-a511-4686-9147-e92ada69ff58",
+      "name": "960GB A400 SATA3 2.5\" Internal SSD SA400S37/960G",
+      "price": "54",
+      "brand": "Kingston",
+      "description": "About this item Fast start up, loading and file transfers More reliable and durable than a hard drive Multiple capacities with space for applications or a hard drive replacement",
+      "category": "Almacenamiento",
+      "img": "https://m.media-amazon.com/images/I/81+9rUcRVTL._AC_SX466_.jpg"
+    },
+    {
+      "id": "17d8c04c-a2ef-4068-9cdd-ca162492f355",
+      "name": "P3 Plus 2TB PCIe Gen4 3D NAND NVMe M.2 SSD, up to 5000MB/s",
+      "price": "114",
+      "brand": "Crucial",
+      "description": "About this item NVMe (PCIe Gen4 x4) technology with up to 5000MB/s sequential reads, random read/write 680K/850K IOPS.date transfer rate:5000.0 megabytes_per_second.Specific uses: Personal,Gaming,Business Spacious storage up to 4TB Performs up to 43% faster than the fastest Gen3 NVMe SSDs Rated at MTTF greater than 1.5 million hours for extended longevity and reliability Backward compatibility with Gen3",
+      "category": "Almacenamiento",
+      "img": "https://m.media-amazon.com/images/I/51xZaoS+Q1L._AC_SX466_.jpg"
+    },
+    {
+      "id": "5b9cc3ab-fead-43e0-bd1a-2c6e8f3859d0",
+      "name": "IronWolf 8TB NAS Internal Hard Drive HDD – 3.5 Inch SATA 6Gb/s",
+      "price": "180",
+      "brand": "Seagate",
+      "description": "About this item IronWolf internal hard drives are the ideal solution for up to 8-bay, multi-user NAS environments craving powerhouse performance.date transfer rate:6.0 gigabits_per_second Store more and work faster with a NAS-optimized hard drive providing 8TB and cache of up to 256MB Purpose built for NAS enclosures, IronWolf delivers less wear and tear, little to no noise/vibration, no lags or down time, increased file-sharing performance, and much more Easily monitor the health of drives using the integrated IronWolf Health Management system and enjoy long-term reliability with 1M hours MTBF Five-year limited product warranty protection plan and three year Rescue Data Recovery Services included",
+      "category": "Almacenamiento",
+      "img": "https://m.media-amazon.com/images/I/71GKZRx898L._AC_SX466_.jpg"
+    },
+    {
+      "id": "7ae56e2b-cf45-4e7e-9988-b84d4898a13a",
+      "name": "Smart 700W 80+ White Certified PSU, Continuous Power with 120mm Ultra Quiet Fan, ATX",
+      "price": "55",
+      "brand": "Thermaltake",
+      "description": "About this item 80 plus certified Continuous power design Has well ready Ultra quiet 120 millimeters fan 5 year warranty",
+      "category": "Fuente",
+      "img": "https://m.media-amazon.com/images/I/61TeTD0LaqL._AC_SX466_.jpg"
+    },
+    {
+      "id": "d0b02077-2ab2-4e21-83a2-aa420517aa5b",
+      "name": "P650G 650W 80 Plus Gold Certified Power Supply",
+      "price": "60",
+      "brand": "GIGABYTE",
+      "description": "About this item 650W Capacity with Single +12V Rail 80 Plus Gold Certified ATX Form Factor Japanese Capacitors 120mm Smart Hydraulic Bearing Fan OVP/OPP/SCP/UVP/OCP/OTP protection",
+      "category": "Fuente",
+      "img": "https://m.media-amazon.com/images/I/71Q7aGs9mAL._AC_SX466_.jpg"
+    },
+    {
+      "id": "62ffa28b-1712-494a-adf3-5f7c40575454",
+      "name": "MAG A850GL PCIE 5 & ATX 3.0 Gaming Power Supply - Full Modular - 80 Plus Gold Certified 850W",
+      "price": "110",
+      "brand": "MSI",
+      "description": "About this item 80 PLUS GOLD CERTIFIED 10-year limited warranty, guaranteeing long term reliable operation Fully modular design ATX 3.0 & PCIE 5",
+      "category": "Fuente",
+      "img": "https://m.media-amazon.com/images/I/71xX3-cWg7L._AC_SX466_.jpg"
+    },
+    {
+      "id": "ddcc98b4-3070-4540-a0df-166e9bb96502",
+      "name": "GP-UD750GM 750W 80 Plus Gold Certified Fully Modular Power Supply",
+      "price": "80",
+      "brand": "GIGABYTE",
+      "description": "About this item 750W Capacity with Single +12V Rail 80 Plus Gold Certified ATX Form Factor Fully Modular Design Japanese Capacitors",
+      "category": "Fuente",
+      "img": "https://m.media-amazon.com/images/I/71ueFT9h8JL._AC_SX466_.jpg"
+    },
+    {
+      "id": "57327c99-f0a1-4694-8505-e832df7f5003",
+      "name": "600W 80 Plus Certified 100-W1-0600-K1 Power Supply",
+      "price": "45",
+      "brand": "EVGA",
+      "description": "About this item Quiet and Intelligent Auto Fan for near-silent operation Heavy-duty protections, including OVP (Over Voltage Protection), UVP (Under Voltage Protection), OCP (Over Current Protection), OPP (Over Power Protection), SCP (Short Circuit Protection), and OTP (Over Temperature Protection) 3 Year Warranty",
+      "category": "Fuente",
+      "img": "https://m.media-amazon.com/images/I/61JIZLFj3eL._AC_SX466_.jpg"
+    },
+    {
+      "id": "e0a1a947-85ea-41e8-a0a3-a955129d1943",
+      "name": "MasterLiquid ML240L RGB V2, Close-Loop AIO CPU Liquid Cooler",
+      "price": "97",
+      "brand": "CoolerMaster",
+      "description": "About this item 3rd Generation Dual Chamber Pump for overall cooling efficiency and performance New SickleFlow Refreshed exterior design for improved lighting and fan blades for a quiet airflow performance RGB Lighting Signature cooling performance with an RGB design for all of the users wanting lighting effects that are fully customizable Industrial Grade Seal High Industrial Grade EPDM material to strengthen the seal for improved longevity and Anti-Leaking AMD AM4/AM3 plus/AM3/AM2 plus/AM2/FM2 plus/FM2/FM1 Intel LGA1700*/1200/1151/1150/1155/1156/1366/2066/2011-v3/2011 Intel’s Alder Lake LGA1700 Kit, Available on Amazon Part:603005870-GP ASIN:B09V3CFDP3",
+      "category": "Refrigeracion",
+      "img": "https://m.media-amazon.com/images/I/61g3UkYPnmL._SX522_.jpg"
+    },
+    {
+      "id": "d8f327b2-c7d7-4918-896c-379b7422bfe4",
+      "name": "iCUE H100i RGB Elite Liquid CPU Cooler ",
+      "price": "80",
+      "brand": "Corsair",
+      "description": "About this item Advanced All-in-One CPU Cooling: Offers everything needed to keep your latest Intel or AMD CPU running at peak performance, while curbing the heat of even high-end processors. Refined Pump Head Design and 16 RGB LEDs: Contemporary pump head design, with 16 individually addressable diffused RGB LEDs, provides a unique look and stunning lighting effects. Cutting-Edge Cooling Performance: Elevate your CPU performance with liquid cooling driven by two 120mm CORSAIR AF ELITE Series AirGuide fans, delivering powerful PWM-controlled airflow between 450 and 1,850 RPM. Unite Your Setup: Powerful CORSAIR iCUE software enables you to control and synchronize your cooler’s RGB lighting with all iCUE compatible devices, monitor CPU and coolant temperatures, and adjust fan and pump speeds. Specialized Cooling Modes for Quiet Operation: Zero RPM fan and Variable Pump Speed specialized cooling modes in iCUE keep noise to a minimum when your system is idle or under light loads.",
+      "category": "Refrigeracion",
+      "img": "https://m.media-amazon.com/images/I/51NoQQBG+ML._SX522_.jpg"
+    },
+    {
+      "id": "48c2c269-f4e8-4956-88a1-37b3e2cbf7af",
+      "name": "iCUE Link H150i LCD Liquid CPU Cooler - 360mm AIO - QX120 RGB Fans - 2.1” IPS LCD Screen",
+      "price": "280",
+      "brand": "CORSAIR",
+      "description": "About this item Seamless Personalization: Enjoy powerful, low-noise cooling with a personalized LCD screen, all with simplified hidden connections thanks to the patent-pending iCUE LINK ecosystem Brilliant IPS LCD Display: Showcase your real-time CPU temperature, favorite animated GIF, funniest meme, or your team’s logo on a custom 2.1” IPS LCD screen with 480x480 resolution, ultra-bright 600cd/m² backlight, 24-bit true color depth, and over 16.7 million colors Effortless Connectivity & Intelligent Design: Take your build to the next level with the patent-pending iCUE LINK ecosystem, letting you chain all your components together using universal connectors, all plugged into a single port on the included iCUE LINK System Hub. Build faster, reduce cable clutter, and create a more intelligent, cohesive system setup Hidden Connections for a Flawless Look: A hidden connection design moves all connections to the end of the radiator, allowing for a distraction-free viewing experience of the stunning LCD screen and 24 RGB LED pump cap. Create a sleek and stylish build that showcases your personal style with ease Unbeatable Lighting with QX RGB Fans: CORSAIR QX120 RGB PWM fans with a patent-pending Magnetic Dome bearing deliver powerful, quiet airflow pre-installed along a 360mm radiator, lit by an astonishing 34 RGB LEDs per fan",
+      "category": "Refrigeracion",
+      "img": "https://m.media-amazon.com/images/I/71xVtT4ApyL._AC_SX466_.jpg"
+    },
+    {
+      "id": "ceae7413-d10a-417c-b658-0b96ec3504de",
+      "name": "Hyper 212 Halo Black CPU Air Cooler, 120 Halo² PWM Fan, Dual Loop ARGB",
+      "price": "30",
+      "brand": "Cooler Master",
+      "description": "About this item Minimalistic Revamped: The refreshed jet-black aesthetic brings a renewed vibe while keeping its minimalistic essence. Cool for R7 | i7: Four heat pipes and a copper base ensure optimal cooling performance for AMD R7 and *Intel i7. MF120 Halo² Fan: Experience premium airflow with cooling with our optimized PWM blade for stability. Dynamic PWM Fan: A PWM 4-pin header allows adjustable fan speeds from 690 to 1,800 RPM, to balance noise and airflow. Dual-Loop ARGB Rings: Dual-loop design with larger LED rings by 50%, creating more vibrant lighting. Simplify Brackets: Redesigned brackets simplify installation on AM5 and LGA 1851|1700 platforms. Versatile Compatibility: 154mm tall design offers performance with wide chassis compatibility.",
+      "category": "Refrigeracion",
+      "img": "https://m.media-amazon.com/images/I/71H8RbUBYaL._AC_SX466_.jpg"
+    },
+    {
+      "id": "e0231782-f39a-4140-a5e5-5c6459ef0006",
+      "name": "PS120SE CPU Air Cooler, 7 Heat Pipes CPU Cooler,Dual 120mm TL-C12B V2 PWM Fan",
+      "price": "35",
+      "brand": "Thermalright",
+      "description": "About this item 【Brand Overview】Thermalright is a Taiwanese brand with more than 20 years of development history. It has a certain popularity in the domestic and international markets and has a decisive influence in the cooler market. We have been focusing on the research and development of computer accessories. The R&D product line includes: CPU coolers, case fans, silicone pad, thermal paste, mounting brackets, accessories and other products. 【AGHP technique】7x6mm heatpipe with AGHP upgraded 4th generation technology, the Inverse gravity effect caused by vertical / horizontal orientation, cpu cooler TDP is 105W to 280W. Up to 20000 hours of industrial service life, S-FDB bearings ensure long service life of air-cooler radiators. UL class a safety insulation low-grade, industrial strength PBT + PC material to create high-quality products for you. The height is 154mm, compatible with a wide range of chassis models. 【Product specification】 PS120SE; CPU Cooler dimensions:125(L)x135(W)x154(H)mm (4.92x5.31.06 inch); Product weight:0.9kg(1.98lb); heat sink material: aluminum,the main body is made of anodized black frosted top + finely carved pure copper base technology, avoiding the memory design, the main body is fully aluminum fins, bringing maximum heat dissipation area, combined with the high thermal conductivity of the thermal paste, which can perfectly perform the cooler's most powerful cooling effect. 【PWM Fan】 TL-C12B V2; Standard size industrial grade PWM performance PC fan: 120x120x25mm (4.92x4.92x0.98 inches); Fan speed (RPM): 1500rpm±10%; Power port: 4-pin; Voltage: 12V; Air flow: 66.17CFM (max); Noise level ≤25.6dB(A), high performance fan combined with efficient heat dissipation The cooling body of the unit gives you the best cooling effect. 【Compatibility】CPU cooling slot support: Intel: LGA1700/1150/1151/1155/1156/1200, AMD: AM4/AM5; for different CPU slot platforms, provide the corresponding mounting plate or fasteners, can be combined with the installation instructions or follow the tutorial to get on the machine.",
+      "category": "Refrigeracion",
+      "img": "https://m.media-amazon.com/images/I/71pvjXDbjxL._SX522_.jpg"
+    },
+    {
+      "id": "4f61a339-bee2-48c0-a6c3-c3530473c992",
+      "name": "FS-9002 Pro 120mm RGB Case Fan, 26 LED ARGB and Double LED Lingting Loops",
+      "price": "59",
+      "brand": "AsiaHorse",
+      "description": "About this item 【Vibrant Lighting Effects】Out Frame 20 lights with internal 6 lights, Asiahorse 120mm rgb fan is designed with double addressable RGB loops for richer combinations of light effects. 26 ARGB LEDs spread in two loops give user superior visual effects. 【Analog ARGB Controller】For motherboards without RGB cables. Includes 4 preset colors (Red, Green, Blue, White, Rainbow 1.0 and Rainbow 2.0), hundreds of LED modes and off modes (Wave, Full Brightness, RGB Spectrum, Off, Flowing, Ripple, Pulse, and Flicker), and 4 LED speeds to easily customize your game settings. 【Two ARGB Control Methods】With 5V 3Pin RGB connector, the pc cooling fan support motherboard software synchronization. And ARGB header with an easy-use remote, these 120mm rgb fan are easy to control light effects and fan speed. 【Quiet Operation】FS9002 rgb pc fans use hydraulic bearing to significantly reduces noise level; the maximum noise level is 24dBA. Each pc fan has 8 rubber pads to provide minimum vibration. 【Dual Power Supply】Rgb fan controller use 2 sata cable to power, enough power to 10 fans in solid white color setting. Upgrade new led light bar, full white lighting mode to keep the light in the best bright state for a long time.",
+      "category": "Refrigeracion",
+      "img": "https://m.media-amazon.com/images/I/71VbVmqCQNL._SX522_.jpg"
+    },
+    {
+      "id": "a846f3fc-189b-43b4-8eaa-27cf7f6ec03e",
+      "name": "MasterBox Q300L Micro-ATX Tower with Magnetic Design Dust Filter",
+      "price": "38",
+      "brand": "Cooler Master",
+      "description": "About this item Magnetic Dust Filters: The unique pattern of the dust filter adds a distinctive appearance to the case. Components Clearance: Accommodates CPU coolers with a max height of 159mm, GPU cards up to 360mm, and PSU up to 160mm in length. Versatile Cooling: Maximize cooling performance with a 240mm liquid cooler and 5 fans. Modular I/O Panel: You have the flexibility to adjust its position at the front, top, or bottom on both sides Edge-To-Edge Panel: Show off your meticulous build through the transparent side panel with pride. Open Thermal Design: The perforated design on all sides promotes optimal airflow and heat dissipation Ample Interior: Explore ample interior space for Micro-ATX or Mini-ITX motherboards, ensuring easy and future expansion",
+      "category": "Gabinete",
+      "img": "https://m.media-amazon.com/images/I/81I9Ef0fOIL._AC_SX679_.jpg"
+    },
+    {
+      "id": "f43be92e-dee5-4730-b99a-bcb146fe9669",
+      "name": "4000D AIRFLOW Tempered Glass Mid-Tower ATX Case - High-Airflow - Cable Management System",
+      "price": "105",
+      "brand": "CORSAIR",
+      "description": "About this item Combining innovative cable management, concentrated airflow, and proven CORSAIR build quality, the 4000D is a fitting choice for an immaculate high-performance PC..Maximum PSU Length : 220. Radiator Compatibility : 120mm, 140mm, 240mm, 280mm, 360mm. The CORSAIR RapidRoute cable management system makes it simple and fast to route your major cables through a single channel, with a roomy 25mm of space behind the motherboard for all of your cables. Includes two CORSAIR 120mm AirGuide fans, utilizing anti-vortex vanes to concentrate airflow and enhance cooling. Motherboard will fit in our 4000 Series cases without any issue. Mini-ITX, micro-ATX, ATX, and E-ATX form factor motherboards are all supported. A spacious interior fits up to 6x 120mm or 4x 140mm cooling fans, along with multiple radiators including 360mm in front and 280mm in the roof (dependent on RAM height). Put modern connections within easy reach with a front I/O panel including a USB 3.1 Type-C Port, USB 3.0 port, and a combination audio/microphone jack.",
+      "category": "Gabinete",
+      "img": "https://m.media-amazon.com/images/I/71J4iohAlaL._AC_SX466_.jpg"
+    },
+    {
+      "id": "22c236b8-d3b9-4ef9-b4b0-2534c83b6166",
+      "name": "View 200 TG ARGB Motherboard Sync ATX Tempered Glass Mid Tower Computer Case",
+      "price": "60",
+      "brand": "Thermaltake",
+      "description": "About this item Three Preinstalled Hydraulic Bearing 120mm ARGB Lite Front Fans Sync with Motherboard RGB Software Tempered Glass Front Panel Built-in PSU Cover Opportunities For High-End Expansion",
+      "category": "Gabinete",
+      "img": "https://m.media-amazon.com/images/I/61bCzcg3JRL._AC_SX679_.jpg"
+    },
+    {
+      "id": "6ee0e32c-1af7-43f4-887a-a2a6fd46ba43",
+      "name": "3500X ARGB Mid-Tower ATX PC Case – Panoramic Tempered Glass – Reverse Connection Motherboard Compatible",
+      "price": "110",
+      "brand": "CORSAIR",
+      "description": "About this item A Great Build with a Great View: The 3500X has all the cooling benefits and essential features you need to build an amazing PC, supporting motherboard form-factors from Mini-ITX to EATX, with a wraparound glass aesthetic to give you the view to match. High Cooling Capacity: Side, roof, and PSU fan mounting points, accommodating up to 10x 120mm fans, ensure that you don’t sacrifice cooling for the stunning looks of a glass front panel. Removable Tempered Glass Panels: Easily removable front and side glass panels make it easy to build and access your system after it’s done. Three Pre-Installed RS120 ARGB Fans: Enjoy high-performance cooling and no-fuss lighting out of the box with simple motherboard control through a +5V ARGB header. Compatible with Reverse Connection Motherboards: Validated for use with ASUS BTF and MSI Project Zero motherboards featuring connections on the back of the board, so your view isn’t spoiled by plugged-in cables.",
+      "category": "Gabinete",
+      "img": "https://m.media-amazon.com/images/I/71MMoud1NzL._AC_SY741_.jpg"
+    },
+    {
+      "id": "adf31283-3668-4e6e-83d9-128c4e6f0487",
+      "name": "ATX Mid Tower Gaming Computer PC Case Tempered Glass, Built-in 4X 120mm ARGB Case Fans, Front Airflow Mesh",
+      "price": "60",
+      "brand": "GAMDIAS",
+      "description": "About this item 【Mesh Front Panel with Built-In Fans】AURA GC1 ELITE ARGB sports an airflow-focused mesh front panel equipped with 4 ARGB fans to provide superior air intake. 【Stylish Gaming PC Case with Side Tempered Glass】The computer case showcases the inner beauty of your gaming pc system with a full-sized tempered glass cover with tool-free installation for ease of access. 【Excellent Airflow with 4x Built-in ARGB Computer Fans】The mid tower case is well equipped with 4 built-in 120mm ARGB fans displayed in full by the mesh front panel and the tempered glass side panel 【Modern Design with Mesh Front】AURA GC series gaming pc cases sport an airflow-focused mesh front panel with a sleek stealth black design to provide aesthetics and excellent airflow intake 【Great Expandability for Your Gaming Rig】With 2x 3.5\" or 1 x 2.5\"+1 x 3.5\"(HDD Cage) / 2 x 2.5\" HDD Tray, USB 3.0 x1, USB 2.0 x2, HD Audio x1, LED Control x1. Furthermore, it supports different mobo from ATX, Micro-ATX, Mini-ITX . 7 PCIE slots allow you to fully utilize your motherboard.",
+      "category": "Gabinete",
+      "img": "https://m.media-amazon.com/images/I/71nuILUpzHL._AC_SX466_.jpg"
+    },
+    {
+      "id": "e42e7467-ca61-45cf-8042-c1c4f6642fe8",
+      "name": "O11D EVO RGB E-ATX gaming dual chamber case - ARGB lighting strips - Up to 420mm radiator - Cable management",
+      "price": "160",
+      "brand": "Lian Li",
+      "description": "About this item Seamless view: Remove the front support pillar without affecting the structural integrity of the case. This allows for a completely uninterrupted view of everything inside the chassis. Increased size: Provides ample room for the latest gaming hardware. Thanks to this expansion, the main compartment can facilitate large graphics cards, with 455.7mm clearance and seven expansion slots. Features two 1.5mm L-shaped RGB strips that sit at the top and bottom of the tempered glass panels. These strips are easy to control with beautiful lighting options available. Easy for builders: For starters, the internal layout of the chassis can be adjusted as there are two height options for motherboard installation. This means there are different ways to set up your fans and CPU cooler, providing different performance options and aesthetics. Cable management friendly: Comes with Velcro straps and dual-layered clips, which can tidy up both your large and small cables together into an easily managed bundle. Moreover, the PSU mounting bracket protrudes 15mm out from the case, which provides additional space for cable management.",
+      "category": "Gabinete",
+      "img": "https://m.media-amazon.com/images/I/712giHWFxxL._AC_SX679_.jpg"
+    },
+    {
+      "id": "6629d8e5-ebaa-489e-b784-b9a556698539",
+      "name": "Cylon Mid Tower Case – RGB PC Gaming Case with 1 x 1200mm Black Fan, Tempered Glass Side Panel, 13 ARBG Modes",
+      "price": "75",
+      "brand": "Aerocool",
+      "description": "About this item SHOWCASE YOUR DESIGN – Display the internal rig of your mid tower PC case with Cylons full tempered glass side panel and ensure easy cleaning of your PC tower with the removable and magnetic dust filters SUPERIROR AIR FLOW – Equipped with a Built in VGA fan mount and 120mm radiator, this dual chamber pc case creates air ventilation in top, front and rear panels and supports liquid cooling for enhanced performance. 13 COLOUR MODES – Featuring an elegant LED front panel, the Cylon pc tower case allows you to choose from one of 6 RGB flows and seven solid colours to create a completely unique style for your gaming case EXTRA STORAGE CAPABILTIES – With a 155m depth and 371mm internal width, this pc gaming case can support up to 5 x 2.5” SSDs and offers all the storage you need for high end graphic cards CONVENIENT CONNECTION – Supporting SD/ Micro SD Memory cards, 3 x USB ports, HD and mic jacks, as well as instant access to LED effect controls, the Cylon tower case provides seamless access to all of your media",
+      "category": "Gabinete",
+      "img": "https://m.media-amazon.com/images/I/515d6MEXbgL.__AC_SX300_SY300_QL70_FMwebp_.jpg"
     }
   ],
   "cart": [

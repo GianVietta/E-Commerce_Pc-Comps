@@ -9,7 +9,7 @@ body, html {
     padding: 0 20px; /* Espaciado en los lados del header */
     color: #ff4d4d; /* Color del texto en rojo */
     font-family: Arial, sans-serif;
-    border-radius: 12px; /* Redondeo de las esquinas */
+    border-radius: 12px 12px 0 0; /* Redondeo de las esquinas */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra del header */
     width: 100%; /* Asegura que tome todo el ancho */
     margin: 0; /* Elimina márgenes */
@@ -19,6 +19,7 @@ body, html {
     align-items: center; /* Centra verticalmente los elementos */
     position: sticky;
     top: 0;
+    z-index: 10;
 }
 
 .header-container {
