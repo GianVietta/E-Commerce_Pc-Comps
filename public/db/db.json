@@ -1,31 +1,67 @@
 {
   "products": [
     {
-      "id": "",
+      "id": "7c4ed463-5417-422b-87f5-434abfd11483",
       "name": "GTX 1650 NVIDIA",
-      "price": "300000",
+      "price": "170",
       "brand": "ASUS",
-      "description": "aefaefefiuebfuiaenuifneuinfeiu",
-      "category": "category",
+      "description": "About this item Digital Max Resolution:7680 x 4320 The ASUS TUF Gaming GeForce GTX 1650 is built with the breakthrough graphics performance of the award-winning NVIDIA Turing architecture to supercharge your favorite games. Ultra-fast GDDR6 with over 50% more memory bandwidth for high-speed gaming. Auto Extreme Manufacturing uses automation to enhance reliability. TUF compatibility testing ensures TUF Gaming and TUF Gaming alliance components work together flawlessly. Protective backplate secures components during transportation and installation.",
+      "category": "Tarjeta de video",
       "img": "https://acdn.mitiendanube.com/stores/256/529/products/placa-de-video-asus-1650-oc-4gb-ddr61-360341cf28ac95b1da16244588256421-1024-1024.png"
     },
     {
-      "id": "",
+      "id": "f26c398e-4602-4f8f-ab4e-095585111e39",
       "name": "I5 10400",
       "price": "120",
       "brand": "Intel",
-      "description": "ijefniuefniejfnffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffenfcoenocneoicneio",
-      "category": "category",
-      "img": "https://mexx-img-2019.s3.amazonaws.com/37557_1.jpeg"
+      "description": "About this item 6 Cores / 12 Threads Socket type LGA 1200 Up to 4. 3 GHz Compatible with Intel 400 series chipset based motherboards Intel Optane Memory support Cooler included",
+      "category": "CPU",
+      "img": "https://m.media-amazon.com/images/I/5109QxQi0IL._AC_SX466_.jpg"
     },
     {
-      "id": "",
-      "name": "a320m",
+      "id": "2479f6d9-6ba5-4e45-b0eb-54daf3abb873",
+      "name": "A520M-A PRO Gaming",
+      "price": "70",
+      "brand": "MSI",
+      "description": "About this item Support 3rd Gen AMD Ryzen Desktop Processors and AMD Ryzen 4000 G-Series Desktop Processors Supports DDR4 Memory, up to 4600(OC) MHz Turbo M.2: Running at PCI-E Gen3 x4 maximizes performance for NVMe based SSDs Audio Boost: Reward your ears with studio grade sound quality Dragon Center: A brand new software which integrates all MSI exclusive tools with user friendly user interface",
+      "category": "MotherBoard",
+      "img": "https://m.media-amazon.com/images/I/81LKKjLD1pL._AC_SX679_.jpg"
+    },
+    {
+      "id": "fe30f1b2-e0f1-4046-86ae-60547c8e12bf",
+      "name": "Gaming GeForce RTX 3060",
+      "price": "295",
+      "brand": "MSI",
+      "description": "About this item Chipset: NVIDIA GeForce RTX 3060 Video Memory: 12GB GDDR6 Memory Interface: 192-bit Output: DisplayPort x 3 (v1.4a) / HDMI 2.1 x 1.Avoid using unofficial software Digital maximum resolution: 7680 x 4320",
+      "category": "Tarjeta de video",
+      "img": "https://m.media-amazon.com/images/I/61nCY30R4iL._AC_SX679_.jpg"
+    },
+    {
+      "id": "36575c1f-b5a5-4e16-a1a4-1e966ad08fd8",
+      "name": "T-Force Delta RGB DDR4 16GB (2x8GB) 3200MHz",
+      "price": "47",
+      "brand": "TEAMGROUP",
+      "description": "About this item Full frame 120° ultra wide angle lighting. Built-in Force Flow RGB lighting effect. Supports ASUS Aura Sync software synchronization. Supports variety kinds of lighting control software. Aluminum alloy heat spreader with asymmetric minimalist design. Supports XMP2.0 one-click overclocking technology. Compatible with both Intel & AMD motherboards. QVL approved by all mainstream motherboard manufacturers. Latest JEDEC RC 2.0 PCB. Energy saving 1.2V~1.4V ultra low working voltage. Lifetime warranty. Free Technical Support and Customer Service on TEAMGROUP's official website. Precautions: 1. Before purchasing memory products, please refer to the QVL(Qualified Vendor List) compatibility list first of the motherboard. 2. The quality of the CPU memory controller (IMC) and the version from the BIOS of motherboard may both potentially affect the operating frequency of the memory.",
+      "category": "RAM",
+      "img": "https://m.media-amazon.com/images/I/71KvpD-WuNL._AC_SX466_PIbundle-2,TopRight,0,0_SH20_.jpg"
+    },
+    {
+      "id": "fde324fa-ed7b-42a7-b5a8-db028e34d4d4",
+      "name": "BarraCuda 1TB Internal Hard Drive HDD",
       "price": "50",
-      "brand": "ASUS",
-      "description": "enfiuenfiueniufnekfneifnenfeinfjienfneiufneiufneiunfienfiuenfiuenifneiuf",
-      "category": "`MotherBoard`",
-      "img": "https://http2.mlstatic.com/D_988393-MLA79914986731_102024-O.jpg"
+      "brand": "Seagate",
+      "description": "About this item Store more, compute faster, and do it confidently with the proven reliability of BarraCuda internal hard drives Build a powerhouse gaming computer or desktop setup with a variety of capacities and form factors The go to SATA hard drive solution for nearly every PC application from music to video to photo editing to PC gaming Confidently rely on internal hard drive technology backed by 20 years of innovation Enjoy long term peace of mind with the included two year limited warranty",
+      "category": "Almacenamiento",
+      "img": "https://m.media-amazon.com/images/I/619Zbk3-e0L._AC_SX466_.jpg"
+    },
+    {
+      "id": "9ff24fed-2bdd-4cd0-a7a6-970f91b59e1f",
+      "name": "750W Fully Modular ARGB Power Supply",
+      "price": "75",
+      "brand": "GAMEMAX",
+      "description": "About this item 80 Plus Gold Certified: 750W power supply delivers 90% or higher efficiency under typical loads. Achieve power savings and reduced heat, ensuring peak performance while cutting costs. ATX 3.0 & PCIe 5.0 Ready: It allows a remarkable 200% total power excursion and 300% GPU power excursion, ensuring full compatibility with high-performance NVIDIA 40 series graphics cards. The package includes a 12VHPWR Cable for hassle-free installation and future upgrades. 100% Japanese Capacitors: Crafted with premium Japanese capacitors for long-lasting reliability and stable output with 5V/3.3V DC-DC. Offering peace of mind with a 5-year warranty. ARGB SYNC: Elevate your rig's style with ARGB SYNC, seamlessly integrating vibrant lighting effects with the A-RGB software of most mainstream motherboards. Whisper-Quiet Fan: The ATX power supply is equipped with a 140mm ultra-quiet fan that maintains excellent heat dissipation without producing disturbing noise. Fully Modular: 750 watt power supply features a fully modular design that optimizes airflow and minimizes clutter. Enjoy seamless organization.",
+      "category": "Fuente",
+      "img": "https://m.media-amazon.com/images/I/81DlwsvmCbL._AC_SX466_.jpg"
     }
   ],
   "cart": [],

@@ -1,0 +1,10 @@
+.category {
+    background-color: lightgray;
+    border-radius: 50px;
+    padding: 10px 20px;
+    text-align: center;
+    cursor: pointer;
+}
+.category:hover {
+    background-color: darkgray;
+}

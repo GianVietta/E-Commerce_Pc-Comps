@@ -74,7 +74,7 @@
             <label for="category">Categoria del producto</label>
             <select name="category" id="category" formControlName="category">
                 <option value="" disabled selected>Seleccione una categoria</option>
-                <option *ngFor="let category of categorias" value="`{{category}}`">{{category}}</option>
+                <option *ngFor="let category of categorias" value="{{category}}">{{category}}</option>
             </select>
             <div class="category-field-errors">  
                 @if (form.get('category')?.hasError('required') && form.get('category')?.touched) {

@@ -1,10 +1,14 @@
-<p-carousel [value]="productList" [numVisible]="3" [numScroll]="1" [circular]="true" [showIndicators]="true">
+<app-category-carousel (categorySelected)="onCategorySelected($event)"></app-category-carousel>
+<div *ngIf="showCarousel">
+  <p-carousel [value]="filteredProducts" [numVisible]="4" [numScroll]="1" [circular]="true" [showIndicators]="true">
     <ng-template pTemplate="item" let-producto>
-      <div class="product-card">
+      <div class="product-card" (click)="viewProductDetails(producto.id)">
         <span class="category">{{ producto.category }}</span>
         <h3>{{ producto.name }}</h3>
+        <h5>{{producto.brand}}</h5>
         <img [src]="producto.img" [alt]="producto.name" />
         <p class="price">${{ producto.price }}</p>
       </div>
     </ng-template>
   </p-carousel>
+</div>

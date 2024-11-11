@@ -3,6 +3,7 @@ import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ProductService } from '../../service/product.service';
 import { Product } from '../../interface/product';
+import {v4 as uuidv4} from 'uuid';
 
 @Component({
   selector: 'app-new-product',
@@ -22,7 +23,7 @@ export class NewProductComponent {
   ps=inject(ProductService);
 
     form= this.fb.nonNullable.group({
-      id: [``],
+      id:[],
       name: [``, [Validators.required, Validators.minLength(3)]],
       price: [``,[Validators.required,Validators.pattern('^[0-9]+$')]],
       brand: [``,[Validators.required, Validators.minLength(3)]],
@@ -38,6 +39,7 @@ export class NewProductComponent {
       return;
     }
     const product:Product = this.form.getRawValue();
+    product.id=uuidv4();
     this.saveProduct(product);
     this.eventEmitter.emit({...product});
     this.form.reset();
