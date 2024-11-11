@@ -66,6 +66,7 @@ export class RegisterComponent {
       }
     };
     this.emitirUsuario.emit(structuredClone(user));
+    localStorage.setItem('token', user.id.toString());
     this.auth.postUser(user).subscribe(() => {
       console.log('Usuario registrado correctamente');
       this.dialogRef.close();
