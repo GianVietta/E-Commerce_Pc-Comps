@@ -38,6 +38,18 @@
         "name": "Leopoldo",
         "lastName": "Basanta"
       }
+    },
+    {
+      "id": "9f3c92da-3f5f-4ce4-895f-ac30508514fb",
+      "password": "alex1234",
+      "email": "aalexjuli2aan@gmail.com",
+      "person": {
+        "address": "czetz 2841",
+        "phoneNumber": "2236835950",
+        "dni": "43657545",
+        "name": "Alex",
+        "lastName": "Julian"
+      }
     }
   ]
 }

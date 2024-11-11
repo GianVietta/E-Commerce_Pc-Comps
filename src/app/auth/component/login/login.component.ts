@@ -7,15 +7,18 @@ import { AuthService } from '../../service/auth.service';
 import { Router } from '@angular/router';
 import { User } from '../../interface/auth';
 import { RegisterComponent } from '../register/register.component';
+import { CommonModule } from '@angular/common';
+import { CustomValidators } from '../register/validators/costum-validators';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [MatDialogModule,MatButtonModule,MatInputModule,ReactiveFormsModule],
+  imports: [MatDialogModule,MatButtonModule,MatInputModule,ReactiveFormsModule,CommonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
+
   constructor( public dialog : MatDialog){}
   
   data = inject(MAT_DIALOG_DATA);
@@ -25,13 +28,14 @@ export class LoginComponent {
   private router: Router = inject(Router)
 
   form : FormGroup = this.fb.group({
-    email : ['', [Validators.required,Validators.email]],
-    password : ['', [Validators.required, Validators.minLength(4)]]
+    email : ['', [Validators.required,Validators.email]],//poner validacion email existente 
+    password : ['', [Validators.required]]
   })
 
   user : User | undefined; 
 
   iniciarSession() {
+  
     if (this.form.invalid) return;
 
     this.auth.verifyUserAndPass(

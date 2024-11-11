@@ -25,6 +25,18 @@ export class CustomValidators extends Validators{
           );
         };
       }
-
+      static emailNotExists(authService: AuthService): AsyncValidatorFn {
+        return (control: AbstractControl): Observable<ValidationErrors | null> => {
+          if (!control.value) {
+            return of(null);  // Si no hay valor, no validar
+          }
+          
+          return authService.checkEmailExists(control.value).pipe(
+            debounceTime(500), // Tiempo para esperar después de que el usuario deje de escribir
+            map(exists => exists ? { emailExists: false } : null), // Si el email existe, retorna el error
+            catchError(() => of(null)) // Manejo de errores, siempre retorna null en caso de error
+          );
+        };
+      }
 
 }
