@@ -1,0 +1,172 @@
+<h3 class="text-center">Registro </h3>
+<div class="container">
+    <form [formGroup]="form" (ngSubmit)="register()">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-6">
+                    <label for="nameForm" class="form-label">Nombre </label>
+                    <input 
+                            type="text" 
+                            class="form-control" 
+                            formControlName="name" 
+                            [ngClass]="{
+                            'is-invalid':  form.controls['name'].touched  && form.controls['name'].hasError('required') || form.controls['name'].hasError('minlength')
+                            }">
+                        @if (form.controls['name'].getError('required') && form.controls['name'].touched) {
+                            <div class="text-danger">
+                              Campo requerido.  
+                            </div>   
+                        }
+                        @if (form.controls['name'].getError('minlength') && form.controls['name'].touched) {
+                            <div class="text-danger">
+                              El nombre debe tener minimo 3 caracteres.
+                            </div>   
+                        }
+                </div>
+                <div class="col-6">
+                    <label for="lasNameForm" class="form-label">Apellido  </label>
+                    <input type="text"
+                            class = "form-control"
+                            formControlName="lastName"
+                            [ngClass]="{
+                            'is-invalid':  form.controls['lastName'].touched  && form.controls['lastName'].hasError('required')
+                            }">
+                    @if (form.controls['lastName'].getError('required') && form.controls['lastName'].touched ) {
+                        <div class="text-danger">
+                            Campo requerido.  
+                          </div> 
+                    }
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <label for="emailForm" class="form-label">Email </label>
+                    <input type="text" class="form-control"
+                    formControlName="email"
+                    [ngClass]="{
+                        'is-invalid':  form.controls['email'].touched  && form.controls['email'].hasError('required') || form.controls['email'].hasError('email')
+                        }">
+                    @if (form.controls['email'].getError('required') && form.controls['email'].touched) {
+                        <div class="text-danger">
+                          Campo requerido.  
+                        </div>   
+                    }
+                    @if (form.controls['email'].getError('email') && form.controls['email'].touched) {
+                        <div class="text-danger">
+                          Tiene que tener un formato email.  
+                        </div>   
+                    }
+                    @if(form.controls['email'].getError('emailExists')&& form.controls['email'].touched){
+                        <div class="text-danger">
+                            El email ya esta registrado.
+                        </div>      
+                    }
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <label for="password" class="form-label"> Contrseña </label>
+                    <input type="password" id="password"
+                    class="form-control"
+                    formControlName="password"
+                    [ngClass]="{'is-invalid':  
+                    form.controls['password'].touched  && form.controls['password'].hasError('required') || form.controls['password'].hasError('mustBeEquals')  || form.controls['password'].hasError('minlength')
+                        }">
+                    
+                    @if(form.controls['password'].getError('required') && form.controls['password'].touched){
+                        <div class="text-danger">
+                            Campo requerido.  
+                        </div>      
+                    }
+                    @if (form.controls['password'].getError('minlength') && form.controls['password'].touched) {
+                        <div class="text-danger">
+                         La contraseña debe tener minimo 8 caracteres. 
+                        </div>   
+                    }
+                </div>
+                <div class="col-6">
+                    <label for="confirmPassword" class="form-label">Confirmar contraseña  </label>
+                    <input type="password" class="form-control"
+                    id="confirmPassword"
+                    formControlName="confirmPassword"
+                    [ngClass]="{'is-invalid':  
+                    form.controls['confirmPassword'].touched  && form.controls['confirmPassword'].hasError('required') || form.getError('mustBeEquals')
+                        }">
+                    @if(form.controls['confirmPassword'].getError('required') && form.controls['confirmPassword'].touched){
+                        <div class="text-danger">
+                            Campo requerido.  
+                        </div>      
+                    }
+                    @if(form.getError('mustBeEquals') && form.controls['confirmPassword'].touched){
+                        <div class="text-danger">
+                            Las contraseñas no coinciden. 
+                        </div>      
+                    }
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <label for="phoneNumber" class="form-label">Número de telefono </label>
+                    <input type="text"
+                    id="phoneNumber"
+                    formControlName="phoneNumber"
+                    [ngClass]="{  'is-invalid': 
+                     form.controls['phoneNumber'].touched  && form.controls['phoneNumber'].hasError('required') || form.controls['phoneNumber'].hasError('pattern')
+                        }">
+                     @if (form.controls['phoneNumber'].getError('required') && form.controls['phoneNumber'].touched) {
+                        <div class="text-danger">
+                          Campo requerido.  
+                        </div>   
+                    }
+                    @if (form.controls['phoneNumber'].getError('pattern') && form.controls['phoneNumber'].touched) {
+                        <div class="text-danger">
+                          El numero puede tener maximo 10 digitos. 
+                        </div>   
+                    }
+
+                </div>
+                <div class="col-6">
+                    <label for="address" class="form-label">Dirección</label>
+                    <input type="text" class="form-control"
+                    formControlName="address"
+                    [ngClass]="{ 'is-invalid':
+                    form.controls['address'].touched  && form.controls['address'].hasError('required')
+                        }">
+                        @if (form.controls['address'].getError('required') && form.controls['address'].touched) {
+                            <div class="text-danger">
+                              Campo requerido.  
+                            </div>   
+                        }
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <label for="dni" class="form-label">DNI </label>
+                    <input type="text" class="form-control"
+                    formControlName="dni"
+                    [ngClass]="{ 'is-invalid':  form.controls['dni'].touched  && form.controls['dni'].hasError('required') || form.controls['dni'].hasError('pattern')
+                        }">
+                    @if (form.controls['dni'].getError('required') && form.controls['dni'].touched) {
+                        <div class="text-danger">
+                          Campo requerido.  
+                        </div>   
+                    }
+                    @if (form.controls['dni'].getError('pattern') && form.controls['dni'].touched) {
+                        <div class="text-danger">
+                          Formato invalido.   
+                        </div>   
+                    }
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>
+
+
+<mat-dialog-actions>
+  <button mat-raised-button  (click)="cancelar()">Cancelar</button>
+  <button mat-raised-button color ="primary" (click)="register()"  [disabled]="form.invalid" >Guardar </button>
+</mat-dialog-actions> 

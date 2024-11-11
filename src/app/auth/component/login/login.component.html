@@ -1,0 +1,33 @@
+<h2 mat-dialog-title>Login</h2>
+<mat-dialog-content>
+    <form [formGroup]="form" >
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Email</mat-label>
+                        <input matInput placeholder="abc@gmail.com" type="text" formControlName="email" >
+                      </mat-form-field>
+                </div>
+                
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Contraseña </mat-label>
+                        <input matInput  type="password" formControlName="password">
+                      </mat-form-field>
+                    </div>
+                </div>
+                
+        </div>
+
+    </form>
+  
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button  (click)="cancelar()">Cancelar</button>
+  <button mat-raised-button color ="primary" (click)="iniciarSession()" [disabled]="form.invalid">Guardar </button>
+  <button mat-raised-button color="accent" (click)="openRegisterDialog()" (click)="cancelar()">¿No tienes cuenta? Regístrate</button>
+</mat-dialog-actions>
+
