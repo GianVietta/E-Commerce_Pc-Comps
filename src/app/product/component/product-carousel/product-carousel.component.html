@@ -1,0 +1,10 @@
+<p-carousel [value]="productList" [numVisible]="3" [numScroll]="1" [circular]="true" [showIndicators]="true">
+    <ng-template pTemplate="item" let-producto>
+      <div class="product-card">
+        <span class="category">{{ producto.category }}</span>
+        <h3>{{ producto.name }}</h3>
+        <img [src]="producto.img" [alt]="producto.name" />
+        <p class="price">${{ producto.price }}</p>
+      </div>
+    </ng-template>
+  </p-carousel>
