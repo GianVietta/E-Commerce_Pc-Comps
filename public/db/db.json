@@ -437,7 +437,41 @@
       ]
     }
   ],
-  "sales": [],
+  "sales": [
+    {
+      "id": "1",
+      "idUser": "75be800c-b9dd-4f69-9ea3-95d2304645e9",
+      "date": "12/11/2024",
+      "totalAmount": 41234,
+      "products":[
+        {
+          "idProduct": "p001",
+          "quantity": 3
+        },
+        {
+          "idProduct": "adf31283-3668-4e6e-83d9-128c4e6f0487",
+          "quantity": 14
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "idUser": "60168486-5d04-43c6-924d-4d3a8d27ef91",
+      "date": "12/11/2024",
+      "totalAmount": 41234,
+      "products":[
+        {
+          "idProduct": "p001",
+          "quantity": 3
+        },
+        {
+          "idProduct": "adf31283-3668-4e6e-83d9-128c4e6f0487",
+          "quantity": 14
+        }
+      ]
+    }
+
+  ],
   "users": [
     {
       "id": "1",

@@ -1,1 +1,32 @@
-<p>sales works!</p>
+<div *ngFor="let sale of listSales" class="venta-item">
+    <!-- Contenedor del bloque de venta -->
+    <div class="venta-header">
+      <!-- Precio y fecha de la venta -->
+      <span class="venta-precio">Precio: {{ sale.totalAmount | currency }}</span>
+      <span class="venta-fecha">Fecha: {{ sale.date | date: 'short' }}</span>
+    </div>
+  
+    <!-- Listado de productos -->
+    <div class="venta-productos">
+      <h4>Productos Comprados:</h4>
+      <ul>
+        <li *ngFor="let producto of sale.products">
+          Producto: {{ getProductName(producto.idProduct)}} - Cantidad: {{ producto.quantity }}
+        </li>
+      </ul>
+    </div>
+  
+    <!-- Íconos para acciones (eliminar y descargar comprobante) -->
+    
+    <div class="venta-acciones">
+      <button class="icon-btn" (click)="eliminarVenta(sale.id)">
+        <img src="/resources/icons/cart/trash-red.svg" class="button-img">
+      </button>
+      <!--
+      <button class="icon-btn" (click)="descargarComprobante(venta)" title="Descargar Comprobante">
+        <i class="fa fa-download"></i> 
+      </button>
+      -->
+    </div>
+</div>
+  
