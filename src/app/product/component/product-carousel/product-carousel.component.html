@@ -4,7 +4,7 @@
     <ng-template pTemplate="item" let-producto>
       <div class="product-card" (click)="viewProductDetails(producto.id)">
         <span class="category">{{ producto.category }}</span>
-        <h3>{{ producto.name }}</h3>
+        <h3 class="product-name">{{ producto.name }}</h3>
         <h5>{{producto.brand}}</h5>
         <img [src]="producto.img" [alt]="producto.name" />
         <p class="price">${{ producto.price }}</p>
