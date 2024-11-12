@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { ProductCarouselComponent } from "../../component/product-carousel/product-carousel.component";
 
 @Component({
@@ -6,7 +6,8 @@ import { ProductCarouselComponent } from "../../component/product-carousel/produ
   standalone: true,
   imports: [ProductCarouselComponent],
   templateUrl: './home-page.component.html',
-  styleUrl: './home-page.component.css'
+  styleUrl: './home-page.component.css',
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class HomePageComponent {
 

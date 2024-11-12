@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { NewProductComponent } from "../../component/new-product/new-product.component";
 
 @Component({
@@ -6,7 +6,8 @@ import { NewProductComponent } from "../../component/new-product/new-product.com
   standalone: true,
   imports: [NewProductComponent],
   templateUrl: './new-product-page.component.html',
-  styleUrl: './new-product-page.component.css'
+  styleUrl: './new-product-page.component.css',
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class NewProductPageComponent {
 

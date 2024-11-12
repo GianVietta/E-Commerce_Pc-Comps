@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { RouterLink } from '@angular/router';
 import { LoginComponent } from '../../auth/component/login/login.component';
@@ -8,7 +8,8 @@ import { LoginComponent } from '../../auth/component/login/login.component';
   standalone: true,
   imports: [],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  styleUrl: './header.component.css',
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class HeaderComponent {
   readonly dialog = inject(MatDialog);

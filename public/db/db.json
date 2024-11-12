@@ -437,5 +437,43 @@
       ]
     }
   ],
-  "sales": []
+  "sales": [],
+  "users": [
+    {
+      "id": "1",
+      "password": "1234",
+      "email": "admin@gmail.com",
+      "person": {
+        "address": "123 Admin Street",
+        "phoneNumber": "123-456-7890",
+        "dni": "987654321",
+        "name": "Admin",
+        "lastName": "User"
+      }
+    },
+    {
+      "id": "75be800c-b9dd-4f69-9ea3-95d2304645e9",
+      "password": "12345678",
+      "email": "aalexjuliaan@gmail.com",
+      "person": {
+        "address": "czetz 2841",
+        "phoneNumber": "2236835950",
+        "dni": "44783654",
+        "name": "Alex",
+        "lastName": "Julian"
+      }
+    },
+    {
+      "id": "60168486-5d04-43c6-924d-4d3a8d27ef91",
+      "password": "leopoldo1234",
+      "email": "leo@gmail.com",
+      "person": {
+        "address": "czetz 2841",
+        "phoneNumber": "2236835950",
+        "dni": "44123456",
+        "name": "Leopoldo",
+        "lastName": "Basanta"
+      }
+    }
+  ]
 }

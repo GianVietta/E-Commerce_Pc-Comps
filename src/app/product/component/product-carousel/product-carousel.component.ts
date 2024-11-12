@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectorRef, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Product } from '../../interface/product';
 import { CarouselModule } from 'primeng/carousel';
@@ -12,7 +12,8 @@ import { CategoryCarouselComponent } from '../category-carousel/category-carouse
   standalone: true,
   imports: [CommonModule, CarouselModule, CategoryCarouselComponent],
   templateUrl: './product-carousel.component.html',
-  styleUrl: './product-carousel.component.css'
+  styleUrl: './product-carousel.component.css',
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class ProductCarouselComponent implements OnInit {
 

@@ -1,5 +1,5 @@
 import { Product } from './../../../product/interface/product';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { CartService } from '../../service/cart.service';
 import { Cart } from '../../interface/cart';
 
@@ -8,7 +8,8 @@ import { Cart } from '../../interface/cart';
   standalone: true,
   imports: [],
   templateUrl: './cart.component.html',
-  styleUrl: './cart.component.css'
+  styleUrl: './cart.component.css',
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class CartComponent implements OnInit{
   cs=inject(CartService);
