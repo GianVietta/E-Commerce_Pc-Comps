@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
 import { CarouselModule } from 'primeng/carousel';
 
 @Component({
@@ -6,7 +6,8 @@ import { CarouselModule } from 'primeng/carousel';
   standalone: true,
   imports: [CarouselModule],
   templateUrl: './category-carousel.component.html',
-  styleUrl: './category-carousel.component.css'
+  styleUrl: './category-carousel.component.css', 
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class CategoryCarouselComponent {
   categorias=["Todos","CPU","MotherBoard","RAM","Tarjeta de video","Almacenamiento","Fuente","Refrigeracion","Gabinete"]

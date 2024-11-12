@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, inject, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Output, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ProductService } from '../../service/product.service';
 import { Product } from '../../interface/product';
@@ -10,7 +10,8 @@ import {v4 as uuidv4} from 'uuid';
   standalone: true,
   imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './new-product.component.html',
-  styleUrl: './new-product.component.css'
+  styleUrl: './new-product.component.css',
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class NewProductComponent {
 
