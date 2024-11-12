@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ProductCarouselComponent } from "../../component/product-carousel/product-carousel.component";
 
+
 @Component({
   selector: 'app-home-page',
   standalone: true,
