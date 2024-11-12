@@ -40,7 +40,7 @@ export class HeaderComponent {
   }
 
   viewProfile() {
-    this.router.navigate(['/perfil']); // Redirige a la página de perfil
+    this.router.navigate(['/profile']); // Redirige a la página de perfil
     this.isMenuOpen = false;  // Cierra el menú después de hacer clic
   }
 

@@ -36,6 +36,9 @@ export class AuthService {
   postUser(user : User): Observable<User>{
     return this.http.post<User>(this.urlBase,user);
   }
+  putUser(user:User | any , id : string| any) : Observable<User>{
+    return this.http.put<User>(`${this.urlBase}/${id}`,user);
+  }
 
   verifyUserAndPass(email: string, pass: string) {
     return this.getUsers().pipe(
