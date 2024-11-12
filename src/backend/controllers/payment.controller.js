@@ -6,7 +6,8 @@ import axios from 'axios'
 export const createOrder = async (req,res)=>{
   try{
 
-     console.log(`${HOST}/capture-order`);
+     const {items,totalAmount} = req.body;
+
   const order = {
     intent: "CAPTURE",
       purchase_units: [
@@ -14,41 +15,23 @@ export const createOrder = async (req,res)=>{
           "reference_id": "d9f80740-38f0-11e8-b467-0ed5f89f718b",
           amount: {
             currency_code: "USD",
-            value: "600.00", // Total a cobrar por todos los productos
+            value: totalAmount.toFixed(2), // Total a cobrar por todos los productos
             breakdown: {
               item_total: {
                 currency_code: "USD",
-                value: "600.00" // Suma de todos los valores de productos
+                value: totalAmount.toFixed(2), // Suma de todos los valores de productos
               }
             }
           },
-          description: "Compra de múltiples productos",
-          items: [
-            {
-              name: "Producto 1",
-              unit_amount: {
-                currency_code: "USD",
-                value: "200.00"
-              },
-              quantity: "1"
+          description: "Compra de productos",
+          items:items.map(item => ({
+            name: item.product.name,
+            unit_amount: {
+              currency_code: "USD",
+              value: item.product.price.toFixed(2),
             },
-            {
-              name: "Producto 2",
-              unit_amount: {
-                currency_code: "USD",
-                value: "150.00"
-              },
-              quantity: "2"
-            },
-            {
-              name: "Producto 3",
-              unit_amount: {
-                currency_code: "USD",
-                value: "100.00"
-              },
-              quantity: "1"
-            }
-          ]
+            quantity: item.quantity.toString(),
+          }))
         }
       ],
       application_context: {
@@ -79,9 +62,12 @@ export const createOrder = async (req,res)=>{
   })
 
 
-  console.log(response.data);
- return res.json(response.data)
+  res.set('Access-Control-Allow-Origin', 'http://localhost:4200');
+
+    console.log("Orden creada exitosamente:", response.data);
+    return res.json(response.data);
 }catch(error) {
+  res.set('Access-Control-Allow-Origin', 'http://localhost:4200');
   console.log("PayPal Client:", PAYPAL_API_CLIENT);
     console.log("PayPal Secret:", PAYPAL_API_SECRET);
   console.error("Error creating PayPal order:", error);
@@ -97,12 +83,19 @@ export const captureOrder = async(req,res)=> {
         password:PAYPAL_API_SECRET
       }
     })
+    res.set('Access-Control-Allow-Origin', 'http://localhost:4200');
     console.log('Orden capturada:', response.data);
     res.json({ message: 'Pago exitoso', orderDetails: response.data });
   }catch (error) {
+    res.set('Access-Control-Allow-Origin', 'http://localhost:4200');
     console.error('Error al capturar la orden:', error.response ? error.response.data : error.message);
     res.status(500).send('Error al procesar el pago');
   }
 }
-export const cancelPayment= (req,res)=> res.send('cancelPayment created');
+
+export const cancelPayment= (req,res)=> {
+  console.log('Pago cancelado por el usuario');
+
+  res.redirect('http://localhost:4200/');
+}
 

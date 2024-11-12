@@ -23,11 +23,11 @@
     {
       "id": "1",
       "idUser": "1",
-      "totalAmount": 227.96999999999997,
+      "totalAmount": 531.93,
       "products": [
         {
           "idProduct": "p001",
-          "quantity": 3
+          "quantity": 7
         }
       ]
     }
