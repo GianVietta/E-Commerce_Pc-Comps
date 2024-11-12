@@ -3,7 +3,7 @@ import { environment } from '../../../environments/environment.development';
 import { User } from '../interface/auth';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Observable, catchError, map, of, tap } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, map, of, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,14 +12,23 @@ export class AuthService {
 
   urlBase = environment.urlUsers
   public user ?: User 
-
-  constructor(private http: HttpClient, private router: Router) { }
-
-  get currentUser() : User | undefined {
-    if(!this.user) return undefined
-    const usuario = structuredClone(this.user);
-    return usuario; 
+  private authStatusSubject = new BehaviorSubject<boolean>(false);
+  
+  constructor(private http: HttpClient, private router: Router) {
+    // Verificar estado inicial de autenticación
+    this.checkStatusAutentication().subscribe();
   }
+
+  // Observable para cambios en el estado de autenticación
+  authStatusChanges(): Observable<boolean> {
+    return this.authStatusSubject.asObservable();
+  }
+
+  get currentUser(): User | undefined {
+    if (!this.user) return undefined;
+    return structuredClone(this.user);
+  }
+
 
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.urlBase)
@@ -41,7 +50,7 @@ export class AuthService {
       }),
       tap(isAuthenticated => {
         if (isAuthenticated) {
-          this.router.navigate(['prueba']);
+          this.router.navigate(['']);
         }
       })
     );
@@ -61,9 +70,15 @@ export class AuthService {
     }
     return this.http.get<User>(`${this.urlBase}/${token}`)
       .pipe(
-        tap(u => this.user = u),
+        tap(u =>{
+          this.user = u
+          this.authStatusSubject.next(!!u);
+        } ),
         map(u => !!u),
-        catchError(err => of(false))
+        catchError(() => {
+          this.authStatusSubject.next(false);
+          return of(false);
+        })
       )
   }
 
@@ -77,6 +92,7 @@ export class AuthService {
   logout() {
     this.user = undefined;
     localStorage.clear()
+    this.authStatusSubject.next(false);
   }
 
 }
