@@ -44,6 +44,7 @@ export class LoginComponent {
         if (isAuthenticated) {
          this.user= this.auth.currentUser;
           console.log("Usuario autenticado correctamente");
+          this.dialogRef.close();
         } else {
           console.log("Credenciales incorrectas");        }
       });
