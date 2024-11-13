@@ -18,7 +18,7 @@ export class HeaderComponent {
   readonly dialog = inject(MatDialog);
   authService = inject(AuthService);
   router = inject(Router);
-  
+
   isAuthenticated = false;
   isAdminUser = false;
   isMenuOpen = false;  // Controla la visibilidad del menú desplegable
@@ -50,6 +50,10 @@ export class HeaderComponent {
 
   newProduct(){
     this.router.navigate(['/new-product']);
+  }
+
+  cart(){
+    this.router.navigate(['/cart']);
   }
 
   logout() {

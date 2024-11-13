@@ -4,6 +4,8 @@ import { CartService } from '../../service/cart.service';
 import { Cart } from '../../interface/cart';
 import { HttpErrorResponse } from '@angular/common/http';
 import { PayPalService } from '../../../paypal/paypal.service';
+import { AuthService } from '../../../auth/service/auth.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-cart',
   standalone: true,
@@ -17,6 +19,8 @@ export class CartComponent implements OnInit{
   listProducts: {product: Product; quantity: number}[]=[];
   totalAmount: number=0;
   ps = inject(PayPalService);
+  authService = inject(AuthService);
+  router = inject(Router);
   ngOnInit(): void {
     this.loadCart();
   }
@@ -106,39 +110,47 @@ export class CartComponent implements OnInit{
 
       // Iniciar el pago con PayPal
       initiatePayment(): void {
-        console.log('Iniciando pago con monto:', this.totalAmount); // Log del monto
+        this.authService.checkStatusAutentication().subscribe(isAuthenticated => {
+          if (!isAuthenticated) {
+            // Mostrar mensaje y redirigir al inicio de sesión si no está autenticado
+            alert('Debe iniciar sesión para proceder con el pago.');
+            // Redirigir a la home
+            this.router.navigateByUrl('/');
+            return;
+          }
 
+          // Solo continúa con el proceso de pago si está autenticado
+          console.log('Iniciando pago con monto:', this.totalAmount); // Log del monto
 
-        const messageElement = document.createElement('div');
-      messageElement.innerText = "Te redirigiremos a PayPal...";
-      messageElement.style.position = 'fixed';
-      messageElement.style.top = '10px';
-      messageElement.style.left = '50%';
-      messageElement.style.transform = 'translateX(-50%)';
-      messageElement.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
-      messageElement.style.color = 'white';
-      messageElement.style.padding = '10px';
-      messageElement.style.borderRadius = '5px';
-      document.body.appendChild(messageElement);
+          const messageElement = document.createElement('div');
+          messageElement.innerText = "Te redirigiremos a PayPal...";
+          messageElement.style.position = 'fixed';
+          messageElement.style.top = '50px';
+          messageElement.style.left = '50%';
+          messageElement.style.transform = 'translateX(-50%)';
+          messageElement.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+          messageElement.style.color = 'white';
+          messageElement.style.padding = '10px';
+          messageElement.style.borderRadius = '5px';
+          document.body.appendChild(messageElement);
 
-    // Eliminar el mensaje después de 3 segundos
-    setTimeout(() => {
-      document.body.removeChild(messageElement);
-    }, 3000);
+          // Eliminar el mensaje después de 3 segundos
+          setTimeout(() => {
+            document.body.removeChild(messageElement);
+          }, 3000);
 
-        const orderData = {
-          items: this.listProducts.map(item => ({
-            product: item.product,
-            quantity: item.quantity
-          })),
-          totalAmount: this.totalAmount
-        };
+          const orderData = {
+            items: this.listProducts.map(item => ({
+              product: item.product,
+              quantity: item.quantity
+            })),
+            totalAmount: this.totalAmount
+          };
 
-        console.log('Datos de la orden a enviar:', orderData);
+          console.log('Datos de la orden a enviar:', orderData);
 
-        // Llamada al servicio para crear la orden
-
-           this.ps.createOrder(orderData).subscribe({
+          // Llamada al servicio para crear la orden
+          this.ps.createOrder(orderData).subscribe({
             next: (response) => {
               console.log('Respuesta completa de PayPal:', response); // Log de la respuesta completa de PayPal
 
@@ -182,7 +194,8 @@ export class CartComponent implements OnInit{
               alert('Error al procesar el pago. Por favor, intente nuevamente.');
             }
           });
+        });
+      }
 
-    }
   }
 
