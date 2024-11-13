@@ -12,5 +12,6 @@ export const routes: Routes = [
     {path:'', component:HomePageComponent},
     {path:'profile', component:ProfileComponent, canActivate:[AuthGuard]},
     { path: 'product/:id', component: DetailsProductComponent },
-    {path: 'new-product', component: NewProductPageComponent, canActivate:[AdminGuard]}
+    {path: 'new-product', component: NewProductPageComponent, canActivate:[AdminGuard]},
+    {path:'**' , redirectTo:'' }
 ];
