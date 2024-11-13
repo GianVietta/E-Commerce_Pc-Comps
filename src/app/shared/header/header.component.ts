@@ -65,7 +65,7 @@ export class HeaderComponent {
   login() {
     const dialogRef = this.dialog.open(LoginComponent, {
       disableClose: true,
-      autoFocus: true,
+      autoFocus: false,
       closeOnNavigation: false,
       position: { top: '50px' },
       width: '1000px',
