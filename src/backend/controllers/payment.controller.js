@@ -7,6 +7,8 @@ export const createOrder = async (req,res)=>{
   try{
 
      const {items,totalAmount} = req.body;
+     console.log(items);
+     console.log(totalAmount);
 
   const order = {
     intent: "CAPTURE",
@@ -24,14 +26,17 @@ export const createOrder = async (req,res)=>{
             }
           },
           description: "Compra de productos",
-          items:items.map(item => ({
-            name: item.product.name,
-            unit_amount: {
-              currency_code: "USD",
-              value: item.product.price.toFixed(2),
-            },
-            quantity: item.quantity.toString(),
-          }))
+          items: items.map(item => {
+            const price = parseFloat(item.product.price) || 0; // Asegura que price es un número
+            return {
+              name: item.product.name,
+              unit_amount: {
+                currency_code: "USD",
+                value: price.toFixed(2), // Usa la variable price con .toFixed()
+              },
+              quantity: item.quantity.toString(),
+            };
+          })
         }
       ],
       application_context: {
