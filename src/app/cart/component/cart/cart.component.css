@@ -2,6 +2,18 @@
 .container {
     margin-top: 1.5rem; /* mt-4 */
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.cart-title {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #333;
 }
 
 /* Lista de elementos */

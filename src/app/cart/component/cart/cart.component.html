@@ -1,4 +1,5 @@
 <div class="cointainer">
+    <h3 class="cart-title">Carrito</h3>
     <div class="list-group">
         @for (item of listProducts; track $index) {
             <div class="list-group-item d-flex justify-content-between align-items-center">
@@ -27,6 +28,6 @@
         <h5>Total a pagar: ${{getFormattedAmount(totalAmount)}}</h5>
     </div>
     <div class="pay-button">
-        <button class="pay-centered-button">Pagar</button>
+        <button class="pay-centered-button" (click)="initiatePayment()"  >Pagar</button>
     </div>
 </div>

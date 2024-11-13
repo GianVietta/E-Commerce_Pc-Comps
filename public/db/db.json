@@ -475,11 +475,11 @@
     {
       "id": "1",
       "idUser": "1",
-      "totalAmount": 227.96999999999997,
+      "totalAmount": 28000,
       "products": [
         {
-          "idProduct": "p001",
-          "quantity": 3
+          "idProduct": "b01355f8-fdb1-4abf-96c0-245d126737f3",
+          "quantity": 8
         }
       ]
     }

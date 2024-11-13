@@ -1,0 +1,10 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.contenedor-principal {
+  min-height: calc(100vh - 90px); /* 100% de la altura de la ventana menos la altura del footer */
+  display: flex;
+  flex-direction: column;
+}
