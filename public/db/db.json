@@ -428,11 +428,15 @@
     {
       "id": "1",
       "idUser": "1",
-      "totalAmount": 329,
+      "totalAmount": 798,
       "products": [
         {
           "idProduct": "36575c1f-b5a5-4e16-a1a4-1e966ad08fd8",
-          "quantity": 7
+          "quantity": 9
+        },
+        {
+          "idProduct": "6629d8e5-ebaa-489e-b784-b9a556698539",
+          "quantity": 5
         }
       ]
     }

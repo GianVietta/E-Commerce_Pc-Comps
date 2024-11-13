@@ -111,7 +111,7 @@ export class CartComponent implements OnInit{
       console.log('Iniciando pago con monto:', this.totalAmount); // Log del monto
 
 
-      const messageElement = document.createElement('div');
+    const messageElement = document.createElement('div');
     messageElement.innerText = "Te redirigiremos a PayPal...";
     messageElement.style.position = 'fixed';
     messageElement.style.top = '10px';
