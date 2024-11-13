@@ -6,10 +6,7 @@ import axios from 'axios'
 export const createOrder = async (req,res)=>{
   try{
 
-     const {items,totalAmount} = req.body;
-     console.log(items);
-     console.log(totalAmount);
-
+     console.log(`${HOST}/capture-order`);
   const order = {
     intent: "CAPTURE",
       purchase_units: [
@@ -17,26 +14,41 @@ export const createOrder = async (req,res)=>{
           "reference_id": "d9f80740-38f0-11e8-b467-0ed5f89f718b",
           amount: {
             currency_code: "USD",
-            value: totalAmount.toFixed(2), // Total a cobrar por todos los productos
+            value: "600.00", // Total a cobrar por todos los productos
             breakdown: {
               item_total: {
                 currency_code: "USD",
-                value: totalAmount.toFixed(2), // Suma de todos los valores de productos
+                value: "600.00" // Suma de todos los valores de productos
               }
             }
           },
-          description: "Compra de productos",
-          items: items.map(item => {
-            const price = parseFloat(item.product.price) || 0; // Asegura que price es un número
-            return {
-              name: item.product.name,
+          description: "Compra de múltiples productos",
+          items: [
+            {
+              name: "Producto 1",
               unit_amount: {
                 currency_code: "USD",
-                value: price.toFixed(2), // Usa la variable price con .toFixed()
+                value: "200.00"
               },
-              quantity: item.quantity.toString(),
-            };
-          })
+              quantity: "1"
+            },
+            {
+              name: "Producto 2",
+              unit_amount: {
+                currency_code: "USD",
+                value: "150.00"
+              },
+              quantity: "2"
+            },
+            {
+              name: "Producto 3",
+              unit_amount: {
+                currency_code: "USD",
+                value: "100.00"
+              },
+              quantity: "1"
+            }
+          ]
         }
       ],
       application_context: {
@@ -67,12 +79,9 @@ export const createOrder = async (req,res)=>{
   })
 
 
-  res.set('Access-Control-Allow-Origin', 'http://localhost:4200');
-
-    console.log("Orden creada exitosamente:", response.data);
-    return res.json(response.data);
+  console.log(response.data);
+ return res.json(response.data)
 }catch(error) {
-  res.set('Access-Control-Allow-Origin', 'http://localhost:4200');
   console.log("PayPal Client:", PAYPAL_API_CLIENT);
     console.log("PayPal Secret:", PAYPAL_API_SECRET);
   console.error("Error creating PayPal order:", error);
@@ -88,19 +97,12 @@ export const captureOrder = async(req,res)=> {
         password:PAYPAL_API_SECRET
       }
     })
-    res.set('Access-Control-Allow-Origin', 'http://localhost:4200');
     console.log('Orden capturada:', response.data);
     res.json({ message: 'Pago exitoso', orderDetails: response.data });
   }catch (error) {
-    res.set('Access-Control-Allow-Origin', 'http://localhost:4200');
     console.error('Error al capturar la orden:', error.response ? error.response.data : error.message);
     res.status(500).send('Error al procesar el pago');
   }
 }
-
-export const cancelPayment= (req,res)=> {
-  console.log('Pago cancelado por el usuario');
-
-  res.redirect('http://localhost:4200/');
-}
+export const cancelPayment= (req,res)=> res.send('cancelPayment created');
 
