@@ -4,6 +4,9 @@ import { Product } from '../../interface/product';
 import { CarouselModule } from 'primeng/carousel';
 import { ProductService } from '../../service/product.service';
 import { CategoryCarouselComponent } from '../category-carousel/category-carousel.component';
+import { User } from '../../../auth/interface/auth';
+import { AuthService } from '../../../auth/service/auth.service';
+
 
 
 
@@ -20,12 +23,38 @@ export class ProductCarouselComponent implements OnInit {
   productList:Product[]=[];
   showCarousel = true;
   filteredProducts: Product[] = [];
-  
+
+
+  authService=inject(AuthService);
   ps=inject(ProductService);
   cd = inject(ChangeDetectorRef);
-  
+
+  isAdmin=false;
+
   ngOnInit(): void {
-      this.listProducts();
+      this.initComponts()
+  }
+
+  
+
+  get getUser(): User | undefined {
+    return this.authService.currentUser;
+  }
+
+  initComponts(){
+    this.listProducts();
+      //////////////////////////////////////////////////////
+      this.filteredProducts=[]
+      this.authService.checkStatusAutentication().subscribe(
+        auth => {
+      // Revisa el ID para determinar si es un administrador
+      if (this.getUser?.id === '1') {
+        this.isAdmin = true;
+      } else {
+        this.isAdmin = false;
+      }
+        }
+      );
   }
 
   listProducts(){
@@ -61,7 +90,21 @@ export class ProductCarouselComponent implements OnInit {
     console.log("hola que tal");
   }
 
-  addToCart(productId : string){
+  addToCart(product : Product){
     console.log("agregado al carrito");
   }
+
+  removeProduct(product:Product){
+    confirm("Seguro que deseas eliminar " +`${product.name}`);
+    this.ps.deleteProduct(product.id).subscribe(() => {
+      window.location.reload(); // Recarga toda la página
+    });
+    alert(`${product.name}`+" Fue eliminado satisfactoriamente.");
+  }
+
+  updateProduct(productId : String){
+    console.log("YA TAS READY PAL UPDATE");
+  }
+
+
 }
