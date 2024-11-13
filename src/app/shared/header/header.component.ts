@@ -68,7 +68,6 @@ export class HeaderComponent {
       this.authService.checkStatusAutentication().subscribe(
         auth => {
           this.isAuthenticated = auth;
-      // Revisa el ID para determinar si es un administrador
       if (this.getUser?.id === '1') {
         this.isAdminUser = true;
       } else {
