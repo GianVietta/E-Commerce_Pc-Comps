@@ -69,6 +69,7 @@ export class AuthService {
   checkStatusAutentication(): Observable<boolean> {
     const token = localStorage.getItem('token');
     if (!token) {
+      this.authStatusSubject.next(false);
       return of(false)
     }
     return this.http.get<User>(`${this.urlBase}/${token}`)

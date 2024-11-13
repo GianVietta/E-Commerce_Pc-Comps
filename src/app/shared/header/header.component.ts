@@ -32,6 +32,7 @@ export class HeaderComponent {
   ngOnInit() {
     this.authService.authStatusChanges().subscribe(isAuthenticated => {
       this.isAuthenticated = isAuthenticated;
+      this.isAdminUser = this.getUser?.id === '1'; // Verifica si el usuario es admin
     });
   }
 
