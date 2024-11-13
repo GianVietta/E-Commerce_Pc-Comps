@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { CartComponent } from '../../component/cart/cart.component';
 
 @Component({
@@ -6,7 +6,8 @@ import { CartComponent } from '../../component/cart/cart.component';
   standalone: true,
   imports: [CartComponent],
   templateUrl: './cart-page.component.html',
-  styleUrl: './cart-page.component.css'
+  styleUrl: './cart-page.component.css',
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class CartPageComponent {
 

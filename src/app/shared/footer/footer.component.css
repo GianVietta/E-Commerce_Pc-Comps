@@ -10,7 +10,6 @@ body, html {
   color: #ff4d4d; /* Color del texto en rojo */
   text-align: center;
   font-family: Arial, sans-serif;
-  border-radius: 12px; /* Redondeo de las esquinas */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra del footer */
   width: 100%; /* Asegura que tome todo el ancho */
   margin: 0; /* Elimina márgenes */

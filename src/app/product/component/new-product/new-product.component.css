@@ -1,0 +1,45 @@
+form {
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr;
+    gap: 10px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+label {
+    text-align: right;
+    font-weight: bold;
+    padding-right: 10px;
+}
+
+input[type="text"],
+select {
+    width: 90%;
+    padding: 5px;
+    font-size: 1em;
+}
+
+form div {
+    display: flex;
+    flex-direction: column;
+}
+
+div[class*="-field-errors"] {
+    color: red;
+    font-size: 0.85em;
+}
+
+button[type="submit"] {
+    grid-column: 2 / 4;
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+button[type="submit"]:hover {
+    background-color: #45a049;
+}

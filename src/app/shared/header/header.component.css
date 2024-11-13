@@ -1,59 +1,57 @@
 body, html {
     margin: 0;
     padding: 0;
-    overflow-x: hidden; /* Elimina la barra de desplazamiento horizontal */
+    overflow-x: hidden;
 }
 
 .header {
-    background-color: #3c3636; /* Fondo oscuro */
-    padding: 0 20px; /* Espaciado en los lados del header */
-    color: #ff4d4d; /* Color del texto en rojo */
+    background-color: #3c3636;
+    padding: 0 20px;
+    color: #ff4d4d;
     font-family: Arial, sans-serif;
-    border-radius: 12px; /* Redondeo de las esquinas */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra del header */
-    width: 100%; /* Asegura que tome todo el ancho */
-    margin: 0; /* Elimina márgenes */
-    box-sizing: border-box; /* Incluye padding y border en el tamaño total */
-    min-height: 120px; /* Altura minima del header */
-    display: flex; /* Establece un contenedor flex */
-    align-items: center; /* Centra verticalmente los elementos */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    min-height: 120px;
+    display: flex;
+    align-items: center;
     position: sticky;
     top: 0;
+    z-index: 10;
 }
 
 .header-container {
-    display: flex ;
-    justify-content: space-between; /* Alinea los elementos de forma separada */
-    align-items: center; /* Centra los elementos verticalmente */
-    width: 100%; /* Asegura que ocupe todo el ancho */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
     flex-wrap: wrap;
     overflow: hidden;
 }
 
 .logo-container {
-    flex: 0 0 auto; /* Asegura que el logo no crezca ni se reduzca */
-    margin: 0; /* Elimina cualquier margen */
-    padding: 0; /* Elimina cualquier padding */
+    flex: 0 0 auto;
 }
 
 .logo {
     height: 60%;
-    max-height: 80px; /* Altura máxima para el logo */
-    width: auto; /* Asegura que la imagen no se estire */
+    max-height: 80px;
+    width: auto;
 }
 
 .search-bar {
-    flex: 1 1 auto; /* Permite que la barra crezca y se reduzca según el espacio disponible */
-    max-width: 500px; /* Limita el ancho máximo al contenedor */
+    flex: 1 1 auto;
+    max-width: 500px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 10px; /* Opcional: añade margen para mantener separación */
+    margin: 0 10px;
 }
 
 .search-input {
     width: 100%;
-    padding: 10px 15px; /* Añade más padding para mejor apariencia */
+    padding: 10px 15px;
     font-size: 16px;
     border-radius: 20px;
     border: 1px solid #ccc;
@@ -62,7 +60,48 @@ body, html {
 .user-cart-container {
     display: flex;
     justify-content: flex-end;
-    align-items: center; /* Centra verticalmente */
+    align-items: center;
+}
+
+.menu-icon {
+    cursor: pointer;
+    width: 30px;
+    height: auto;
+    margin-left: 20px;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #3c3636;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 10px 0;
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    color: #ff4d4d;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.menu-item:hover {
+    background-color: #2d2929;
+}
+
+.menu-icon-option {
+    width: 20px;
+    height: auto;
+    margin-right: 10px;
 }
 
 .login-icon, .cart-icon {
@@ -73,20 +112,22 @@ body, html {
     cursor: pointer;
 }
 
+.add-icon {
+    width: 30px;
+    height: auto;
+    margin-left: 10px;
+}
+
 @media (max-width: 768px) {
     .header-container {
-        flex-direction: column; /* Cambia la disposición a columnas */
+        flex-direction: column;
         align-items: center;
-        padding: 10px 20px; /* Añade espacio interno */
-        width: 100%; /* Asegura que ocupe todo el ancho */
+        padding: 10px 20px;
     }
     .search-bar {
-        width: 90%; /* Asegura que la barra de búsqueda se ajuste a pantallas más pequeñas */
-        margin-top: 10px;
-        margin-bottom: 10px; /* Añade un poco de margen vertical para separación */
+        width: 90%;
     }
-    .user-cart-container, .logo-container {
-        margin-top: 10px; /* Asegura separación entre los elementos en vista móvil */
-        justify-content: center; /* Centra los íconos */
+    .user-cart-container img {
+        width: 25px;
     }
 }

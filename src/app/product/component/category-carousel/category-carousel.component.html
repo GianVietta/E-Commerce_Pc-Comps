@@ -1,0 +1,7 @@
+<p-carousel [value]="categorias" [numVisible]="3" [numScroll]="1" [circular]="true">
+    <ng-template pTemplate="item" let-category>
+    <div class="category" (click)="selectCategory(category)">
+        {{ category }}
+    </div>
+    </ng-template>
+</p-carousel>

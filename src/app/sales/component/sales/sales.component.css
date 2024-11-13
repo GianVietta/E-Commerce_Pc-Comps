@@ -1,0 +1,42 @@
+.venta-item {
+    border: 1px solid #ccc;
+    margin: 10px 0;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .venta-header {
+    flex: 1;
+  }
+  
+  .venta-productos {
+    flex: 2;
+    margin-left: 20px;
+  }
+  
+  .venta-acciones {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #555;
+  }
+  
+  .icon-btn:hover {
+    color: #000;
+  }
+
+  .button-img {
+    width: 20px; /* Ajusta el tamaño según tus necesidades */
+    height: 20px;
+    object-fit: contain; /* Mantiene la proporción de la imagen */
+    margin: auto; /* Ajusta el centrado dentro del botón, si es necesario */
+  }
+  

@@ -1,17 +1,71 @@
 <header class="header">
-    <div class="header-container">
-      <div class="logo-container">
-        <img src="/resources/icons/header/PixelFactory-Logo.png" alt="Logo" class="logo">
-      </div>
-      <div class="search-bar">
-        <input type="text" placeholder="Buscar productos..." class="search-input">
-      </div>
-      <div class="user-cart-container"> 
-        <!--Aca hay que agregar los routerLink del login y del carrito, 
-        tambien agregar la funcionalidad de cambio de icono segun el login-->
-            <img src="resources/icons/header/login.svg" alt="Login" class="login-icon"> 
-            <img src="resources/icons/header/cart.svg" alt="Carrito" class="cart-icon">
-      </div>
+  <div class="header-container">
+    <div class="logo-container">
+      <img src="/resources/icons/header/PixelFactory-Logo.png" alt="Logo" class="logo">
     </div>
+    <div class="search-bar">
+      <input type="text" placeholder="Buscar productos..." class="search-input">
+    </div>
+    <div class="user-cart-container">
+      <!-- Íconos para usuarios no autenticados (Login y Carrito) -->
+      <ng-container *ngIf="!isAuthenticated">
+        <img src="resources/icons/header/login.svg"
+             alt="Login"
+             class="login-icon"
+             (click)="login()"> 
+        <img src="resources/icons/header/cart.svg" 
+             alt="Carrito"
+             class="cart-icon">
+      </ng-container>
+
+      <!-- Íconos para usuarios autenticados que son administradores -->
+      <ng-container *ngIf="isAuthenticated && isAdminUser">
+        <div class="menu-container">
+          <img src="resources/icons/header/menu.svg"
+               alt="Menu Desplegable"
+               class="menu-icon"
+               (click)="toggleMenu()">
+          <div *ngIf="isMenuOpen" class="dropdown-menu">
+            
+            <div class="menu-item" (click)="viewProfile()">
+              <img src="resources/icons/header/user.svg" alt="Ver Perfil" class="menu-icon-option">
+              <span>Ver Perfil</span>
+            </div>
+            <div class="menu-item" (click)="logout()">
+              <img src="resources/icons/header/logout.svg" alt="Cerrar Sesión" class="menu-icon-option">
+              <span>Cerrar Sesión</span>
+            </div>
+          </div>
+        </div>
+        <img src="resources/icons/header/plus.svg"
+             alt="Agregar"
+             class="add-icon">
+
+      </ng-container>
+
+      <!-- Íconos para usuarios autenticados estándar -->
+      <ng-container *ngIf="isAuthenticated && !isAdminUser">
+        <div class="menu-container">
+          <img src="resources/icons/header/menu.svg"
+               alt="Menu Desplegable"
+               class="menu-icon"
+               (click)="toggleMenu()">
+          <div *ngIf="isMenuOpen" class="dropdown-menu">
+            <div class="menu-item" (click)="viewProfile()">
+              <img src="resources/icons/header/user.svg" alt="Ver Perfil" class="menu-icon-option">
+              <span>Ver Perfil</span>
+            </div>
+            <div class="menu-item" (click)="logout()">
+              <img src="resources/icons/header/logout.svg" alt="Cerrar Sesión" class="menu-icon-option">
+              <span>Cerrar Sesión</span>
+            </div>
+          </div>
+        </div>
+        <img src="resources/icons/header/cart.svg" 
+             alt="Carrito"
+             class="cart-icon">
+      </ng-container>
+
+    </div>
+  </div>
 </header>
-  
