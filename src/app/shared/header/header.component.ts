@@ -48,7 +48,9 @@ export class HeaderComponent {
     this.authService.logout();
     this.isAuthenticated = false;
     this.isAdminUser = false;
-    this.isMenuOpen = false;  // Cierra el menú después de hacer clic
+    this.isMenuOpen = false;
+    this.router.navigate(['']);
+      // Cierra el menú después de hacer clic
   }
 
   login() {
