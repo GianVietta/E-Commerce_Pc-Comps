@@ -102,3 +102,10 @@
     background-color: #4caf50;
     color: white;
   }
+  
+  .alert-stock{
+    text-align: center;
+    color: red;
+    font-size: 15px;
+    font-weight: bold;
+  }

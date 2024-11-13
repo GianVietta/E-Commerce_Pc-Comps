@@ -1,4 +1,5 @@
-<div class="product-details-container">
+
+  <div class="product-details-container">
     <div class="product-image-section">
       <img [src]="product?.img" alt="{{ product?.name }}" class="product-image" />
     </div>
@@ -27,14 +28,16 @@
     <div class="product-action-section">
       <h3 class="product-price">${{ product?.price }}</h3>
       <p class="special-price">Precio especial efectivo, transferencia o depósito</p>
-  
-      <div class="quantity-selector">
+      <ng-container *ngIf="product?.stock!=0">
+        <div class="quantity-selector">
         <label for="quantity">Cantidad</label>
-        <input type="number" id="quantity" value="1" min="1" class="quantity-input" />
-      </div>
-  
+        <input type="number" id="quantity" value="0" min="0" max={{product?.stock}} class="quantity-input" />
+        </div>
       <button class="btn btn-add-to-cart">Agregar al carrito</button>
+      </ng-container>
+      <ng-container *ngIf="product?.stock==0">
+        <p class="alert-stock">NO HAY STOCK</p>
+      </ng-container>
       <button class="btn btn-contact-seller">Enviar mensaje</button>
     </div>
   </div>
-  

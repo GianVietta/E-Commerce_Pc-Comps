@@ -1,107 +1,95 @@
-<div>
+<h3 class="text-center">Agregar Producto</h3>
+<div class="container">
     <form [formGroup]="form" (ngSubmit)="addProduct()">
-        <div class="name-field">  
-            <label for="name">Nombre del producto:</label>
-            <input type="text" formControlName="name" id="name">
-            <div class="name-field-errors">
-                @if (form.get('name')?.hasError('required') && form.get('name')?.touched) {
-                    <div>
-                        El nombre del producto es obligatorio.
-                    </div>
-                }
-                @if (form.get('name')?.hasError('minLength') && form.get('name')?.touched) {
-                    <div>
-                        El nombre debe tener un minimo de 3 caracteres.
-                    </div>
-                }
-            </div>
-        </div>
-        <div class="price-field">
-            <label for="price">Precio del producto</label>
-            <input type="text" id="price" formControlName="price">
-            <div class="price-field-errors">
-                @if (form.get('price')?.hasError('required') && form.get('price')?.touched) {
-                    <div>
-                    El precio es obligatorio.
-                    </div>
-                }
-                @if (form.get('price')?.hasError('pattern') && form.get('price')?.touched) {
+        <div class="container-fluid">
 
-                    <div>
-                        El precio debe contener solo numeros.
+            <div class="row mb-3">
+                <div class="col-12">
+                    <label for="name" class="form-label">Nombre del producto:</label>
+                    <input type="text" class="form-control" id="name" formControlName="name"
+                        [ngClass]="{'is-invalid': form.controls['name'].touched && form.controls['name'].hasError('required') || form.controls['name'].hasError('minLength') && form.controls['name'].touched}">
+                    <div *ngIf="form.controls['name'].touched">
+                        <div *ngIf="form.controls['name'].hasError('required')" class="text-danger">Campo requerido.</div>
+                        <div *ngIf="form.controls['name'].hasError('minLength')" class="text-danger">Mínimo 3 caracteres.</div>
                     </div>
-                }
+                </div>
             </div>
-        </div>
-        <div class="brand-field">
-            <label for="brand">Marca del Producto</label>
-            <input type="text" id="brand" formControlName="brand">
-            <div class="brand-field-errors">
-                @if (form.get('brand')?.hasError('required') && form.get('brand')?.touched) 
-                {
-                    <div>
-                        La marca del producto es obligatoria.
+
+            <div class="row mb-3">
+                <div class="col-12">
+                    <label for="price" class="form-label">Precio del producto:</label>
+                    <input type="text" class="form-control" id="price" formControlName="price"
+                        [ngClass]="{'is-invalid': form.controls['price'].touched && form.controls['price'].hasError('required') || form.controls['price'].hasError('pattern') && form.controls['price'].touched}">
+                    <div *ngIf="form.controls['price'].touched">
+                        <div *ngIf="form.controls['price'].hasError('required')" class="text-danger">Campo requerido.</div>
+                        <div *ngIf="form.controls['price'].hasError('pattern')" class="text-danger">Solo números.</div>
                     </div>
-                }
-                    
-                @if (form.get('brand')?.hasError('minLength') && form.get('brand')?.touched) {
-                    
-                    <div>
-                        La marca debe tener un minimo de 3 caracteres.
-                    </div>
-                }
+                </div>
             </div>
-        </div>
-        <div class="description-field">
-            <label for="description">Descripcion del Producto</label>
-            <input type="text" id="description" formControlName="description">
-            <div class="description-field-errors">
-                @if (form.get('description')?.hasError('required') && form.get('description')?.touched) {
 
-                    <div>
-                        La descripcion del producto es obligatoria.
+            <div class="row mb-3">
+                <div class="col-12">
+                    <label for="brand" class="form-label">Marca del producto:</label>
+                    <input type="text" class="form-control" id="brand" formControlName="brand"
+                        [ngClass]="{'is-invalid': form.controls['brand'].touched && form.controls['brand'].hasError('required') || form.controls['brand'].hasError('minLength') && form.controls['brand'].touched}">
+                    <div *ngIf="form.controls['brand'].touched">
+                        <div *ngIf="form.controls['brand'].hasError('required')" class="text-danger">Campo requerido.</div>
+                        <div *ngIf="form.controls['brand'].hasError('minLength')" class="text-danger">Mínimo 3 caracteres.</div>
                     </div>
-                }
-                @if (form.get('description')?.hasError('minLength') && form.get('description')?.touched) {
-
-                    <div>
-                        La descripcion debe tener un minimo de 30 caracteres.
-                    </div>
-                }
+                </div>
             </div>
-        </div>
-        <div class="category-field">
-            <label for="category">Categoria del producto</label>
-            <select name="category" id="category" formControlName="category">
-                <option value="" disabled selected>Seleccione una categoria</option>
-                <option *ngFor="let category of categorias" value="{{category}}">{{category}}</option>
-            </select>
-            <div class="category-field-errors">  
-                @if (form.get('category')?.hasError('required') && form.get('category')?.touched) {
 
-                    <div>
-                        Debes elegir una categoria
+            <div class="row mb-3">
+                <div class="col-12">
+                    <label for="description" class="form-label">Descripción del producto:</label>
+                    <input type="text" class="form-control" id="description" formControlName="description"
+                        [ngClass]="{'is-invalid': form.controls['description'].touched && form.controls['description'].hasError('required') || form.controls['description'].hasError('minLength') && form.controls['description'].touched}">
+                    <div *ngIf="form.controls['description'].touched">
+                        <div *ngIf="form.controls['description'].hasError('required')" class="text-danger">Campo requerido.</div>
+                        <div *ngIf="form.controls['description'].hasError('minLength')" class="text-danger">Mínimo 30 caracteres.</div>
                     </div>
-                }
-            </div>  
-        </div>
-        <div class="img-field">
-            <label for="img">URL de Imagen:</label>
-            <input id="img" formControlName="img" type="text" placeholder="Ingrese la URL de la imagen" />
-            <div class="img-field-errors">
-                @if (form.get('img')?.hasError('required') && form.get('img')?.touched) {
-
-                    <div>
-                        La imagen es obligatoria
-                    </div>
-                }
-                @if (form.get('img')?.hasError('pattern') && form.get('img')?.touched) {
-                    <div>
-                        Por favor, ingrese una URL válida.
-                    </div>
-                }
+                </div>
             </div>
+
+            <div class="row mb-3">
+                <div class="col-12">
+                    <label for="category" class="form-label">Categoría del producto:</label>
+                    <select id="category" class="form-select" formControlName="category"
+                        [ngClass]="{'is-invalid': form.controls['category'].touched && form.controls['category'].hasError('required')}">
+                        <option value="" disabled selected>Seleccione una categoría</option>
+                        <option *ngFor="let category of categorias" [value]="category">{{category}}</option>
+                    </select>
+                    <div *ngIf="form.controls['category'].touched && form.controls['category'].hasError('required')" class="text-danger">
+                        Debes elegir una categoría.
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-12">
+                    <label for="img" class="form-label">URL de Imagen:</label>
+                    <input type="text" class="form-control" id="img" formControlName="img"
+                        [ngClass]="{'is-invalid': form.controls['img'].touched && form.controls['img'].hasError('required') || form.controls['img'].hasError('pattern') && form.controls['img'].touched}"
+                        placeholder="Ingrese la URL de la imagen">
+                    <div *ngIf="form.controls['img'].touched">
+                        <div *ngIf="form.controls['img'].hasError('required')" class="text-danger">Campo requerido.</div>
+                        <div *ngIf="form.controls['img'].hasError('pattern')" class="text-danger">Ingrese una URL válida.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-12">
+                    <label for="stock" class="form-label">Stock:</label>
+                    <input type="number" class="form-control" id="stock" formControlName="stock">
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-between">
+                <button class="btn btn-secondary" (click)="cancelar()">Cancelar</button>
+                <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Guardar Producto</button>
+            </div>
+
         </div>
-        <button type="submit" >Guardar Producto</button>
     </form>
 </div>

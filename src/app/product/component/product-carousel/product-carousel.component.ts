@@ -6,6 +6,8 @@ import { ProductService } from '../../service/product.service';
 import { CategoryCarouselComponent } from '../category-carousel/category-carousel.component';
 import { User } from '../../../auth/interface/auth';
 import { AuthService } from '../../../auth/service/auth.service';
+import { Router, RouterModule } from '@angular/router';
+
 
 
 
@@ -13,7 +15,7 @@ import { AuthService } from '../../../auth/service/auth.service';
 @Component({
   selector: 'app-product-carousel',
   standalone: true,
-  imports: [CommonModule, CarouselModule, CategoryCarouselComponent],
+  imports: [CommonModule, CarouselModule, CategoryCarouselComponent, RouterModule],
   templateUrl: './product-carousel.component.html',
   styleUrl: './product-carousel.component.css',
   encapsulation: ViewEncapsulation.Emulated
@@ -27,6 +29,7 @@ export class ProductCarouselComponent implements OnInit {
   authService=inject(AuthService);
   ps=inject(ProductService);
   cd = inject(ChangeDetectorRef);
+  router=inject(Router);
   
   isAdmin=false;
 
@@ -78,7 +81,7 @@ export class ProductCarouselComponent implements OnInit {
   }
 
   viewProductDetails(productId: string) {
-    console.log("hola que tal");
+    this.router.navigateByUrl('/product/:id')
   }
 
   addToCart(productId : string){

@@ -45,6 +45,10 @@ export class HeaderComponent {
     this.isMenuOpen = false;  // Cierra el menú después de hacer clic
   }
 
+  newProduct(){
+    this.router.navigate(['/new-product']);
+  }
+
   logout() {
     this.authService.logout();
     this.isAuthenticated = false;

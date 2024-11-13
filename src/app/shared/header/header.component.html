@@ -37,19 +37,20 @@
             </div>
           </div>
         </div>
-        <img src="resources/icons/header/plus.svg"
-             alt="Agregar"
-             class="add-icon">
-
+        <div class="add-item" (click)="newProduct()">
+          <img src="resources/icons/header/plus.svg"
+            alt="Agregar"
+            class="add-icon">
+        </div>
       </ng-container>
 
       <!-- Íconos para usuarios autenticados estándar -->
       <ng-container *ngIf="isAuthenticated && !isAdminUser">
         <div class="menu-container">
           <img src="resources/icons/header/menu.svg"
-               alt="Menu Desplegable"
-               class="menu-icon"
-               (click)="toggleMenu()">
+              alt="Menu Desplegable"
+              class="menu-icon"
+              (click)="toggleMenu()">
           <div *ngIf="isMenuOpen" class="dropdown-menu">
             <div class="menu-item" (click)="viewProfile()">
               <img src="resources/icons/header/user.svg" alt="Ver Perfil" class="menu-icon-option">

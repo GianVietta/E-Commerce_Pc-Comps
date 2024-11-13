@@ -3,7 +3,8 @@ import { Component, EventEmitter, inject, Output, ViewEncapsulation } from '@ang
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ProductService } from '../../service/product.service';
 import { Product } from '../../interface/product';
-import {v4 as uuidv4} from 'uuid';
+import {v4 as uuidv4, validate} from 'uuid';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-product',
@@ -22,6 +23,7 @@ export class NewProductComponent {
 
   fb=inject(FormBuilder);
   ps=inject(ProductService);
+  router=inject(Router);
 
     form= this.fb.nonNullable.group({
       id:[],
@@ -30,9 +32,13 @@ export class NewProductComponent {
       brand: [``,[Validators.required, Validators.minLength(3)]],
       description: [``,[Validators.required, Validators.minLength(30)]],
       category: [``,Validators.required],
+      stock: [0,  [Validators.required, Validators.pattern('^[0-9]+$')]],
       img: [``, [Validators.required, Validators.pattern('https?://.+\\.(jpg|jpeg|png|gif|svg)')]]
     })
   
+    cancelar(){
+      this.router.navigateByUrl("/");
+    }
 
   addProduct(){
     if(this.form.invalid) {

@@ -10,13 +10,13 @@ function checkAuthStatus(): boolean | Observable<boolean>{
     const user:User | undefined = authService.currentUser
   
     return authService.checkStatusAutentication()
-                      .pipe(
-                        tap( isAuthenticated => {
-                          if(!isAuthenticated) router.navigate([''])
+                    .pipe(
+                        tap( isAdmin => {
+                        if(!(user?.id==='1')) router.navigate([''])
                         } )
-                      )
+                    )
   }
   
-  export const AuthGuard = () => {
+  export const AdminGuard = () => {
     return checkAuthStatus()
   }

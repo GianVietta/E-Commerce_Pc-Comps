@@ -165,6 +165,7 @@
     text-align: center;
     display: flex;
     flex-direction: column;
+    cursor: pointer;
     justify-content: space-between;
     opacity: 0.5; /* Baja opacidad */
     transition: opacity 0.3s ease;
