@@ -1,0 +1,40 @@
+<div class="product-details-container">
+    <div class="product-image-section">
+      <img [src]="product?.img" alt="{{ product?.name }}" class="product-image" />
+    </div>
+  
+    <div class="product-info-section">
+      <h2>{{ product?.name }}</h2>
+      <div class="product-meta">
+        <span class="product-code">Cod: #{{ product?.id }}</span>
+     
+      </div>
+      <h3>Marca: {{ product?.brand }}</h3>
+      <p>{{ product?.description }}</p>
+  
+      <div class="payment-shipping">
+        <div class="payment-options">
+          <h4>Medios de pagos y cuotas</h4>
+          <p>Ver todos los medios de pago</p>
+        </div>
+        <div class="shipping-options">
+          <h4>Medios de envío</h4>
+          <p>Ver todos los medios de envío</p>
+        </div>
+      </div>
+    </div>
+  
+    <div class="product-action-section">
+      <h3 class="product-price">${{ product?.price }}</h3>
+      <p class="special-price">Precio especial efectivo, transferencia o depósito</p>
+  
+      <div class="quantity-selector">
+        <label for="quantity">Cantidad</label>
+        <input type="number" id="quantity" value="1" min="1" class="quantity-input" />
+      </div>
+  
+      <button class="btn btn-add-to-cart">Agregar al carrito</button>
+      <button class="btn btn-contact-seller">Enviar mensaje</button>
+    </div>
+  </div>
+  
