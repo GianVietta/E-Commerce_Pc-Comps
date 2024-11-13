@@ -1,56 +1,46 @@
-<h3 class="text-cemter">Inicio de sesión</h3>
-<div class="contariner">
-    <form [formGroup]="form" (ngSubmit)="iniciarSession()">
-        <div class="container-fluid">
-        <div class="row">
-            <div class="col-12">
-                <label for="email" class="form-label">Email </label>
-                <input type="text" class="form-control"
-                id="email"
-                formControlName="email"
-                [ngClass]="{
-                    'is-invalid':  form.controls['email'].touched  && form.controls['email'].hasError('required') }"  >
-                @if (form.controls['email'].getError('required') && form.controls['email'].touched) {
-                    <div class="text-danger">
-                      Campo requerido.  
-                    </div>   
-                }
-                @if (form.controls['email'].getError('email') && form.controls['email'].touched) {
-                    <div class="text-danger">
-                      Tiene que tener un formato email.  
-                    </div>   
-                }
-              <!--    @if(!form.controls['email'].hasError('emailExists')&& form.controls['email'].touched){
-                    <div class="text-danger">
-                        El email ingresado es incorrecto o no existe.
-                    </div>      
-                }-->
-            </div>
+<div class="container my-5">
+    <h3 class="text-center text-primary mb-4">Inicio de sesión</h3>
+    <form [formGroup]="form" (ngSubmit)="iniciarSession()" class="needs-validation" novalidate>
+      <div class="row">
+        <div class="col-12 mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="text" class="form-control" id="email" formControlName="email" [ngClass]="{
+            'is-invalid': form.controls['email'].touched && form.controls['email'].hasError('required')
+          }">
+          <div class="invalid-feedback" *ngIf="form.controls['email'].getError('required') && form.controls['email'].touched">
+            Campo requerido.
+          </div>
+          <div class="invalid-feedback" *ngIf="form.controls['email'].getError('email') && form.controls['email'].touched">
+            Debe tener un formato de email válido.
+          </div>
         </div>
-        <div class="row">
-            <div class="col-12">
-                <label for="password" class="form-label"> Contraseña </label>
-                <input type="password" class="form-control"
-                id="password"
-                formControlName="password"
-                [ngClass]="{'is-invalid':  form.controls['password'].touched  && form.controls['password'].hasError('required') }">
-                @if(form.controls['password'].getError('required') && form.controls['password'].touched){
-                    <div class="text-danger">
-                        Campo requerido.  
-                    </div>      
-                }
-            </div>
+      </div>
+      <div class="row">
+        <div class="col-12 mb-3">
+          <label for="password" class="form-label">Contraseña</label>
+          <input type="password" class="form-control" id="password" formControlName="password" [ngClass]="{
+            'is-invalid': form.controls['password'].touched && form.controls['password'].hasError('required')
+          }">
+          <div class="invalid-feedback" *ngIf="form.controls['password'].getError('required') && form.controls['password'].touched">
+            Campo requerido.
+          </div>
         </div>
-    </div>
+      </div>
+      <div class="row" *ngIf="errorMessage">
+        <div class="col-12 mb-3 text-danger">
+          {{ errorMessage }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end mb-3">
+          <button type="submit" class="btn btn-primary me-3" [disabled]="form.invalid" style="background-color: #3c3636; border-color: #3c3636;">Iniciar sesión</button>
+          <button type="button" class="btn btn-secondary" (click)="cancelar()" style="background-color: #ff4d4d; border-color: #ff4d4d;">Cancelar</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 d-flex justify-content-center">
+          <button type="button" class="btn btn-link" (click)="openRegisterDialog(); cancelar()">¿No tienes cuenta? Regístrate</button>
+        </div>
+      </div>
     </form>
-    
-   
-
-</div>
-
-
- <mat-dialog-actions>
-  <button mat-raised-button  (click)="cancelar()">Cancelar</button>
-  <button mat-raised-button color ="primary" (click)="iniciarSession()" [disabled]="form.invalid">Guardar </button>
-  <button mat-raised-button color="accent" (click)="openRegisterDialog()" (click)="cancelar()">¿No tienes cuenta? Regístrate</button>
-</mat-dialog-actions>
+  </div>

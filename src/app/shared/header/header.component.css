@@ -4,6 +4,7 @@ body, html {
     overflow-x: hidden;
 }
 
+
 .header {
     background-color: #3c3636;
     padding: 0 20px;
@@ -38,6 +39,9 @@ body, html {
     height: 60%;
     max-height: 80px;
     width: auto;
+}
+.logo:hover{
+    cursor: pointer; 
 }
 
 .search-bar {

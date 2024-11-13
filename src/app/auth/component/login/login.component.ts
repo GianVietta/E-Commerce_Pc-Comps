@@ -19,6 +19,7 @@ import { CustomValidators } from '../register/validators/costum-validators';
 })
 export class LoginComponent {
 
+  errorMessage: string | null = null;
   constructor( public dialog : MatDialog){}
   
   data = inject(MAT_DIALOG_DATA);
@@ -43,11 +44,14 @@ export class LoginComponent {
       this.form.controls['password'].value).subscribe(isAuthenticated => {
         if (isAuthenticated) {
          this.user= this.auth.currentUser;
+         this.errorMessage = null;
           console.log("Usuario autenticado correctamente");
           this.dialogRef.close();
           window.location.reload();
         } else {
-          console.log("Credenciales incorrectas");        }
+          this.errorMessage = 'Credenciales incorrectas. Por favor, verifica tu email y contraseña.';
+          console.log("Credenciales incorrectas"); 
+               }
       });
 
   }
