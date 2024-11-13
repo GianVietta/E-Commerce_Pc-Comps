@@ -44,6 +44,9 @@ export class HeaderComponent {
     this.router.navigate(['/profile']); // Redirige a la página de perfil
     this.isMenuOpen = false;  // Cierra el menú después de hacer clic
   }
+  inicio(){
+    this.router.navigate(['']);
+  }
 
   logout() {
     this.authService.logout();
