@@ -1,15 +1,6 @@
 {
   "products": [
     {
-      "id": "7c4ed463-5417-422b-87f5-434abfd11483",
-      "name": "GTX 1650 NVIDIA",
-      "price": "170",
-      "brand": "ASUS",
-      "description": "About this item Digital Max Resolution:7680 x 4320 The ASUS TUF Gaming GeForce GTX 1650 is built with the breakthrough graphics performance of the award-winning NVIDIA Turing architecture to supercharge your favorite games. Ultra-fast GDDR6 with over 50% more memory bandwidth for high-speed gaming. Auto Extreme Manufacturing uses automation to enhance reliability. TUF compatibility testing ensures TUF Gaming and TUF Gaming alliance components work together flawlessly. Protective backplate secures components during transportation and installation.",
-      "category": "Tarjeta de video",
-      "img": "https://acdn.mitiendanube.com/stores/256/529/products/placa-de-video-asus-1650-oc-4gb-ddr61-360341cf28ac95b1da16244588256421-1024-1024.png"
-    },
-    {
       "id": "f26c398e-4602-4f8f-ab4e-095585111e39",
       "name": "I5 10400",
       "price": "120",
@@ -259,6 +250,7 @@
       "brand": "Seagate",
       "description": "About this item IronWolf internal hard drives are the ideal solution for up to 8-bay, multi-user NAS environments craving powerhouse performance.date transfer rate:6.0 gigabits_per_second Store more and work faster with a NAS-optimized hard drive providing 8TB and cache of up to 256MB Purpose built for NAS enclosures, IronWolf delivers less wear and tear, little to no noise/vibration, no lags or down time, increased file-sharing performance, and much more Easily monitor the health of drives using the integrated IronWolf Health Management system and enjoy long-term reliability with 1M hours MTBF Five-year limited product warranty protection plan and three year Rescue Data Recovery Services included",
       "category": "Almacenamiento",
+      "stock":5,
       "img": "https://m.media-amazon.com/images/I/71GKZRx898L._AC_SX466_.jpg"
     },
     {
@@ -268,6 +260,7 @@
       "brand": "Thermaltake",
       "description": "About this item 80 plus certified Continuous power design Has well ready Ultra quiet 120 millimeters fan 5 year warranty",
       "category": "Fuente",
+      "stock":5,
       "img": "https://m.media-amazon.com/images/I/61TeTD0LaqL._AC_SX466_.jpg"
     },
     {
@@ -277,6 +270,7 @@
       "brand": "GIGABYTE",
       "description": "About this item 650W Capacity with Single +12V Rail 80 Plus Gold Certified ATX Form Factor Japanese Capacitors 120mm Smart Hydraulic Bearing Fan OVP/OPP/SCP/UVP/OCP/OTP protection",
       "category": "Fuente",
+      "stock":5,
       "img": "https://m.media-amazon.com/images/I/71Q7aGs9mAL._AC_SX466_.jpg"
     },
     {
@@ -286,6 +280,7 @@
       "brand": "MSI",
       "description": "About this item 80 PLUS GOLD CERTIFIED 10-year limited warranty, guaranteeing long term reliable operation Fully modular design ATX 3.0 & PCIE 5",
       "category": "Fuente",
+      "stock":5,
       "img": "https://m.media-amazon.com/images/I/71xX3-cWg7L._AC_SX466_.jpg"
     },
     {
@@ -295,6 +290,7 @@
       "brand": "GIGABYTE",
       "description": "About this item 750W Capacity with Single +12V Rail 80 Plus Gold Certified ATX Form Factor Fully Modular Design Japanese Capacitors",
       "category": "Fuente",
+      "stock":5,
       "img": "https://m.media-amazon.com/images/I/71ueFT9h8JL._AC_SX466_.jpg"
     },
     {
@@ -304,6 +300,7 @@
       "brand": "EVGA",
       "description": "About this item Quiet and Intelligent Auto Fan for near-silent operation Heavy-duty protections, including OVP (Over Voltage Protection), UVP (Under Voltage Protection), OCP (Over Current Protection), OPP (Over Power Protection), SCP (Short Circuit Protection), and OTP (Over Temperature Protection) 3 Year Warranty",
       "category": "Fuente",
+      "stock":5,
       "img": "https://m.media-amazon.com/images/I/61JIZLFj3eL._AC_SX466_.jpg"
     },
     {
@@ -313,6 +310,7 @@
       "brand": "CoolerMaster",
       "description": "About this item 3rd Generation Dual Chamber Pump for overall cooling efficiency and performance New SickleFlow Refreshed exterior design for improved lighting and fan blades for a quiet airflow performance RGB Lighting Signature cooling performance with an RGB design for all of the users wanting lighting effects that are fully customizable Industrial Grade Seal High Industrial Grade EPDM material to strengthen the seal for improved longevity and Anti-Leaking AMD AM4/AM3 plus/AM3/AM2 plus/AM2/FM2 plus/FM2/FM1 Intel LGA1700*/1200/1151/1150/1155/1156/1366/2066/2011-v3/2011 Intel’s Alder Lake LGA1700 Kit, Available on Amazon Part:603005870-GP ASIN:B09V3CFDP3",
       "category": "Refrigeracion",
+      "stock":5,
       "img": "https://m.media-amazon.com/images/I/61g3UkYPnmL._SX522_.jpg"
     },
     {
@@ -322,6 +320,7 @@
       "brand": "Corsair",
       "description": "About this item Advanced All-in-One CPU Cooling: Offers everything needed to keep your latest Intel or AMD CPU running at peak performance, while curbing the heat of even high-end processors. Refined Pump Head Design and 16 RGB LEDs: Contemporary pump head design, with 16 individually addressable diffused RGB LEDs, provides a unique look and stunning lighting effects. Cutting-Edge Cooling Performance: Elevate your CPU performance with liquid cooling driven by two 120mm CORSAIR AF ELITE Series AirGuide fans, delivering powerful PWM-controlled airflow between 450 and 1,850 RPM. Unite Your Setup: Powerful CORSAIR iCUE software enables you to control and synchronize your cooler’s RGB lighting with all iCUE compatible devices, monitor CPU and coolant temperatures, and adjust fan and pump speeds. Specialized Cooling Modes for Quiet Operation: Zero RPM fan and Variable Pump Speed specialized cooling modes in iCUE keep noise to a minimum when your system is idle or under light loads.",
       "category": "Refrigeracion",
+      "stock":5,
       "img": "https://m.media-amazon.com/images/I/51NoQQBG+ML._SX522_.jpg"
     },
     {
@@ -331,6 +330,7 @@
       "brand": "CORSAIR",
       "description": "About this item Seamless Personalization: Enjoy powerful, low-noise cooling with a personalized LCD screen, all with simplified hidden connections thanks to the patent-pending iCUE LINK ecosystem Brilliant IPS LCD Display: Showcase your real-time CPU temperature, favorite animated GIF, funniest meme, or your team’s logo on a custom 2.1” IPS LCD screen with 480x480 resolution, ultra-bright 600cd/m² backlight, 24-bit true color depth, and over 16.7 million colors Effortless Connectivity & Intelligent Design: Take your build to the next level with the patent-pending iCUE LINK ecosystem, letting you chain all your components together using universal connectors, all plugged into a single port on the included iCUE LINK System Hub. Build faster, reduce cable clutter, and create a more intelligent, cohesive system setup Hidden Connections for a Flawless Look: A hidden connection design moves all connections to the end of the radiator, allowing for a distraction-free viewing experience of the stunning LCD screen and 24 RGB LED pump cap. Create a sleek and stylish build that showcases your personal style with ease Unbeatable Lighting with QX RGB Fans: CORSAIR QX120 RGB PWM fans with a patent-pending Magnetic Dome bearing deliver powerful, quiet airflow pre-installed along a 360mm radiator, lit by an astonishing 34 RGB LEDs per fan",
       "category": "Refrigeracion",
+      "stock":5,
       "img": "https://m.media-amazon.com/images/I/71xVtT4ApyL._AC_SX466_.jpg"
     },
     {
@@ -340,6 +340,7 @@
       "brand": "Cooler Master",
       "description": "About this item Minimalistic Revamped: The refreshed jet-black aesthetic brings a renewed vibe while keeping its minimalistic essence. Cool for R7 | i7: Four heat pipes and a copper base ensure optimal cooling performance for AMD R7 and *Intel i7. MF120 Halo² Fan: Experience premium airflow with cooling with our optimized PWM blade for stability. Dynamic PWM Fan: A PWM 4-pin header allows adjustable fan speeds from 690 to 1,800 RPM, to balance noise and airflow. Dual-Loop ARGB Rings: Dual-loop design with larger LED rings by 50%, creating more vibrant lighting. Simplify Brackets: Redesigned brackets simplify installation on AM5 and LGA 1851|1700 platforms. Versatile Compatibility: 154mm tall design offers performance with wide chassis compatibility.",
       "category": "Refrigeracion",
+      "stock":5,
       "img": "https://m.media-amazon.com/images/I/71H8RbUBYaL._AC_SX466_.jpg"
     },
     {
@@ -349,6 +350,7 @@
       "brand": "Thermalright",
       "description": "About this item 【Brand Overview】Thermalright is a Taiwanese brand with more than 20 years of development history. It has a certain popularity in the domestic and international markets and has a decisive influence in the cooler market. We have been focusing on the research and development of computer accessories. The R&D product line includes: CPU coolers, case fans, silicone pad, thermal paste, mounting brackets, accessories and other products. 【AGHP technique】7x6mm heatpipe with AGHP upgraded 4th generation technology, the Inverse gravity effect caused by vertical / horizontal orientation, cpu cooler TDP is 105W to 280W. Up to 20000 hours of industrial service life, S-FDB bearings ensure long service life of air-cooler radiators. UL class a safety insulation low-grade, industrial strength PBT + PC material to create high-quality products for you. The height is 154mm, compatible with a wide range of chassis models. 【Product specification】 PS120SE; CPU Cooler dimensions:125(L)x135(W)x154(H)mm (4.92x5.31.06 inch); Product weight:0.9kg(1.98lb); heat sink material: aluminum,the main body is made of anodized black frosted top + finely carved pure copper base technology, avoiding the memory design, the main body is fully aluminum fins, bringing maximum heat dissipation area, combined with the high thermal conductivity of the thermal paste, which can perfectly perform the cooler's most powerful cooling effect. 【PWM Fan】 TL-C12B V2; Standard size industrial grade PWM performance PC fan: 120x120x25mm (4.92x4.92x0.98 inches); Fan speed (RPM): 1500rpm±10%; Power port: 4-pin; Voltage: 12V; Air flow: 66.17CFM (max); Noise level ≤25.6dB(A), high performance fan combined with efficient heat dissipation The cooling body of the unit gives you the best cooling effect. 【Compatibility】CPU cooling slot support: Intel: LGA1700/1150/1151/1155/1156/1200, AMD: AM4/AM5; for different CPU slot platforms, provide the corresponding mounting plate or fasteners, can be combined with the installation instructions or follow the tutorial to get on the machine.",
       "category": "Refrigeracion",
+      "stock":5,
       "img": "https://m.media-amazon.com/images/I/71pvjXDbjxL._SX522_.jpg"
     },
     {
@@ -358,6 +360,7 @@
       "brand": "AsiaHorse",
       "description": "About this item 【Vibrant Lighting Effects】Out Frame 20 lights with internal 6 lights, Asiahorse 120mm rgb fan is designed with double addressable RGB loops for richer combinations of light effects. 26 ARGB LEDs spread in two loops give user superior visual effects. 【Analog ARGB Controller】For motherboards without RGB cables. Includes 4 preset colors (Red, Green, Blue, White, Rainbow 1.0 and Rainbow 2.0), hundreds of LED modes and off modes (Wave, Full Brightness, RGB Spectrum, Off, Flowing, Ripple, Pulse, and Flicker), and 4 LED speeds to easily customize your game settings. 【Two ARGB Control Methods】With 5V 3Pin RGB connector, the pc cooling fan support motherboard software synchronization. And ARGB header with an easy-use remote, these 120mm rgb fan are easy to control light effects and fan speed. 【Quiet Operation】FS9002 rgb pc fans use hydraulic bearing to significantly reduces noise level; the maximum noise level is 24dBA. Each pc fan has 8 rubber pads to provide minimum vibration. 【Dual Power Supply】Rgb fan controller use 2 sata cable to power, enough power to 10 fans in solid white color setting. Upgrade new led light bar, full white lighting mode to keep the light in the best bright state for a long time.",
       "category": "Refrigeracion",
+      "stock":5,
       "img": "https://m.media-amazon.com/images/I/71VbVmqCQNL._SX522_.jpg"
     },
     {
@@ -367,6 +370,7 @@
       "brand": "Cooler Master",
       "description": "About this item Magnetic Dust Filters: The unique pattern of the dust filter adds a distinctive appearance to the case. Components Clearance: Accommodates CPU coolers with a max height of 159mm, GPU cards up to 360mm, and PSU up to 160mm in length. Versatile Cooling: Maximize cooling performance with a 240mm liquid cooler and 5 fans. Modular I/O Panel: You have the flexibility to adjust its position at the front, top, or bottom on both sides Edge-To-Edge Panel: Show off your meticulous build through the transparent side panel with pride. Open Thermal Design: The perforated design on all sides promotes optimal airflow and heat dissipation Ample Interior: Explore ample interior space for Micro-ATX or Mini-ITX motherboards, ensuring easy and future expansion",
       "category": "Gabinete",
+      "stock":5,
       "img": "https://m.media-amazon.com/images/I/81I9Ef0fOIL._AC_SX679_.jpg"
     },
     {
@@ -376,6 +380,7 @@
       "brand": "CORSAIR",
       "description": "About this item Combining innovative cable management, concentrated airflow, and proven CORSAIR build quality, the 4000D is a fitting choice for an immaculate high-performance PC..Maximum PSU Length : 220. Radiator Compatibility : 120mm, 140mm, 240mm, 280mm, 360mm. The CORSAIR RapidRoute cable management system makes it simple and fast to route your major cables through a single channel, with a roomy 25mm of space behind the motherboard for all of your cables. Includes two CORSAIR 120mm AirGuide fans, utilizing anti-vortex vanes to concentrate airflow and enhance cooling. Motherboard will fit in our 4000 Series cases without any issue. Mini-ITX, micro-ATX, ATX, and E-ATX form factor motherboards are all supported. A spacious interior fits up to 6x 120mm or 4x 140mm cooling fans, along with multiple radiators including 360mm in front and 280mm in the roof (dependent on RAM height). Put modern connections within easy reach with a front I/O panel including a USB 3.1 Type-C Port, USB 3.0 port, and a combination audio/microphone jack.",
       "category": "Gabinete",
+      "stock":5,
       "img": "https://m.media-amazon.com/images/I/71J4iohAlaL._AC_SX466_.jpg"
     },
     {
@@ -385,6 +390,7 @@
       "brand": "Thermaltake",
       "description": "About this item Three Preinstalled Hydraulic Bearing 120mm ARGB Lite Front Fans Sync with Motherboard RGB Software Tempered Glass Front Panel Built-in PSU Cover Opportunities For High-End Expansion",
       "category": "Gabinete",
+      "stock":5,
       "img": "https://m.media-amazon.com/images/I/61bCzcg3JRL._AC_SX679_.jpg"
     },
     {
@@ -394,6 +400,7 @@
       "brand": "CORSAIR",
       "description": "About this item A Great Build with a Great View: The 3500X has all the cooling benefits and essential features you need to build an amazing PC, supporting motherboard form-factors from Mini-ITX to EATX, with a wraparound glass aesthetic to give you the view to match. High Cooling Capacity: Side, roof, and PSU fan mounting points, accommodating up to 10x 120mm fans, ensure that you don’t sacrifice cooling for the stunning looks of a glass front panel. Removable Tempered Glass Panels: Easily removable front and side glass panels make it easy to build and access your system after it’s done. Three Pre-Installed RS120 ARGB Fans: Enjoy high-performance cooling and no-fuss lighting out of the box with simple motherboard control through a +5V ARGB header. Compatible with Reverse Connection Motherboards: Validated for use with ASUS BTF and MSI Project Zero motherboards featuring connections on the back of the board, so your view isn’t spoiled by plugged-in cables.",
       "category": "Gabinete",
+      "stock":5,
       "img": "https://m.media-amazon.com/images/I/71MMoud1NzL._AC_SY741_.jpg"
     },
     {
@@ -403,6 +410,7 @@
       "brand": "GAMDIAS",
       "description": "About this item 【Mesh Front Panel with Built-In Fans】AURA GC1 ELITE ARGB sports an airflow-focused mesh front panel equipped with 4 ARGB fans to provide superior air intake. 【Stylish Gaming PC Case with Side Tempered Glass】The computer case showcases the inner beauty of your gaming pc system with a full-sized tempered glass cover with tool-free installation for ease of access. 【Excellent Airflow with 4x Built-in ARGB Computer Fans】The mid tower case is well equipped with 4 built-in 120mm ARGB fans displayed in full by the mesh front panel and the tempered glass side panel 【Modern Design with Mesh Front】AURA GC series gaming pc cases sport an airflow-focused mesh front panel with a sleek stealth black design to provide aesthetics and excellent airflow intake 【Great Expandability for Your Gaming Rig】With 2x 3.5\" or 1 x 2.5\"+1 x 3.5\"(HDD Cage) / 2 x 2.5\" HDD Tray, USB 3.0 x1, USB 2.0 x2, HD Audio x1, LED Control x1. Furthermore, it supports different mobo from ATX, Micro-ATX, Mini-ITX . 7 PCIE slots allow you to fully utilize your motherboard.",
       "category": "Gabinete",
+      "stock":5,
       "img": "https://m.media-amazon.com/images/I/71nuILUpzHL._AC_SX466_.jpg"
     },
     {
@@ -412,6 +420,7 @@
       "brand": "Lian Li",
       "description": "About this item Seamless view: Remove the front support pillar without affecting the structural integrity of the case. This allows for a completely uninterrupted view of everything inside the chassis. Increased size: Provides ample room for the latest gaming hardware. Thanks to this expansion, the main compartment can facilitate large graphics cards, with 455.7mm clearance and seven expansion slots. Features two 1.5mm L-shaped RGB strips that sit at the top and bottom of the tempered glass panels. These strips are easy to control with beautiful lighting options available. Easy for builders: For starters, the internal layout of the chassis can be adjusted as there are two height options for motherboard installation. This means there are different ways to set up your fans and CPU cooler, providing different performance options and aesthetics. Cable management friendly: Comes with Velcro straps and dual-layered clips, which can tidy up both your large and small cables together into an easily managed bundle. Moreover, the PSU mounting bracket protrudes 15mm out from the case, which provides additional space for cable management.",
       "category": "Gabinete",
+      "stock":5,
       "img": "https://m.media-amazon.com/images/I/712giHWFxxL._AC_SX679_.jpg"
     },
     {
@@ -421,6 +430,7 @@
       "brand": "Aerocool",
       "description": "About this item SHOWCASE YOUR DESIGN – Display the internal rig of your mid tower PC case with Cylons full tempered glass side panel and ensure easy cleaning of your PC tower with the removable and magnetic dust filters SUPERIROR AIR FLOW – Equipped with a Built in VGA fan mount and 120mm radiator, this dual chamber pc case creates air ventilation in top, front and rear panels and supports liquid cooling for enhanced performance. 13 COLOUR MODES – Featuring an elegant LED front panel, the Cylon pc tower case allows you to choose from one of 6 RGB flows and seven solid colours to create a completely unique style for your gaming case EXTRA STORAGE CAPABILTIES – With a 155m depth and 371mm internal width, this pc gaming case can support up to 5 x 2.5” SSDs and offers all the storage you need for high end graphic cards CONVENIENT CONNECTION – Supporting SD/ Micro SD Memory cards, 3 x USB ports, HD and mic jacks, as well as instant access to LED effect controls, the Cylon tower case provides seamless access to all of your media",
       "category": "Gabinete",
+      "stock":5,
       "img": "https://m.media-amazon.com/images/I/515d6MEXbgL.__AC_SX300_SY300_QL70_FMwebp_.jpg"
     }
   ],

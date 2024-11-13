@@ -88,6 +88,97 @@
     opacity: 1;
   }
 
+  .remove-button {
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+    border:none;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+    font-size: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+  }
+  
+  .product-card:hover .remove-button {
+    z-index: 3;
+  }
+  
+  .remove-button img{
+    width: 25px;
+    height: 17px;
+  }
+  
+  .remove-button:hover {
+    background-color: #3c3636;
+    opacity: 0.8;
+  }
+  .remove-button:hover ~ .product-card {
+    opacity: 1;
+  }
+
+  .update-button {
+    position: absolute;
+    bottom: 10px;
+    right: 45px;
+    border:none;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+    font-size: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+  }
+  
+  .product-card:hover .update-button {
+    z-index: 3;
+  }
+  
+  .update-button img{
+    width: 25px;
+    height: 17px;
+  }
+  
+  .update-button:hover {
+    background-color: #3c3636;
+    opacity: 0.8;
+  }
+  .update-button:hover ~ .product-card {
+    opacity: 1;
+  }
+
+  .product-card-NoStock {
+    position: relative;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+    margin: 30px 5px;
+    padding: 15px;
+    height: 400px;
+    width: 280px;
+    flex-shrink: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    opacity: 0.5; /* Baja opacidad */
+    transition: opacity 0.3s ease;
+    filter: grayscale(100%); /* Escala de grises */
+  }
+  
+  .product-card-NoStock img {
+    opacity: 0.7;
+    max-width: 100%;
+    border-radius: 5px;
+    margin: 8px 0;
+    height: 180px;
+    object-fit: contain; /* Imagen con menos opacidad */
+  }
 
   ::ng-deep .p-carousel .p-carousel-prev, 
   ::ng-deep .p-carousel .p-carousel-next {

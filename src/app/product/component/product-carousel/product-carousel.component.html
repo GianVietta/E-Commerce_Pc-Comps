@@ -2,16 +2,45 @@
 <div class="product-container" *ngIf="showCarousel">
   <p-carousel [value]="filteredProducts" [numVisible]="5" [numScroll]="1" [circular]="true" [showIndicators]="true">
     <ng-template pTemplate="item" let-producto>
-      <div class="product-card" (click)="viewProductDetails(producto.id)">
-        <span class="category">{{ producto.category }}</span>
-        <h3 class="product-name">{{ producto.name }}</h3>
-        <h5>{{producto.brand}}</h5>
-        <img [src]="producto.img" [alt]="producto.name" />
-        <p class="price">${{ producto.price }}</p>
-        <button class="cart-button" (click)="addToCart(producto); $event.stopPropagation()">
-          <img src="resources/icons/carousel/cart-plus-solid.svg" alt="Carrito" class="cart-icon">
-        </button>
-      </div>
+      <ng-container *ngIf="isAdmin">
+        <div class="product-card" (click)="viewProductDetails(producto.id)">
+          <span class="category">{{ producto.category }}</span>
+          <h3 class="product-name">{{producto.name}}</h3>
+          <h5>{{producto.brand}}</h5>
+          <img src={{producto.img}} alt={{producto.name}}>
+          <p class="price">{{producto.price}}</p>
+          <button class="remove-button" (click)="removeProduct(producto); $event.stopPropagation()">
+            <img src="resources/icons/carousel/trash-red.svg" alt="trash" class="trash-icon">
+          </button>
+          <button class="update-button" (click)="updateProduct(producto.id); $event.stopPropagation()">
+            <img src="resources/icons/carousel/pencil-solid.svg" alt="update" class="update-icon">
+          </button>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="!isAdmin">
+          <ng-container *ngIf="producto.stock>0">
+            <div class="product-card" (click)="viewProductDetails(producto.id)">
+            <span class="category">{{ producto.category }}</span>
+            <h3 class="product-name">{{producto.name}}</h3>
+            <h5>{{producto.brand}}</h5>
+            <img src={{producto.img}} alt={{producto.name}}>
+            <p class="price">{{producto.price}}</p>
+            <button class="cart-button" (click)="addToCart(producto.id); $event.stopPropagation()">
+              <img src="resources/icons/carousel/cart-plus-solid.svg" alt="cart" class="cart-icon">
+            </button>
+          </div>
+          </ng-container>
+          <ng-container *ngIf="producto.stock===0 || !producto.stock">
+            <div class="product-card-NoStock" (click)="viewProductDetails(producto.id)">
+            <span class="category">{{ producto.category }}</span>
+            <h3 class="product-name">{{producto.name}}</h3>
+            <h5>{{producto.brand}}</h5>
+            <img src={{producto.img}} alt={{producto.name}}>
+            <p class="price">{{producto.price}}</p>
+          </div>
+          </ng-container>
+          
+      </ng-container>
     </ng-template>
   </p-carousel>
 </div>

@@ -51,6 +51,7 @@ export class HeaderComponent {
     this.isAdminUser = false;
     this.isMenuOpen = false;
     this.router.navigate(['']);
+    window.location.reload();
       // Cierra el menú después de hacer clic
   }
 

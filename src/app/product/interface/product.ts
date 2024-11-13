@@ -5,6 +5,7 @@ export interface Product {
     brand: string,
     description: string,
     category: string,
+    stock:number,
     img: string
     //incorporar un arreglo de clase Review
 }
