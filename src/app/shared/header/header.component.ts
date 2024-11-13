@@ -49,6 +49,7 @@ export class HeaderComponent {
     this.isAuthenticated = false;
     this.isAdminUser = false;
     this.isMenuOpen = false;  // Cierra el menú después de hacer clic
+    window.location.reload();
   }
 
   login() {
@@ -62,17 +63,19 @@ export class HeaderComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.authService.checkStatusAutentication().subscribe(
-        auth => {
-          this.isAuthenticated = auth;
-      // Revisa el ID para determinar si es un administrador
-      if (this.getUser?.id === '1') {
-        this.isAdminUser = true;
-      } else {
-        this.isAdminUser = false;
-      }
+      this.authService.checkStatusAutentication().subscribe(auth => {
+        this.isAuthenticated = auth;
+    
+        // Revisa el ID para determinar si es un administrador
+        if (this.getUser?.id === '1') {
+          this.isAdminUser = true;
+        } else {
+          this.isAdminUser = false;
         }
-      );
+    
+        // Recarga la página después de verificar la autenticación
+        window.location.reload();
+      });
     });
   }
 }

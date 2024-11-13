@@ -1,15 +1,6 @@
 {
   "products": [
     {
-      "id": "7c4ed463-5417-422b-87f5-434abfd11483",
-      "name": "GTX 1650 NVIDIA",
-      "price": "170",
-      "brand": "ASUS",
-      "description": "About this item Digital Max Resolution:7680 x 4320 The ASUS TUF Gaming GeForce GTX 1650 is built with the breakthrough graphics performance of the award-winning NVIDIA Turing architecture to supercharge your favorite games. Ultra-fast GDDR6 with over 50% more memory bandwidth for high-speed gaming. Auto Extreme Manufacturing uses automation to enhance reliability. TUF compatibility testing ensures TUF Gaming and TUF Gaming alliance components work together flawlessly. Protective backplate secures components during transportation and installation.",
-      "category": "Tarjeta de video",
-      "img": "https://acdn.mitiendanube.com/stores/256/529/products/placa-de-video-asus-1650-oc-4gb-ddr61-360341cf28ac95b1da16244588256421-1024-1024.png"
-    },
-    {
       "id": "f26c398e-4602-4f8f-ab4e-095585111e39",
       "name": "I5 10400",
       "price": "120",
@@ -271,15 +262,6 @@
       "img": "https://m.media-amazon.com/images/I/61TeTD0LaqL._AC_SX466_.jpg"
     },
     {
-      "id": "d0b02077-2ab2-4e21-83a2-aa420517aa5b",
-      "name": "P650G 650W 80 Plus Gold Certified Power Supply",
-      "price": "60",
-      "brand": "GIGABYTE",
-      "description": "About this item 650W Capacity with Single +12V Rail 80 Plus Gold Certified ATX Form Factor Japanese Capacitors 120mm Smart Hydraulic Bearing Fan OVP/OPP/SCP/UVP/OCP/OTP protection",
-      "category": "Fuente",
-      "img": "https://m.media-amazon.com/images/I/71Q7aGs9mAL._AC_SX466_.jpg"
-    },
-    {
       "id": "62ffa28b-1712-494a-adf3-5f7c40575454",
       "name": "MAG A850GL PCIE 5 & ATX 3.0 Gaming Power Supply - Full Modular - 80 Plus Gold Certified 850W",
       "price": "110",
@@ -323,15 +305,6 @@
       "description": "About this item Advanced All-in-One CPU Cooling: Offers everything needed to keep your latest Intel or AMD CPU running at peak performance, while curbing the heat of even high-end processors. Refined Pump Head Design and 16 RGB LEDs: Contemporary pump head design, with 16 individually addressable diffused RGB LEDs, provides a unique look and stunning lighting effects. Cutting-Edge Cooling Performance: Elevate your CPU performance with liquid cooling driven by two 120mm CORSAIR AF ELITE Series AirGuide fans, delivering powerful PWM-controlled airflow between 450 and 1,850 RPM. Unite Your Setup: Powerful CORSAIR iCUE software enables you to control and synchronize your cooler’s RGB lighting with all iCUE compatible devices, monitor CPU and coolant temperatures, and adjust fan and pump speeds. Specialized Cooling Modes for Quiet Operation: Zero RPM fan and Variable Pump Speed specialized cooling modes in iCUE keep noise to a minimum when your system is idle or under light loads.",
       "category": "Refrigeracion",
       "img": "https://m.media-amazon.com/images/I/51NoQQBG+ML._SX522_.jpg"
-    },
-    {
-      "id": "48c2c269-f4e8-4956-88a1-37b3e2cbf7af",
-      "name": "iCUE Link H150i LCD Liquid CPU Cooler - 360mm AIO - QX120 RGB Fans - 2.1” IPS LCD Screen",
-      "price": "280",
-      "brand": "CORSAIR",
-      "description": "About this item Seamless Personalization: Enjoy powerful, low-noise cooling with a personalized LCD screen, all with simplified hidden connections thanks to the patent-pending iCUE LINK ecosystem Brilliant IPS LCD Display: Showcase your real-time CPU temperature, favorite animated GIF, funniest meme, or your team’s logo on a custom 2.1” IPS LCD screen with 480x480 resolution, ultra-bright 600cd/m² backlight, 24-bit true color depth, and over 16.7 million colors Effortless Connectivity & Intelligent Design: Take your build to the next level with the patent-pending iCUE LINK ecosystem, letting you chain all your components together using universal connectors, all plugged into a single port on the included iCUE LINK System Hub. Build faster, reduce cable clutter, and create a more intelligent, cohesive system setup Hidden Connections for a Flawless Look: A hidden connection design moves all connections to the end of the radiator, allowing for a distraction-free viewing experience of the stunning LCD screen and 24 RGB LED pump cap. Create a sleek and stylish build that showcases your personal style with ease Unbeatable Lighting with QX RGB Fans: CORSAIR QX120 RGB PWM fans with a patent-pending Magnetic Dome bearing deliver powerful, quiet airflow pre-installed along a 360mm radiator, lit by an astonishing 34 RGB LEDs per fan",
-      "category": "Refrigeracion",
-      "img": "https://m.media-amazon.com/images/I/71xVtT4ApyL._AC_SX466_.jpg"
     },
     {
       "id": "ceae7413-d10a-417c-b658-0b96ec3504de",
@@ -395,15 +368,6 @@
       "description": "About this item A Great Build with a Great View: The 3500X has all the cooling benefits and essential features you need to build an amazing PC, supporting motherboard form-factors from Mini-ITX to EATX, with a wraparound glass aesthetic to give you the view to match. High Cooling Capacity: Side, roof, and PSU fan mounting points, accommodating up to 10x 120mm fans, ensure that you don’t sacrifice cooling for the stunning looks of a glass front panel. Removable Tempered Glass Panels: Easily removable front and side glass panels make it easy to build and access your system after it’s done. Three Pre-Installed RS120 ARGB Fans: Enjoy high-performance cooling and no-fuss lighting out of the box with simple motherboard control through a +5V ARGB header. Compatible with Reverse Connection Motherboards: Validated for use with ASUS BTF and MSI Project Zero motherboards featuring connections on the back of the board, so your view isn’t spoiled by plugged-in cables.",
       "category": "Gabinete",
       "img": "https://m.media-amazon.com/images/I/71MMoud1NzL._AC_SY741_.jpg"
-    },
-    {
-      "id": "adf31283-3668-4e6e-83d9-128c4e6f0487",
-      "name": "ATX Mid Tower Gaming Computer PC Case Tempered Glass, Built-in 4X 120mm ARGB Case Fans, Front Airflow Mesh",
-      "price": "60",
-      "brand": "GAMDIAS",
-      "description": "About this item 【Mesh Front Panel with Built-In Fans】AURA GC1 ELITE ARGB sports an airflow-focused mesh front panel equipped with 4 ARGB fans to provide superior air intake. 【Stylish Gaming PC Case with Side Tempered Glass】The computer case showcases the inner beauty of your gaming pc system with a full-sized tempered glass cover with tool-free installation for ease of access. 【Excellent Airflow with 4x Built-in ARGB Computer Fans】The mid tower case is well equipped with 4 built-in 120mm ARGB fans displayed in full by the mesh front panel and the tempered glass side panel 【Modern Design with Mesh Front】AURA GC series gaming pc cases sport an airflow-focused mesh front panel with a sleek stealth black design to provide aesthetics and excellent airflow intake 【Great Expandability for Your Gaming Rig】With 2x 3.5\" or 1 x 2.5\"+1 x 3.5\"(HDD Cage) / 2 x 2.5\" HDD Tray, USB 3.0 x1, USB 2.0 x2, HD Audio x1, LED Control x1. Furthermore, it supports different mobo from ATX, Micro-ATX, Mini-ITX . 7 PCIE slots allow you to fully utilize your motherboard.",
-      "category": "Gabinete",
-      "img": "https://m.media-amazon.com/images/I/71nuILUpzHL._AC_SX466_.jpg"
     },
     {
       "id": "e42e7467-ca61-45cf-8042-c1c4f6642fe8",
