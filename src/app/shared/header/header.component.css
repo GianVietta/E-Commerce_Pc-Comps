@@ -41,7 +41,7 @@ body, html {
     width: auto;
 }
 .logo:hover{
-    cursor: pointer; 
+    cursor: pointer;
 }
 
 .search-bar {
@@ -120,6 +120,7 @@ body, html {
     width: 30px;
     height: auto;
     margin-left: 10px;
+    cursor:pointer;
 }
 
 @media (max-width: 768px) {
