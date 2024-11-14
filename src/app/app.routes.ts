@@ -7,17 +7,17 @@ import { AuthGuard } from './auth/guard/auth-guard';
 import { AdminGuard } from './auth/guard/admin-guard';
 import { UpdateProductComponent } from './product/component/update-product/update-product.component';
 import { CartPageComponent } from './cart/page/cart-page/cart-page.component';
-import { SalesComponent } from './sales/component/sales/sales.component';
+import { SalesPageComponent } from './sales/page/sales/sales-page.component';
 
 
 export const routes: Routes = [
 
-    {path:'', component:HomePageComponent},
-    {path:'profile', component:ProfileComponent, canActivate:[AuthGuard]},
-    { path: 'product/:id', component: DetailsProductComponent },
-    { path: 'update-product/:id', component: UpdateProductComponent },
+    {path: '', component:HomePageComponent},
+    {path: 'profile', component:ProfileComponent, canActivate:[AuthGuard]},
+    {path: 'product/:id', component: DetailsProductComponent},
+    {path: 'update-product/:id', component: UpdateProductComponent},
     {path: 'new-product', component: NewProductPageComponent, canActivate:[AdminGuard]},
-    {path:'cart', component:CartPageComponent},
-    {path:'sales', component:SalesComponent},
-    {path:'**' , redirectTo:'' }
+    {path: 'cart', component:CartPageComponent},
+    {path: 'sales-page', component:SalesPageComponent},
+    {path: '**' , redirectTo:'' }
 ];

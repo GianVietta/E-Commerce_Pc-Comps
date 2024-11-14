@@ -1,7 +1,10 @@
-import { Cart } from "../../cart/interface/cart";
+import { CartItem } from "../../cart/interface/cart-item";
 
 export interface Sales {
-    date: string,
-    cart: Cart,
-    //Agregar lo necesario sobre metodo de pago etc o id de pago
+    id: string;//Id de la venta unica
+    idUser: string;//Id del usuario que realizao la compra
+    date: string;//Fecha de la venta de la pagina
+    totalAmount: number;//Precio total de la operacion
+    products: CartItem[];//Productos incluidos
+    //Agregar lo necesario sobre un comprobante
 }
