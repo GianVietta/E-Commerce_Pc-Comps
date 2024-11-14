@@ -1,29 +1,46 @@
 import { Product } from './../../../product/interface/product';
-import { Component, inject, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { CartService } from '../../service/cart.service';
 import { Cart } from '../../interface/cart';
 import { HttpErrorResponse } from '@angular/common/http';
 import { PayPalService } from '../../../paypal/paypal.service';
 import { AuthService } from '../../../auth/service/auth.service';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.css',
   encapsulation: ViewEncapsulation.Emulated
 })
-export class CartComponent implements OnInit{
+export class CartComponent implements OnInit, OnDestroy{
   cs=inject(CartService);
   listProducts: {product: Product; quantity: number}[]=[];
   totalAmount: number=0;
   ps = inject(PayPalService);
   authService = inject(AuthService);
   router = inject(Router);
+
   ngOnInit(): void {
     this.loadCart();
+    
+    // Se marca la página como recargada en el `sessionStorage` al inicio
+    if (!sessionStorage.getItem('isPageReloaded')) {
+      sessionStorage.setItem('isPageReloaded', 'false');
+    }
+
+    window.addEventListener('beforeunload', this.handlePageClose.bind(this)); // Evento antes de salir
+    window.addEventListener('load', this.handlePageLoad.bind(this)); // Evento cuando la página se recarga
   }
+
+  ngOnDestroy(): void {
+    window.removeEventListener('beforeunload', this.handlePageClose.bind(this));
+    window.removeEventListener('load', this.handlePageLoad.bind(this));
+  }
+
   //Mostrar Carrito
   loadCart(): void{
     this.listProducts=[];
@@ -60,6 +77,10 @@ export class CartComponent implements OnInit{
     const productItem = this.listProducts.find(item => item.product.id === productId);
     if (productItem) {
       const newQuantity = productItem.quantity + 1;
+      if(newQuantity>productItem.product.stock){
+        console.warn('No se puede aumentar la cantidad mas alla del stock disponible. ');
+        return; //Salir si la cantidad excede el stock
+      }
       productItem.quantity= newQuantity;
       this.totalAmount += productItem.product.price; // Update total amount
       this.cs.updateProductQuantity(productId, newQuantity).subscribe({
@@ -103,6 +124,30 @@ export class CartComponent implements OnInit{
       error: (error) => console.error('Error al eliminar el producto:', error)
     });
   }
+  //Vaciar carrito 
+  // Lógica para manejar el cierre de la página
+  // Maneja cuando la página se recarga
+  handlePageLoad(): void {
+    // Marca que la página ha sido recargada, evitando que el carrito se vacíe
+    sessionStorage.setItem('isPageReloaded', 'true');
+  }
+
+  // Función para manejar el cierre de la página
+  handlePageClose(event: BeforeUnloadEvent): void {
+    if (sessionStorage.getItem('isPageReloaded') === 'false') {
+      // Si no es una recarga, vaciar el carrito
+      this.cs.resetCart().subscribe({
+        next: () => {
+          console.log('Carrito vacío con éxito al salir de la página');
+        },
+        error: (e: Error) => {
+          console.error('Error al vaciar el carrito:', e);
+        }
+      });
+    }
+  }
+
+
   //Precio total redondeado para arriba
   getFormattedAmount(amount: number): string {
     return (Math.ceil(amount * 100) / 100).toFixed(2);
