@@ -16,4 +16,10 @@ export class PayPalService {
   createOrder(orderData: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/create-order`, orderData);
   }
+
+  // Método para capturar una orden en el backend
+  captureOrder(token: string, userId:string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/capture-order`, { params: { token,userId } });
+  }
 }
+

@@ -5,7 +5,10 @@ import { Cart } from '../../interface/cart';
 import { HttpErrorResponse } from '@angular/common/http';
 import { PayPalService } from '../../../paypal/paypal.service';
 import { AuthService } from '../../../auth/service/auth.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { User } from '../../../auth/interface/auth';
+import { LoginComponent } from '../../../auth/component/login/login.component';
 @Component({
   selector: 'app-cart',
   standalone: true,
@@ -21,8 +24,32 @@ export class CartComponent implements OnInit{
   ps = inject(PayPalService);
   authService = inject(AuthService);
   router = inject(Router);
+  readonly dialog = inject(MatDialog);
+  paymentStatus: string | null = null;
+  userId: string | null = null;
+  route = inject(ActivatedRoute);
+
   ngOnInit(): void {
     this.loadCart();
+    this.route.queryParams.subscribe(params => {
+      this.paymentStatus = params['paymentStatus'];
+      this.userId = params['userId'];
+
+      // Si el pago fue exitoso, limpia el carrito
+      if (this.paymentStatus === 'success') {
+        this.cs.resetCart().subscribe(() => {
+          console.log('Carrito limpiado después del pago exitoso.');
+          this.router.navigate(['/sales']);  // Redirige a la página de ventas o confirmación
+        });
+      }
+    });
+  }
+
+
+  user: User | undefined = this.authService.currentUser;
+
+  get getUser(): User | undefined {
+    return this.authService.currentUser;
   }
   //Mostrar Carrito
   loadCart(): void{
@@ -108,14 +135,33 @@ export class CartComponent implements OnInit{
     return (Math.ceil(amount * 100) / 100).toFixed(2);
   }
 
+
+  login() {
+    const dialogRef = this.dialog.open(LoginComponent, {
+      disableClose: true,
+      autoFocus: false,
+      closeOnNavigation: false,
+      position: { top: '50px' },
+      width: '1000px',
+      data: { tipo: 'LOGIN' }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.authService.checkStatusAutentication().subscribe(
+        auth => {
+
+        }
+      );
+    });
+  }
       // Iniciar el pago con PayPal
       initiatePayment(): void {
         this.authService.checkStatusAutentication().subscribe(isAuthenticated => {
           if (!isAuthenticated) {
             // Mostrar mensaje y redirigir al inicio de sesión si no está autenticado
-            alert('Debe iniciar sesión para proceder con el pago.');
+            this.login();
             // Redirigir a la home
-            this.router.navigateByUrl('/');
+
             return;
           }
 
@@ -125,7 +171,7 @@ export class CartComponent implements OnInit{
           const messageElement = document.createElement('div');
           messageElement.innerText = "Te redirigiremos a PayPal...";
           messageElement.style.position = 'fixed';
-          messageElement.style.top = '50px';
+          messageElement.style.top = '10px';
           messageElement.style.left = '50%';
           messageElement.style.transform = 'translateX(-50%)';
           messageElement.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
@@ -139,12 +185,13 @@ export class CartComponent implements OnInit{
             document.body.removeChild(messageElement);
           }, 3000);
 
-          const orderData = {
+          const orderData = {  //se mandan los productos y el id del usuario
             items: this.listProducts.map(item => ({
               product: item.product,
               quantity: item.quantity
             })),
-            totalAmount: this.totalAmount
+            totalAmount: this.totalAmount,
+            userId: this.authService.currentUser?.id
           };
 
           console.log('Datos de la orden a enviar:', orderData);
@@ -198,4 +245,6 @@ export class CartComponent implements OnInit{
       }
 
   }
+
+
 

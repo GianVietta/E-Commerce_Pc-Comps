@@ -6,13 +6,14 @@ import axios from 'axios'
 export const createOrder = async (req,res)=>{
   try{
 
-    const {items,totalAmount} = req.body;
+    const {items,totalAmount} = req.body; //le mando desde el front los productos y la cantidad total
+    const userId = req.body.userId;        /// le mando el id del usuario desde el front
      console.log(`${HOST}/capture-order`);
   const order = {
     intent: "CAPTURE",
       purchase_units: [
         {
-          "reference_id": "d9f80740-38f0-11e8-b467-0ed5f89f718b",
+          "reference_id": `${userId}`, // le paso el id de usuario al json
           amount: {
             currency_code: "USD",
             value: totalAmount.toFixed(2), // Total a cobrar por todos los productos
@@ -35,6 +36,7 @@ export const createOrder = async (req,res)=>{
               quantity: item.quantity.toString(),
             };
           })
+
         }
       ],
       application_context: {
@@ -89,7 +91,10 @@ export const captureOrder = async(req,res)=> {
     })
     console.log('Orden capturada:', response.data);
     res.set('Access-Control-Allow-Origin', 'http://localhost:4200');
-    res.json({ message: 'Pago exitoso', orderDetails: response.data });
+    const userId = response.data.purchase_units[0].reference_id;
+    console.log('Usuario que realizó el pago:', userId);
+    const redirectUrl = `http://localhost:4200/cart?paymentStatus=success&token=${token}&PayerID=${userId}`;
+    res.redirect(redirectUrl);
   }catch (error) {
     res.set('Access-Control-Allow-Origin', 'http://localhost:4200');
     console.error('Error al capturar la orden:', error.response ? error.response.data : error.message);
