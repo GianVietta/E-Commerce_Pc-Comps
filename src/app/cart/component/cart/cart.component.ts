@@ -5,19 +5,18 @@ import { Cart } from '../../interface/cart';
 import { HttpErrorResponse } from '@angular/common/http';
 import { PayPalService } from '../../../paypal/paypal.service';
 import { AuthService } from '../../../auth/service/auth.service';
-
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { User } from '../../../auth/interface/auth';
 import { LoginComponent } from '../../../auth/component/login/login.component';
-import { CommonModule } from '@angular/common';
 
 
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.css',
   encapsulation: ViewEncapsulation.Emulated

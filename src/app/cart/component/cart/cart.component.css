@@ -42,6 +42,10 @@
     flex-grow: 1; /* Permite que ocupe todo el espacio disponible */
 }
 
+.cursor-pointer{
+    cursor:pointer;
+}
+
 .align-items-center {
     align-items: center; /* Centra verticalmente el contenido */
 }

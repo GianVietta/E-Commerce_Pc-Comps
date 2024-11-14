@@ -4,7 +4,7 @@
         @for (item of listProducts; track $index) {
             <div class="list-group-item d-flex justify-content-between align-items-center">
                 <!--Nombre y cantidad de ese producto-->
-                <div class="d-flex flex-grow-1 align-items-center">
+                <div class="d-flex flex-grow-1 align-items-center cursor-pointer" [routerLink]="['/product',item.product.id]">
                     <span class="me-3">
                         <img src={{item.product.img}} class="product-icon">
                         <strong>Nombre: </strong>{{item.product.name}}

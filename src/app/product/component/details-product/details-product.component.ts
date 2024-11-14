@@ -55,7 +55,7 @@ export class DetailsProductComponent implements OnInit {
               return;
             }
             //Si hay suficiente stock, agregar el producto al carrito 
-            this.cs.addProductToCart(product.id,1).subscribe({
+            this.cs.addProductToCart(product.id,this.selectedQuantity).subscribe({
               next: ()=>{
                 console.log("Agregado Correctamente");
               },
