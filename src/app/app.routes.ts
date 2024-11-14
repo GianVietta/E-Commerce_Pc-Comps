@@ -6,6 +6,7 @@ import { NewProductPageComponent } from './product/page/new-product-page/new-pro
 import { AuthGuard } from './auth/guard/auth-guard';
 import { AdminGuard } from './auth/guard/admin-guard';
 import { UpdateProductComponent } from './product/component/update-product/update-product.component';
+import { CartPageComponent } from './cart/page/cart-page/cart-page.component';
 
 
 export const routes: Routes = [
@@ -15,5 +16,6 @@ export const routes: Routes = [
     { path: 'product/:id', component: DetailsProductComponent },
     { path: 'update-product/:id', component: UpdateProductComponent },
     {path: 'new-product', component: NewProductPageComponent, canActivate:[AdminGuard]},
+    {path:'cart', component:CartPageComponent},
     {path:'**' , redirectTo:'' }
 ];
