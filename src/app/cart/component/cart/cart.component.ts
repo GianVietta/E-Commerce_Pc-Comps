@@ -12,6 +12,8 @@ import { User } from '../../../auth/interface/auth';
 import { LoginComponent } from '../../../auth/component/login/login.component';
 import { ProductService } from '../../../product/service/product.service';
 import { catchError, concatMap, firstValueFrom, from, Observable, tap, throwError } from 'rxjs';
+import { Sales } from '../../../sales/interface/sales';
+import { SalesService } from '../../../sales/service/sales.service';
 
 @Component({
   selector: 'app-cart',
@@ -33,6 +35,7 @@ export class CartComponent implements OnInit{
   paymentStatus: string | null = null;
   userId: string | null = null;
   route = inject(ActivatedRoute);
+  ss= inject(SalesService);
 
   async ngOnInit(): Promise<void> {
     await this.loadCart();
@@ -44,7 +47,12 @@ export class CartComponent implements OnInit{
       if (this.paymentStatus === 'success') {
         try {
           await this.updateStock(...[this.listProducts]);
-          
+          if (this.userId !== null) {
+            await this.addNewSale(this.userId, ...[this.listProducts]);
+          } else {
+            // Maneja el caso en que userId sea null
+            console.error('El userId es nulo');
+          }
           // Solo limpiar el carrito si la actualización de stock fue exitosa
           this.cs.resetCart().subscribe({
             next: () => {
@@ -212,6 +220,34 @@ export class CartComponent implements OnInit{
         }
       );
     });
+  }
+  // Método asíncrono para agregar una nueva venta
+  async addNewSale(idUser: string, list: {product: Product; quantity: number}[]): Promise<void>{
+    const newSale: Sales = {
+      id: crypto.randomUUID(), // Genera un UUID único
+      idUser: idUser, // Ajusta el id de usuario según sea necesario
+      date: new Date().toISOString(), // Genera la fecha actual en formato ISO string
+      totalAmount: this.totalAmount, // Ajusta el monto total según tu lógica
+      products: []= list.map(item=>({
+        idProduct: item.product.id,
+        quantity: item.quantity
+      })) // Añade los productos que correspondan
+    };
+
+    try {
+      // Llamada asíncrona al servicio usando await
+      this.ss.addSale(newSale).subscribe({
+        next: (sale)=>{
+          console.log(`${sale} agregado correctamente.`);
+        },
+        error: (e:Error)=>{
+          console.warn('Error al agregar la venta. ', e.message);
+        }
+      });
+    } catch (error) {
+      console.error('Error al crear la venta:', error);
+      throw error;
+    }
   }
 
   async updateStock(list: {product: Product; quantity: number}[]): Promise<void> {
