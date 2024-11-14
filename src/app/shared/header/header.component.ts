@@ -73,6 +73,7 @@ export class HeaderComponent {
       closeOnNavigation: false,
       position: { top: '50px' },
       width: '1000px',
+      panelClass: 'custom-dialog-container',  // Add custom panel class
       data: { tipo: 'LOGIN' }
     });
 

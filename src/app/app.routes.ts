@@ -5,7 +5,7 @@ import { DetailsProductComponent } from './product/component/details-product/det
 import { NewProductPageComponent } from './product/page/new-product-page/new-product-page.component';
 import { AuthGuard } from './auth/guard/auth-guard';
 import { AdminGuard } from './auth/guard/admin-guard';
-import { CartPageComponent } from './cart/page/cart-page/cart-page.component';
+import { UpdateProductComponent } from './product/component/update-product/update-product.component';
 
 
 export const routes: Routes = [
@@ -13,7 +13,7 @@ export const routes: Routes = [
     {path:'', component:HomePageComponent},
     {path:'profile', component:ProfileComponent, canActivate:[AuthGuard]},
     { path: 'product/:id', component: DetailsProductComponent },
+    { path: 'update-product/:id', component: UpdateProductComponent },
     {path: 'new-product', component: NewProductPageComponent, canActivate:[AdminGuard]},
-    {path:'cart', component:CartPageComponent},
     {path:'**' , redirectTo:'' }
 ];

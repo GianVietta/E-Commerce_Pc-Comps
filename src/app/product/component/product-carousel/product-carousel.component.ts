@@ -137,8 +137,6 @@ export class ProductCarouselComponent implements OnInit {
     
   }
 
-  updateProduct(productId : String){
-    console.log("YA TAS READY PAL UPDATE");
-  }
+
 
 }
