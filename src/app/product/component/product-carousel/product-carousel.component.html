@@ -12,7 +12,7 @@
           <button class="remove-button" (click)="removeProduct(producto); $event.stopPropagation()">
             <img src="resources/icons/carousel/trash-red.svg" alt="trash" class="trash-icon">
           </button>
-          <button class="update-button" (click)="updateProduct(producto.id); $event.stopPropagation()">
+          <button class="update-button" (click)="$event.stopPropagation()"  [routerLink]="['/update-product',producto.id]">
             <img src="resources/icons/carousel/pencil-solid.svg" alt="update" class="update-icon">
           </button>
         </div>

@@ -1,0 +1,4 @@
+.custom-dialog .mat-dialog-content {
+    max-height: 80vh; /* Ajusta este valor según sea necesario */
+    overflow-y: auto;
+  }

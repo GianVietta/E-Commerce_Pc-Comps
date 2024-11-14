@@ -136,3 +136,19 @@ body, html {
         width: 25px;
     }
 }
+::ng-deep .custom-dialog-container .mat-dialog-container {
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    background: transparent !important; /* Ensures no background color shows */
+    border: none !important;
+    max-width: none; /* Allows dialog to occupy full width */
+    width: 100%; /* Ensures dialog fills the specified width */
+}
+
+::ng-deep .custom-dialog-container {
+    background-color: transparent !important; /* Removes background if any */
+}
+::ng-deep .mat-dialog-container {
+    background-color: transparent !important;
+}

@@ -7,8 +7,8 @@
       "brand": "Intel",
       "description": "About this item 6 Cores / 12 Threads Socket type LGA 1200 Up to 4. 3 GHz Compatible with Intel 400 series chipset based motherboards Intel Optane Memory support Cooler included",
       "category": "CPU",
-      "stock": 0,
-      "img": "https://m.media-amazon.com/images/I/5109QxQi0IL._AC_SX466_.jpg"
+      "stock": 12,
+      "img": "https://images-ext-1.discordapp.net/external/VQyRVU28sfwPAWaOSH-vNk57Y1oiVHAzuoQYL5rEylQ/https/http2.mlstatic.com/D_NQ_NP_872687-MLA43117152530_082020-O.webp?format=webp&width=414&height=473"
     },
     {
       "id": "2479f6d9-6ba5-4e45-b0eb-54daf3abb873",
@@ -267,7 +267,7 @@
       "brand": "Seagate",
       "description": "About this item IronWolf internal hard drives are the ideal solution for up to 8-bay, multi-user NAS environments craving powerhouse performance.date transfer rate:6.0 gigabits_per_second Store more and work faster with a NAS-optimized hard drive providing 8TB and cache of up to 256MB Purpose built for NAS enclosures, IronWolf delivers less wear and tear, little to no noise/vibration, no lags or down time, increased file-sharing performance, and much more Easily monitor the health of drives using the integrated IronWolf Health Management system and enjoy long-term reliability with 1M hours MTBF Five-year limited product warranty protection plan and three year Rescue Data Recovery Services included",
       "category": "Almacenamiento",
-      "stock": 5,
+      "stock": 9,
       "img": "https://m.media-amazon.com/images/I/71GKZRx898L._AC_SX466_.jpg"
     },
     {

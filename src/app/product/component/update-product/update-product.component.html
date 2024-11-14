@@ -1,0 +1,147 @@
+<h3 class="text-center my-4">Actualizar Producto</h3>
+<div class="container">
+  <form [formGroup]="form">
+    <div class="row">
+      <!-- Nombre -->
+      <div class="col-md-6">
+        <label for="nameForm" class="form-label">Nombre</label>
+        <input 
+          type="text" 
+          id="nameForm"
+          class="form-control" 
+          formControlName="name" 
+          [ngClass]="{
+            'is-invalid': form.controls['name'].touched && form.controls['name'].hasError('required') || form.controls['name'].hasError('minlength')
+          }">
+        <div *ngIf="form.controls['name'].touched && form.controls['name'].hasError('required')" class="invalid-feedback">
+          Campo requerido.
+        </div>
+        <div *ngIf="form.controls['name'].touched && form.controls['name'].hasError('minlength')" class="invalid-feedback">
+          El nombre debe tener mínimo 3 caracteres.
+        </div>
+      </div>
+
+      <!-- Precio -->
+      <div class="col-md-6">
+        <label for="priceForm" class="form-label">Precio</label>
+        <input 
+          type="number" 
+          id="priceForm"
+          class="form-control" 
+          formControlName="price" 
+          [ngClass]="{
+            'is-invalid': form.controls['price'].touched && form.controls['price'].hasError('required') || form.controls['price'].hasError('min')
+          }">
+        <div *ngIf="form.controls['price'].touched && form.controls['price'].hasError('required')" class="invalid-feedback">
+          Campo requerido.
+        </div>
+        <div *ngIf="form.controls['price'].touched && form.controls['price'].hasError('min')" class="invalid-feedback">
+          El precio debe ser mayor a 0.
+        </div>
+      </div>
+      <div class="col-md-12">
+        <label for="stock" class="form-label">Stock</label>
+        <input 
+          type="number" 
+          id="stock"
+          class="form-control" 
+          formControlName="stock" 
+          [ngClass]="{
+            'is-invalid': form.controls['stock'].touched && form.controls['stock'].hasError('required')
+          }">
+        <div *ngIf="form.controls['stock'].touched && form.controls['stock'].hasError('required')" class="invalid-feedback">
+          Campo requerido.
+        </div>
+        <div *ngIf="form.controls['stock'].touched && form.controls['stock'].hasError('min')" class="invalid-feedback">
+          El Stock debe ser mayor a 0.
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- Marca -->
+      <div class="col-md-6">
+        <label for="brandForm" class="form-label">Marca</label>
+        <input 
+          type="text" 
+          id="brandForm" 
+          class="form-control" 
+          formControlName="brand" 
+          [ngClass]="{
+            'is-invalid': form.controls['brand'].touched && form.controls['brand'].hasError('required')
+          }">
+        <div *ngIf="form.controls['brand'].touched && form.controls['brand'].hasError('required')" class="invalid-feedback">
+          Campo requerido.
+        </div>
+      </div>
+
+      <!-- Categoría -->
+      <div class="col-md-6">
+        <label for="categoryForm" class="form-label">Categoría</label>
+        <input 
+          type="text" 
+          id="categoryForm" 
+          class="form-control" 
+          formControlName="category" 
+          [ngClass]="{
+            'is-invalid': form.controls['category'].touched && form.controls['category'].hasError('required')
+          }">
+        <div *ngIf="form.controls['category'].touched && form.controls['category'].hasError('required')" class="invalid-feedback">
+          Campo requerido.
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- Descripción -->
+      <div class="col-md-12">
+        <label for="descriptionForm" class="form-label">Descripción</label>
+        <textarea 
+          id="descriptionForm" 
+          class="form-control" 
+          formControlName="description" 
+          [ngClass]="{
+            'is-invalid': form.controls['description'].touched && form.controls['description'].hasError('required')
+          }"></textarea>
+        <div *ngIf="form.controls['description'].touched && form.controls['description'].hasError('required')" class="invalid-feedback">
+          Campo requerido.
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- Imagen -->
+      <div class="col-md-12">
+        <label for="imgForm" class="form-label">Imagen URL</label>
+        <input 
+          type="text" 
+          id="imgForm" 
+          class="form-control" 
+          formControlName="img" 
+          [ngClass]="{
+            'is-invalid': form.controls['img'].touched && form.controls['img'].hasError('required')
+          }">
+        <div *ngIf="form.controls['img'].touched && form.controls['img'].hasError('required')" class="invalid-feedback">
+          Campo requerido.
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-center mt-4 mb-5">
+      <button 
+        type="button" 
+        (click)="toggleEdit()" 
+        class="btn btn-warning" 
+        *ngIf="!isEditing">
+        Modificar
+      </button>
+      <button 
+        type="button" 
+        (click)="update()" 
+        class="btn btn-success" 
+        *ngIf="isEditing">
+        Guardar Cambios
+      </button>
+    </div>
+  </form>
+</div>
