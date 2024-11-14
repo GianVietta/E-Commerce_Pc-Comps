@@ -202,6 +202,7 @@ export class CartComponent implements OnInit, OnDestroy{
   }
       // Iniciar el pago con PayPal
       initiatePayment(): void {
+
         this.authService.checkStatusAutentication().subscribe(isAuthenticated => {
           if (!isAuthenticated) {
             // Mostrar mensaje y redirigir al inicio de sesión si no está autenticado
@@ -213,6 +214,12 @@ export class CartComponent implements OnInit, OnDestroy{
 
           // Solo continúa con el proceso de pago si está autenticado
           console.log('Iniciando pago con monto:', this.totalAmount); // Log del monto
+
+          if(this.totalAmount == 0 ){
+            alert("Primero debes agregar productos");
+            return;
+          }
+
 
           const messageElement = document.createElement('div');
           messageElement.innerText = "Te redirigiremos a PayPal...";
