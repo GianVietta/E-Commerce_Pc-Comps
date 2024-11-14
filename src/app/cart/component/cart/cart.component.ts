@@ -216,13 +216,14 @@ export class CartComponent implements OnInit, OnDestroy{
 
           const messageElement = document.createElement('div');
           messageElement.innerText = "Te redirigiremos a PayPal...";
-          messageElement.style.position = 'fixed';
-          messageElement.style.top = '10px';
+          messageElement.style.position = 'absolute';
+          messageElement.style.zIndex='20'
+          messageElement.style.top = '55%';
           messageElement.style.left = '50%';
           messageElement.style.transform = 'translateX(-50%)';
           messageElement.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
           messageElement.style.color = 'white';
-          messageElement.style.padding = '10px';
+          messageElement.style.padding = '25px';
           messageElement.style.borderRadius = '5px';
           document.body.appendChild(messageElement);
 
