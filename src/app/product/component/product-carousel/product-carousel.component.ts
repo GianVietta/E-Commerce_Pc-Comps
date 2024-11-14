@@ -7,6 +7,7 @@ import { CategoryCarouselComponent } from '../category-carousel/category-carouse
 import { User } from '../../../auth/interface/auth';
 import { AuthService } from '../../../auth/service/auth.service';
 import { Router, RouterModule } from '@angular/router';
+import { CartService } from '../../../cart/service/cart.service';
 
 
 
@@ -26,6 +27,7 @@ export class ProductCarouselComponent implements OnInit {
   showCarousel = true;
   filteredProducts: Product[] = [];
   
+  cs=inject(CartService);
   authService=inject(AuthService);
   ps=inject(ProductService);
   cd = inject(ChangeDetectorRef);
@@ -85,7 +87,41 @@ export class ProductCarouselComponent implements OnInit {
   }
 
   addToCart(productId : string){
-    console.log("agregado al carrito");
+    //Obtener el producto por su ID
+    this.ps.getProductByid(productId).subscribe({
+      next: (product: Product)=>{
+        //Buscar si el producto existe en el carrito 
+        this.cs.getCart().subscribe({
+          next:(cart)=>{
+            // Buscar si el producto ya está en el carrito
+            const existingCartItem= cart.products.find(item=>item.idProduct===productId);
+            // Si el producto ya está en el carrito, validar que no exceda el stock
+            const currentQuantity= existingCartItem? existingCartItem.quantity:0;   
+            //Validar si agregar una unidad mas excede el stock 
+            if(currentQuantity+1>product.stock){
+              window.alert('No se pueden agregar mas productos, porque supera el stock disponible. ');
+              console.warn('No se pueden agregar mas productos, porque supera el stock disponible. ');
+              return;
+            }
+            //Si hay suficiente stock, agregar el producto al carrito 
+            this.cs.addProductToCart(productId,1).subscribe({
+              next: ()=>{
+                console.log("Agregado Correctamente");
+              },
+              error: (e: Error)=>{
+                console.log(e.message);
+              }
+            });
+          },
+          error: (e:Error)=>{
+            console.error('Error al obtener el carrito: ',e.message);
+          }
+        });
+      },
+      error: (e:Error)=>{
+        console.error('Error al obtener el producto: ',e.message);
+      }
+    });
   }
 
   removeProduct(product:Product){
@@ -101,8 +137,6 @@ export class ProductCarouselComponent implements OnInit {
     
   }
 
-  updateProduct(productId : String){
-    console.log("YA TAS READY PAL UPDATE");
-  }
+
 
 }

@@ -108,19 +108,13 @@ body, html {
     margin-right: 10px;
 }
 
-.login-icon, .cart-icon {
-    width: auto;
+.login-icon, .cart-icon, .add-icon {
+    margin: auto 10px;
+    width: 30px;
     height: 60%;
     max-height: 80px;
     margin-left: 20px;
     cursor: pointer;
-}
-
-.add-icon {
-    width: 30px;
-    height: auto;
-    margin-left: 10px;
-    cursor:pointer;
 }
 
 @media (max-width: 768px) {
@@ -135,4 +129,20 @@ body, html {
     .user-cart-container img {
         width: 25px;
     }
+}
+::ng-deep .custom-dialog-container .mat-dialog-container {
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    background: transparent !important; /* Ensures no background color shows */
+    border: none !important;
+    max-width: none; /* Allows dialog to occupy full width */
+    width: 100%; /* Ensures dialog fills the specified width */
+}
+
+::ng-deep .custom-dialog-container {
+    background-color: transparent !important; /* Removes background if any */
+}
+::ng-deep .mat-dialog-container {
+    background-color: transparent !important;
 }

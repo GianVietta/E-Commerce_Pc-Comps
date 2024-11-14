@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment.development';
-import { map, Observable, switchMap } from 'rxjs';
+import { map, Observable, of, switchMap } from 'rxjs';
 import { Cart } from '../interface/cart';
 import { Product } from '../../product/interface/product';
 import { CartItem } from '../interface/cart-item';
@@ -33,9 +33,30 @@ export class CartService {
     );
   }
   //Agregar producto al carrito 
-  addProductToCart(idProduct: string, quantity: number): Observable<Cart>{
-    return this.http.post<Cart>(`${this.urlBase}/products`,{idProduct,quantity});
+  addProductToCart(idProduct: string, quantity: number): Observable<Cart> {
+    return this.getCart().pipe(
+      switchMap(cart => {
+        // Verificar si el producto ya está en el carrito
+        const existingProductIndex = cart.products.findIndex(p => p.idProduct === idProduct);
+        if (existingProductIndex !== -1) {
+          // Si existe, actualiza la cantidad
+          cart.products[existingProductIndex].quantity += quantity;
+        } else {
+          // Si no existe, agregar nuevo producto
+          cart.products.push({ idProduct, quantity });
+        }
+  
+        // Recalcular el monto total
+        return this.calculateTotalAmount(cart).pipe(
+          switchMap(updatedCart => {
+            // Actualiza el carrito
+            return this.http.put<Cart>(`${this.urlBase}/1`, updatedCart); // `1` es el id del carrito
+          })
+        );
+      })
+    );
   }
+  
   // Actualizar la cantidad de un producto en el carrito
   updateProductQuantity(idProduct: string, quantity: number): Observable<Cart> {
     return this.getCart().pipe(
@@ -52,7 +73,7 @@ export class CartService {
               // Actualizar solo el carrito con idUser = 1
               const idUser= updatedCart.idUser;
               updatedCart.idUser= '1';
-              return this.http.put<Cart>(`${this.urlBase}/${idUser}`, updatedCart); // Actualiza con idUser=1
+              return this.http.put<Cart>(`${this.urlBase}/${updatedCart.id}`, updatedCart); // Actualiza con idUser=1
             })
           );
         } else {
@@ -62,6 +83,10 @@ export class CartService {
     );
   }
   private calculateTotalAmount(cart: Cart): Observable<Cart> {
+    if(cart.products.length===0){
+      cart.totalAmount=0;
+      return of(cart);
+    }
     return new Observable(observer => {
       let totalAmount = 0;
       let completedRequests = 0;
@@ -92,8 +117,8 @@ export class CartService {
         return this.calculateTotalAmount(cart).pipe(
           switchMap(updatedCart => {
             const idUser= updatedCart.idUser;
-            updatedCart.idUser= '1';
-            return this.http.put<Cart>(`${this.urlBase}/${idUser}`, updatedCart); // Actualiza el carrito
+            updatedCart.id= '1';
+            return this.http.put<Cart>(`${this.urlBase}/${updatedCart.id}`, updatedCart); // Actualiza el carrito
           })
         );
       })

@@ -16,7 +16,8 @@
              (click)="login()">
         <img src="resources/icons/header/cart.svg"
              alt="Carrito"
-             class="cart-icon">
+             class="cart-icon"
+             (click)="cart()">
       </ng-container>
 
       <!-- Íconos para usuarios autenticados que son administradores -->
@@ -63,13 +64,11 @@
             </div>
           </div>
         </div>
-        <div class="cart-item" (click)="cart()">
         <img src="resources/icons/header/cart.svg"
              alt="Carrito"
-             class="cart-icon">
-            </div>
+             class="cart-icon"
+             (click)="cart()">
       </ng-container>
-
     </div>
   </div>
 </header>

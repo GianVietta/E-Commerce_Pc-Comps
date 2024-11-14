@@ -9,6 +9,7 @@ import { User } from '../../interface/auth';
 import { RegisterComponent } from '../register/register.component';
 import { CommonModule } from '@angular/common';
 import { CustomValidators } from '../register/validators/costum-validators';
+import { Overlay } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,7 @@ import { CustomValidators } from '../register/validators/costum-validators';
 export class LoginComponent {
 
   errorMessage: string | null = null;
-  constructor( public dialog : MatDialog){}
+  constructor( public dialog : MatDialog, private overlay: Overlay){}
   
   data = inject(MAT_DIALOG_DATA);
   readonly dialogRef = inject(MatDialogRef<LoginComponent>);
@@ -55,6 +56,7 @@ export class LoginComponent {
       });
 
   }
+  
 
   cancelar(){
     this.dialogRef.close();
@@ -65,8 +67,8 @@ export class LoginComponent {
       disableClose : true , 
       autoFocus: true ,
       closeOnNavigation : false ,
-      position : { top : '50px'},
-      width : '1200px',
+      scrollStrategy: this.overlay.scrollStrategies.reposition(),
+      width : '600px',
       data : {
         tipo : 'REGISTER'
       }
