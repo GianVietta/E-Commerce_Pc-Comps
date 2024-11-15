@@ -5,11 +5,12 @@ import { LoginComponent } from '../../auth/component/login/login.component';
 import { AuthService } from '../../auth/service/auth.service';
 import { User } from '../../auth/interface/auth';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule,RouterModule],
+  imports: [CommonModule,RouterModule, FormsModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
   encapsulation: ViewEncapsulation.Emulated
@@ -18,6 +19,8 @@ export class HeaderComponent {
   readonly dialog = inject(MatDialog);
   authService = inject(AuthService);
   router = inject(Router);
+  searchQuery: string = '';
+
 
   isAuthenticated = false;
   isAdminUser = false;
@@ -89,5 +92,14 @@ export class HeaderComponent {
         }
       );
     });
+  }
+
+  onSearch() {
+    if (this.searchQuery.trim()) {
+      this.router.navigate(['/search-results'], { queryParams: { query: this.searchQuery } });
+    }else{
+      console.log("Entra");
+      console.log(this.searchQuery);
+    }
   }
 }

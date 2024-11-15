@@ -537,7 +537,7 @@
       "brand": "AMD ",
       "description": "About this item Includes advanced Radeon Vega 8 graphics, no expensive graphics card required Can deliver smooth high definition performance in the world's most popular games 4 processing cores, bundled with the quiet AMD Wraith stealth cooler 4.0 GHz max boost, unlocked for overclocking, 6 MB cache, DDR 2933 support For the advanced socket AM4 platform. Base clock 3.6 GHz",
       "category": "CPU",
-      "stock": 28,
+      "stock": 27,
       "img": "https://m.media-amazon.com/images/I/81DdgQpbMqL._AC_SX466_.jpg"
     },
     {
@@ -645,25 +645,8 @@
     {
       "id": "1",
       "idUser": "",
-      "totalAmount": 470,
-      "products": [
-        {
-          "idProduct": "756fcd68-9cbe-46e0-b09c-88141d808b80",
-          "quantity": 1
-        },
-        {
-          "idProduct": "ddcc98b4-3070-4540-a0df-166e9bb96502",
-          "quantity": 1
-        },
-        {
-          "idProduct": "d8f327b2-c7d7-4918-896c-379b7422bfe4",
-          "quantity": 1
-        },
-        {
-          "idProduct": "a5029723-a24f-463c-81cf-d88057c693df",
-          "quantity": 1
-        }
-      ]
+      "totalAmount": 0,
+      "products": []
     }
   ],
   "sales": [
@@ -731,6 +714,18 @@
         },
         {
           "idProduct": "a5029723-a24f-463c-81cf-d88057c693df",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "95dbc0d2-61e4-4c44-a3dc-35d767844d5d",
+      "idUser": "75be800c-b9dd-4f69-9ea3-95d2304645e9",
+      "date": "2024-11-15T04:49:40.660Z",
+      "totalAmount": 95,
+      "products": [
+        {
+          "idProduct": "f6ca08e8-6bd5-4b08-9204-3217182859c5",
           "quantity": 1
         }
       ]

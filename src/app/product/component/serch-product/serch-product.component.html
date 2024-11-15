@@ -1,0 +1,42 @@
+<h2>Resultados de búsqueda de: "{{ query }}"</h2>
+
+<!-- Mostrar la grilla solo si hay productos -->
+<div class="product-grid" *ngIf="products.length > 0; else noResults">
+  <ng-container *ngFor="let producto of products">
+    <ng-container *ngIf="isAdmin">
+      <div class="product-card" [routerLink]="['/product', producto.id]">
+        <span class="category">{{ producto.category }}</span>
+        <h3 class="product-name">{{producto.name}}</h3>
+        <h5>{{producto.brand}}</h5>
+        <img [src]="producto.img" [alt]="producto.name">
+        <p class="price">${{producto.price}}</p>
+        <button class="remove-button" (click)="removeProduct(producto); $event.stopPropagation()">
+          <img src="resources/icons/carousel/trash-red.svg" alt="trash" class="trash-icon">
+        </button>
+        <button class="update-button" (click)="$event.stopPropagation()" [routerLink]="['/update-product', producto.id]">
+          <img src="resources/icons/carousel/pencil-solid.svg" alt="update" class="update-icon">
+        </button>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="!isAdmin">
+      <div [ngClass]="producto.stock > 0 ? 'product-card' : 'product-card-NoStock'" [routerLink]="['/product', producto.id]">
+        <span class="category">{{ producto.category }}</span>
+        <h3 class="product-name">{{producto.name}}</h3>
+        <h5>{{producto.brand}}</h5>
+        <img [src]="producto.img" [alt]="producto.name">
+        <p class="price">${{producto.price}}</p>
+        <button *ngIf="producto.stock > 0" class="cart-button" (click)="addToCart(producto.id); $event.stopPropagation()">
+          <img src="resources/icons/carousel/cart-plus-solid.svg" alt="cart" class="cart-icon">
+        </button>
+      </div>
+    </ng-container>
+  </ng-container>
+</div>
+
+<!-- Si no hay productos, mostrar mensaje -->
+<ng-template #noResults>
+  <div class="no-results-message">
+    <p>No se encontraron productos que coincidan con tu búsqueda.</p>
+  </div>
+</ng-template>

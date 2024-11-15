@@ -4,22 +4,23 @@
       <img src="/resources/icons/header/image-removebg-preview.png" alt="Logo" class="logo"
       (click)="inicio()">
     </div>
-    <!-- BARRA DE BUSQUEDA PROXIMAMENTE PROGRAMABLE
+    
     <div class="search-bar">
-      <input type="text" placeholder="Buscar productos..." class="search-input">
+      <input type="text" placeholder="Buscar productos..." class="search-input" [(ngModel)]="searchQuery"
+      (keyup.enter)="onSearch()">
     </div>
-    -->
+    
     <div class="user-cart-container">
       <!-- Íconos para usuarios no autenticados (Login y Carrito) -->
       <ng-container *ngIf="!isAuthenticated">
         <img src="resources/icons/header/login.svg"
-             alt="Login"
-             class="login-icon"
-             (click)="login()">
+              alt="Login"
+              class="login-icon"
+              (click)="login()">
         <img src="resources/icons/header/cart.svg"
-             alt="Carrito"
-             class="cart-icon"
-             (click)="cart()">
+              alt="Carrito"
+              class="cart-icon"
+              (click)="cart()">
       </ng-container>
 
       <!-- Íconos para usuarios autenticados que son administradores -->

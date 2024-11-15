@@ -9,6 +9,7 @@ import { UpdateProductComponent } from './product/component/update-product/updat
 import { CartPageComponent } from './cart/page/cart-page/cart-page.component';
 import { SalesPageComponent } from './sales/page/sales/sales-page.component';
 import { AuthPageComponent } from './auth/page/auth-page/auth-page.component';
+import { SerchProductComponent } from './product/component/serch-product/serch-product.component';
 
 
 export const routes: Routes = [
@@ -20,5 +21,6 @@ export const routes: Routes = [
     {path: 'new-product', component: NewProductPageComponent, canActivate:[AdminGuard]},
     {path: 'cart', component:CartPageComponent},
     {path: 'sales-page', component:SalesPageComponent},
+    {path: 'search-results', component: SerchProductComponent },
     {path: '**' , redirectTo:'' }
 ];
