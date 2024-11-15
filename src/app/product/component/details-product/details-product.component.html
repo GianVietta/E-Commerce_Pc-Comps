@@ -28,17 +28,24 @@
     <div class="product-action-section">
       <h3 class="product-price">${{ product?.price }}</h3>
       <p class="special-price">Precio especial efectivo, transferencia o depósito</p>
-      <ng-container *ngIf="product?.stock!=0">
+      <ng-container *ngIf="product?.stock!=0 && !isAdmin">
         <div class="quantity-selector">
         <label for="quantity">Cantidad</label>
         <input type="number" id="quantity" [(ngModel)]="selectedQuantity" value="0" min="0" max={{product?.stock}} class="quantity-input" />
         </div>
         <p>Stock disponible: {{product?.stock}}</p>
       <button class="btn btn-add-to-cart" (click)="addToCart()">Agregar al carrito</button>
-      </ng-container>
-      <ng-container *ngIf="product?.stock==0">
-        <p class="alert-stock">NO HAY STOCK</p>
-      </ng-container>
       <button class="btn btn-contact-seller" (click)="contactSupport()">Enviar mensaje</button>
+      </ng-container>
+      <ng-container *ngIf="product?.stock==0 && !isAdmin">
+        <p class="alert-stock">NO HAY STOCK</p>
+        <button class="btn btn-contact-seller" (click)="contactSupport()">Enviar mensaje</button>
+      </ng-container>
+      
+      <ng-container *ngIf="isAdmin">
+        <p>Stock disponible: {{product?.stock}}</p>
+      <button class="btn btn-modProduct" (click)="$event.stopPropagation()"  [routerLink]="['/update-product', product?.id]">Modificar Producto</button>
+      <button class="btn btn-removeProduct" (click)="contactSupport()">Eliminar Producto</button>
+      </ng-container>
     </div>
   </div>

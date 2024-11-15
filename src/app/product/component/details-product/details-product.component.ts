@@ -1,15 +1,17 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Product } from '../../interface/product';
 import { ProductService } from '../../service/product.service';
 import { CommonModule } from '@angular/common';
 import { CartService } from '../../../cart/service/cart.service';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from '../../../auth/service/auth.service';
+import { User } from '../../../auth/interface/auth';
 
 @Component({
   selector: 'app-details-product',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './details-product.component.html',
   styleUrls: ['./details-product.component.css']
 })
@@ -18,6 +20,9 @@ export class DetailsProductComponent implements OnInit {
   productService = inject(ProductService)
   cs = inject(CartService)
   selectedQuantity:number = 0;
+  authService=inject(AuthService);
+  isAdmin=false;
+  ps = inject(ProductService);
 
 
   constructor(
@@ -34,7 +39,21 @@ export class DetailsProductComponent implements OnInit {
         }
       })
     }
+    this.authService.checkStatusAutentication().subscribe(
+      auth => {
+    // Revisa el ID para determinar si es un administrador
+    if (this.getUser?.id === '1') {
+      this.isAdmin = true;
+    } else {
+      this.isAdmin = false;
+    }
+      }
+    );
 
+  }
+
+  get getUser(): User | undefined {
+    return this.authService.currentUser;
   }
 
   addToCart(){
@@ -90,6 +109,19 @@ export class DetailsProductComponent implements OnInit {
 
     // Abrir el enlace de WhatsApp en una nueva pestaña
     window.open(whatsappUrl, '_blank');
+  }
+
+  removeProduct(product:Product){
+    
+    if (confirm("Seguro que deseas eliminar " +`${product.name}`)) {
+      this.ps.deleteProduct(product.id).subscribe(() => {
+      window.location.reload(); // Recarga toda la página
+    });
+    alert(`${product.name}`+" Fue eliminado satisfactoriamente.");
+    }else{
+      console.log("eliminacion cancelada");
+    }
+    
   }
 
 }

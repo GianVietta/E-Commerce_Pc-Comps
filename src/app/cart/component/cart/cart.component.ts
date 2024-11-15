@@ -65,7 +65,7 @@ export class CartComponent implements OnInit{
           this.cs.resetCart().subscribe({
             next: () => {
               console.log('Carrito limpiado después del pago exitoso.');
-              this.router.navigate(['/sales']);
+              this.router.navigate(['/profile']);
             },
             error: (error) => {
               console.error('Error al limpiar el carrito:', error);

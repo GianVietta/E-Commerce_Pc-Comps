@@ -8,7 +8,7 @@
       "description": "About this item 6 Cores / 12 Threads Socket type LGA 1200 Up to 4. 3 GHz Compatible with Intel 400 series chipset based motherboards Intel Optane Memory support Cooler included",
       "category": "CPU",
       "stock": 8,
-      "img": "https://images-ext-1.discordapp.net/external/VQyRVU28sfwPAWaOSH-vNk57Y1oiVHAzuoQYL5rEylQ/https/http2.mlstatic.com/D_NQ_NP_872687-MLA43117152530_082020-O.webp?format=webp&width=414&height=473"
+      "img": "https://m.media-amazon.com/images/I/5109QxQi0IL.__AC_SX300_SY300_QL70_FMwebp_.jpg"
     },
     {
       "id": "2479f6d9-6ba5-4e45-b0eb-54daf3abb873",
@@ -127,7 +127,7 @@
       "brand": "Asus ROG Strix",
       "description": "About this item AM4 socket: Ready for AMD Ryzen 3000 and 5000 series, plus 5000 and 4000 G-series desktop processors.Bluetooth v5.2 Best gaming connectivity: PCIe 4.0-ready, dual M.2 slots, USB 3.2 Gen 2 Type-C, plus HDMI 2.1 and DisplayPort 1.2 output Smooth networking: On-board WiFi 6E (802.11ax) and Intel 2.5 Gb Ethernet with ASUS LANGuard Robust power solution: 12+2 teamed power stages with ProCool power connector, high-quality alloy chokes and durable capacitors Renowned software: Bundled 60 days AIDA64 Extreme subscription and intuitive UEFI BIOS dashboard",
       "category": "MotherBoard",
-      "stock": 0,
+      "stock": 10,
       "img": "https://m.media-amazon.com/images/I/81S9D7bqEzL._AC_SX679_.jpg"
     },
     {
@@ -137,7 +137,7 @@
       "brand": "GIGABYTE",
       "description": "About this item AMD AM5 Socket: Supports AMD Ryzen 7000 Series Processors DDR5 Compatible: 4*SMD DIMMs with AMD EXPO & Intel XMP Memory Module Support Unparalleled Performance: 12+2+2 Phases Digital VRM Solution Advanced Thermal Design & M.2 Thermal Guard: To Ensure VRM Power Stability & M.2 SSD Performance Stable Connectivity: 1*PCIe 5.0 + 2*PCIe 4.0 M.2, USB 3.2 Gen 2x2 Type-C",
       "category": "MotherBoard",
-      "stock": 1,
+      "stock": 10,
       "img": "https://m.media-amazon.com/images/I/71ipZ0RboTL._AC_SX679_.jpg"
     },
     {
@@ -147,7 +147,7 @@
       "brand": "GIGABYTE",
       "description": "About this item 5-Year Warranty AMD AM5 Socket: Supports AMD Ryzen 7000 Series Processors DDR5 Compatible: 4DIMMs with AMD EXPO and Intel XMP Memory Module Support Commanding Power Design: Twin 14 plus2 plus1 Phases with 70A Power Stage Digital VRM Solution, 8-Layer 2X Copper PCB Cutting-Edge Thermal Design: 6mm Heatpipe, Fully Covered MOSFET Heatsinks, M.2 Thermal Guard, PCIe Ultra Durable Armor Next Gen Connectivity: PCIe 5.0, PCIe 5.0 NVMe x4 M.2, Front and rear USB-C EZ-Latch: PCIe 5.0 and M.2 Connectors with a Quick Release and Screwless Design Fast Networking: 2.5GbE LAN, WiFi 6E, BT5 Dynamic Audio: Hi-Fi Audio with High-End Audio Capacitors Fine Tuning Features: RGB FUSION, Supports Addressable LED and RGB LED Strips, Smart Fan 6, Multi-key for Reset/RGB Switch/Direct to BIOS/Safe Mode, Q-Flash Plus - Update BIOS without installing CPU, Memory, and GPU",
       "category": "MotherBoard",
-      "stock": 0,
+      "stock": 25,
       "img": "https://m.media-amazon.com/images/I/81JFKzNyl+L._AC_SX679_.jpg"
     },
     {
@@ -227,17 +227,17 @@
       "brand": "maxsun AMD",
       "description": "About this item AMD Radeon RX 550 Chipset, Silver plated PCB & all solid capacitors provide lower temperature, higher efficiency & stability 9CM unique fan provide low noise and huge airflow for your GPU GPU Boost Clock / Memory Speed : up to 1183 MHz / 4GB GDDR5 / 6000 MHz Memory, Stream Processors 512, Perfect for 3D CAD/CAM working, video and photo editing, Video Games @1080p Support: DirectX 12, Shader Model 5.0, OpenGL 4.6/4.5, 4K Video Decode",
       "category": "Tarjeta de video",
-      "stock": 0,
+      "stock": 15,
       "img": "https://m.media-amazon.com/images/I/61-PIBx43BL._AC_SX679_.jpg"
     },
     {
       "id": "2c8d87c8-a9b4-463a-9760-b470eebbe456",
       "name": "990 PRO w/ Heatsink SSD 2TB, PCIe Gen4 M.2 2280 Internal Solid State Hard Drive",
-      "price": "170",
+      "price": 170,
       "brand": "SAMSUNG",
       "description": "About this item BLAZING SPEED. COOL VICTORY: Consider this a cheat code; Our Samsung 990 PRO Gen 4 with Heatsink SSD helps you reach near max performance* with lightning-fast speeds and Heatsink for improved temperature control REACH THE NEXT LEVEL: Gen4 steps up with faster transfer speeds and high-performance bandwidth; With a more than 55% improvement in random performance compared to 980 PRO, it’s here for heavy computing and faster loading THE FASTEST SSD FROM THE WORLD'S #1 FLASH MEMORY BRAND**: The speed you need for any occasion; With read and write speeds up to 7450/6900 MB/s* you’ll reach near max performance of PCIe 4.0*** powering through for any use PLAY WITHOUT LIMITS: Give yourself some space with storage capacities from 1TB to 4TB; Sync all your saves and reign supreme in gaming, video editing, data analysis and more MADE w/ PS5 IN MIND: Ultra-slim Integrated Heatsink is designed to dissipate heat from your device to stabilize its temperature and prevent performance issues; It’s compatible with PlayStation 5 and PCI-SIG D8 standard desktops and laptops",
       "category": "Almacenamiento",
-      "stock": 0,
+      "stock": 5,
       "img": "https://m.media-amazon.com/images/I/715zWolPNVL._AC_SX466_.jpg"
     },
     {
@@ -247,7 +247,7 @@
       "brand": "Kingston",
       "description": "About this item Fast start up, loading and file transfers More reliable and durable than a hard drive Multiple capacities with space for applications or a hard drive replacement",
       "category": "Almacenamiento",
-      "stock": 0,
+      "stock": 15,
       "img": "https://m.media-amazon.com/images/I/81+9rUcRVTL._AC_SX466_.jpg"
     },
     {
@@ -307,7 +307,7 @@
       "brand": "GIGABYTE",
       "description": "About this item 750W Capacity with Single +12V Rail 80 Plus Gold Certified ATX Form Factor Fully Modular Design Japanese Capacitors",
       "category": "Fuente",
-      "stock": 5,
+      "stock": 4,
       "img": "https://m.media-amazon.com/images/I/71ueFT9h8JL._AC_SX466_.jpg"
     },
     {
@@ -337,7 +337,7 @@
       "brand": "Corsair",
       "description": "About this item Advanced All-in-One CPU Cooling: Offers everything needed to keep your latest Intel or AMD CPU running at peak performance, while curbing the heat of even high-end processors. Refined Pump Head Design and 16 RGB LEDs: Contemporary pump head design, with 16 individually addressable diffused RGB LEDs, provides a unique look and stunning lighting effects. Cutting-Edge Cooling Performance: Elevate your CPU performance with liquid cooling driven by two 120mm CORSAIR AF ELITE Series AirGuide fans, delivering powerful PWM-controlled airflow between 450 and 1,850 RPM. Unite Your Setup: Powerful CORSAIR iCUE software enables you to control and synchronize your cooler’s RGB lighting with all iCUE compatible devices, monitor CPU and coolant temperatures, and adjust fan and pump speeds. Specialized Cooling Modes for Quiet Operation: Zero RPM fan and Variable Pump Speed specialized cooling modes in iCUE keep noise to a minimum when your system is idle or under light loads.",
       "category": "Refrigeracion",
-      "stock": 5,
+      "stock": 4,
       "img": "https://m.media-amazon.com/images/I/51NoQQBG+ML._SX522_.jpg"
     },
     {
@@ -457,7 +457,7 @@
       "brand": "G.SKILL",
       "description": "About this item Trident Z Royal Series, designed specifically for AMD Ryzen B550 and X570 Series; Intel Z390, Z490 and newer. 64GB kit containing 2 x 32GB modules, DDR4-3600, 288-Pin, CAS Latency CL18 (18-22-22-42) at 1.35V Brand: G.SKILL, Series: Trident Z Royal, Model: F4-3600C18D-64GTRS ECC: No, Dual Channel Kit, Color: Silver, Recommended Use: High Performance or Gaming Memory XMP profile support to reach up to the rated overclock speed, or run at default JEDEC profile speed Rated XMP frequency & stability depends on MB & CPU capability Check G.Skill QVL or RAM Configurator on the G.Skill website for validated motherboards Do not mix memory kits. Memory kits are sold in matched kits that are designed to run together as a set. Mixing memory kits will result in stability issues or system failure.",
       "category": "RAM",
-      "stock": 19,
+      "stock": 18,
       "img": "https://m.media-amazon.com/images/I/71ZsNlCFkgL._AC_SX466_.jpg"
     },
     {
@@ -469,14 +469,201 @@
       "category": "CPU",
       "stock": 5,
       "img": "https://m.media-amazon.com/images/I/61lutQuXUoL._AC_SX466_.jpg"
+    },
+    {
+      "id": "0855a830-f4c2-4f4f-a072-1c5185abaf92",
+      "name": "Athlon 3000G 2-Core, 4-Thread Unlocked Desktop Processor with Radeon Graphics",
+      "price": "50",
+      "brand": "AMD",
+      "description": "About this item 2 cores and 4 processing threads for smooth and responsive computing Advanced AMD Radeon graphics built-in for 720p esports gaming out-of-the-box Cutting-edge ‘Zen’ processor architecture has the power you need to harness the power of graphics card upgrades for HD plus 1080p gaming The new Athlon 3000G is unlocked for overclocking 35W TDP, near-silent cooler included",
+      "category": "CPU",
+      "stock": 15,
+      "img": "https://m.media-amazon.com/images/I/61THc9DLMCL._AC_SX466_.jpg"
+    },
+    {
+      "id": "1e86e684-4baf-4fa2-8e52-5cdb1cb11d8d",
+      "name": "TM30 Performance Thermal Paste | Ultra-Low Thermal Impedance CPU/GPU | 3 Grams|w/applicator, silver for Desktop",
+      "price": "8",
+      "brand": "Corsair",
+      "description": "About this item Enthusiast CPU Thermal Compound: Premium Zinc Oxide based thermal compound for optimal thermal performance. Cools your CPU and GPU: Install new, or replace existing thermal compound on your CPU and GPU to improve heat transfer and lower temperatures. Improved CPU Cooling: Ultra-low thermal impedance lowers CPU temperatures vs common thermal paste. Installation Made Easy: An included application stencil and spreader take the guesswork out of applying XTM50 to your CPU cooler. Filling the Gap: XTM50’s low-viscosity allows it to easily fill microscopic abrasions and channels for peak thermal transfer. Long Service Life: XTM50’s high-stability liquid compound lasts for years with no drying, cracking or change in consistency. Safe For You And Your PC: Non-conductive and contains zero volatile compounds.",
+      "category": "Refrigeracion",
+      "stock": 50,
+      "img": "https://m.media-amazon.com/images/I/5177kdgQFtL._AC_SX466_.jpg"
+    },
+    {
+      "id": "1a6ab4fe-670a-4829-a787-72059a4a3518",
+      "name": "FD8350FRHKBOX FX-8350 FX-Series 8-Core Black Edition Processor",
+      "price": "90",
+      "brand": "AMD",
+      "description": "About this item Platform: Desktop Frequency: 4.0/4.2ghz (base/overdrive) Cores: 8 Cache: 8/8mb (l2/l3) Socket type: am3Plus Power wattage: 125w Frequency: 4.0/4.2ghz (base/overdrive) Cores: 8 Cache: 8/8mb (l2/l3) Socket type: am3+ Power wattage: 125w",
+      "category": "CPU",
+      "stock": 20,
+      "img": "https://m.media-amazon.com/images/I/614qlodNVuL._AC_SX466_.jpg"
+    },
+    {
+      "id": "5ca88132-d7bd-4386-aa47-41f413a23b90",
+      "name": "GeForce VD7626 RTX 2060 VENTUS GP OC Graphics Board",
+      "price": "200",
+      "brand": "MSI",
+      "description": "About this item Memory Speed:14 Gbps.Digital Max Resolution:7680x4320 Chipset: NVIDIA GeForce RTX 2060 Video Memory: 6GB GDDR6 Memory Interface: 192-bit Output: DisplayPort x 3 (v1.4a) / HDMI 2.0b x 1 Digital maximum resolution: 7680 x 4320",
+      "category": "Tarjeta de video",
+      "stock": 7,
+      "img": "https://m.media-amazon.com/images/I/71HwJ7jcPIS.__AC_SY300_SX300_QL70_FMwebp_.jpg"
+    },
+    {
+      "id": "f4a1eb5b-ad3e-499c-96d7-c34db6bec871",
+      "name": "GeForce GTX 1080 Ti FTW3 Gaming, 11GB GDDR5X, iCX Technology - 9 Thermal Sensors & RGB LED G/P/M",
+      "price": "290",
+      "brand": "EVGA",
+      "description": "About this item Real Base Clock: 1569 MHz/Real Boost Clock: 1683 MHz; Memory Detail: 11264MB GDDR5X.Requirements:Windows 10 32/64bit, Windows 8 32/64bit, Windows 7 32/64bit EVGA iCX Technology - 9 additional temp sensors to monitor Memory and VRM GPU/Memory/PWM Thermal Status Indicator RGB LEDs. Resolution and refresh- maximum monitors supported: 4. Maximum refresh rate: 240Hz , maximum digital : 7680 x 4320 New vented heatsink fin design and pin fins for optimized airflow Safety fuse to protect components from damage due to improper installation or other component failures",
+      "category": "Tarjeta de video",
+      "stock": 8,
+      "img": "https://m.media-amazon.com/images/I/71bav0bGFEL._AC_SX679_.jpg"
+    },
+    {
+      "id": "d4528ce8-781c-4d7a-b9d0-af83cdb1c8c6",
+      "name": "Core i3-12100F 12th Generation Desktop Processor (Base Clock: 3.3GHz, 4 Cores, LGA1700, RAM DDR4 and DDR5 up to 128GB) BX8071512100F",
+      "price": "77",
+      "brand": "Intel",
+      "description": "About this item LGA 1700 Intel Socket, Intel Core i3 Clock frequency 33 GHz - turbo speed up to 43 GHz Quad Core Desktop Computer Processor 8 Threads",
+      "category": "CPU",
+      "stock": 18,
+      "img": "https://m.media-amazon.com/images/I/51h+4XuLsSL._AC_SX466_.jpg"
+    },
+    {
+      "id": "f6ca08e8-6bd5-4b08-9204-3217182859c5",
+      "name": "Ryzen 3 3200G 4-Core Unlocked Desktop Processor with Radeon Graphics",
+      "price": "95",
+      "brand": "AMD ",
+      "description": "About this item Includes advanced Radeon Vega 8 graphics, no expensive graphics card required Can deliver smooth high definition performance in the world's most popular games 4 processing cores, bundled with the quiet AMD Wraith stealth cooler 4.0 GHz max boost, unlocked for overclocking, 6 MB cache, DDR 2933 support For the advanced socket AM4 platform. Base clock 3.6 GHz",
+      "category": "CPU",
+      "stock": 28,
+      "img": "https://m.media-amazon.com/images/I/81DdgQpbMqL._AC_SX466_.jpg"
+    },
+    {
+      "id": "59f98119-9c39-4c04-97a6-bd430466f4b8",
+      "name": "Pentium Gold G7400 3.7GHz 2 Core LGA 1700 Desktop Processor OEM/Tray",
+      "price": "90",
+      "brand": "Intel",
+      "description": "About this item Cpu model.speed : 3.7 GHz Wattage : 65.0 watts",
+      "category": "CPU",
+      "stock": 4,
+      "img": "https://m.media-amazon.com/images/I/51SaOy27+bL._AC_SX466_.jpg"
+    },
+    {
+      "id": "63218cc8-dd46-43f7-913d-5814f065ff6b",
+      "name": "VENGEANCE RGB PRO DDR4 RAM 32GB (2x16GB) 3200MHz CL16-20-20-38 1.35V Intel AMD Desktop Computer Memory - Black (CMW16GX4M2C3200C16)",
+      "price": "85",
+      "brand": "CORSAIR",
+      "description": "About this item Dynamic Multi-Zone RGB Lighting: 10 Ultra-bright RGB LEDs per module. Take control in CORSAIR iCUE software and synchronize lighting with other CORSAIR RGB products, including CPU coolers, keyboards and fans. Custom Performance PCB provides the highest signal quality for the greatest level of performance and stability. Tightly Screened Memory: Carefully screened ICs for extended overclocking potential. Maximum Bandwidth and Tight Response Times Optimized for peak performance on the latest Intel and AMD DDR4 motherboards. Requires no extra wires or cables for a clean and seamless install. Supports XMP 2.0: A single BIOS setting is all that’s required to set your memory to its ideal performance settings, for for optimum performance. SPD Latency: 15-15-15-36",
+      "category": "RAM",
+      "stock": 28,
+      "img": "https://m.media-amazon.com/images/I/71e6YWJio-L._AC_SX466_.jpg"
+    },
+    {
+      "id": "122e8b7d-7805-4fb0-b03b-918de7286205",
+      "name": "GeForce RTX 4060 AERO OC 8G Graphics Card, 3X WINDFORCE Fans, 8GB 128-bit GDDR6, GV-N4060AERO OC-8GD Video Card",
+      "price": "320",
+      "brand": "GIGABYTE",
+      "description": "About this item Powered by NVIDIA DLSS 3, ultra-efficient Ada Lovelace architechture, and full ray tracing 4th Generation Tensor Cores: Up to 4x performance with DLSS 3 3rd Generation RT Cores: Up to 2x ray tracing performance Powered by GeForce RTX 4060 Integrated with 8GB GDDR6 128-bit memory interface WINDFORCE Cooling System, RGB Fusion, Dual BIOS, Protection metal back plate",
+      "category": "Tarjeta de video",
+      "stock": 23,
+      "img": "https://m.media-amazon.com/images/I/71exYzoMrqL._AC_SX679_.jpg"
+    },
+    {
+      "id": "74b769b8-11c4-4036-88ea-4bb16e23ca89",
+      "name": "GV-R76GAMING OC-8GD Radeon RX 7600 Gaming OC 8G Graphics Card, 3X WINDFORCE Fans 8GB 128-bit GDDR6, Video Card",
+      "price": "270",
+      "brand": "GIGABYTE",
+      "description": "About this item Powered by Radeon RX 7600 Integrated with 8GB GDDR6 128-bit memory interface PCI Express 4.0 Support WINDFORCE cooling system, RGB Fusion, Protection metal backplate HDMI 2.1 x1, DisplayPort 2.1 x2",
+      "category": "Tarjeta de video",
+      "stock": 19,
+      "img": "https://m.media-amazon.com/images/I/71+Lh5QLfyL._AC_SX679_.jpg"
+    },
+    {
+      "id": "d2e31e28-3035-41b2-b936-5bdac1d6d086",
+      "name": "Gaming GeForce GT 1030 4GB GDRR4 64-bit HDCP Support DirectX 12 DP/HDMI Single Fan OC Graphics Card (GT 1030 4GD4 LP OC)",
+      "price": "100",
+      "brand": "MSI",
+      "description": "About this item Chipset: NVIDIA GeForce GT 1030 Video Memory: 4GB GDDR4 Boost Clock: 1430 MHz Memory Interface: 64-bit Output: DisplayPort x 1 (v1.4a) / HDMI 2.0b x 1",
+      "category": "Tarjeta de video",
+      "stock": 10,
+      "img": "https://m.media-amazon.com/images/I/71AzaNckGgL._AC_SX679_.jpg"
+    },
+    {
+      "id": "7a931f7c-ef29-4221-8030-a08ecb689d69",
+      "name": "Computer Video Graphic Cards GeForce GTX 1050 TI GAMING X 4G, 4GB",
+      "price": "190",
+      "brand": "MSI",
+      "description": "About this item Chipset: NVIDIA GeForce GTX 1050 It Video memory: 4gb gddr5 Memory interface: 128-bit; Cores: 768 units Max. resolution: 2560 x 1600 support 3x display monitorsAvoid using unofficial software Card dimension (millimeter): 229 x 131 x 39. Digital maximum resolution: 7680 x 4320",
+      "category": "Tarjeta de video",
+      "stock": 1,
+      "img": "https://m.media-amazon.com/images/I/81VBPk5pnLL._AC_SX679_.jpg"
+    },
+    {
+      "id": "90cceb06-0a54-4b76-88d2-08b27e469d8c",
+      "name": "WD_BLACK 1TB SN770 NVMe Internal Gaming SSD Solid State Drive - Gen4 PCIe, M.2 2280, Up to 5,150 MB/s - WDS100T3X0E",
+      "price": "73",
+      "brand": "Western Digital",
+      "description": "About this item Get into the game fast as you zoom past load times with blazing speeds of up to 5,150MB/s(1) (1TB and 2TB models)..date transfer rate:5150.0 megabytes_per_second.Sequential Write Performance : 4900MB/s Equipped with a PCIe Gen4 interface(4), the WD_BLACK SN770 NVMe SSD helps fuel in-game responsiveness, minimize stutter, and provide smooth streaming for a performance boost you can see and feel.​ Get tons of space for your latest games, future updates, and downloadable content with capacities up to 2TB(2).​ Supports future games developed for Microsoft’s DirectStorage technology for faster load times.​ Optimize peak performance in gaming mode and monitor your drive’s health with the WD_BLACK Dashboard (Windows only) so you can game with confidence using this reliable drive from a trusted brand.​ (1)Based on read speed. 1 MB/s = 1 million bytes per second. Based on internal testing; performance may vary depending upon host device, usage conditions, drive capacity, and other factors. (2)1GB = 1 billion bytes and 1TB = 1 trillion bytes. Actual user capacity may be less depending on operating environment. (4)PCIe Gen4 storage technology requires a compatible motherboard. WD_BLACK SN770 is backwards-compatible with PCIe Gen3.",
+      "category": "Almacenamiento",
+      "stock": 16,
+      "img": "https://m.media-amazon.com/images/I/71Sr1zjPhwL._AC_SX466_.jpg"
+    },
+    {
+      "id": "1322683a-b54d-40c1-b0ca-e1840b73a533",
+      "name": "X870 Pro RS AMD Ryzen Socket AM5 ATX Motherboard DDR5 DIMMs 8000 MHz 256 GB PCIe Gen5 SATA3 6.0 Gb/s",
+      "price": "200",
+      "brand": "ASRock",
+      "description": "About this item 14 + 2 + 1 POWER PHASE DESIGN + DR.MOS DURABLE CAPS WITH 1000uF CAPACITANCE DUAL USB4 TYPE-C TOOLLESS MULTI-LAYER M.2 HEATSINK BLAZING M.2 (PCIE GEN5 x4) M.2 BOTTOM HEATSINK",
+      "category": "MotherBoard",
+      "stock": 20,
+      "img": "https://m.media-amazon.com/images/I/81WJ6bUROZL._AC_SX679_.jpg"
+    },
+    {
+      "id": "918a3588-8144-4f6b-8287-7bbec45a2cf1",
+      "name": "PRO B760-P WiFi DDR4 ProSeries Motherboard (Supports 12th/13th/14th Gen Intel Processors, LGA 1700, DDR4, PCIe 4.0, M.2, 2.5Gbps LAN, USB 3.2 Gen2, HDMI/DP, Wi-Fi 6E, Bluetooth 5.3, ATX)",
+      "price": "150",
+      "brand": "MSI",
+      "description": "About this item Supports 12th/13th Gen Intel Core, Pentium Gold and Celeron processors for LGA 1700 socket Supports DDR4 Memory, Dual Channel DDR4 5333+MHz (OC) Enhanced Power Design: 12+1 Duet Rail Power System with P-PAK, 8-pin + 4-pin CPU power connectors, Core Boost, Memory Boost Premium Thermal Solution: Extended Heatsink, MOSFET thermal pads rated for 7W/mK, additional choke thermal pads and M.2 Shield Frozr are built for high performance system and non-stop gaming experience High Quality PCB: 6-layer PCB made by 2oz thickened copper and server grade level material",
+      "category": "MotherBoard",
+      "stock": 15,
+      "img": "https://m.media-amazon.com/images/I/91ZPVQjJ7kL._AC_SX679_.jpg"
+    },
+    {
+      "id": "1e94cfcf-566f-475a-9332-48dd56e15411",
+      "name": "MAG B550 TOMAHAWK Gaming Motherboard (AMD AM4, DDR4, PCIe 4.0, SATA 6Gb/s, M.2, USB 3.2 Gen 2, HDMI/DP, ATX, AMD Ryzen 5000 Series processors)",
+      "price": "150",
+      "brand": "MSI",
+      "description": "About this item Support for 3rd Gen AMD Ryzen processors and future AMD Ryzen processors with BIOS update.Audio ports (Rear): 5plus Optical S/PDIF (Realtek ALC1200 / ALC1220P Codec) Supports dual channel DDR4 memory up to 128 GB (4866 MHz) On-board dual LAN: 2.5G LAN plus Gigabit LAN Mystic Light: RGB LED lighting and extendable pin headers – 16.8 million colors / 29 effects Audio Boost rewards your ears with studio grade sound quality for immersive gaming experiences Premium Thermal Solution: Aluminum Cover with additional choke thermal pad rated for 7W/mk and PCB with 2 ounce thickened copper Lightning Fast Game Experience: PCIe 4.0, Lightning Gen 4 M.2 with M.2 Shield Frozr, AMD Turbo USB 3.2 GEN 2",
+      "category": "MotherBoard",
+      "stock": 10,
+      "img": "https://m.media-amazon.com/images/I/910jyKG9QlL._AC_SX679_.jpg"
     }
   ],
   "cart": [
     {
       "id": "1",
       "idUser": "",
-      "totalAmount": 0,
-      "products": []
+      "totalAmount": 470,
+      "products": [
+        {
+          "idProduct": "756fcd68-9cbe-46e0-b09c-88141d808b80",
+          "quantity": 1
+        },
+        {
+          "idProduct": "ddcc98b4-3070-4540-a0df-166e9bb96502",
+          "quantity": 1
+        },
+        {
+          "idProduct": "d8f327b2-c7d7-4918-896c-379b7422bfe4",
+          "quantity": 1
+        },
+        {
+          "idProduct": "a5029723-a24f-463c-81cf-d88057c693df",
+          "quantity": 1
+        }
+      ]
     }
   ],
   "sales": [
@@ -520,6 +707,30 @@
       "products": [
         {
           "idProduct": "d0b02077-2ab2-4e21-83a2-aa420517aa5b",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "0ea96dfb-8f60-48b9-ab83-b07bee8954a4",
+      "idUser": "75be800c-b9dd-4f69-9ea3-95d2304645e9",
+      "date": "2024-11-15T03:01:41.350Z",
+      "totalAmount": 470,
+      "products": [
+        {
+          "idProduct": "756fcd68-9cbe-46e0-b09c-88141d808b80",
+          "quantity": 1
+        },
+        {
+          "idProduct": "ddcc98b4-3070-4540-a0df-166e9bb96502",
+          "quantity": 1
+        },
+        {
+          "idProduct": "d8f327b2-c7d7-4918-896c-379b7422bfe4",
+          "quantity": 1
+        },
+        {
+          "idProduct": "a5029723-a24f-463c-81cf-d88057c693df",
           "quantity": 1
         }
       ]

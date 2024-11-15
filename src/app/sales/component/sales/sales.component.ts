@@ -87,6 +87,7 @@ export class SalesComponent implements OnInit {
     });
   }
   processSalesProducts(sales: Sales[]){
+    sales.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
     sales.forEach(sale=>{
       sale.products.forEach(saleProduct=>{
         this.ss.getProductDetails(saleProduct.idProduct).subscribe({
