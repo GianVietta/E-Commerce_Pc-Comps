@@ -299,100 +299,139 @@ export class CartComponent implements OnInit{
 
 
   // Iniciar el pago con PayPal
-  initiatePayment(): void {
-
-    this.authService.checkStatusAutentication().subscribe(isAuthenticated => {
-      if (!isAuthenticated) {
-        // Mostrar mensaje y redirigir al inicio de sesión si no está autenticado
-        this.login();
-        // Redirigir a la home
-
-        return;
+initiatePayment(): void {
+  this.authService.checkStatusAutentication().subscribe(isAuthenticated => {
+    if (!isAuthenticated) {
+      // Mostrar mensaje y redirigir al inicio de sesión si no está autenticado
+      this.login();
+      const actUser: User|undefined=this.authService.currentUser;
+      if(actUser!=undefined){
+        this.userId=actUser.id;
+      }else{
+        console.log('Error el usuario de actUser es undefinded');
       }
-
-      // Solo continúa con el proceso de pago si está autenticado
-      console.log('Iniciando pago con monto:', this.totalAmount); // Log del monto
-
-      if(this.totalAmount == 0 ){
-        alert("Primero debes agregar productos");
-        return;
-      }
-
-
-      const messageElement = document.createElement('div');
-      messageElement.innerText = "Te redirigiremos a PayPal...";
-      messageElement.style.position = 'absolute';
-      messageElement.style.zIndex='20'
-      messageElement.style.top = '55%';
-      messageElement.style.left = '50%';
-      messageElement.style.transform = 'translateX(-50%)';
-      messageElement.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
-      messageElement.style.color = 'white';
-      messageElement.style.padding = '25px';
-      messageElement.style.borderRadius = '5px';
-      document.body.appendChild(messageElement);
-
-      // Eliminar el mensaje después de 3 segundos
-      setTimeout(() => {
-        document.body.removeChild(messageElement);
-      }, 3000);
-
-      const orderData = {  //se mandan los productos y el id del usuario
-        items: this.listProducts.map(item => ({
-          product: item.product,
-          quantity: item.quantity
-        })),
-        totalAmount: this.totalAmount,
-        userId: this.authService.currentUser?.id
-      };
-
-      console.log('Datos de la orden a enviar:', orderData);
-
-      // Llamada al servicio para crear la orden
-      this.ps.createOrder(orderData).subscribe({
-        next: (response) => {
-          console.log('Respuesta completa de PayPal:', response); // Log de la respuesta completa de PayPal
-
-          // Verificar si la respuesta tiene los links para aprobación
-          if (response.links) {
-            console.log('Links de PayPal encontrados:', response.links); // Log de los links
-
-            const approveLink = response.links.find((link: any) => link.rel === "approve");
-            if (approveLink) {
-              console.log('URL de aprobación encontrada:', approveLink.href); // Log del enlace de aprobación
-              window.location.href = approveLink.href; // Redirigir al enlace de aprobación
-            } else {
-              console.error('No se encontró el enlace de aprobación en la respuesta');
+      // Redirigir a la home
+      
+      return;
+    }
+    const actUser: User|undefined=this.authService.currentUser;
+    if(actUser!=undefined){
+      this.userId=actUser.id;
+    }else{
+      console.log('Error el usuario de actUser es undefinded');
+    }
+    this.cs.getCart().subscribe({
+      next: (cart: Cart)=>{
+        if(this.userId){
+          const actUser: User|undefined=this.authService.currentUser;
+          if(actUser!=undefined){
+            this.userId=actUser.id;
+          }else{
+            console.log('Error el usuario de actUser es undefinded');
+          }
+          const updatedCart={
+            ...cart,
+            idUser: this.userId
+          };
+          this.cs.updateCart(updatedCart).subscribe({
+            next:()=>{
+              console.log('Carrito actualizado correctamente. ');
+              this.proceedWithPayment();
+            },
+            error: (updateError: Error)=>{
+              console.error('Error al actualizar el carrito: ',updateError.message);
+              alert('Hubo un problema al actualizar el carrito.')
             }
-          } else {
-            console.error('Respuesta de PayPal no contiene links:', response);
-          }
-        },
-
-        error: (error: HttpErrorResponse) => {
-          // Log detallado del error
-          console.error('Error detallado al crear la orden en PayPal:', {
-            status: error.status,
-            statusText: error.statusText,
-            message: error.message,
-            error: error.error,
-            url: error.url
           });
-
-          if (error.status === 0) {
-            console.error('Error de conexión con el servidor backend');
-          } else if (error.status === 401) {
-            console.error('Error de autenticación con PayPal');
-          } else if (error.status === 400) {
-            console.error('Error en los datos enviados:', error.error);
-          } else {
-            console.error('Error inesperado:', error);
-          }
-
-          // Aquí podrías mostrar un mensaje al usuario
-          alert('Error al procesar el pago. Por favor, intente nuevamente.');
+        }else{
+          console.log('User id nulo');
         }
-      });
+      },
+      error: (e:Error)=>{
+        console.error('Error al leer el carrito. ', e.message);
+      }
+    });   
+  });
+}
+
+  
+  private proceedWithPayment(): void{
+    if(this.totalAmount == 0 ){
+      alert("Primero debes agregar productos");
+      return;
+    }
+    const messageElement = document.createElement('div');
+    messageElement.innerText = "Te redirigiremos a PayPal...";
+    messageElement.style.position = 'absolute';
+    messageElement.style.zIndex='20'
+    messageElement.style.top = '55%';
+    messageElement.style.left = '50%';
+    messageElement.style.transform = 'translateX(-50%)';
+    messageElement.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+    messageElement.style.color = 'white';
+    messageElement.style.padding = '25px';
+    messageElement.style.borderRadius = '5px';
+    document.body.appendChild(messageElement);
+
+    // Eliminar el mensaje después de 3 segundos
+    setTimeout(() => {
+      document.body.removeChild(messageElement);
+    }, 3000);
+
+    const orderData = {  //se mandan los productos y el id del usuario
+      items: this.listProducts.map(item => ({
+        product: item.product,
+        quantity: item.quantity
+      })),
+      totalAmount: this.totalAmount,
+      userId: this.authService.currentUser?.id
+    };
+
+    console.log('Datos de la orden a enviar:', orderData);
+
+    // Llamada al servicio para crear la orden
+    this.ps.createOrder(orderData).subscribe({
+      next: (response) => {
+        console.log('Respuesta completa de PayPal:', response); // Log de la respuesta completa de PayPal
+
+        // Verificar si la respuesta tiene los links para aprobación
+        if (response.links) {
+          console.log('Links de PayPal encontrados:', response.links); // Log de los links
+
+          const approveLink = response.links.find((link: any) => link.rel === "approve");
+          if (approveLink) {
+            console.log('URL de aprobación encontrada:', approveLink.href); // Log del enlace de aprobación
+            window.location.href = approveLink.href; // Redirigir al enlace de aprobación
+          } else {
+            console.error('No se encontró el enlace de aprobación en la respuesta');
+          }
+        } else {
+          console.error('Respuesta de PayPal no contiene links:', response);
+        }
+      },
+      error: (error: HttpErrorResponse) => {
+        // Log detallado del error
+        console.error('Error detallado al crear la orden en PayPal:', {
+          status: error.status,
+          statusText: error.statusText,
+          message: error.message,
+          error: error.error,
+          url: error.url
+        });
+
+        if (error.status === 0) {
+          console.error('Error de conexión con el servidor backend');
+        } else if (error.status === 401) {
+          console.error('Error de autenticación con PayPal');
+        } else if (error.status === 400) {
+          console.error('Error en los datos enviados:', error.error);
+        } else {
+          console.error('Error inesperado:', error);
+        }
+
+        // Aquí podrías mostrar un mensaje al usuario
+        alert('Error al procesar el pago. Por favor, intente nuevamente.');
+      }
     });
   }
 }

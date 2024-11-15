@@ -140,6 +140,10 @@ export class CartService {
       })
     );
   }
+  //Update cart 
+  updateCart(updatedCart: Cart): Observable<Cart>{
+    return this.http.put<Cart>(`${this.urlBase}/${updatedCart.id}`,updatedCart);
+  }
   //Obtener detalle productos
   getProductDetails(idProduct: string): Observable<Product>{
     return this.http.get<Product>(`${this.urlProducts}/${idProduct}`);
