@@ -76,8 +76,8 @@ export class DetailsProductComponent implements OnInit {
   }
 
   contactSupport() {
-    // Número de WhatsApp de soporte en formato internacional
-    const supportNumber = '2236835950'; // Reemplaza con el número real de soporte
+    // Número de WhatsApp de soporte 
+    const supportNumber = '2234461446';
 
     // Mensaje de contacto personalizado
     const supportMessage = '¡Hola! Tengo una duda sobre el servicio.';

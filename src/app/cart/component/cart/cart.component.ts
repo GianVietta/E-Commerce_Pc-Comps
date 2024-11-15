@@ -42,17 +42,25 @@ export class CartComponent implements OnInit{
     this.route.queryParams.subscribe(async params => {
     this.paymentStatus = params['paymentStatus'];
     this.userId = params['userId'];
-
+    console.log(this.userId);
       // Si el pago fue exitoso, limpia el carrito
       if (this.paymentStatus === 'success') {
         try {
           await this.updateStock(...[this.listProducts]);
-          if (this.userId !== null) {
-            await this.addNewSale(this.userId, ...[this.listProducts]);
-          } else {
-            // Maneja el caso en que userId sea null
-            console.error('El userId es nulo');
+          this.authService.checkStatusAutentication().subscribe(
+            auth => {
+              if (this.getUser==undefined) {
+                // Maneja el caso en que userId sea null
+                console.error('El userId es nulo');
+    
+              }else {
+                this.userId=this.getUser?.id;
+                console.log(this.userId);
+                this.addNewSale(this.userId, ...[this.listProducts]);
+            }
           }
+        );
+        
           // Solo limpiar el carrito si la actualización de stock fue exitosa
           this.cs.resetCart().subscribe({
             next: () => {
@@ -222,10 +230,10 @@ export class CartComponent implements OnInit{
     });
   }
   // Método asíncrono para agregar una nueva venta
-  async addNewSale(idUser: string, list: {product: Product; quantity: number}[]): Promise<void>{
+  async addNewSale(userId: string, list: {product: Product; quantity: number}[]): Promise<void>{
     const newSale: Sales = {
       id: crypto.randomUUID(), // Genera un UUID único
-      idUser: idUser, // Ajusta el id de usuario según sea necesario
+      idUser: userId, // Ajusta el id de usuario según sea necesario
       date: new Date().toISOString(), // Genera la fecha actual en formato ISO string
       totalAmount: this.totalAmount, // Ajusta el monto total según tu lógica
       products: []= list.map(item=>({

@@ -20,28 +20,37 @@ export class SalesComponent implements OnInit {
   authService = inject(AuthService);
   listSales: Sales[] = [];
   listProducts: {product: Product; quantity: number}[]=[];
-  user: User | undefined = this.authService.currentUser;
+  userId:string | undefined;
   router= inject(Router);
 
   ngOnInit(): void {
-    console.log(this.user);
-    console.log('Cargando Ventas');
-    // Si el usuario no está definido, puedes hacer un redireccionamiento a login
-    if (this.user==undefined) {
-      console.log('Usuario no autenticado');
-      // Redireccionar a la página de login o mostrar un mensaje de error
-      this.router.navigate(['/']);
-      return;
+    this.authService.checkStatusAutentication().subscribe(
+      auth => {
+        if (this.getUser==undefined) {
+          console.log('Usuario no autenticado');
+          // Redireccionar a la página de login o mostrar un mensaje de error
+          this.router.navigate(['/']);
+          return;
+        }else {
+          this.userId=this.getUser?.id;
+          console.log(this.userId);
+      }
+      this.loadSalesByUser();
     }
-    this.loadSalesByUser();
+    );
+  }
+
+  get getUser(): User | undefined {
+    return this.authService.currentUser;
   }
 
   loadSalesByUser(): void {
     this.listProducts=[];
-    if (this.user?.id === '1') {
+    if (this.userId == '1') {
+      console.log("entra");
       this.loadAllSales();
     }  
-    if (this.user?.id) {
+    else if (this.userId) {
       this.loadSalesByUserID();
     }
   }
@@ -62,7 +71,7 @@ export class SalesComponent implements OnInit {
     });
   }
   loadSalesByUserID(){
-    this.ss.getSalesByUserId(this.user!.id).subscribe({
+    this.ss.getSalesByUserId(this.userId!).subscribe({
       next: (sales: Sales[])=>{
         this.listSales= sales;
         if(sales && sales.length>0){

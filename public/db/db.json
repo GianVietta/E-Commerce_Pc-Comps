@@ -7,7 +7,7 @@
       "brand": "Intel",
       "description": "About this item 6 Cores / 12 Threads Socket type LGA 1200 Up to 4. 3 GHz Compatible with Intel 400 series chipset based motherboards Intel Optane Memory support Cooler included",
       "category": "CPU",
-      "stock": 12,
+      "stock": 8,
       "img": "https://images-ext-1.discordapp.net/external/VQyRVU28sfwPAWaOSH-vNk57Y1oiVHAzuoQYL5rEylQ/https/http2.mlstatic.com/D_NQ_NP_872687-MLA43117152530_082020-O.webp?format=webp&width=414&height=473"
     },
     {
@@ -57,7 +57,7 @@
       "brand": "GAMEMAX",
       "description": "About this item 80 Plus Gold Certified: 750W power supply delivers 90% or higher efficiency under typical loads. Achieve power savings and reduced heat, ensuring peak performance while cutting costs. ATX 3.0 & PCIe 5.0 Ready: It allows a remarkable 200% total power excursion and 300% GPU power excursion, ensuring full compatibility with high-performance NVIDIA 40 series graphics cards. The package includes a 12VHPWR Cable for hassle-free installation and future upgrades. 100% Japanese Capacitors: Crafted with premium Japanese capacitors for long-lasting reliability and stable output with 5V/3.3V DC-DC. Offering peace of mind with a 5-year warranty. ARGB SYNC: Elevate your rig's style with ARGB SYNC, seamlessly integrating vibrant lighting effects with the A-RGB software of most mainstream motherboards. Whisper-Quiet Fan: The ATX power supply is equipped with a 140mm ultra-quiet fan that maintains excellent heat dissipation without producing disturbing noise. Fully Modular: 750 watt power supply features a fully modular design that optimizes airflow and minimizes clutter. Enjoy seamless organization.",
       "category": "Fuente",
-      "stock": 10,
+      "stock": 5,
       "img": "https://m.media-amazon.com/images/I/81DlwsvmCbL._AC_SX466_.jpg"
     },
     {
@@ -267,7 +267,7 @@
       "brand": "Seagate",
       "description": "About this item IronWolf internal hard drives are the ideal solution for up to 8-bay, multi-user NAS environments craving powerhouse performance.date transfer rate:6.0 gigabits_per_second Store more and work faster with a NAS-optimized hard drive providing 8TB and cache of up to 256MB Purpose built for NAS enclosures, IronWolf delivers less wear and tear, little to no noise/vibration, no lags or down time, increased file-sharing performance, and much more Easily monitor the health of drives using the integrated IronWolf Health Management system and enjoy long-term reliability with 1M hours MTBF Five-year limited product warranty protection plan and three year Rescue Data Recovery Services included",
       "category": "Almacenamiento",
-      "stock": 9,
+      "stock": 5,
       "img": "https://m.media-amazon.com/images/I/71GKZRx898L._AC_SX466_.jpg"
     },
     {
@@ -287,7 +287,7 @@
       "brand": "GIGABYTE",
       "description": "About this item 650W Capacity with Single +12V Rail 80 Plus Gold Certified ATX Form Factor Japanese Capacitors 120mm Smart Hydraulic Bearing Fan OVP/OPP/SCP/UVP/OCP/OTP protection",
       "category": "Fuente",
-      "stock": 5,
+      "stock": 4,
       "img": "https://m.media-amazon.com/images/I/71Q7aGs9mAL._AC_SX466_.jpg"
     },
     {
@@ -457,7 +457,7 @@
       "brand": "G.SKILL",
       "description": "About this item Trident Z Royal Series, designed specifically for AMD Ryzen B550 and X570 Series; Intel Z390, Z490 and newer. 64GB kit containing 2 x 32GB modules, DDR4-3600, 288-Pin, CAS Latency CL18 (18-22-22-42) at 1.35V Brand: G.SKILL, Series: Trident Z Royal, Model: F4-3600C18D-64GTRS ECC: No, Dual Channel Kit, Color: Silver, Recommended Use: High Performance or Gaming Memory XMP profile support to reach up to the rated overclock speed, or run at default JEDEC profile speed Rated XMP frequency & stability depends on MB & CPU capability Check G.Skill QVL or RAM Configurator on the G.Skill website for validated motherboards Do not mix memory kits. Memory kits are sold in matched kits that are designed to run together as a set. Mixing memory kits will result in stability issues or system failure.",
       "category": "RAM",
-      "stock": 40,
+      "stock": 19,
       "img": "https://m.media-amazon.com/images/I/71ZsNlCFkgL._AC_SX466_.jpg"
     },
     {
@@ -479,7 +479,52 @@
       "products": []
     }
   ],
-  "sales": [],
+  "sales": [
+    {
+      "id": "9cec6680-3dbf-4bb2-aed4-c5bb0af91137",
+      "idUser": "75be800c-b9dd-4f69-9ea3-95d2304645e9",
+      "date": "2024-11-15T02:43:26.132Z",
+      "totalAmount": 750,
+      "products": [
+        {
+          "idProduct": "756fcd68-9cbe-46e0-b09c-88141d808b80",
+          "quantity": 5
+        }
+      ]
+    },
+    {
+      "id": "13d2c8a5-6579-4f9a-99ab-fdd4e78da737",
+      "idUser": "60168486-5d04-43c6-924d-4d3a8d27ef91",
+      "date": "2024-11-15T02:44:29.517Z",
+      "totalAmount": 765,
+      "products": [
+        {
+          "idProduct": "9ff24fed-2bdd-4cd0-a7a6-970f91b59e1f",
+          "quantity": 5
+        },
+        {
+          "idProduct": "f26c398e-4602-4f8f-ab4e-095585111e39",
+          "quantity": 2
+        },
+        {
+          "idProduct": "756fcd68-9cbe-46e0-b09c-88141d808b80",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "11022257-0c05-4067-8262-c146e8a29c47",
+      "idUser": "75be800c-b9dd-4f69-9ea3-95d2304645e9",
+      "date": "2024-11-15T02:50:23.118Z",
+      "totalAmount": 60,
+      "products": [
+        {
+          "idProduct": "d0b02077-2ab2-4e21-83a2-aa420517aa5b",
+          "quantity": 1
+        }
+      ]
+    }
+  ],
   "users": [
     {
       "id": "1",

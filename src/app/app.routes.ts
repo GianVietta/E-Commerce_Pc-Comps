@@ -8,12 +8,13 @@ import { AdminGuard } from './auth/guard/admin-guard';
 import { UpdateProductComponent } from './product/component/update-product/update-product.component';
 import { CartPageComponent } from './cart/page/cart-page/cart-page.component';
 import { SalesPageComponent } from './sales/page/sales/sales-page.component';
+import { AuthPageComponent } from './auth/page/auth-page/auth-page.component';
 
 
 export const routes: Routes = [
 
     {path: '', component:HomePageComponent},
-    {path: 'profile', component:ProfileComponent, canActivate:[AuthGuard]},
+    {path: 'profile', component:AuthPageComponent, canActivate:[AuthGuard]},
     {path: 'product/:id', component: DetailsProductComponent},
     {path: 'update-product/:id', component: UpdateProductComponent},
     {path: 'new-product', component: NewProductPageComponent, canActivate:[AdminGuard]},
