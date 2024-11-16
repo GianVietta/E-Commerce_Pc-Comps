@@ -57,6 +57,7 @@ Ejecuta la aplicación:
 Inicia el frontend:
 
 ```bash
+
 npm run backend
 ```
 Inicia el backend:
