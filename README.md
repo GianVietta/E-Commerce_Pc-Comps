@@ -28,9 +28,9 @@ Redirige al usuario a la página adecuada tras cancelar el pago.
 Configuración
 Actualmente, la integración usa las credenciales de sandbox para pruebas:
 
-Client ID: Configurado en las variables de entorno como PAYPAL_CLIENT_ID.
+Client ID: Configurado en las variables de entorno como PAYPAL_API_CLIENT.
 
-Client Secret: Configurado en las variables de entorno como PAYPAL_SECRET.
+Client Secret: Configurado en las variables de entorno como PAYPAL_API_SECRET.
 ## Installation
 
 Requisitos Previos:
