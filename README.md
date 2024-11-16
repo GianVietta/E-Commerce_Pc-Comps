@@ -21,8 +21,7 @@ Capturar una orden de pago
 GET /api/paypal/capture-order/
 Completa la transacción de una orden aprobada.
 
-Cancelar un Pago (Cancel Payment)
-
+Cancelar un Pago 
 GET /api/paypal/cancel-order
 Redirige al usuario a la página adecuada tras cancelar el pago.
 
