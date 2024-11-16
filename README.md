@@ -29,6 +29,7 @@ Configuración
 Actualmente, la integración usa las credenciales de sandbox para pruebas:
 
 Client ID: Configurado en las variables de entorno como PAYPAL_CLIENT_ID.
+
 Client Secret: Configurado en las variables de entorno como PAYPAL_SECRET.
 ## Installation
 
