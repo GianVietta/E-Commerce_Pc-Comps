@@ -1,27 +1,105 @@
-# LocalPixelFactory
+# Pixel Factory
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.10.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Pixel Factory es una plataforma de comercio electrónico que permite a los usuarios explorar, comparar y comprar componentes de PC. Diseñado para ser intuitivo y funcional, el sitio incluye funcionalidades como un carrito de compras, filtros y opciones de pago integradas (PayPal).
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## API Reference
 
-## Build
+PayPal API
+La integración con PayPal utiliza su entorno sandbox para pruebas y simulaciones de pagos. Esto permite verificar el funcionamiento completo de la aplicación antes de pasar a producción.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Endpoints Importantes:
 
-## Running unit tests
+Crear una orden de pago
+POST /api/paypal/create-order
+Crea una orden de pago en el entorno de sandbox.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+Capturar una orden de pago
+GET /api/paypal/capture-order/
+Completa la transacción de una orden aprobada.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Cancelar un Pago (Cancel Payment)
 
-## Further help
+GET /api/paypal/cancel-order
+Redirige al usuario a la página adecuada tras cancelar el pago.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Configuración
+Actualmente, la integración usa las credenciales de sandbox para pruebas:
+
+Client ID: Configurado en las variables de entorno como PAYPAL_CLIENT_ID.
+Client Secret: Configurado en las variables de entorno como PAYPAL_SECRET.
+## Installation
+
+Requisitos Previos:
+
+- Node.js >= 16
+
+- Angular CLI >= 17
+
+Nodemon: Instalado  para reiniciar automáticamente el servidor en desarrollo.
+Para instalarlo, ejecuta:
+```bash
+npm install nodemon -D
+
+```
+Clona el repositorio:
+
+```bash
+ git clone https://github.com/GianVietta/E-Commerce_Pc-Comps.git
+  cd -Commerce_Pc-Comps
+```
+    
+Ejecuta la aplicación:
+
+Inicia el frontend:
+
+```bash
+npm run backend
+```
+Inicia el backend:
+```bash
+npm run dev
+```
+
+Accede a la aplicación:
+
+Frontend: http://localhost:4200
+
+json-server: http://localhost:3000
+
+Backend (API): http://localhost:4000
+
+## Usage
+
+Usuario Final
+
+- Navega por el catálogo para explorar productos.
+
+- Agrega productos al carrito y ajusta las cantidades.
+
+- Realiza el pago con  PayPal.
+
+- Consulta tus historial de compras  desde la sección "Mi Perfil".
+
+Administrador
+
+- Accede a la sección Admin .
+
+- Gestiona productos, usuarios e inventario.
+
+- Visualiza el historial de compras de todos los usuarios.
+
+
+
+## Authors
+- [@AlexBarrientos](https://github.com/BarrientosAlex)  
+- [@LeopoldoBasanta](https://github.com/LeoBasan)  
+- [@LucianoDominella](https://github.com/LuchoDominella)  
+- [@GianVietta](https://github.com/GianVietta)
+
+## Documentation
+
+Puedes consultar la documentación completa del proyecto en el siguiente [enlace](https://docs.google.com/document/d/17P9ttMkUG_KrY-D9G8yVLMb3Zdi-SAAZUJvX8tMREG4/edit?tab=t.0).
