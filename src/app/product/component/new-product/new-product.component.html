@@ -18,7 +18,7 @@
             <div class="row mb-3">
                 <div class="col-12">
                     <label for="price" class="form-label">Precio del producto:</label>
-                    <input type="text" class="form-control" id="price" formControlName="price"
+                    <input type="number" class="form-control" id="price" formControlName="price"
                         [ngClass]="{'is-invalid': form.controls['price'].touched && form.controls['price'].hasError('required') || form.controls['price'].hasError('pattern') && form.controls['price'].touched}">
                     <div *ngIf="form.controls['price'].touched">
                         <div *ngIf="form.controls['price'].hasError('required')" class="text-danger">Campo requerido.</div>
