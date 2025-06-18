@@ -15,8 +15,20 @@
         placeholder="Buscar productos..."
         class="search-input"
         [(ngModel)]="searchQuery"
+        (input)="onSearchInput($event)"
         (keyup.enter)="onSearch()"
+        (focus)="showSuggestions = suggestion.length > 0"
+        (blur)="delayClearSuggestions()"
       />
+      <ul *ngIf="showSuggestions && suggestion.length > 0" class="suggestions-list">
+        <li
+          *ngFor="let product of suggestion"
+          (mousedown)="onSelectSuggestion(product)"
+        >
+          <img [src]="product.img"/>
+          <span>{{ product.name }}</span>
+        </li>
+      </ul>
     </div>
 
     <div class="user-cart-container">

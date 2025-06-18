@@ -5,6 +5,16 @@ import { LoginComponent } from '../../auth/component/login/login.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CartService } from '../../cart/service/cart.service';
+import { ProductService } from '../../product/service/product.service';
+import {
+  catchError,
+  debounceTime,
+  distinctUntilChanged,
+  of,
+  Subject,
+  Subscription,
+  switchMap,
+} from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -20,6 +30,12 @@ export class HeaderComponent {
   private cartSync = false; // Flag para no sincronizar varias veces
   router = inject(Router);
   searchQuery: string = '';
+  productService = inject(ProductService);
+
+  suggestion: any[] = [];
+  showSuggestions = false;
+  private searchSubject = new Subject<string>();
+  private searchSub: Subscription | undefined;
 
   isAuthenticated = false;
   isAdminUser = false;
@@ -36,6 +52,56 @@ export class HeaderComponent {
         this.updateSessionState();
       }
     });
+
+    // ----> NUEVO: Observer para sugerencias
+    this.searchSub = this.searchSubject
+      .pipe(
+        debounceTime(250),
+        distinctUntilChanged(),
+        switchMap((query: string) =>
+          query.length > 1
+            ? this.productService
+                .searchProducts(query)
+                .pipe(catchError(() => of([])))
+            : of([])
+        )
+      )
+      .subscribe((results: any[]) => {
+        this.suggestion = results;
+        this.showSuggestions = results.length > 0;
+      });
+  }
+
+  onSearchInput(event: Event) {
+    const value = (event.target as HTMLInputElement).value;
+    this.searchSubject.next(value);
+  }
+
+  onSelectSuggestion(product: any) {
+    this.router.navigate(['/product', product.id]);
+    this.clearSuggestions();
+  }
+
+  clearSuggestions() {
+    this.suggestion = [];
+    this.showSuggestions = false;
+  }
+
+  delayClearSuggestions() {
+    setTimeout(() => this.clearSuggestions(), 200);
+  }
+
+  onSearch() {
+    if (this.searchQuery.trim()) {
+      this.router.navigate(['/search-results'], {
+        queryParams: { query: this.searchQuery },
+      });
+    }
+    this.clearSuggestions();
+  }
+
+  ngOnDestroy() {
+    this.searchSub?.unsubscribe();
   }
 
   updateSessionState() {
@@ -111,13 +177,5 @@ export class HeaderComponent {
       panelClass: 'custom-dialog-container',
       data: { tipo: 'LOGIN' },
     });
-  }
-
-  onSearch() {
-    if (this.searchQuery.trim()) {
-      this.router.navigate(['/search-results'], {
-        queryParams: { query: this.searchQuery },
-      });
-    }
   }
 }

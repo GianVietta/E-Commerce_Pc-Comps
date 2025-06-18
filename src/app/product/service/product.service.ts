@@ -22,6 +22,12 @@ export class ProductService {
     return this.http.get<Product>(`${this.urlBase}?id=${id}`);
   }
 
+  // Buscar productos para sugerencias
+  searchProducts(query: string): Observable<any[]> {
+    return this.http.get<any[]>(
+      `${this.urlBase}?search=${encodeURIComponent(query)}`
+    );
+  }
   // Crear producto
   postProduct(product: Product): Observable<any> {
     return this.http.post<any>(this.urlBase, product);
