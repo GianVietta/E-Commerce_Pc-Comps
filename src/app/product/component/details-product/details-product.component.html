@@ -1,51 +1,80 @@
+<div class="product-details-container">
+  <div class="product-image-section">
+    <img [src]="product?.img" alt="{{ product?.name }}" class="product-image" />
+  </div>
 
-  <div class="product-details-container">
-    <div class="product-image-section">
-      <img [src]="product?.img" alt="{{ product?.name }}" class="product-image" />
+  <div class="product-info-section">
+    <h2>{{ product?.name }}</h2>
+    <div class="product-meta">
+      <span class="product-code">Cod: #{{ product?.id }}</span>
     </div>
+    <h3>Marca: {{ product?.brand }}</h3>
+    <p>{{ product?.description }}</p>
 
-    <div class="product-info-section">
-      <h2>{{ product?.name }}</h2>
-      <div class="product-meta">
-        <span class="product-code">Cod: #{{ product?.id }}</span>
-
+    <div class="payment-shipping">
+      <div class="payment-options">
+        <h4>Medios de pagos y cuotas</h4>
+        <p>Ver todos los medios de pago</p>
       </div>
-      <h3>Marca: {{ product?.brand }}</h3>
-      <p>{{ product?.description }}</p>
-
-      <div class="payment-shipping">
-        <div class="payment-options">
-          <h4>Medios de pagos y cuotas</h4>
-          <p>Ver todos los medios de pago</p>
-        </div>
-        <div class="shipping-options">
-          <h4>Medios de envío</h4>
-          <p>Ver todos los medios de envío</p>
-        </div>
+      <div class="shipping-options">
+        <h4>Medios de envío</h4>
+        <p>Ver todos los medios de envío</p>
       </div>
-    </div>
-
-    <div class="product-action-section">
-      <h3 class="product-price">${{ product?.price }}</h3>
-      <p class="special-price">Precio especial efectivo, transferencia o depósito</p>
-      <ng-container *ngIf="product?.stock!=0 && !isAdmin">
-        <div class="quantity-selector">
-        <label for="quantity">Cantidad</label>
-        <input type="number" id="quantity" [(ngModel)]="selectedQuantity" value="0" min="0" max={{product?.stock}} class="quantity-input" />
-        </div>
-        <p>Stock disponible: {{product?.stock}}</p>
-      <button class="btn btn-add-to-cart" (click)="addToCart()">Agregar al carrito</button>
-      <button class="btn btn-contact-seller" (click)="contactSupport()">Enviar mensaje</button>
-      </ng-container>
-      <ng-container *ngIf="product?.stock==0 && !isAdmin">
-        <p class="alert-stock">NO HAY STOCK</p>
-        <button class="btn btn-contact-seller" (click)="contactSupport()">Enviar mensaje</button>
-      </ng-container>
-      
-      <ng-container *ngIf="isAdmin">
-        <p>Stock disponible: {{product?.stock}}</p>
-      <button class="btn btn-modProduct" (click)="$event.stopPropagation()"  [routerLink]="['/update-product', product?.id]">Modificar Producto</button>
-      <button class="btn btn-removeProduct" (click)="contactSupport()">Eliminar Producto</button>
-      </ng-container>
     </div>
   </div>
+
+  <div class="product-action-section">
+    <h3 class="product-price">${{ product?.price }}</h3>
+    <p class="special-price">
+      Precio especial efectivo, transferencia o depósito
+    </p>
+    <ng-container *ngIf="product?.stock != 0 && !isAdmin">
+      <div class="quantity-selector">
+        <label for="quantity">Cantidad</label>
+        <input
+          type="number"
+          id="quantity"
+          [(ngModel)]="selectedQuantity"
+          value="0"
+          min="0"
+          max="{{ product?.stock }}"
+          class="quantity-input"
+        />
+      </div>
+      <p>Stock disponible: {{ product?.stock }}</p>
+      <div
+        *ngIf="successMessage"
+        class="alert alert-success"
+        style="margin: 10px 0"
+      >
+        {{ successMessage }}
+      </div>
+      <button class="btn btn-add-to-cart" (click)="addToCart()">
+        Agregar al carrito
+      </button>
+      <button class="btn btn-contact-seller" (click)="contactSupport()">
+        Enviar mensaje
+      </button>
+    </ng-container>
+    <ng-container *ngIf="product?.stock == 0 && !isAdmin">
+      <p class="alert-stock">NO HAY STOCK</p>
+      <button class="btn btn-contact-seller" (click)="contactSupport()">
+        Enviar mensaje
+      </button>
+    </ng-container>
+
+    <ng-container *ngIf="isAdmin">
+      <p>Stock disponible: {{ product?.stock }}</p>
+      <button
+        class="btn btn-modProduct"
+        (click)="$event.stopPropagation()"
+        [routerLink]="['/update-product', product?.id]"
+      >
+        Modificar Producto
+      </button>
+      <button class="btn btn-removeProduct" (click)="contactSupport()">
+        Eliminar Producto
+      </button>
+    </ng-container>
+  </div>
+</div>

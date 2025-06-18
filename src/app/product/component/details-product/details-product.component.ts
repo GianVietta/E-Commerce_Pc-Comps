@@ -21,6 +21,7 @@ export class DetailsProductComponent implements OnInit {
   //authService=inject(AuthService);
   isAdmin = false;
   ps = inject(ProductService);
+  successMessage: string | null = null;
 
   constructor(private route: ActivatedRoute) {}
 
@@ -30,11 +31,12 @@ export class DetailsProductComponent implements OnInit {
       this.productService.getProductByid(productId).subscribe({
         next: (product) => {
           this.product = product;
+          this.selectedQuantity = 1;
           console.log(this.product);
         },
       });
     }
-   
+
     //Uso clerk para determinar si es admin
     const user = window.Clerk?.user;
     this.isAdmin = user?.publicMetadata?.['isAdmin'] === true;
@@ -70,6 +72,10 @@ export class DetailsProductComponent implements OnInit {
               .addProductToCart(product.id, this.selectedQuantity)
               .subscribe({
                 next: () => {
+                  this.successMessage = '¡Producto agregado al carrito!';
+                  setTimeout(() => {
+                    this.successMessage = null;
+                  }, 1000); // 10 segundos
                   console.log('Agregado Correctamente');
                 },
                 error: (e: Error) => {
