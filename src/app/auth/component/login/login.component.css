@@ -1,0 +1,19 @@
+.close-modal-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  background: transparent;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  color: #444;
+  transition: background 0.2s, color 0.2s;
+  padding: 0.2em 0.6em;
+  border-radius: 50%;
+}
+
+.close-modal-btn:hover {
+  background: #eee;
+  color: #e53935;
+}

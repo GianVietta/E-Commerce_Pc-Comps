@@ -3,38 +3,37 @@ import { Injectable, inject } from '@angular/core';
 import { environment } from '../../../environments/environment.development';
 import { Sales } from '../interface/sales';
 import { Observable } from 'rxjs';
-import { Product } from '../../product/interface/product';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SalesService {
-  private http= inject(HttpClient);
-  private urlBase= environment.urlSales;
-  private urlProduct= environment.urlProducts;
+  private http = inject(HttpClient);
+  private urlBase = environment.urlSales;
 
-  //Crear venta 
-  addSale(sale: Sales): Observable<Sales>{
-    return this.http.post<Sales>(this.urlBase,sale);
+  //Crear venta
+  addSale(
+    clerk_user_id: string,
+    cart_id: string
+  ): Observable<{ success: boolean; sale_id?: string; error?: any }> {
+    return this.http.post<any>(`${this.urlBase}`, { clerk_user_id, cart_id });
   }
   //Obtener todas las ventas
-  getSales(): Observable<Sales[]>{
+  getSales(): Observable<Sales[]> {
     return this.http.get<Sales[]>(this.urlBase);
   }
-  //Obtener venta de un id 
-  getSaleById(id:string):Observable<Sales>{
-    return this.http.get<Sales>(`${this.urlBase}/${id}`);
+  //Obtener venta de un id
+  getSaleById(id: string): Observable<Sales> {
+    return this.http.get<Sales>(`${this.urlBase}?id=${id}`);
   }
   //Obtener venta de un id de usuario
-  getSalesByUserId(idUser: string): Observable<Sales[]>{
-    return this.http.get<Sales[]>(`${this.urlBase}?idUser=${idUser}`);
+  getSalesByUserId(clerk_user_id: string): Observable<Sales[]> {
+    return this.http.get<Sales[]>(
+      `${this.urlBase}?clerk_user_id=${clerk_user_id}`
+    );
   }
-  //Borrar venta 
-  deleteSale(id: string):Observable<void>{
-    return this.http.delete<void>(`${this.urlBase}/${id}`);
-  }
-  //Obtener detalle productos
-  getProductDetails(idProduct: string): Observable<Product>{
-    return this.http.get<Product>(`${this.urlProduct}/${idProduct}`);
+  //Borrar venta
+  deleteSale(id: string): Observable<{ success: boolean }> {
+    return this.http.delete<{ success: boolean }>(`${this.urlBase}?id=${id}`);
   }
 }

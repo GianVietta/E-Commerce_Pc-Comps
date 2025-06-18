@@ -4,35 +4,36 @@ import { Product } from '../interface/product';
 import { environment } from '../../../environments/environment.development';
 import { Observable } from 'rxjs';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProductService {
+  urlBase = environment.urlProducts;
 
-  urlBase=environment.urlProducts;
+  constructor(private http: HttpClient) {}
 
-  constructor(private http:HttpClient) { }
-
-  getProduct():Observable<Product[]>{
+  // Obtener todos los productos
+  getProduct(): Observable<Product[]> {
     return this.http.get<Product[]>(this.urlBase);
   }
 
-  getProductByid(id:string | null):Observable<Product>{
-    return this.http.get<Product>(`${this.urlBase}/${id}`);
+  // Obtener un solo producto por su id
+  getProductByid(id: string | null): Observable<Product> {
+    return this.http.get<Product>(`${this.urlBase}?id=${id}`);
   }
 
-  postProduct(product:Product):Observable<Product>{
-    return this.http.post<Product>(this.urlBase,product);
+  // Crear producto
+  postProduct(product: Product): Observable<any> {
+    return this.http.post<any>(this.urlBase, product);
   }
 
-  putProduct(updateProduct:Product, id:String | null):Observable<Product>{
-    return this.http.put<Product>(`${this.urlBase}/${id}`,updateProduct);
+  // Actualizar un producto
+  putProduct(updateProduct: Product, id: String | null): Observable<any> {
+    return this.http.put<any>(`${this.urlBase}?id=${id}`, updateProduct);
   }
 
-  deleteProduct(id:string):Observable<void>{
-    return this.http.delete<void>(`${this.urlBase}/${id}`);
+  // Eliminar un producto
+  deleteProduct(id: string): Observable<any> {
+    return this.http.delete<any>(`${this.urlBase}?id=${id}`);
   }
-
-
 }

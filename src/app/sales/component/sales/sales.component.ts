@@ -1,11 +1,10 @@
 import { Router } from '@angular/router';
 import { Component, inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { Sales } from '../../interface/sales';
-import { AuthService } from '../../../auth/service/auth.service';
 import { SalesService } from '../../service/sales.service';
 import { CommonModule } from '@angular/common';
 import { Product } from '../../../product/interface/product';
-import { User } from '../../../auth/interface/auth';
+import { ProductService } from '../../../product/service/product.service';
 
 @Component({
   selector: 'app-sales',
@@ -13,105 +12,128 @@ import { User } from '../../../auth/interface/auth';
   imports: [CommonModule],
   templateUrl: './sales.component.html',
   styleUrl: './sales.component.css',
-  encapsulation: ViewEncapsulation.Emulated
+  encapsulation: ViewEncapsulation.Emulated,
 })
 export class SalesComponent implements OnInit {
   ss = inject(SalesService);
-  authService = inject(AuthService);
+  ps = inject(ProductService);
   listSales: Sales[] = [];
-  listProducts: {product: Product; quantity: number}[]=[];
-  userId:string | undefined;
-  router= inject(Router);
+  userId: string | undefined;
+  isAdmin: boolean = false;
+  router = inject(Router);
+  // Cache de productos
+  productCache: { [id: string]: Product } = {};
 
   ngOnInit(): void {
-    this.authService.checkStatusAutentication().subscribe(
-      auth => {
-        if (this.getUser==undefined) {
-          console.log('Usuario no autenticado');
-          // Redireccionar a la página de login o mostrar un mensaje de error
-          this.router.navigate(['/']);
-          return;
-        }else {
-          this.userId=this.getUser?.id;
-          console.log(this.userId);
-      }
-      this.loadSalesByUser();
+    const user = window.Clerk?.user;
+    if (!user) {
+      //Usuario no autenticado, mando al home
+      this.router.navigate(['/']);
+      return;
     }
-    );
-  }
+    this.userId = user.id;
+    this.isAdmin = user.publicMetadata?.['isAdmin'] === true;
 
-  get getUser(): User | undefined {
-    return this.authService.currentUser;
+    this.loadSalesByUser();
   }
 
   loadSalesByUser(): void {
-    this.listProducts=[];
-    if (this.userId == '1') {
-      console.log("entra");
+    if (this.isAdmin) {
       this.loadAllSales();
-    }  
-    else if (this.userId) {
+    } else if (this.userId) {
       this.loadSalesByUserID();
     }
   }
-  loadAllSales(){
+
+  loadAllSales() {
     this.ss.getSales().subscribe({
-      next: (sales: Sales[])=>{
-        this.listSales= sales;
-        if(sales && sales.length>0){
-          this.processSalesProducts(sales);
-        }else{
+      next: (sales: Sales[]) => {
+        // Mapeo para ajustar los nombres de campos al formato esperado por el HTML
+        this.listSales = sales.map((sale) => ({
+          ...sale,
+          id: sale.id, // importante para eliminar
+          clerk_user_id: sale.clerk_user_id,
+          total_Amount: Number(sale.total_amount), // convierte a número
+          created_at: sale.created_at,
+          products: sale.products,
+        }));
+        if (sales && sales.length > 0) {
+          this.loadAllProductForSales(sales);
+        } else {
           console.warn('No hay ventas disponibles. ');
         }
       },
-      error: (e:Error)=>{
+      error: (e: Error) => {
         console.log(e.message);
         alert('Error al cargar las ventas. ');
-      }
+      },
     });
   }
-  loadSalesByUserID(){
+
+  loadSalesByUserID() {
     this.ss.getSalesByUserId(this.userId!).subscribe({
-      next: (sales: Sales[])=>{
-        this.listSales= sales;
-        if(sales && sales.length>0){
-          this.processSalesProducts(sales);
-        }else{
+      next: (sales: Sales[]) => {
+        // Mapeo para ajustar los nombres de campos al formato esperado por el HTML
+        this.listSales = sales.map((sale) => ({
+          ...sale,
+          id: sale.id, // importante para eliminar
+          clerk_user_id: sale.clerk_user_id,
+          total_Amount: Number(sale.total_amount), // convierte a número
+          created_at: sale.created_at,
+          products: sale.products,
+        }));
+        if (sales && sales.length > 0) {
+          this.loadAllProductForSales(sales);
+        } else {
           console.warn('No hay compras para este usuario. ');
         }
       },
-      error: (e:Error)=>{
+      error: (e: Error) => {
         console.log(e.message);
         alert('Error al cargar las compras. ');
-      }
+      },
     });
   }
-  processSalesProducts(sales: Sales[]){
-    sales.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-    sales.forEach(sale=>{
-      sale.products.forEach(saleProduct=>{
-        this.ss.getProductDetails(saleProduct.idProduct).subscribe({
-          next: (product: Product)=>{
-            this.listProducts.push({product, quantity: saleProduct.quantity});
-          },
-          error: (e:Error)=>{
-            console.log(e.message);
-          }
-        });
+
+  // Cargar todos los productos de las ventas y guardarlo en cache
+  loadAllProductForSales(sales: Sales[]): void {
+    // Evita repetir requests para el mismo producto
+    const productIds = new Set<string>();
+    sales.forEach((sale) => {
+      sale.products.forEach((item) => {
+        if (item.product_id && !this.productCache[item.product_id]) {
+          productIds.add(item.product_id);
+        }
+      });
+    });
+
+    // Para cada id de producto, pedir su detalle y guardar en cache
+    productIds.forEach((id) => {
+      this.ps.getProductByid(id).subscribe({
+        next: (product: Product) => {
+          this.productCache[id] = product;
+        },
+        error: (e: Error) => {
+          console.log(e.message);
+        },
       });
     });
   }
-  getProductName(idProducto: string): string{
-    const founProduct= this.listProducts.find(item=>item.product.id===idProducto);
-    return founProduct? founProduct.product.name: 'Producto no disponible';
+
+  getProductName(idProducto: string): string {
+    return this.productCache[idProducto]?.name ?? '--';
   }
+
   eliminarVenta(id: string): void {
-    this.ss.deleteSale(id).subscribe(() => {
-      this.listSales = this.listSales.filter(venta => venta.id !== id);
-      alert('Venta eliminada con éxito.');
-    }, (error) => {
-      console.log(error);
-      alert('Error al eliminar la venta');
-    });
+    this.ss.deleteSale(id).subscribe(
+      () => {
+        this.listSales = this.listSales.filter((venta) => venta.id !== id);
+        alert('Venta eliminada con éxito.');
+      },
+      (error) => {
+        console.log(error);
+        alert('Error al eliminar la venta');
+      }
+    );
   }
 }

@@ -1,51 +1,49 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { User } from '../../interface/auth';
-import { AuthService } from '../../service/auth.service';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { CustomValidators } from '../register/validators/costum-validators';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [ReactiveFormsModule,CommonModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './profile.component.html',
-  styleUrl: './profile.component.css'
+  styleUrl: './profile.component.css',
 })
-export class ProfileComponent  implements OnInit{
-  
-  authService = inject(AuthService);
+export class ProfileComponent implements OnInit {
   fb: FormBuilder = inject(FormBuilder);
   isEditing = false;
-  user: User | undefined;
-  
+  //Clerk para el usuario
+  clerkUser: any = null;
+
   form: FormGroup = this.fb.group({
     dni: ['', [Validators.required, Validators.pattern(/^\d{7,8}$/)]],
     phoneNumber: ['', [Validators.required, Validators.pattern(/^[0-9]{10}$/)]],
     address: ['', Validators.required],
     name: ['', [Validators.required, Validators.minLength(3)]],
-    lastName: ['', Validators.required]
+    lastName: ['', Validators.required],
   });
-  
+
   ngOnInit(): void {
-    // Obtener el usuario actual de manera asíncrona y luego establecer los valores en el formulario
-    this.authService.authStatusChanges().subscribe(() => {
-      this.user = this.authService.currentUser;
-      this.setValuesForm();
-    });
+    this.clerkUser = window.Clerk?.user;
+    this.setValuesForm();
+    this.form.disable(); //Desabilito el form al arrancar
   }
 
   setValuesForm() {
-    if (this.user) {
+    if (this.clerkUser) {
       this.form.patchValue({
-        dni: this.user.person.dni,
-        phoneNumber: this.user.person.phoneNumber,
-        address: this.user.person.address,
-        name: this.user.person.name,
-        lastName: this.user.person.lastName
+        dni: this.clerkUser.publicMetadata?.['dni'] || '',
+        phoneNumber: this.clerkUser.publicMetadata?.['phoneNumber'] || '',
+        address: this.clerkUser.publicMetadata?.['adress'] || '',
+        name: this.clerkUser.firstName || '',
+        lastName: this.clerkUser.lastName || '',
       });
     }
-    this.form.disable(); // Deshabilitar el formulario inicialmente
   }
 
   toggleEdit() {
@@ -59,24 +57,34 @@ export class ProfileComponent  implements OnInit{
 
   update() {
     if (this.form.invalid) return;
-    
-    const updatedUser: User = {
-      ...this.user!,
-      person: {
-        ...this.user!.person,
-        ...this.form.value
-      }
-    };
+    const clerkUser = window.Clerk?.user;
 
-    this.authService.putUser(updatedUser, updatedUser.id).subscribe({
-      next: (user: User) => {
-        this.user = user; 
+    if (!clerkUser) {
+      console.error(
+        'Usuario no disponible. Reintenta o volve a iniciar sesion'
+      );
+      return;
+    }
+    // Actualiza los datos editables en Clerk
+    clerkUser
+      .update({
+        firstName: this.form.value.name,
+        lastName: this.form.value.lastName,
+        publicMetadata: {
+          dni: this.form.value.dni,
+          phoneNumber: this.form.value.phoneNumber,
+          address: this.form.value.address,
+        },
+      } as any)
+      .then((updatedUser: any) => {
+        // Actualiza el form y sale del modo edición
+        this.clerkUser = updatedUser;
         this.toggleEdit();
-        console.log("Usuario actualizado con éxito:", user);
-      },
-      error: (error) => {
-        console.error("Error al actualizar el usuario:", error);
-      }
-    });
+        this.setValuesForm();
+        console.log('Usuario actualizado correctamente');
+      })
+      .catch((error: any) => {
+        console.error('Error al actualizar el usuario:', error);
+      });
   }
 }

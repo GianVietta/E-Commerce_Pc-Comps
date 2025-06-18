@@ -2,41 +2,65 @@ import { Component, inject, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router, RouterLink, RouterModule } from '@angular/router';
 import { LoginComponent } from '../../auth/component/login/login.component';
-import { AuthService } from '../../auth/service/auth.service';
-import { User } from '../../auth/interface/auth';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { CartService } from '../../cart/service/cart.service';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule,RouterModule, FormsModule],
+  imports: [CommonModule, RouterModule, FormsModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
-  encapsulation: ViewEncapsulation.Emulated
+  encapsulation: ViewEncapsulation.Emulated,
 })
 export class HeaderComponent {
   readonly dialog = inject(MatDialog);
-  authService = inject(AuthService);
+  cartService = inject(CartService);
+  private cartSync = false; // Flag para no sincronizar varias veces
   router = inject(Router);
   searchQuery: string = '';
 
-
   isAuthenticated = false;
   isAdminUser = false;
-  isMenuOpen = false;  // Controla la visibilidad del menú desplegable
-
-  user: User | undefined = this.authService.currentUser;
-
-  get getUser(): User | undefined {
-    return this.authService.currentUser;
-  }
+  isMenuOpen = false; // Controla la visibilidad del menú desplegable
 
   ngOnInit() {
-    this.authService.authStatusChanges().subscribe(isAuthenticated => {
-      this.isAuthenticated = isAuthenticated;
-      this.isAdminUser = this.getUser?.id === '1'; // Verifica si el usuario es admin
+    //Clerk actualiza la sesion al cargar
+    this.updateSessionState();
+
+    //Para que la UI cambie automaticamente cuando el usuario inicia/cierra sesion
+    //escucho los eventos de Clerk
+    window.Clerk?.addListener?.((event: any) => {
+      if (event.type === 'userChanged' || event.type === 'sessionChanged') {
+        this.updateSessionState();
+      }
     });
+  }
+
+  updateSessionState() {
+    const user = window.Clerk?.user;
+    this.isAuthenticated = !!user;
+    //Lee el campo de admin como metadata dinamico:
+    this.isAdminUser = user?.publicMetadata?.['isAdmin'] === true;
+
+    // Si el user acaba de loguearse y no se sincronizo el carrito
+    if (this.isAuthenticated && !this.cartSync) {
+      const clerk_user_id = user?.id;
+      if (clerk_user_id) {
+        this.cartService.syncCartWithBackend(clerk_user_id).subscribe({
+          next: (res) => {
+            console.log('Carrito sincronizado: ', res);
+          },
+          error: (e) => {
+            console.error('Error al sincronizar el carrito: ', e);
+          },
+        });
+      }
+      this.cartSync = true;
+    }
+    // Si el user se desloguea, reseteo el flag
+    if (!this.isAuthenticated) this.cartSync = false;
   }
 
   toggleMenu() {
@@ -45,61 +69,55 @@ export class HeaderComponent {
 
   viewProfile() {
     this.router.navigate(['/profile']); // Redirige a la página de perfil
-    this.isMenuOpen = false;  // Cierra el menú después de hacer clic
+    this.isMenuOpen = false; // Cierra el menú después de hacer clic
   }
-  inicio(){
+
+  inicio() {
     this.router.navigate(['']);
   }
 
-  newProduct(){
+  newProduct() {
     this.router.navigate(['/new-product']);
   }
 
-  cart(){
+  cart() {
     this.router.navigate(['/cart']);
   }
 
   logout() {
-    this.authService.logout();
-    this.isAuthenticated = false;
-    this.isAdminUser = false;
-    this.isMenuOpen = false;
-    this.router.navigate(['']);
-    window.location.reload();
-      // Cierra el menú después de hacer clic
+    window.Clerk?.signOut().then(() => {
+      this.isAuthenticated = false;
+      this.isAdminUser = false;
+      this.isMenuOpen = false;
+      this.router.navigate(['']);
+    });
+    // Cierra el menú después de hacer clic
+
+    // Si el user se desloguea, reseteo el flag
+    if (!this.isAuthenticated) this.cartSync = false;
   }
 
-  login() {
-    const dialogRef = this.dialog.open(LoginComponent, {
+  isLoggedIn(): boolean {
+    return !!window.Clerk?.user;
+  }
+
+  goToLogin() {
+    this.dialog.open(LoginComponent, {
       disableClose: true,
       autoFocus: false,
       closeOnNavigation: false,
       position: { top: '50px' },
-      width: '1000px',
-      panelClass: 'custom-dialog-container',  // Add custom panel class
-      data: { tipo: 'LOGIN' }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      this.authService.checkStatusAutentication().subscribe(
-        auth => {
-          this.isAuthenticated = auth;
-      if (this.getUser?.id === '1') {
-        this.isAdminUser = true;
-      } else {
-        this.isAdminUser = false;
-      }
-        }
-      );
+      width: '400px', // Más chico porque Clerk es compacto
+      panelClass: 'custom-dialog-container',
+      data: { tipo: 'LOGIN' },
     });
   }
 
   onSearch() {
     if (this.searchQuery.trim()) {
-      this.router.navigate(['/search-results'], { queryParams: { query: this.searchQuery } });
-    }else{
-      console.log("Entra");
-      console.log(this.searchQuery);
+      this.router.navigate(['/search-results'], {
+        queryParams: { query: this.searchQuery },
+      });
     }
   }
 }

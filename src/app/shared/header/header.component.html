@@ -1,76 +1,112 @@
 <header class="header">
   <div class="header-container">
     <div class="logo-container">
-      <img src="/resources/icons/header/image-removebg-preview.png" alt="Logo" class="logo"
-      (click)="inicio()">
+      <img
+        src="/resources/icons/header/image-removebg-preview.png"
+        alt="Logo"
+        class="logo"
+        (click)="inicio()"
+      />
     </div>
-    
+
     <div class="search-bar">
-      <input type="text" placeholder="Buscar productos..." class="search-input" [(ngModel)]="searchQuery"
-      (keyup.enter)="onSearch()">
+      <input
+        type="text"
+        placeholder="Buscar productos..."
+        class="search-input"
+        [(ngModel)]="searchQuery"
+        (keyup.enter)="onSearch()"
+      />
     </div>
-    
+
     <div class="user-cart-container">
       <!-- Íconos para usuarios no autenticados (Login y Carrito) -->
       <ng-container *ngIf="!isAuthenticated">
-        <img src="resources/icons/header/login.svg"
-              alt="Login"
-              class="login-icon"
-              (click)="login()">
-        <img src="resources/icons/header/cart.svg"
-              alt="Carrito"
-              class="cart-icon"
-              (click)="cart()">
+        <img
+          src="resources/icons/header/login.svg"
+          alt="Login"
+          class="login-icon"
+          (click)="goToLogin()"
+        />
+        <img
+          src="resources/icons/header/cart.svg"
+          alt="Carrito"
+          class="cart-icon"
+          (click)="cart()"
+        />
       </ng-container>
 
       <!-- Íconos para usuarios autenticados que son administradores -->
       <ng-container *ngIf="isAuthenticated && isAdminUser">
         <div class="menu-container">
-          <img src="resources/icons/header/menu.svg"
-               alt="Menu Desplegable"
-               class="menu-icon"
-               (click)="toggleMenu()">
+          <img
+            src="resources/icons/header/menu.svg"
+            alt="Menu Desplegable"
+            class="menu-icon"
+            (click)="toggleMenu()"
+          />
           <div *ngIf="isMenuOpen" class="dropdown-menu">
-
             <div class="menu-item" (click)="viewProfile()">
-              <img src="resources/icons/header/user.svg" alt="Ver Perfil" class="menu-icon-option">
+              <img
+                src="resources/icons/header/user.svg"
+                alt="Ver Perfil"
+                class="menu-icon-option"
+              />
               <span>Ver Perfil</span>
             </div>
             <div class="menu-item" (click)="logout()">
-              <img src="resources/icons/header/logout.svg" alt="Cerrar Sesión" class="menu-icon-option">
+              <img
+                src="resources/icons/header/logout.svg"
+                alt="Cerrar Sesión"
+                class="menu-icon-option"
+              />
               <span>Cerrar Sesión</span>
             </div>
           </div>
         </div>
         <div class="add-item" (click)="newProduct()">
-          <img src="resources/icons/header/plus.svg"
+          <img
+            src="resources/icons/header/plus.svg"
             alt="Agregar"
-            class="add-icon">
+            class="add-icon"
+          />
         </div>
       </ng-container>
 
       <!-- Íconos para usuarios autenticados estándar -->
       <ng-container *ngIf="isAuthenticated && !isAdminUser">
         <div class="menu-container">
-          <img src="resources/icons/header/menu.svg"
-              alt="Menu Desplegable"
-              class="menu-icon"
-              (click)="toggleMenu()">
+          <img
+            src="resources/icons/header/menu.svg"
+            alt="Menu Desplegable"
+            class="menu-icon"
+            (click)="toggleMenu()"
+          />
           <div *ngIf="isMenuOpen" class="dropdown-menu">
             <div class="menu-item" (click)="viewProfile()">
-              <img src="resources/icons/header/user.svg" alt="Ver Perfil" class="menu-icon-option">
+              <img
+                src="resources/icons/header/user.svg"
+                alt="Ver Perfil"
+                class="menu-icon-option"
+              />
               <span>Ver Perfil</span>
             </div>
             <div class="menu-item" (click)="logout()">
-              <img src="resources/icons/header/logout.svg" alt="Cerrar Sesión" class="menu-icon-option">
+              <img
+                src="resources/icons/header/logout.svg"
+                alt="Cerrar Sesión"
+                class="menu-icon-option"
+              />
               <span>Cerrar Sesión</span>
             </div>
           </div>
         </div>
-        <img src="resources/icons/header/cart.svg"
-             alt="Carrito"
-             class="cart-icon"
-             (click)="cart()">
+        <img
+          src="resources/icons/header/cart.svg"
+          alt="Carrito"
+          class="cart-icon"
+          (click)="cart()"
+        />
       </ng-container>
     </div>
   </div>
