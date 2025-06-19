@@ -35,20 +35,12 @@
           type="number"
           id="quantity"
           [(ngModel)]="selectedQuantity"
-          value="0"
-          min="0"
+          min="1"
           max="{{ product?.stock }}"
           class="quantity-input"
         />
       </div>
       <p>Stock disponible: {{ product?.stock }}</p>
-      <div
-        *ngIf="successMessage"
-        class="alert alert-success"
-        style="margin: 10px 0"
-      >
-        {{ successMessage }}
-      </div>
       <button class="btn btn-add-to-cart" (click)="addToCart()">
         Agregar al carrito
       </button>
@@ -72,9 +64,20 @@
       >
         Modificar Producto
       </button>
-      <button class="btn btn-removeProduct" (click)="contactSupport()">
+      <button
+        class="btn btn-removeProduct"
+        (click)="removeProduct(product!)"
+        [disabled]="!product"
+      >
         Eliminar Producto
       </button>
     </ng-container>
+    <div
+        *ngIf="successMessage"
+        class="alert alert-success"
+        style="margin: 10px 0"
+      >
+        {{ successMessage }}
+    </div>
   </div>
 </div>

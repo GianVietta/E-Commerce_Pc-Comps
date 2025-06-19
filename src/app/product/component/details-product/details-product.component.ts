@@ -17,7 +17,7 @@ export class DetailsProductComponent implements OnInit {
   product: Product | null = null;
   productService = inject(ProductService);
   cs = inject(CartService);
-  selectedQuantity: number = 0;
+  selectedQuantity: number = 1;
   //authService=inject(AuthService);
   isAdmin = false;
   ps = inject(ProductService);
@@ -114,9 +114,14 @@ export class DetailsProductComponent implements OnInit {
   removeProduct(product: Product) {
     if (confirm('Seguro que deseas eliminar ' + `${product.name}`)) {
       this.ps.deleteProduct(product.id).subscribe(() => {
-        window.location.reload(); // Recarga toda la página
-      });
-      alert(`${product.name}` + ' Fue eliminado satisfactoriamente.');
+        if(this.product){
+          this.product.stock = 0;
+        }
+        this.successMessage = `${product.name} fue eliminado satisfactoriamente.`;
+        setTimeout(() => {
+          this.successMessage = null;
+        }, 2500); // 2.5 segundos
+        });
     } else {
       console.log('eliminacion cancelada');
     }

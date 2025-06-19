@@ -2,7 +2,12 @@ import { Component, OnInit, inject } from '@angular/core';
 import { Product } from '../../interface/product';
 import { ProductService } from '../../service/product.service';
 import { ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -10,15 +15,25 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './update-product.component.html',
-  styleUrls: ['./update-product.component.css']
+  styleUrls: ['./update-product.component.css'],
 })
 export class UpdateProductComponent implements OnInit {
   product: Product | null = null;
   productService = inject(ProductService);
   fb: FormBuilder = inject(FormBuilder);
   isEditing = false;
-  categorias = ["CPU", "MotherBoard", "RAM", "Tarjeta de video", "Almacenamiento", "Fuente", "Refrigeracion", "Gabinete"];
-  
+  successMessage: string | null = null;
+  categorias = [
+    'CPU',
+    'MotherBoard',
+    'RAM',
+    'Tarjeta de video',
+    'Almacenamiento',
+    'Fuente',
+    'Refrigeracion',
+    'Gabinete',
+  ];
+
   form: FormGroup = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(3)]],
     price: [0, [Validators.required, Validators.min(1)]],
@@ -26,7 +41,7 @@ export class UpdateProductComponent implements OnInit {
     description: ['', Validators.required],
     category: ['', Validators.required],
     stock: [0, Validators.required],
-    img: ['', Validators.required]
+    img: ['', Validators.required],
   });
 
   constructor(private route: ActivatedRoute) {}
@@ -38,7 +53,7 @@ export class UpdateProductComponent implements OnInit {
         next: (product) => {
           this.product = product;
           this.setValuesForm();
-        }
+        },
       });
     }
   }
@@ -52,7 +67,7 @@ export class UpdateProductComponent implements OnInit {
         description: this.product.description,
         category: this.product.category,
         stock: this.product.stock,
-        img: this.product.img
+        img: this.product.img,
       });
     }
     this.form.disable(); // Deshabilitar el formulario inicialmente
@@ -72,18 +87,24 @@ export class UpdateProductComponent implements OnInit {
 
     const updatedProduct: Product = {
       ...this.product!,
-      ...this.form.value
+      ...this.form.value,
     };
 
-    this.productService.putProduct(updatedProduct, updatedProduct.id).subscribe({
-      next: (product: Product) => {
-        this.product = product;
-        this.toggleEdit();
-        console.log("Producto actualizado con éxito:", product);
-      },
-      error: (error) => {
-        console.error("Error al actualizar el producto:", error);
-      }
-    });
+    this.productService
+      .putProduct(updatedProduct, updatedProduct.id)
+      .subscribe({
+        next: (product: Product) => {
+          this.product = product;
+          this.toggleEdit();
+          this.successMessage = '¡Producto actualizado correctamente!';
+          setTimeout(() => {
+            this.successMessage = null;
+          }, 2500); // 2.5 segundos
+          console.log('Agregado Correctamente');
+        },
+        error: (error) => {
+          console.error('Error al actualizar el producto:', error);
+        },
+      });
   }
 }

@@ -128,9 +128,9 @@ export class ProductCarouselComponent implements OnInit {
   removeProduct(product: Product) {
     if (confirm('Seguro que deseas eliminar ' + `${product.name}`)) {
       this.ps.deleteProduct(product.id).subscribe(() => {
-        window.location.reload(); // Recarga toda la página
+        const idx = this.productList.findIndex((p) => p.id === product.id);
+        if (idx !== -1) this.productList[idx].stock = 0;
       });
-      alert(`${product.name}` + ' Fue eliminado satisfactoriamente.');
     } else {
       console.log('eliminacion cancelada');
     }
