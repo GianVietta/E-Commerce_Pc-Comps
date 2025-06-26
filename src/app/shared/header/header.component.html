@@ -12,7 +12,7 @@
     <div class="search-bar">
       <input
         type="text"
-        placeholder="Buscar productos..."
+        placeholder="Buscar por producto, marca o categoria"
         class="search-input"
         [(ngModel)]="searchQuery"
         (input)="onSearchInput($event)"
@@ -20,12 +20,15 @@
         (focus)="showSuggestions = suggestion.length > 0"
         (blur)="delayClearSuggestions()"
       />
-      <ul *ngIf="showSuggestions && suggestion.length > 0" class="suggestions-list">
+      <ul
+        *ngIf="showSuggestions && suggestion.length > 0"
+        class="suggestions-list"
+      >
         <li
           *ngFor="let product of suggestion"
           (mousedown)="onSelectSuggestion(product)"
         >
-          <img [src]="product.img"/>
+          <img [src]="product.img" />
           <span>{{ product.name }}</span>
         </li>
       </ul>

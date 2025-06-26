@@ -1,0 +1,301 @@
+<mat-card class="reviews-panel" *ngIf="!loading">
+  <div class="reviews-layout">
+    <!-- Columna izquierda: resumen estadístico -->
+    <div class="reviews-summary">
+      <h3>Opiniones del producto</h3>
+      <div class="summary-main">
+        <span class="summary-score">{{ promedio }}</span>
+        <span class="summary-stars">
+          <ng-container *ngFor="let star of [1, 2, 3, 4, 5]">
+            <mat-icon color="warn">{{
+              star <= promedio ? "star" : "star_border"
+            }}</mat-icon>
+          </ng-container>
+        </span>
+      </div>
+      <span class="summary-count">{{ cantidad }} opiniones</span>
+      <div class="stars-bar" *ngFor="let n of [5, 4, 3, 2, 1]">
+        <span
+          >{{ n }}
+          <mat-icon color="warn" style="font-size: 1rem">star</mat-icon></span
+        >
+        <mat-progress-bar
+          [value]="starsPercent[n]"
+          mode="determinate"
+        ></mat-progress-bar>
+        <span class="stars-count">{{ starsCount[n] || 0 }}</span>
+      </div>
+    </div>
+
+    <!-- Columna derecha: opiniones -->
+    <div class="reviews-list">
+      <!-- Tu review (si estás logueado y corresponde) -->
+      <ng-container *ngIf="isLoggedIn">
+        <ng-container
+          *ngIf="!userReview && isEligibleToReview(); else myReviewBlock"
+        >
+          <!-- Formulario para dejar review -->
+          <form [formGroup]="reviewForm" (ngSubmit)="onReviewSubmit()">
+            <mat-card class="my-review-card">
+              <div class="my-review-header">
+                <span class="my-review-title">Dejá tu calificación</span>
+              </div>
+              <!-- Sistema de estrellas -->
+              <div class="star-rating-input">
+                <label>Calificación</label>
+                <div class="star-icons">
+                  <ng-container *ngFor="let star of [1, 2, 3, 4, 5]">
+                    <mat-icon
+                      [ngClass]="{
+                        'star-selected':
+                          (hoverRating || reviewForm.value.rating) >= star
+                      }"
+                      (click)="setRating(star)"
+                      (mouseenter)="hoverRating = star"
+                      (mouseleave)="hoverRating = 0"
+                      >{{
+                        (hoverRating || reviewForm.value.rating) >= star
+                          ? "star"
+                          : "star_border"
+                      }}</mat-icon
+                    >
+                  </ng-container>
+                  <span *ngIf="reviewForm.value.rating" class="star-label">
+                    {{ reviewForm.value.rating }}
+                    {{
+                      reviewForm.value.rating === 1 ? "estrella" : "estrellas"
+                    }}
+                  </span>
+                </div>
+              </div>
+
+              <!-- Opinión -->
+              <mat-form-field appearance="fill" class="review-opinion-field">
+                <mat-label>Opinión (opcional)</mat-label>
+                <textarea
+                  matInput
+                  formControlName="content"
+                  maxlength="1000"
+                ></textarea>
+              </mat-form-field>
+              <button
+                mat-raised-button
+                color="primary"
+                type="submit"
+                [disabled]="reviewForm.invalid || !reviewForm.value.rating"
+              >
+                Enviar opinión
+              </button>
+            </mat-card>
+          </form>
+        </ng-container>
+        <ng-template #myReviewBlock>
+          <mat-card class="my-review-card">
+            <div *ngIf="!editingReview; else editForm">
+              <div class="my-review-header">
+                <span class="my-review-title">Tu comentario:</span>
+                <span>
+                  <button
+                    mat-stroked-button
+                    color="primary"
+                    (click)="editMyReview()"
+                  >
+                    Editar
+                  </button>
+                  <button
+                    mat-stroked-button
+                    color="warn"
+                    (click)="deleteMyReview()"
+                  >
+                    Eliminar
+                  </button>
+                </span>
+              </div>
+              <div *ngIf="userReview" class="my-review-rating">
+                <ng-container *ngFor="let star of [1, 2, 3, 4, 5]">
+                  <mat-icon color="warn">{{
+                    star <= (userReview!.rating || 0) ? "star" : "star_border"
+                  }}</mat-icon>
+                </ng-container>
+              </div>
+              <div class="my-review-content">
+                {{ userReview?.content }}
+              </div>
+              <div class="my-review-date">
+                {{ userReview?.created_at | date : "short" }}
+              </div>
+            </div>
+            <ng-template #editForm>
+              <form [formGroup]="reviewForm" (ngSubmit)="onEditReviewSubmit()">
+                <div class="my-review-header">
+                  <span class="my-review-title">Editar tu comentario</span>
+                </div>
+                <div class="review-edit-fields">
+                  <div class="star-rating-input">
+                    <label>Calificación</label>
+                    <div class="star-icons">
+                      <ng-container *ngFor="let star of [1, 2, 3, 4, 5]">
+                        <mat-icon
+                          [ngClass]="{
+                            'star-selected':
+                              (hoverRating || reviewForm.value.rating) >= star
+                          }"
+                          (click)="setRating(star)"
+                          (mouseenter)="hoverRating = star"
+                          (mouseleave)="hoverRating = 0"
+                          >{{
+                            (hoverRating || reviewForm.value.rating) >= star
+                              ? "star"
+                              : "star_border"
+                          }}</mat-icon
+                        >
+                      </ng-container>
+                      <span *ngIf="reviewForm.value.rating" class="star-label">
+                        {{ reviewForm.value.rating }}
+                        {{
+                          reviewForm.value.rating === 1
+                            ? "estrella"
+                            : "estrellas"
+                        }}
+                      </span>
+                    </div>
+                  </div>
+                  <!-- Input de texto para la opinión (directo, sin opinion-row) -->
+                  <mat-form-field
+                    appearance="fill"
+                    class="review-opinion-field"
+                  >
+                    <mat-label>Opinión</mat-label>
+                    <textarea
+                      matInput
+                      formControlName="content"
+                      maxlength="1000"
+                    ></textarea>
+                  </mat-form-field>
+                </div>
+                <div class="my-review-actions">
+                  <button
+                    mat-button
+                    color="primary"
+                    type="submit"
+                    [disabled]="reviewForm.invalid || !reviewForm.value.rating"
+                  >
+                    Guardar
+                  </button>
+                  <button mat-button type="button" (click)="cancelEdit()">
+                    Cancelar
+                  </button>
+                </div>
+              </form>
+            </ng-template>
+          </mat-card>
+        </ng-template>
+      </ng-container>
+
+      <!-- Lista de reviews -->
+      <ng-container *ngFor="let review of reviews">
+        <mat-card *ngIf="review.id !== undefined" class="review-card">
+          <div class="review-header">
+            <div class="review-header-left">
+              <span class="review-rating">
+                <ng-container *ngFor="let star of [1, 2, 3, 4, 5]">
+                  <mat-icon color="warn">{{
+                    star <= review.rating ? "star" : "star_border"
+                  }}</mat-icon>
+                </ng-container>
+                <span *ngIf="review.is_verified_purchase" class="verified-badge"
+                  >Compra verificada
+                  <mat-icon style="font-size: 1.2em; margin-right: 2px"
+                    >check_circle</mat-icon
+                  >
+                </span>
+              </span>
+            </div>
+            <span class="review-date">{{
+              review.created_at | date : "short"
+            }}</span>
+            <button
+              *ngIf="isAdmin()"
+              mat-icon-button
+              color="warn"
+              (click)="deleteReviewAsAdmin(review)"
+              matTooltip="Eliminar opinión"
+              style="margin-left: 10px"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+          <div class="review-user">
+            <span class="review-user-name">
+              {{
+                isAdminReview(review.clerk_user_id)
+                  ? "PixelFactory"
+                  : review.name
+                  ? review.name +
+                    (review.last_name ? " " + review.last_name : "")
+                  : "Usuario #" + (review.clerk_user_id | slice : 0 : 6)
+              }}
+            </span>
+          </div>
+          <p class="review-content">{{ review.content }}</p>
+          <mat-divider></mat-divider>
+          <!-- Comentarios sobre la review -->
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Comentarios ({{ comments[review.id]?.length || 0 }})
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div *ngFor="let comment of comments[review.id]">
+              <span class="comment-user">
+                {{
+                  isAdminReview(comment.clerk_user_id)
+                    ? "PixelFactory"
+                    : comment.name
+                    ? comment.name +
+                      (comment.last_name ? " " + comment.last_name : "")
+                    : "Usuario #" + (comment.clerk_user_id | slice : 0 : 6)
+                }}
+              </span>
+              <button
+                *ngIf="isAdmin()"
+                mat-icon-button
+                color="warn"
+                (click)="deleteCommentAsAdmin(comment)"
+                matTooltip="Eliminar comentario"
+                style="margin-left: 8px; vertical-align: middle"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+              <div class="comment-content">{{ comment.content }}</div>
+              <div class="comment-date">
+                {{ comment.created_at | date : "short" }}
+              </div>
+            </div>
+            <form
+              *ngIf="commentForms[review.id]"
+              [formGroup]="commentForms[review.id]"
+              (ngSubmit)="onCommentSubmit(review.id)"
+            >
+              <mat-form-field class="comment-field">
+                <textarea
+                  matInput
+                  formControlName="content"
+                  placeholder="Dejá un comentario"
+                ></textarea>
+              </mat-form-field>
+              <button
+                mat-button
+                color="primary"
+                type="submit"
+                [disabled]="commentForms[review.id].invalid"
+              >
+                Comentar
+              </button>
+            </form>
+          </mat-expansion-panel>
+        </mat-card>
+      </ng-container>
+    </div>
+  </div>
+</mat-card>

@@ -5,11 +5,12 @@ import { ProductService } from '../../service/product.service';
 import { CommonModule } from '@angular/common';
 import { CartService } from '../../../cart/service/cart.service';
 import { FormsModule } from '@angular/forms';
+import { ProductReviewsComponent } from '../product-reviews/product-reviews.component';
 
 @Component({
   selector: 'app-details-product',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule],
+  imports: [CommonModule, FormsModule, RouterModule, ProductReviewsComponent],
   templateUrl: './details-product.component.html',
   styleUrls: ['./details-product.component.css'],
 })
@@ -114,14 +115,14 @@ export class DetailsProductComponent implements OnInit {
   removeProduct(product: Product) {
     if (confirm('Seguro que deseas eliminar ' + `${product.name}`)) {
       this.ps.deleteProduct(product.id).subscribe(() => {
-        if(this.product){
+        if (this.product) {
           this.product.stock = 0;
         }
         this.successMessage = `${product.name} fue eliminado satisfactoriamente.`;
         setTimeout(() => {
           this.successMessage = null;
         }, 2500); // 2.5 segundos
-        });
+      });
     } else {
       console.log('eliminacion cancelada');
     }

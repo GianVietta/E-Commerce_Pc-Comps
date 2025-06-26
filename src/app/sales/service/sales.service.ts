@@ -32,8 +32,4 @@ export class SalesService {
       `${this.urlBase}?clerk_user_id=${clerk_user_id}`
     );
   }
-  //Borrar venta
-  deleteSale(id: string): Observable<{ success: boolean }> {
-    return this.http.delete<{ success: boolean }>(`${this.urlBase}?id=${id}`);
-  }
 }

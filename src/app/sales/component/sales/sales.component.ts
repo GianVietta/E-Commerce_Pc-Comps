@@ -123,17 +123,4 @@ export class SalesComponent implements OnInit {
   getProductName(idProducto: string): string {
     return this.productCache[idProducto]?.name ?? '--';
   }
-
-  eliminarVenta(id: string): void {
-    this.ss.deleteSale(id).subscribe(
-      () => {
-        this.listSales = this.listSales.filter((venta) => venta.id !== id);
-        alert('Venta eliminada con éxito.');
-      },
-      (error) => {
-        console.log(error);
-        alert('Error al eliminar la venta');
-      }
-    );
-  }
 }

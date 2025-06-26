@@ -1,4 +1,6 @@
 <div class="contenedor-principal">
-    <app-profile></app-profile>
+    <div *ngIf="!isAdminUser">
+        <app-profile></app-profile>
+    </div>
     <app-sales-page></app-sales-page>
 </div>

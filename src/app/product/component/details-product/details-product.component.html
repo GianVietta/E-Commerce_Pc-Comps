@@ -10,17 +10,6 @@
     </div>
     <h3>Marca: {{ product?.brand }}</h3>
     <p>{{ product?.description }}</p>
-
-    <div class="payment-shipping">
-      <div class="payment-options">
-        <h4>Medios de pagos y cuotas</h4>
-        <p>Ver todos los medios de pago</p>
-      </div>
-      <div class="shipping-options">
-        <h4>Medios de envío</h4>
-        <p>Ver todos los medios de envío</p>
-      </div>
-    </div>
   </div>
 
   <div class="product-action-section">
@@ -73,11 +62,14 @@
       </button>
     </ng-container>
     <div
-        *ngIf="successMessage"
-        class="alert alert-success"
-        style="margin: 10px 0"
-      >
-        {{ successMessage }}
+      *ngIf="successMessage"
+      class="alert alert-success"
+      style="margin: 10px 0"
+    >
+      {{ successMessage }}
     </div>
   </div>
+</div>
+<div *ngIf="product">
+  <app-product-reviews [productId]="product.id"></app-product-reviews>
 </div>

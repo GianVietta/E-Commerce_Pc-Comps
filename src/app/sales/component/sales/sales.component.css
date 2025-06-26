@@ -7,13 +7,17 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  background: #fff;
 }
 
 /* Encabezado con el precio y fecha */
 .venta-header {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
+  gap: 10px;
   font-weight: bold;
+  align-items: center;
 }
 
 /* Listado de productos */
@@ -50,4 +54,20 @@
   height: 20px;
   object-fit: contain;
   margin: auto;
+}
+
+@media (max-width: 600px) {
+  .venta-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  .venta-productos {
+    padding-left: 0;
+    font-size: 15px;
+  }
+  .venta-item {
+    padding: 8px;
+    font-size: 15px;
+  }
 }
