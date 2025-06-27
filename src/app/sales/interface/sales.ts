@@ -7,4 +7,7 @@ export interface Sales {
   created_at: string; //Fecha de la venta de la pagina
   products: SaleProduct[]; //Productos incluidos
   //Agregar lo necesario sobre un comprobante
+  //Campos para la vista
+  user_name?: string;
+  user_last_name?: string;
 }

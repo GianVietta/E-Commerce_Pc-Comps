@@ -1,10 +1,5 @@
 import { Product } from './../../../product/interface/product';
-import {
-  Component,
-  inject,
-  OnInit,
-  ViewEncapsulation,
-} from '@angular/core';
+import { Component, inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { CartService } from '../../service/cart.service';
 import { Cart } from '../../interface/cart';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
@@ -23,6 +18,8 @@ import {
 } from 'rxjs';
 import { SalesService } from '../../../sales/service/sales.service';
 import { Clerk } from '@clerk/clerk-js';
+import { AuthService } from '../../../auth/service/auth.service';
+import { User } from '../../../auth/interface/user';
 
 @Component({
   selector: 'app-cart',
@@ -34,6 +31,7 @@ import { Clerk } from '@clerk/clerk-js';
 })
 export class CartComponent implements OnInit {
   cs = inject(CartService);
+  us = inject(AuthService);
   listProducts: { product: Product; quantity: number }[] = [];
   totalAmount: number = 0;
   prods = inject(ProductService);
@@ -181,36 +179,56 @@ export class CartComponent implements OnInit {
       return;
     }
 
-    // Primero traigo el carrito real del backend (asi tengo el cartId)
-    this.cs.getCart().subscribe({
-      next: (cart: Cart) => {
-        if (!cart.id) {
-          alert('No se pudo identificar el carrito del usuario.');
+    const clerk_user_id = user.id;
+    this.us
+      .getUserByClerkId(clerk_user_id)
+      .subscribe((userDB: User | undefined) => {
+        if (
+          !userDB ||
+          !userDB.name ||
+          !userDB.last_name ||
+          !userDB.dni ||
+          !userDB.address ||
+          !userDB.phone_number
+        ) {
+          // Muestra alerta y redirige
+          alert(
+            'Debes completar tus datos de perfil antes de pagar. Serás redirigido a tu perfil.'
+          );
+          this.router.navigate(['/profile']);
           return;
         }
+        // Primero traigo el carrito real del backend (asi tengo el cartId)
+        this.cs.getCart().subscribe({
+          next: (cart: Cart) => {
+            if (!cart.id) {
+              alert('No se pudo identificar el carrito del usuario.');
+              return;
+            }
 
-        // Despues registro la venta (hago un POST a sale.php)
-        const clerk_user_id = window.Clerk?.user?.id;
-        const cart_id = cart.id;
-        if (!clerk_user_id || !cart_id) {
-          alert('Falta usuario o carrito vacio');
-          return;
-        }
-        this.ss.addSale(clerk_user_id, cart_id).subscribe({
-          next: (res) => {
-            alert('!Compra exitosa!');
-            this.router.navigate(['']);
+            // Despues registro la venta (hago un POST a sale.php)
+            const clerk_user_id = window.Clerk?.user?.id;
+            const cart_id = cart.id;
+            if (!clerk_user_id || !cart_id) {
+              alert('Falta usuario o carrito vacio');
+              return;
+            }
+            this.ss.addSale(clerk_user_id, cart_id).subscribe({
+              next: (res) => {
+                alert('!Compra exitosa!');
+                this.router.navigate(['']);
+              },
+              error: (err) => {
+                console.error('Error al registrar la venta: ', err);
+                alert('Error al registrar la venta');
+              },
+            });
           },
-          error: (err) => {
-            console.error('Error al registrar la venta: ', err);
-            alert('Error al registrar la venta');
+          error: (e) => {
+            console.error('Error al obtener el carrito: ', e);
+            alert('Error al procesar el pago.');
           },
         });
-      },
-      error: (e) => {
-        console.error('Error al obtener el carrito: ', e);
-        alert('Error al procesar el pago.');
-      },
-    });
+      });
   }
 }

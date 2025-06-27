@@ -1,24 +1,95 @@
-<div *ngFor="let sale of listSales" class="venta-item">
-  <!-- Contenedor del bloque de venta -->
-  <div class="venta-header">
-    <!-- Precio y fecha de la venta -->
-    <span class="venta-precio">Precio: {{ sale.total_amount | currency }}</span>
-    <span class="venta-fecha"
-      >Fecha: {{ sale.created_at | date : "short" }}</span
-    >
-    <ng-container *ngIf="isAdmin">
-      <span class="venta-usuario">User ID: {{ sale.clerk_user_id }}</span>
-    </ng-container>
+<div class="sales-container">
+  <!-- Filtros -->
+  <div class="searchbar-bar">
+    <mat-form-field appearance="fill" class="searchbox">
+      <mat-label>{{
+        isAdmin
+          ? "Buscar por usuario o fecha (aaaa-mm-dd)"
+          : "Buscar por fecha (aaaa-mm-dd)"
+      }}</mat-label>
+      <input
+        matInput
+        [(ngModel)]="searchGlobal"
+        (keyup.enter)="aplicarFiltros()"
+        autocomplete="off"
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="aplicarFiltros()"
+        tabindex="-1"
+      >
+        <mat-icon>search</mat-icon>
+      </button>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="orderby">
+      <mat-label>Ordenar por</mat-label>
+      <mat-select
+        [(ngModel)]="orderSelected"
+        (selectionChange)="aplicarFiltros()"
+      >
+        <mat-option value="recent">Más recientes</mat-option>
+        <mat-option value="oldest">Más antiguos</mat-option>
+        <mat-option value="cantidad_desc">Mayor cantidad</mat-option>
+        <mat-option value="cantidad_asc">Menor cantidad</mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
 
-  <!-- Listado de productos -->
-  <div class="venta-productos">
-    <h4>Productos:</h4>
-    <ul>
-      <li *ngFor="let producto of sale.products">
-        Producto: {{ getProductName(producto.product_id) }} - Cantidad:
-        {{ producto.quantity }}
-      </li>
-    </ul>
+  <!-- Lista de ventas -->
+  <div class="sales-list">
+    <mat-card *ngFor="let sale of listSales" class="venta-card">
+      <div class="venta-card-body">
+        <!-- Izquierda: Productos -->
+        <div class="venta-productos-col">
+          <h4>Productos:</h4>
+          <ul>
+            <li *ngFor="let producto of sale.products">
+              <a
+                class="product-link"
+                [routerLink]="['/product', producto.product_id]"
+                [title]="getProductName(producto.product_id)"
+              >
+                {{ getProductName(producto.product_id) }}
+                <mat-icon style="font-size: 15px; vertical-align: middle"
+                  >open_in_new</mat-icon
+                >
+              </a>
+              <span class="cantidad">x{{ producto.quantity }}</span>
+            </li>
+          </ul>
+          <div class="venta-total">
+            <span>Total:</span>
+            <span class="total-amount">{{ sale.total_amount | currency }}</span>
+          </div>
+        </div>
+
+        <!-- Derecha: Usuario y fecha -->
+        <div class="venta-info-col">
+          <div class="venta-user" *ngIf="isAdmin">
+            <mat-icon>person</mat-icon>
+            {{ sale.user_name || sale.clerk_user_id }}
+            {{ sale.user_last_name || "" }}
+          </div>
+          <div class="venta-fecha">
+            <mat-icon>calendar_today</mat-icon>
+            {{ sale.created_at | date : "yyyy-MM-dd" }}
+          </div>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+
+  <!-- Paginación -->
+  <div class="paginacion-container" *ngIf="totalPages > 1">
+    <button
+      mat-stroked-button
+      *ngFor="let p of paginas"
+      [color]="page === p ? 'primary' : ''"
+      [disabled]="page === p"
+      (click)="cambiarPagina(p)"
+    >
+      {{ p }}
+    </button>
   </div>
 </div>
