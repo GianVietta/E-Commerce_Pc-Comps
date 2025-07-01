@@ -4,125 +4,42 @@ html {
   padding: 0;
   overflow-x: hidden;
 }
-
-.header {
-  background-color: #3c3636;
-  padding: 0 20px;
-  color: #ff4d4d;
-  font-family: Arial, sans-serif;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  width: 100%;
-  margin: 0;
-  box-sizing: border-box;
-  min-height: 120px;
+.main-toolbar {
   display: flex;
   align-items: center;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-
-.header-container {
-  display: flex;
   justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  flex-wrap: wrap;
-  /* overflow: hidden; */
+  background: #3c3636 !important;
+  color: #ff4d4d !important;
+  min-height: 76px !important;
+  height: 90px !important;
+  padding: 0 24px !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.13);
+  border-bottom: 1px solid #af1818;
+  position: relative;
 }
-
 .logo-container {
-  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 10px;
 }
-
 .logo {
-  height: 60%;
-  max-height: 80px;
+  height: 50px;
   width: auto;
+  cursor: pointer;
 }
 .logo:hover {
   cursor: pointer;
 }
-
-.search-bar {
-  flex: 1 1 auto;
-  max-width: 500px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 10px;
+/* Nuevo wrapper: posición relativa solo alrededor del buscador */
+.search-autocomplete-wrapper {
   position: relative;
-}
-
-.search-input {
   width: 100%;
-  padding: 10px 15px;
-  font-size: 16px;
-  border-radius: 20px;
-  border: 1px solid #ccc;
+  max-width: 420px; /* igual que el input */
 }
-
-.user-cart-container {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-.menu-icon {
-  cursor: pointer;
-  width: 30px;
-  height: auto;
-  margin-left: 20px;
-}
-
-.dropdown-menu {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  background-color: #3c3636;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
-  padding: 10px 0;
-  width: 150px;
-  display: flex;
-  flex-direction: column;
-  z-index: 10;
-}
-
-.menu-item {
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  color: #ff4d4d;
-  font-size: 14px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.menu-item:hover {
-  background-color: #2d2929;
-}
-
-.menu-icon-option {
-  width: 20px;
-  height: auto;
-  margin-right: 10px;
-}
-
-.login-icon,
-.cart-icon,
-.add-icon {
-  margin: auto 10px;
-  width: 30px;
-  height: 60%;
-  max-height: 80px;
-  margin-left: 20px;
-  cursor: pointer;
-}
-
 .suggestions-list {
   position: absolute;
-  top: 110%; /* Justo debajo del input, podés ajustar a 100% si lo ves mejor */
+  top: 100%;
   left: 0;
   width: 100%;
   list-style: none;
@@ -130,14 +47,14 @@ html {
   margin: 0;
   border: 1px solid #ddd;
   background: #fff;
-  max-height: 250px;
+  max-height: 230px;
   overflow-y: auto;
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
   border-radius: 0 0 10px 10px;
   z-index: 100;
 }
 .suggestions-list li {
-  padding: 10px 12px;
+  padding: 9px 12px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -146,37 +63,480 @@ html {
   transition: background 0.12s, color 0.12s;
 }
 .suggestions-list li img {
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   object-fit: contain;
-  margin-right: 12px;
+  margin-right: 10px;
   border-radius: 5px;
-  background: #f2f2f2;
+  background: #f5f5f5;
 }
 .suggestions-list li:hover {
   background: #f8f8f8;
   color: #ff4d4d;
 }
-.search-input:focus {
-  outline: 2px solid #ff4d4d;
-  border-color: #ff4d4d;
-  background: #fff;
+.flex-spacer {
+  flex: 1 1 auto;
+}
+.sidenav-container {
+  background: #f9f9f9;
+  min-height: unset;
+  height: auto;
+}
+.side-menu-content {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 0px 8px;
+  margin-top: 18px;
+}
+.side-btn {
+  color: #ff4d4d !important;
+  font-weight: bold;
+  border-radius: 8px;
+  text-align: left;
+  padding-left: 12px;
+  font-size: 24px;
+  min-height: 44px;
+  transition: background 0.14s, color 0.14s;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.side-btn:hover {
+  background: #222;
+  color: #fff !important;
+}
+.side-btn .mat-icon {
+  color: #ff4d4d !important;
+  font-size: 24px;
+}
+/* Botón de cerrar */
+.close-btn {
+  align-self: flex-end;
+  margin-bottom: 6px;
+  color: #ff4d4d !important;
+  background: transparent !important;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+.close-btn .mat-icon {
+  font-size: 30px;
+}
+.close-btn:hover .mat-icon {
+  color: #fff !important;
+  background: #ff4d4d;
+  border-radius: 50%;
+}
+.mat-icon {
+  color: #ff4d4d !important;
+  opacity: 1 !important;
+  transition: color 0.2s;
+}
+.main-toolbar button[mat-icon-button] {
+  margin-left: 8px;
+  margin-right: 0;
+}
+.main-toolbar button[mat-icon-button]:hover .mat-icon {
+  color: #fff;
+  background: #ff9c9c;
+  border-radius: 50%;
+}
+/* Sidenav fondo y colores */
+.custom-sidenav {
+  background: #3c3636 !important;
+  color: #ff4d4d !important;
+  width: 240px !important;
+  min-width: 220px;
+  max-width: 90vw;
+  box-shadow: 2px 0 16px #0004;
+  padding-top: 12px;
+  padding-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.toolbar-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.search-field {
+  width: 100%;
+  max-width: 420px;
+  min-width: 160px;
+  margin: 0 auto;
+}
+/* Fondo del input, borde redondeado */
+.search-field .mat-form-field-flex {
+  background: #262222 !important;
+  border-radius: 18px !important;
+  align-items: center;
+}
+/* Color del texto, label y el icono */
+.search-field .mat-input-element,
+.search-field .mat-form-field-label,
+.search-field .mat-icon {
+  color: #ff4d4d !important;
+}
+.search-field .mat-input-element {
+  font-size: 15px;
+}
+.search-field .mat-form-field-label {
+  opacity: 0.7;
+}
+.search-field .mat-icon {
+  font-size: 20px;
 }
 
-
-@media (max-width: 768px) {
-  .header-container {
-    flex-direction: column;
+@media (max-width: 650px) {
+  .main-toolbar {
+    padding: 0 !important;
+    min-height: 54px !important;
+    height: 54px !important;
+    box-sizing: border-box !important;
+    overflow-x: visible !important;
+    position: relative;
+  }
+  /* Sobreescribo metodos de angular material*/
+  ::ng-deep .main-toolbar .mat-toolbar-single-row,
+  ::ng-deep .main-toolbar .mat-toolbar-row,
+  ::ng-deep .main-toolbar .mat-mdc-toolbar-row,
+  ::ng-deep .main-toolbar .mat-mdc-toolbar-single-row {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    width: 100vw !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+  }
+  .logo-container {
+    display: flex;
     align-items: center;
-    padding: 10px 20px;
+    height: 38px;
+    width: auto;
   }
-  .search-bar {
-    width: 90%;
+  .logo {
+    height: 30px;
+    width: auto;
   }
-  .user-cart-container img {
-    width: 25px;
+  .flex-spacer {
+    flex: 1 1 auto;
+    min-width: 0 !important;
+  }
+  .toolbar-actions {
+    position: absolute;
+    right: 20px;
+    top: 0;
+    height: 100%;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+  }
+  .toolbar-actions button,
+  .toolbar-actions button.mat-icon-button {
+    margin: 0 !important;
+    padding: 0 2px !important;
+    min-width: 0 !important;
+    width: 36px !important;
+    box-sizing: content-box !important;
+    color: #ff4d4d !important;
+    border: none !important;
+    background: transparent !important;
+  }
+  .toolbar-actions .mat-icon {
+    font-size: 24.5px !important;
+    line-height: 1 !important;
+  }
+  /* Contenedor principal flotante */
+  .mobile-searchbar-overlay {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    background: transparent;
+    z-index: 100;
+    padding: 0;
+    width: calc(100vw - 90px); /* 90px: logo + margen */
+    min-width: 140px;
+    pointer-events: auto;
+    height: 48px;
+  }
+
+  /* Fondo y estructura del input (el label gris claro) */
+  .mobile-search-field .mat-mdc-form-field-flex,
+  .mobile-search-field .mat-form-field-flex,
+  ::ng-deep .mobile-search-field .mdc-text-field,
+  ::ng-deep .mobile-search-field .mdc-text-field--filled {
+    background: #e0e2ec !important;
+    border-radius: 18px !important;
+    box-shadow: 0 2px 8px #0001;
+    min-height: 40px !important;
+    height: 40px !important;
+    display: flex !important;
+    align-items: center !important;
+    margin: 0 !important;
+    padding: 0 0 0 8px !important; /* Padding izquierdo para separar la lupa */
+    border: none !important;
+    overflow: visible !important;
+  }
+
+  /* Elimina margenes/padding del wrapper e infix */
+  .mobile-search-field .mat-mdc-form-field-wrapper,
+  .mobile-search-field .mat-form-field-wrapper,
+  ::ng-deep .mobile-search-field .mat-mdc-form-field-wrapper {
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+    height: 40px !important;
+    min-height: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  .mobile-search-field .mat-mdc-form-field-infix,
+  .mobile-search-field .mat-form-field-infix,
+  ::ng-deep .mobile-search-field .mat-mdc-form-field-infix {
+    padding: 0 !important;
+    margin: 0 !important;
+    height: 40px !important;
+    min-height: 40px !important;
+    display: flex !important;
+    align-items: center !important;
+    background: transparent !important;
+    border: none !important;
+  }
+
+  /* El input */
+  .mobile-search-field input.mat-mdc-input-element,
+  .mobile-search-field input.mat-input-element,
+  ::ng-deep .mobile-search-field input.mat-mdc-input-element {
+    width: 100% !important;
+    font-size: 17px !important;
+    line-height: 40px !important;
+    padding: 0 0 0 2px !important;
+    margin: 0 !important;
+    height: 40px !important;
+    background: transparent !important;
+    color: #222 !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    box-sizing: border-box;
+  }
+
+  /* Placeholder centrado */
+  .mobile-search-field .mat-mdc-floating-label,
+  .mobile-search-field .mat-form-field-label,
+  ::ng-deep .mobile-search-field .mat-mdc-floating-label {
+    left: 32px !important;
+    top: 13px !important;
+    font-size: 16px !important;
+    color: #666 !important;
+    opacity: 0.8 !important;
+    pointer-events: none;
+    background: transparent !important;
+    margin: 0 !important;
+    line-height: 16px !important;
+  }
+
+  /* Elimina subrayados y outlines */
+  .mobile-search-field .mat-mdc-form-field-outline,
+  .mobile-search-field .mat-mdc-form-field-outline-thick,
+  .mobile-search-field .mat-form-field-outline,
+  .mobile-search-field .mat-form-field-outline-thick,
+  .mobile-search-field .mat-form-field-underline,
+  ::ng-deep .mobile-search-field .mdc-line-ripple,
+  ::ng-deep .mobile-search-field .mat-mdc-form-field-subscript-wrapper {
+    display: none !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    border: none !important;
+  }
+
+  /* Ícono de lupa */
+  .mobile-search-field .mat-icon,
+  ::ng-deep .mobile-search-field .mat-icon {
+    color: #ff4d4d !important;
+    font-size: 22px !important;
+    margin-right: 7px !important;
+    align-self: center !important;
+  }
+
+  /* Botón cerrar */
+  .close-search-btn {
+    margin-left: 9px;
+    color: #ff4d4d !important;
+    font-size: 25px;
+    padding: 0 6px;
+    border-radius: 50%;
+    background: transparent !important;
+    align-self: center;
+    border: none;
+    height: 38px;
+    width: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: none !important;
+    transition: background 0.16s;
+  }
+  .close-search-btn:focus,
+  .close-search-btn:hover {
+    background: #ffe6e6 !important;
+    color: #e4002b !important;
+  }
+  .close-search-btn .mat-icon {
+    font-size: 24px !important;
+  }
+
+  /* Sugerencias: encima de todo */
+  .suggestions-list {
+    z-index: 1010 !important;
+  }
+  .custom-sidenav {
+    position: fixed !important;
+    top: 54px !important; /* justo debajo del toolbar */
+    right: 0 !important;
+    left: auto !important;
+    width: 230px !important;
+    border-radius: 0 0 14px 14px !important;
+    background: #3c3636 !important;
+    box-shadow: -2px 4px 24px #0005 !important;
+    z-index: 9999 !important;
+    /* Usamos auto para el alto y el contenedor lo controla */
+    height: auto !important;
+    max-height: unset !important;
+    overflow: visible !important;
+    /* Evita scroll interno, el menú no debe scrollear */
+  }
+  /* Forzá el contenedor interno a auto, sin scroll */
+  ::ng-deep .custom-sidenav .mat-drawer-inner-container {
+    height: auto !important;
+    max-height: none !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-bottom: 0;
+    background: none !important;
+  }
+  /* Opcional: centrado vertical */
+  .mat-drawer-inner-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding-bottom: 14px;
+  }
+  .side-menu-content {
+    padding: 2px 8px 8px 8px !important;
+    gap: 14px !important;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .sidenav-container {
+    height: unset !important;
+    min-height: unset !important;
+    position: static !important;
+    background: none !important;
+  }
+  .side-btn {
+    width: 92%;
+    min-width: 0;
+    background: #ececec;
+    border-radius: 8px;
+    padding: 7px 0 7px 9px !important;
+    color: #ff4d4d !important;
+    font-size: 15px !important;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: none;
+    box-shadow: 0 2px 8px #0001;
+    margin-bottom: 2px;
+    transition: background 0.15s;
+  }
+  .side-btn .mat-icon {
+    font-size: 19px !important;
+    margin-right: 5px !important;
+  }
+  .side-btn:hover {
+    background: #f4bebe;
+    color: #b20c0c !important;
+  }
+  /* La X a la izquierda */
+  .close-btn {
+    align-self: flex-start !important;
+    margin: 0 0 0 2px !important;
+    color: #ff4d4d !important;
+    background: transparent !important;
+    border-radius: 50%;
+    width: 30px !important;
+    height: 30px !important;
+    order: -1;
+    font-size: 20px !important;
+    padding: 3px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .close-btn .mat-icon {
+    font-size: 20px !important;
+    line-height: 1 !important; /* Ajustado para centrar */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .close-btn:hover,
+  .close-btn:focus {
+    background: #ffdfdf !important;
+    color: #ff1818 !important;
+    outline: none;
+    box-shadow: 0 0 0 1px #ffdede44;
+  }
+  /* Que el overlay tape todo y bloquee scroll */
+  ::ng-deep .cdk-overlay-backdrop {
+    display: block !important;
+    position: fixed !important;
+    z-index: 9998 !important;
+    background: #1a1a1abb !important;
+    inset: 0;
+    opacity: 1;
+    transition: opacity 0.2s;
+    pointer-events: all !important;
+  }
+  ::ng-deep .mat-sidenav.custom-sidenav.mat-drawer-end.mat-drawer-over {
+    top: 54px !important;
+    height: auto !important;
+    max-height: none !important;
+    bottom: unset !important; /* ¡Esta línea es CLAVE! */
+    border-radius: 0 0 14px 14px !important;
+    box-shadow: -2px 4px 24px #0005 !important;
+    z-index: 9999 !important;
+    background: #3c3636 !important;
+    overflow: visible !important;
+    right: 0 !important;
+    left: auto !important;
+    width: 230px !important;
+  }
+  body.cdk-global-scrollblock {
+    overflow: hidden !important;
+    position: fixed !important;
+    width: 100vw !important;
   }
 }
+
 ::ng-deep .custom-dialog-container .mat-dialog-container {
   padding: 0 !important;
   margin: 0 !important;
@@ -192,4 +552,49 @@ html {
 }
 ::ng-deep .mat-dialog-container {
   background-color: transparent !important;
+}
+
+/* Ajustes globales para search-field */
+::ng-deep .search-field .mat-mdc-form-field {
+  --_form-field-density-scale: -3;
+}
+
+/* Fallback si no funciona la API: forzar altura con ng-deep */
+::ng-deep .search-field .mat-mdc-text-field-wrapper {
+  max-height: 44px !important;
+  min-height: 40px !important;
+}
+::ng-deep .search-field .mat-mdc-form-field-infix {
+  display: flex !important;
+  align-items: center !important;
+  padding-top: 2px !important;
+  padding-bottom: 7px !important;
+  height: 32px !important; /* Ajustá esto según lo veas, entre 32-38px suele estar bien */
+  box-sizing: border-box;
+}
+::ng-deep .search-field .mat-mdc-input-element {
+  height: 24px !important;
+  line-height: 24px !important;
+  font-size: 15px !important;
+  padding: 0 !important;
+  margin: 0 0 0 2px !important; /* Pequeño margen si lo ves muy pegado a la lupa */
+  box-sizing: content-box;
+}
+
+::ng-deep .search-field .mat-icon {
+  font-size: 20px !important;
+  height: 20px !important;
+  width: 20px !important;
+  padding-bottom: 7px !important;
+  line-height: 20px !important;
+  margin-right: 4px !important;
+  color: #ff4d4d !important;
+  align-self: center !important;
+}
+
+::ng-deep .search-field .mat-mdc-floating-label {
+  font-size: 13px !important;
+  top: 9px !important; /* Centra el label al hacer focus */
+  color: #ff4d4d !important;
+  opacity: 0.7;
 }

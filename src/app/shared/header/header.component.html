@@ -1,25 +1,93 @@
-<header class="header">
-  <div class="header-container">
-    <div class="logo-container">
-      <img
-        src="/resources/icons/header/image-removebg-preview.png"
-        alt="Logo"
-        class="logo"
-        (click)="inicio()"
-      />
-    </div>
+<mat-toolbar color="primary" class="main-toolbar" [class.is-mobile]="isMobile">
+  <!-- Logo -->
+  <div class="logo-container" (click)="inicio()">
+    <img
+      src="/resources/icons/header/image-removebg-preview.png"
+      alt="Logo"
+      class="logo"
+    />
+  </div>
 
-    <div class="search-bar">
+  <!-- Spacer para empujar el contenido -->
+  <span class="flex-spacer"></span>
+
+  <span class="toolbar-actions" *ngIf="!showMobileSearch">
+    <!-- Ícono buscar solo mobile -->
+    <button
+      mat-icon-button
+      class="mobile-search-btn"
+      *ngIf="isMobile && !showMobileSearch"
+      (click)="showMobileSearch = true"
+    >
+      <mat-icon>search</mat-icon>
+    </button>
+
+    <!-- Botón menú hamburguesa (solo mobile) -->
+    <button
+      mat-icon-button
+      (click)="sidenav.toggle()"
+      class="mobile-menu-btn"
+      *ngIf="isMobile"
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
+  </span>
+
+  <!-- Barra de búsqueda flotante SOLO en mobile -->
+  <div *ngIf="isMobile && showMobileSearch" class="mobile-searchbar-overlay">
+    <mat-form-field appearance="fill" class="mobile-search-field">
+      <mat-icon matPrefix>search</mat-icon>
       <input
-        type="text"
-        placeholder="Buscar por producto, marca o categoria"
-        class="search-input"
+        matInput
+        placeholder="Buscar productos"
         [(ngModel)]="searchQuery"
         (input)="onSearchInput($event)"
         (keyup.enter)="onSearch()"
         (focus)="showSuggestions = suggestion.length > 0"
         (blur)="delayClearSuggestions()"
       />
+      <ul
+        *ngIf="showSuggestions && suggestion.length > 0"
+        class="suggestions-list"
+        (click)="showMobileSearch = false"
+      >
+        <li
+          *ngFor="let product of suggestion"
+          (mousedown)="onSelectSuggestion(product)"
+        >
+          <img [src]="product.img" />
+          <span>{{ product.name }}</span>
+        </li>
+      </ul>
+    </mat-form-field>
+    <button
+      mat-icon-button
+      class="close-search-btn"
+      (click)="showMobileSearch = false"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <!-- Barra de búsqueda -->
+  <div class="toolbar-center" *ngIf="!isMobile">
+    <div class="search-autocomplete-wrapper">
+      <mat-form-field
+        appearance="fill"
+        class="search-field"
+        *ngIf="!isMobile || showMobileSearch"
+      >
+        <mat-icon matPrefix>search</mat-icon>
+        <input
+          matInput
+          placeholder="Buscar por producto, marca o categoría"
+          [(ngModel)]="searchQuery"
+          (input)="onSearchInput($event)"
+          (keyup.enter)="onSearch()"
+          (focus)="showSuggestions = suggestion.length > 0"
+          (blur)="delayClearSuggestions()"
+        />
+      </mat-form-field>
       <ul
         *ngIf="showSuggestions && suggestion.length > 0"
         class="suggestions-list"
@@ -33,96 +101,105 @@
         </li>
       </ul>
     </div>
-
-    <div class="user-cart-container">
-      <!-- Íconos para usuarios no autenticados (Login y Carrito) -->
-      <ng-container *ngIf="!isAuthenticated">
-        <img
-          src="resources/icons/header/login.svg"
-          alt="Login"
-          class="login-icon"
-          (click)="goToLogin()"
-        />
-        <img
-          src="resources/icons/header/cart.svg"
-          alt="Carrito"
-          class="cart-icon"
-          (click)="cart()"
-        />
-      </ng-container>
-
-      <!-- Íconos para usuarios autenticados que son administradores -->
-      <ng-container *ngIf="isAuthenticated && isAdminUser">
-        <div class="menu-container">
-          <img
-            src="resources/icons/header/menu.svg"
-            alt="Menu Desplegable"
-            class="menu-icon"
-            (click)="toggleMenu()"
-          />
-          <div *ngIf="isMenuOpen" class="dropdown-menu">
-            <div class="menu-item" (click)="viewProfile()">
-              <img
-                src="resources/icons/header/user.svg"
-                alt="Ver Perfil"
-                class="menu-icon-option"
-              />
-              <span>Ver Perfil</span>
-            </div>
-            <div class="menu-item" (click)="logout()">
-              <img
-                src="resources/icons/header/logout.svg"
-                alt="Cerrar Sesión"
-                class="menu-icon-option"
-              />
-              <span>Cerrar Sesión</span>
-            </div>
-          </div>
-        </div>
-        <div class="add-item" (click)="newProduct()">
-          <img
-            src="resources/icons/header/plus.svg"
-            alt="Agregar"
-            class="add-icon"
-          />
-        </div>
-      </ng-container>
-
-      <!-- Íconos para usuarios autenticados estándar -->
-      <ng-container *ngIf="isAuthenticated && !isAdminUser">
-        <div class="menu-container">
-          <img
-            src="resources/icons/header/menu.svg"
-            alt="Menu Desplegable"
-            class="menu-icon"
-            (click)="toggleMenu()"
-          />
-          <div *ngIf="isMenuOpen" class="dropdown-menu">
-            <div class="menu-item" (click)="viewProfile()">
-              <img
-                src="resources/icons/header/user.svg"
-                alt="Ver Perfil"
-                class="menu-icon-option"
-              />
-              <span>Ver Perfil</span>
-            </div>
-            <div class="menu-item" (click)="logout()">
-              <img
-                src="resources/icons/header/logout.svg"
-                alt="Cerrar Sesión"
-                class="menu-icon-option"
-              />
-              <span>Cerrar Sesión</span>
-            </div>
-          </div>
-        </div>
-        <img
-          src="resources/icons/header/cart.svg"
-          alt="Carrito"
-          class="cart-icon"
-          (click)="cart()"
-        />
-      </ng-container>
-    </div>
   </div>
-</header>
+
+  <!-- Botones de usuario/cart -->
+  <ng-container *ngIf="!isMobile">
+    <button mat-icon-button (click)="cart()" matToolTip="Carrito">
+      <mat-icon>add_shopping_cart</mat-icon>
+    </button>
+    <button
+      mat-icon-button
+      *ngIf="!isAuthenticated"
+      (click)="goToLogin()"
+      matToolTip="Ingresar"
+    >
+      <mat-icon>login</mat-icon>
+    </button>
+    <button
+      mat-icon-button
+      *ngIf="isAuthenticated"
+      (click)="viewProfile()"
+      matToolTip="Perfil"
+    >
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    <button
+      mat-icon-button
+      *ngIf="isAuthenticated"
+      (click)="logout()"
+      matToolTip="Cerrar sesión"
+    >
+      <mat-icon>logout</mat-icon>
+    </button>
+    <button
+      mat-icon-button
+      *ngIf="isAuthenticated && isAdminUser"
+      (click)="newProduct()"
+      matToolTip="Nuevo producto"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
+  </ng-container>
+</mat-toolbar>
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #sidenav
+    mode="over"
+    [fixedInViewport]="true"
+    [opened]="false"
+    position="end"
+    class="custom-sidenav"
+    [disableClose]="false"
+    (backdropClick)="sidenav.close()"
+    [autoFocus]="false"
+    (closed)="onSidenavClosed()"
+  >
+    <div class="side-menu-content">
+      <button mat-icon-button class="close-btn" (click)="sidenav.close()">
+        <mat-icon>close</mat-icon>
+      </button>
+      <button mat-list-item (click)="cart()" class="side-btn">
+        <mat-icon>add_shopping_cart</mat-icon>
+        <span>Carrito</span>
+      </button>
+      <button
+        mat-list-item
+        *ngIf="!isAuthenticated"
+        (click)="openLoginFromSideNav()"
+        class="side-btn"
+      >
+        <mat-icon>login</mat-icon>
+        <span>Ingresar</span>
+      </button>
+      <button
+        mat-list-item
+        *ngIf="isAuthenticated"
+        (click)="viewProfile()"
+        class="side-btn"
+      >
+        <mat-icon>account_circle</mat-icon>
+        <span>Perfil</span>
+      </button>
+      <button
+        mat-list-item
+        *ngIf="isAuthenticated"
+        (click)="logout()"
+        class="side-btn"
+      >
+        <mat-icon>logout</mat-icon>
+        <span>Cerrar sesión</span>
+      </button>
+      <button
+        mat-list-item
+        *ngIf="isAuthenticated && isAdminUser"
+        (click)="newProduct()"
+        class="side-btn"
+      >
+        <mat-icon>add</mat-icon>
+        <span>Nuevo producto</span>
+      </button>
+    </div>
+  </mat-sidenav>
+</mat-sidenav-container>

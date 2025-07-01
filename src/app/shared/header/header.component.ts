@@ -1,4 +1,11 @@
-import { Component, inject, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  HostListener,
+  inject,
+  ViewChild,
+  ViewEncapsulation,
+} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router, RouterLink, RouterModule } from '@angular/router';
 import { LoginComponent } from '../../auth/component/login/login.component';
@@ -16,15 +23,35 @@ import {
   switchMap,
 } from 'rxjs';
 
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    FormsModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+  ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
   encapsulation: ViewEncapsulation.Emulated,
 })
 export class HeaderComponent {
+  isMobile = false;
+  showMobileSearch = false;
+
   readonly dialog = inject(MatDialog);
   cartService = inject(CartService);
   private cartSync = false; // Flag para no sincronizar varias veces
@@ -40,8 +67,12 @@ export class HeaderComponent {
   isAuthenticated = false;
   isAdminUser = false;
   isMenuOpen = false; // Controla la visibilidad del menú desplegable
+  pendingLoginDialog = false;
 
   ngOnInit() {
+    this.onResize();
+    window.addEventListener('resize', this.onResize.bind(this));
+
     //Clerk actualiza la sesion al cargar
     this.updateSessionState();
 
@@ -72,6 +103,12 @@ export class HeaderComponent {
       });
   }
 
+  @HostListener('window:resize')
+  onResize() {
+    this.isMobile = window.innerWidth <= 768;
+    if (!this.isMobile) this.showMobileSearch = false;
+  }
+
   onSearchInput(event: Event) {
     const value = (event.target as HTMLInputElement).value;
     this.searchSubject.next(value);
@@ -80,6 +117,7 @@ export class HeaderComponent {
   onSelectSuggestion(product: any) {
     this.router.navigate(['/product', product.id]);
     this.clearSuggestions();
+    this.showMobileSearch = false;
   }
 
   clearSuggestions() {
@@ -101,6 +139,7 @@ export class HeaderComponent {
   }
 
   ngOnDestroy() {
+    window.removeEventListener('resize', this.onResize.bind(this));
     this.searchSub?.unsubscribe();
   }
 
@@ -168,6 +207,38 @@ export class HeaderComponent {
   }
 
   goToLogin() {
+    this.dialog.open(LoginComponent, {
+      disableClose: true,
+      autoFocus: false,
+      closeOnNavigation: false,
+      position: { top: '50px' },
+      width: '400px', // Más chico porque Clerk es compacto
+      panelClass: 'custom-dialog-container',
+      data: { tipo: 'LOGIN' },
+    });
+  }
+  @ViewChild('sidenav') sidenav!: MatSidenav;
+
+  openLoginFromSideNav() {
+    if(this.sidenav.opened){
+      // 1. Cerrar el sidenav
+      this.sidenav.close();
+      this.pendingLoginDialog = true;
+    }else{
+      // Si esta por x razon cerrado el sidenav, abro directamente el login
+      this.openLoginDialog();
+    }
+
+  }
+
+  onSidenavClosed() {
+    if (this.pendingLoginDialog) {
+      this.pendingLoginDialog = false;
+      this.openLoginDialog();
+    }
+  }
+
+  openLoginDialog() {
     this.dialog.open(LoginComponent, {
       disableClose: true,
       autoFocus: false,

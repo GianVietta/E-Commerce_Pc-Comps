@@ -1,4 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+/* === Override para el backdrop del MatDialog SOLO en mobile === */
+@media (max-width: 650px) {
+  .cdk-overlay-backdrop.cdk-overlay-backdrop-showing {
+    background: rgba(30, 30, 30, 0.01) !important;
+    pointer-events: none !important;
+
+    transition: background 0.18s !important;
+  }
+  .clerk-dialog-container ~ .cdk-overlay-backdrop.cdk-overlay-backdrop-showing {
+    background: rgba(30, 30, 30, 0.01) !important;
+    pointer-events: none !important;
+    transition: background 0.18s !important;
+  }
+}
