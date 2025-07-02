@@ -1,203 +1,262 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-
-  .product-card {
-    position: relative;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
-    margin: 30px 5px;
-    padding: 15px;
-    height: 400px;
-    width: 280px;
-    flex-shrink: 0;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    cursor:pointer;
-    opacity: 1;
-    transition: opacity 0.3s ease;
-  }
-
-  .product-card:hover{
-    opacity: 0.65;
-  }
-
-
-  .product-card img {
-    max-width: 100%;
-    border-radius: 5px;
-    margin: 8px 0;
-    height: 180px;
-    object-fit: contain;
-  }
-  
-  .category {
-    font-size: 10px;
-    color: gray;
-    text-transform: uppercase;
-  }
-  
-  .price {
-    font-size: 20px;
-    font-weight: bold;
-    color: #333;
-  }
-
-  .product-name {
-    font-size: 18px; 
-    font-weight: bold;
-    color: #333;
-    max-height: 40px;
-    overflow: hidden;
-  }
-  
-  .cart-button {
-    position: absolute;
-    bottom: 10px;
-    right: 15px;
-    border:none;
-    border-radius: 5px;
-    background-color: #fff;
-    cursor: pointer;
-    font-size: 1px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2;
-  }
-  
-  .product-card:hover .cart-button {
-    z-index: 3;
-  }
-  
-  .cart-button img{
-    width: 25px;
-    height: 17px;
-  }
-  
-  .cart-button:hover {
-    background-color: #3c3636;
-    opacity: 0.8;
-  }
-  .cart-button:hover ~ .product-card {
-    opacity: 1;
-  }
-
-  .remove-button {
-    position: absolute;
-    bottom: 10px;
-    right: 15px;
-    border:none;
-    border-radius: 5px;
-    background-color: #fff;
-    cursor: pointer;
-    font-size: 1px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2;
-  }
-  
-  .product-card:hover .remove-button {
-    z-index: 3;
-  }
-  
-  .remove-button img{
-    width: 25px;
-    height: 17px;
-  }
-  
-  .remove-button:hover {
-    background-color: #3c3636;
-    opacity: 0.8;
-  }
-  .remove-button:hover ~ .product-card {
-    opacity: 1;
-  }
-
-  .update-button {
-    position: absolute;
-    bottom: 10px;
-    right: 45px;
-    border:none;
-    border-radius: 5px;
-    background-color: #fff;
-    cursor: pointer;
-    font-size: 1px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2;
-  }
-  
-  .product-card:hover .update-button {
-    z-index: 3;
-  }
-  
-  .update-button img{
-    width: 25px;
-    height: 17px;
-  }
-  
-  .update-button:hover {
-    background-color: #3c3636;
-    opacity: 0.8;
-  }
-  .update-button:hover ~ .product-card {
-    opacity: 1;
-  }
-
-  .product-card-NoStock {
-    position: relative;
-    background-color: #f8f8f8;
-    border-radius: 10px;
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
-    margin: 30px 5px;
-    padding: 15px;
-    height: 400px;
-    width: 280px;
-    flex-shrink: 0;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-    justify-content: space-between;
-    opacity: 0.5; /* Baja opacidad */
-    transition: opacity 0.3s ease;
-    filter: grayscale(100%); /* Escala de grises */
-  }
-  
-  .product-card-NoStock img {
-    opacity: 0.7;
-    max-width: 100%;
-    border-radius: 5px;
-    margin: 8px 0;
-    height: 180px;
-    object-fit: contain; /* Imagen con menos opacidad */
-  }
-
-  ::ng-deep .p-carousel .p-carousel-prev, 
-  ::ng-deep .p-carousel .p-carousel-next {
-  font-size: 25px; 
-  color: #555; 
-  background-color: transparent; 
-  border: none; 
-  padding: 10px; 
-  opacity: 0.7; 
-  transition: opacity 0.3s ease; 
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-::ng-deep .p-carousel .p-carousel-prev:hover, 
+.product-card {
+  position: relative;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+  margin: 30px 5px;
+  padding: 15px;
+  height: 400px;
+  width: 280px;
+  flex-shrink: 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.product-card:hover {
+  opacity: 0.65;
+}
+
+.product-card img {
+  max-width: 100%;
+  border-radius: 5px;
+  margin: 8px 0;
+  height: 180px;
+  object-fit: contain;
+}
+
+.category {
+  font-size: 10px;
+  color: gray;
+  text-transform: uppercase;
+}
+
+.price {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+}
+
+.product-name {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  max-height: 40px;
+  overflow: hidden;
+}
+
+.cart-button {
+  position: absolute;
+  bottom: 10px;
+  right: 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
+  font-size: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.product-card:hover .cart-button {
+  z-index: 3;
+}
+
+.cart-button img {
+  width: 25px;
+  height: 17px;
+}
+
+.cart-button:hover {
+  background-color: #3c3636;
+  opacity: 0.8;
+}
+.cart-button:hover ~ .product-card {
+  opacity: 1;
+}
+
+.remove-button {
+  position: absolute;
+  bottom: 10px;
+  right: 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
+  font-size: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.product-card:hover .remove-button {
+  z-index: 3;
+}
+
+.remove-button img {
+  width: 25px;
+  height: 17px;
+}
+
+.remove-button:hover {
+  background-color: #3c3636;
+  opacity: 0.8;
+}
+.remove-button:hover ~ .product-card {
+  opacity: 1;
+}
+
+.update-button {
+  position: absolute;
+  bottom: 10px;
+  right: 45px;
+  border: none;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
+  font-size: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.product-card:hover .update-button {
+  z-index: 3;
+}
+
+.update-button img {
+  width: 25px;
+  height: 17px;
+}
+
+.update-button:hover {
+  background-color: #3c3636;
+  opacity: 0.8;
+}
+.update-button:hover ~ .product-card {
+  opacity: 1;
+}
+
+.product-card-NoStock {
+  position: relative;
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+  margin: 30px 5px;
+  padding: 15px;
+  height: 400px;
+  width: 280px;
+  flex-shrink: 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  justify-content: space-between;
+  opacity: 0.5; /* Baja opacidad */
+  transition: opacity 0.3s ease;
+  filter: grayscale(100%); /* Escala de grises */
+}
+
+.product-card-NoStock img {
+  opacity: 0.7;
+  max-width: 100%;
+  border-radius: 5px;
+  margin: 8px 0;
+  height: 180px;
+  object-fit: contain; /* Imagen con menos opacidad */
+}
+
+::ng-deep .p-carousel .p-carousel-prev,
+::ng-deep .p-carousel .p-carousel-next {
+  font-size: 25px;
+  color: #555;
+  background-color: transparent;
+  border: none;
+  padding: 10px;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+::ng-deep .p-carousel .p-carousel-prev:hover,
 ::ng-deep .p-carousel .p-carousel-next:hover {
-  opacity: 1; 
-  cursor: pointer; 
+  opacity: 1;
+  cursor: pointer;
 }
 
 ::ng-deep .p-carousel .p-carousel-indicators {
-    display: none; 
+  display: none;
+}
+
+@media (max-width: 650px) {
+  img {
+    margin: 0 auto;
+    display: block;
+    border-radius: 0;
   }
+
+  app-product-carousel {
+    margin: 10px 0;
+  }
+
+  .product-container {
+    padding: 0 5px;
+  }
+
+  .product-card,
+  .product-card-NoStock {
+    width: 90%;
+    min-width: 220px;
+    max-width: 98%;
+    height: 350px;
+    margin: 12px 2%;
+    padding: 12px 8px;
+    font-size: 15px;
+  }
+
+  .product-card img,
+  .product-card-NoStock img {
+    height: 110px;
+    margin: 5px 0;
+  }
+
+  .product-name {
+    font-size: 15px;
+    max-height: 34px;
+  }
+  .price {
+    font-size: 18px;
+  }
+
+  .cart-button,
+  .remove-button,
+  .update-button {
+    width: 34px;
+    height: 28px;
+    bottom: 8px;
+    right: 8px;
+    font-size: 0;
+  }
+
+  .update-button {
+    right: 48px;
+  }
+
+  ::ng-deep .p-carousel-prev,
+  ::ng-deep .p-carousel-next {
+    display: none !important;
+  }
+}

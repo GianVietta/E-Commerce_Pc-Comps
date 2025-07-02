@@ -1,7 +1,46 @@
-<p-carousel [value]="categorias" [numVisible]="3" [numScroll]="1" [circular]="true">
-    <ng-template pTemplate="item" let-category>
-    <div class="category" (click)="selectCategory(category)">
-        {{ category }}
+<div class="category-dropdown-container" *ngIf="isMobile">
+  <!-- Botón hamburguesa -->
+  <button class="hamburger" (click)="openDrawer()">&#9776; Categorías</button>
+
+  <!-- Menú desplegable -->
+  <div *ngIf="drawerOpen">
+    <div
+      class="drawer-overlay"
+      *ngIf="drawerOpen"
+      (click)="closeDrawer()"
+    ></div>
+    <div class="drawer-content" (click)="$event.stopPropagation()">
+      <button class="close-btn" (click)="closeDrawer()">
+        <svg width="24" height="24" viewBox="0 0 24 24">
+          <path
+            fill="#ff4d4d"
+            d="M18.3 5.71a1 1 0 0 0-1.41 0L12 10.59 7.11 5.7a1 1 0 1 0-1.41 1.41l4.89 4.89-4.89 4.89a1 1 0 0 0 1.41 1.41l4.89-4.89 4.89 4.89a1 1 0 1 0 1.41-1.41l-4.89-4.89 4.89-4.89a1 1 0 0 0 0-1.41z"
+          />
+        </svg>
+      </button>
+      <div class="drawer-categories">
+        <button
+          *ngFor="let cat of categorias"
+          class="drawer-category-btn"
+          (click)="selectCategory(cat)"
+        >
+          {{ cat }}
+        </button>
+      </div>
     </div>
-    </ng-template>
+  </div>
+</div>
+
+<p-carousel
+  *ngIf="!isMobile"
+  [value]="categorias"
+  [numVisible]="3"
+  [numScroll]="1"
+  [circular]="true"
+>
+  <ng-template pTemplate="item" let-category>
+    <div class="category" (click)="selectCategory(category)">
+      {{ category }}
+    </div>
+  </ng-template>
 </p-carousel>

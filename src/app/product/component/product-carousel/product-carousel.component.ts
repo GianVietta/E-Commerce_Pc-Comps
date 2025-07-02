@@ -38,10 +38,15 @@ export class ProductCarouselComponent implements OnInit {
 
   isAdmin = false;
 
+  numVisible = 5;
+  showIndicators = true;
+
   ngOnInit(): void {
     this.listProducts();
     const user = window.Clerk?.user;
     this.isAdmin = user?.publicMetadata?.['isAdmin'] === true;
+    this.setCarouselResponsive();
+    window.addEventListener('resize', this.setCarouselResponsive.bind(this));
   }
 
   listProducts() {
@@ -134,5 +139,19 @@ export class ProductCarouselComponent implements OnInit {
     } else {
       console.log('eliminacion cancelada');
     }
+  }
+
+  setCarouselResponsive() {
+    if (window.innerWidth < 650) {
+      this.numVisible = 1;
+      this.showIndicators = false; // opcional
+    } else if (window.innerWidth < 900) {
+      this.numVisible = 2;
+      this.showIndicators = true;
+    } else {
+      this.numVisible = 5;
+      this.showIndicators = true;
+    }
+    this.cd.detectChanges();
   }
 }

@@ -1,26 +1,4 @@
 .custom-dialog .mat-dialog-content {
-    max-height: 80vh; /* Ajusta este valor según sea necesario */
-    overflow-y: auto;
-  }
-
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-app-header {
-  flex: 0 0 auto;
-}
-section {
-  flex: 1 0 auto; /* Esto le da el espacio disponible */
-}
-app-footer {
-  flex: 0 0 auto;
+  max-height: 80vh; /* Ajusta este valor según sea necesario */
+  overflow-y: auto;
 }
