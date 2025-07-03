@@ -1,36 +1,61 @@
 <div class="cointainer">
-    <h3 class="cart-title">Carrito</h3>
-    <div class="list-group">
-        @for (item of listProducts; track $index) {
-            <div class="list-group-item d-flex justify-content-between align-items-center">
-                <!--Nombre y cantidad de ese producto-->
-                <div class="d-flex flex-grow-1 align-items-center cursor-pointer" [routerLink]="['/product',item.product.id]">
-                    <span class="me-3">
-                        <img src={{item.product.img}} class="product-icon">
-                        <strong>Nombre: </strong>{{item.product.name}}
-                    </span>
-                    <span><strong>Cantidad: </strong>{{item.quantity}}</span>
-                </div>
-                <!--Botones de sumar y restar cantidad-->
-                <div class="d-flex align-items-center">
-                    <button class="btn btn-sm me-2" (click)="increaseQuantity(item.product.id)">
-                        <img src="/resources/icons/cart/plus-red.svg" alt="Incrementar cantidad" class="icon-img">
-                    </button>
-                    <button class="btn btn-sm me-2" (click)="decreaseQuantity(item.product.id)">
-                        <img src="/resources/icons/cart/minus-red.svg" alt="Disminuir cantidad" class="icon-img">
-                    </button>
-                    <button class="btn btn-sm me-2" (click)="removeItem(item.product.id)">
-                        <img src="/resources/icons/cart/trash-red.svg" alt="Eliminar producto" class="icon-img">
-                    </button>
-                </div>
-            </div>
-        }
+  <h3 class="cart-title">Carrito</h3>
+  <div class="list-group">
+    @for (item of listProducts; track $index) {
+    <div
+      class="list-group-item d-flex justify-content-between align-items-center"
+    >
+      <!--Nombre y cantidad de ese producto-->
+      <div
+        class="d-flex flex-grow-1 align-items-center cursor-pointer"
+        [routerLink]="['/product', item.product.id]"
+      >
+        <span class="me-3">
+          <img src="{{ item.product.img }}" class="product-icon" />
+          <strong>Nombre: </strong>{{ item.product.name }}
+        </span>
+        <span><strong>Cantidad: </strong>{{ item.quantity }}</span>
+      </div>
+      <!--Botones de sumar y restar cantidad-->
+      <div class="d-flex align-items-center">
+        <button
+          class="btn btn-sm me-2"
+          (click)="increaseQuantity(item.product.id)"
+        >
+          <img
+            src="/resources/icons/cart/plus-red.svg"
+            alt="Incrementar cantidad"
+            class="icon-img"
+          />
+        </button>
+        <button
+          class="btn btn-sm me-2"
+          (click)="decreaseQuantity(item.product.id)"
+        >
+          <img
+            src="/resources/icons/cart/minus-red.svg"
+            alt="Disminuir cantidad"
+            class="icon-img"
+          />
+        </button>
+        <button class="btn btn-sm me-2" (click)="removeItem(item.product.id)">
+          <img
+            src="/resources/icons/cart/trash-red.svg"
+            alt="Eliminar producto"
+            class="icon-img"
+          />
+        </button>
+      </div>
     </div>
-    <!--Seccion del total-->
-    <div class="mt-3">
-        <h5>Total a pagar: ${{getFormattedAmount(totalAmount)}}</h5>
-    </div>
-    <div class="pay-button">
-        <button class="pay-centered-button" (click)="initiatePayment()"  >Pagar</button>
-    </div>
+    }
+  </div>
+  <!--Seccion del total-->
+  <div class="mt-3">
+    <h5>Total a pagar: ${{ getFormattedAmount(totalAmount) }}</h5>
+  </div>
+  <div class="pay-button">
+    <button class="pay-centered-button" (click)="initiatePayment()">
+      Pagar
+    </button>
+  </div>
 </div>

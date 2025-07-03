@@ -14,6 +14,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { CartService } from '../../../cart/service/cart.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -42,6 +44,10 @@ export class ProfileComponent implements OnInit {
   //Clerk para el usuario
   clerkUser: any = null;
   userDB: User | undefined;
+
+  //Validacion pago success
+  cs = inject(CartService);
+  route = inject(ActivatedRoute);
 
   form: FormGroup = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(3)]],
@@ -117,6 +123,25 @@ export class ProfileComponent implements OnInit {
         this.loading = false;
       }
     );
+
+    if (clerk_user_id) {
+      this.cs.getCartBackend(clerk_user_id).subscribe({
+        next: (res) => {
+          if (res) {
+            //Si volvio de pagar (success) borro el carrito
+            this.route.queryParams.subscribe((params) => {
+              if (params['payment_id'] && params['status'] === 'approved') {
+                // Vacio el carrito desde el front
+                this.cs.resetCart(res.id).subscribe(); // No me interesa la respuesta
+              }
+            });
+          }
+        },
+        error: (e) => {
+          console.error(e);
+        },
+      });
+    }
   }
 
   toggleEdit() {

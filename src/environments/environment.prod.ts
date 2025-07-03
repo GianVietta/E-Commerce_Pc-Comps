@@ -1,9 +1,10 @@
 export const environment = {
   production: true,
-  urlProducts: '/api/products.php',
-  urlCart: '/api/cart.php',
-  urlSales: '/api/sale.php',
-  urlUsers: '/api/users.php',
-  urlReviews: '/api/review.php',
-  urlRevComments: '/api/review_comment.php',
+  urlProducts: '/api/apiProducts.php',
+  urlCart: '/api/apiCart.php',
+  urlSales: '/api/apiSale.php',
+  urlUsers: '/api/apiUsers.php',
+  urlReviews: '/api/apiReview.php',
+  urlRevComments: '/api/apiReview_comment.php',
+  urlMPago: '/api/apiPago.php',
 };

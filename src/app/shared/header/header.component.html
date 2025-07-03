@@ -105,7 +105,12 @@
 
   <!-- Botones de usuario/cart -->
   <ng-container *ngIf="!isMobile">
-    <button mat-icon-button (click)="cart()" matToolTip="Carrito">
+    <button
+      mat-icon-button
+      *ngIf="!isAdminUser"
+      (click)="cart()"
+      matToolTip="Carrito"
+    >
       <mat-icon>add_shopping_cart</mat-icon>
     </button>
     <button

@@ -171,22 +171,8 @@ export class CartService {
   }
 
   // Vaciar el carrito
-  resetCart(): Observable<Cart> {
-    return this.getCart().pipe(
-      switchMap((cart) => {
-        const emptyCart: Cart = { ...cart, products: [], totalAmount: 0 };
-        if (this.isLoggedIn()) {
-          if (!emptyCart.id) return of(emptyCart);
-          return this.http.put<Cart>(
-            `${this.urlBase}?id=${emptyCart.id}`,
-            emptyCart
-          );
-        } else {
-          this.saveCartToLocal(emptyCart);
-          return of(emptyCart);
-        }
-      })
-    );
+  resetCart(cart_id: string): Observable<any> {
+    return this.http.delete<any>(`${this.urlBase}?cart_id=${cart_id}`);
   }
 
   //Update cart

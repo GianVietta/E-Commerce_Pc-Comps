@@ -20,6 +20,7 @@ import { SalesService } from '../../../sales/service/sales.service';
 import { Clerk } from '@clerk/clerk-js';
 import { AuthService } from '../../../auth/service/auth.service';
 import { User } from '../../../auth/interface/user';
+import { MercadoPagoService } from '../../../payments/mercado-pago.service';
 
 @Component({
   selector: 'app-cart',
@@ -38,6 +39,7 @@ export class CartComponent implements OnInit {
   router = inject(Router);
   readonly dialog = inject(MatDialog);
   ss = inject(SalesService);
+  mpago = inject(MercadoPagoService);
 
   async ngOnInit(): Promise<void> {
     await this.loadCart();
@@ -198,37 +200,40 @@ export class CartComponent implements OnInit {
           this.router.navigate(['/profile']);
           return;
         }
-        // Primero traigo el carrito real del backend (asi tengo el cartId)
-        this.cs.getCart().subscribe({
-          next: (cart: Cart) => {
-            if (!cart.id) {
-              alert('No se pudo identificar el carrito del usuario.');
-              return;
-            }
+        // --- ARMADO DEL PAGO PARA MERCADOPAGO ---
+        const itemsMP = this.listProducts.map((item) => ({
+          id: item.product.id,
+          title: item.product.name,
+          quantity: item.quantity,
+          currency_id: 'ARS',
+          unit_price: Number(item.product.price),
+        }));
+        const payer_email =
+          user.emailAddresses?.[0]?.emailAddress || 'test@pixelfactory.com';
 
-            // Despues registro la venta (hago un POST a sale.php)
-            const clerk_user_id = window.Clerk?.user?.id;
-            const cart_id = cart.id;
-            if (!clerk_user_id || !cart_id) {
-              alert('Falta usuario o carrito vacio');
-              return;
-            }
-            this.ss.addSale(clerk_user_id, cart_id).subscribe({
-              next: (res) => {
-                alert('!Compra exitosa!');
-                this.router.navigate(['']);
-              },
-              error: (err) => {
-                console.error('Error al registrar la venta: ', err);
-                alert('Error al registrar la venta');
-              },
-            });
-          },
-          error: (e) => {
-            console.error('Error al obtener el carrito: ', e);
-            alert('Error al procesar el pago.');
-          },
-        });
+        // Llamada al backend para crear preferencia de MercadoPago
+        this.mpago
+          .createPreference({
+            items: itemsMP,
+            email: payer_email,
+            clerk_user_id,
+          })
+          .subscribe({
+            next: (res) => {
+              if (res && res.success && res.init_point) {
+                // Redirigís al checkout de MercadoPago
+                window.location.href = res.init_point;
+              } else {
+                alert('No se pudo iniciar el pago con MercadoPago');
+                console.log(JSON.stringify(res));
+              }
+            },
+            error: (err) => {
+              console.error('Error en MercadoPago:', err);
+              //alert('Error al iniciar pago con MercadoPago');
+              alert(JSON.stringify(err.error));
+            },
+          });
       });
   }
 }
