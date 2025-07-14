@@ -75,6 +75,16 @@
             <mat-icon>calendar_today</mat-icon>
             {{ sale.created_at | date : "yyyy-MM-dd" }}
           </div>
+          <!-- Botón para ver el comprobante de MercadoPago -->
+          <button
+            mat-stroked-button
+            color="primary"
+            class="btn-comprobante"
+            (click)="verComprobanteMP(sale.payment_id)"
+          >
+            <mat-icon>receipt_long</mat-icon>
+            Ver comprobante
+          </button>
         </div>
       </div>
     </mat-card>

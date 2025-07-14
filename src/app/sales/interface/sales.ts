@@ -5,6 +5,7 @@ export interface Sales {
   clerk_user_id: string; //Id del usuario que realizao la compra
   total_amount: number; //Precio total de la operacion
   created_at: string; //Fecha de la venta de la pagina
+  payment_id: string; //ID pago MercadoPago
   products: SaleProduct[]; //Productos incluidos
   //Agregar lo necesario sobre un comprobante
   //Campos para la vista

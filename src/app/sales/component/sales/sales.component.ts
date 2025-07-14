@@ -178,4 +178,13 @@ export class SalesComponent implements OnInit {
     this.page = 1;
     this.loadSalesAndCount(order_by, order);
   }
+  verComprobanteMP(payment_id: string) {
+    if (!payment_id) {
+      alert('No se encontró el comprobante de MercadoPago.');
+      return;
+    }
+    // URL pública de comprobante (funciona para pagos reales, y a veces para test)
+    const url = `https://www.mercadopago.com.ar/comprobantes/redirect?payment_id=${payment_id}`;
+    window.open(url, '_blank');
+  }
 }
