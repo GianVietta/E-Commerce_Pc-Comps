@@ -9,7 +9,7 @@ import {
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ProductService } from '../../service/product.service';
 import { Product } from '../../interface/product';
-import { v4 as uuidv4, validate } from 'uuid';
+import { v4 as uuidv4} from 'uuid';
 import { Router } from '@angular/router';
 
 @Component({

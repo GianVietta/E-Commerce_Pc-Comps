@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, HostListener, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Product } from '../../interface/product';
 import { ProductService } from '../../service/product.service';
@@ -6,11 +6,18 @@ import { CommonModule } from '@angular/common';
 import { CartService } from '../../../cart/service/cart.service';
 import { FormsModule } from '@angular/forms';
 import { ProductReviewsComponent } from '../product-reviews/product-reviews.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @Component({
   selector: 'app-details-product',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule, ProductReviewsComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    RouterModule,
+    ProductReviewsComponent,
+    MatExpansionModule,
+  ],
   templateUrl: './details-product.component.html',
   styleUrls: ['./details-product.component.css'],
 })
@@ -19,14 +26,19 @@ export class DetailsProductComponent implements OnInit {
   productService = inject(ProductService);
   cs = inject(CartService);
   selectedQuantity: number = 1;
-  //authService=inject(AuthService);
   isAdmin = false;
   ps = inject(ProductService);
   successMessage: string | null = null;
 
+  // Variables para mobile
+  isMobile: boolean = false;
+  showFullTitle: boolean = false;
+  showFullDescription: boolean = false;
+
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
+    this.checkIfMobile();
     const productId = this.route.snapshot.paramMap.get('id');
     if (productId) {
       this.productService.getProductByid(productId).subscribe({
@@ -126,5 +138,44 @@ export class DetailsProductComponent implements OnInit {
     } else {
       console.log('eliminacion cancelada');
     }
+  }
+  incrementQuantity() {
+    if (this.selectedQuantity < (this.product?.stock ?? 1)) {
+      this.selectedQuantity++;
+    }
+  }
+  decrementQuantity() {
+    if (this.selectedQuantity > 1) {
+      this.selectedQuantity--;
+    }
+  }
+  validateQuantity() {
+    if (this.selectedQuantity < 1) {
+      this.selectedQuantity = 1;
+    }
+    if (this.selectedQuantity > (this.product?.stock ?? 1)) {
+      this.selectedQuantity = this.product?.stock ?? 1;
+    }
+  }
+
+  // Manejo mobile
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.checkIfMobile();
+  }
+
+  private checkIfMobile() {
+    this.isMobile = window.innerWidth <= 650;
+    // Si hago resize a desktop, cierro mobile
+    if (!this.isMobile) {
+      this.showFullTitle = false;
+      this.showFullDescription = false;
+    }
+  }
+  toggleTitle() {
+    this.showFullTitle = !this.showFullTitle;
+  }
+  toggleDescription() {
+    this.showFullDescription = !this.showFullDescription;
   }
 }

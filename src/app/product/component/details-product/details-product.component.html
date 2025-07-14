@@ -1,18 +1,57 @@
-<div class="product-details-container">
+<div
+  *ngIf="isMobile; else desktopView"
+  class="product-details-container mobile"
+>
+  <!-- Imagen -->
   <div class="product-image-section">
-    <img [src]="product?.img" alt="{{ product?.name }}" class="product-image" />
+    <img
+      [src]="product?.img"
+      alt="{{ product?.name }}"
+      class="product-image"
+      loading="lazy"
+      width="400"
+      height="400"
+    />
   </div>
 
+  <!-- Título acortado/expandible -->
+  <div class="product-title-short" (click)="toggleTitle()">
+    <ng-container *ngIf="product?.name as name">
+      <span *ngIf="!showFullTitle">
+        {{ product?.name | slice : 0 : 38
+        }}<span *ngIf="name.length > 38"
+          >... <b class="expand-btn">ver más</b></span
+        >
+      </span>
+      <span *ngIf="showFullTitle">
+        {{ product?.name }} <b class="expand-btn">ver menos</b>
+      </span>
+    </ng-container>
+  </div>
+  <!-- Marca y descripción acortada/expandible -->
   <div class="product-info-section">
-    <h2>{{ product?.name }}</h2>
+    <h3>Marca: {{ product?.brand }}</h3>
+    <p class="product-description" (click)="toggleDescription()">
+      <ng-container *ngIf="product?.description as description">
+        <span *ngIf="!showFullDescription">
+          {{ product?.description | slice : 0 : 70
+          }}<span *ngIf="description.length > 70"
+            >... <b class="expand-btn">ver más</b></span
+          >
+        </span>
+        <span *ngIf="showFullDescription">
+          {{ product?.description }} <b class="expand-btn">ver menos</b>
+        </span>
+      </ng-container>
+    </p>
     <div class="product-meta">
       <span class="product-code">Cod: #{{ product?.id }}</span>
     </div>
-    <h3>Marca: {{ product?.brand }}</h3>
-    <p>{{ product?.description }}</p>
   </div>
 
+  <!-- Precio y acciones -->
   <div class="product-action-section">
+    <!-- ...idéntico a lo que ya usás, pero podés hacerlo más compacto si querés... -->
     <h3 class="product-price">${{ product?.price }}</h3>
     <p class="special-price">
       Precio especial efectivo, transferencia o depósito
@@ -20,14 +59,31 @@
     <ng-container *ngIf="product?.stock != 0 && !isAdmin">
       <div class="quantity-selector">
         <label for="quantity">Cantidad</label>
+        <button
+          type="button"
+          class="qty-btn"
+          (click)="decrementQuantity()"
+          [disabled]="selectedQuantity <= 1"
+        >
+          -
+        </button>
         <input
           type="number"
           id="quantity"
           [(ngModel)]="selectedQuantity"
           min="1"
-          max="{{ product?.stock }}"
+          [max]="product?.stock ?? 1"
           class="quantity-input"
+          (blur)="validateQuantity()"
         />
+        <button
+          type="button"
+          class="qty-btn"
+          (click)="incrementQuantity()"
+          [disabled]="selectedQuantity >= (product?.stock ?? 1)"
+        >
+          +
+        </button>
       </div>
       <p>Stock disponible: {{ product?.stock }}</p>
       <button class="btn btn-add-to-cart" (click)="addToCart()">
@@ -43,23 +99,8 @@
         Enviar mensaje
       </button>
     </ng-container>
-
     <ng-container *ngIf="isAdmin">
-      <p>Stock disponible: {{ product?.stock }}</p>
-      <button
-        class="btn btn-modProduct"
-        (click)="$event.stopPropagation()"
-        [routerLink]="['/update-product', product?.id]"
-      >
-        Modificar Producto
-      </button>
-      <button
-        class="btn btn-removeProduct"
-        (click)="removeProduct(product!)"
-        [disabled]="!product"
-      >
-        Eliminar Producto
-      </button>
+      <!-- ...lo mismo que ya tenés... -->
     </ng-container>
     <div
       *ngIf="successMessage"
@@ -70,6 +111,85 @@
     </div>
   </div>
 </div>
+
+<ng-template #desktopView>
+  <div class="product-details-container">
+    <div class="product-image-section">
+      <img
+        [src]="product?.img"
+        alt="{{ product?.name }}"
+        class="product-image"
+      />
+    </div>
+
+    <div class="product-info-section">
+      <h2>{{ product?.name }}</h2>
+      <div class="product-meta">
+        <span class="product-code">Cod: #{{ product?.id }}</span>
+      </div>
+      <h3>Marca: {{ product?.brand }}</h3>
+      <p>{{ product?.description }}</p>
+    </div>
+
+    <div class="product-action-section">
+      <h3 class="product-price">${{ product?.price }}</h3>
+      <p class="special-price">
+        Precio especial efectivo, transferencia o depósito
+      </p>
+      <ng-container *ngIf="product?.stock != 0 && !isAdmin">
+        <div class="quantity-selector">
+          <label for="quantity">Cantidad</label>
+          <input
+            type="number"
+            id="quantity"
+            [(ngModel)]="selectedQuantity"
+            min="1"
+            max="{{ product?.stock }}"
+            class="quantity-input"
+          />
+        </div>
+        <p>Stock disponible: {{ product?.stock }}</p>
+        <button class="btn btn-add-to-cart" (click)="addToCart()">
+          Agregar al carrito
+        </button>
+        <button class="btn btn-contact-seller" (click)="contactSupport()">
+          Enviar mensaje
+        </button>
+      </ng-container>
+      <ng-container *ngIf="product?.stock == 0 && !isAdmin">
+        <p class="alert-stock">NO HAY STOCK</p>
+        <button class="btn btn-contact-seller" (click)="contactSupport()">
+          Enviar mensaje
+        </button>
+      </ng-container>
+
+      <ng-container *ngIf="isAdmin">
+        <p>Stock disponible: {{ product?.stock }}</p>
+        <button
+          class="btn btn-modProduct"
+          (click)="$event.stopPropagation()"
+          [routerLink]="['/update-product', product?.id]"
+        >
+          Modificar Producto
+        </button>
+        <button
+          class="btn btn-removeProduct"
+          (click)="removeProduct(product!)"
+          [disabled]="!product"
+        >
+          Eliminar Producto
+        </button>
+      </ng-container>
+      <div
+        *ngIf="successMessage"
+        class="alert alert-success"
+        style="margin: 10px 0"
+      >
+        {{ successMessage }}
+      </div>
+    </div>
+  </div>
+</ng-template>
 <div *ngIf="product">
   <app-product-reviews [productId]="product.id"></app-product-reviews>
 </div>

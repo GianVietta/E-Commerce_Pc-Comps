@@ -15,7 +15,13 @@
           <span class="category">{{ producto.category }}</span>
           <h3 class="product-name">{{ producto.name }}</h3>
           <h5>{{ producto.brand }}</h5>
-          <img src="{{ producto.img }}" alt="{{ producto.name }}" />
+          <img
+            src="{{ producto.img }}"
+            alt="{{ producto.name }}"
+            loading="lazy"
+            width="400"
+            height="400"
+          />
           <p class="price">${{ producto.price }}</p>
           <button
             class="remove-button"
@@ -46,7 +52,13 @@
             <span class="category">{{ producto.category }}</span>
             <h3 class="product-name">{{ producto.name }}</h3>
             <h5>{{ producto.brand }}</h5>
-            <img src="{{ producto.img }}" alt="{{ producto.name }}" />
+            <img
+              src="{{ producto.img }}"
+              alt="{{ producto.name }}"
+              loading="lazy"
+              width="400"
+              height="400"
+            />
             <p class="price">${{ producto.price }}</p>
             <button
               class="cart-button"
@@ -68,7 +80,13 @@
             <span class="category">{{ producto.category }}</span>
             <h3 class="product-name">{{ producto.name }}</h3>
             <h5>{{ producto.brand }}</h5>
-            <img src="{{ producto.img }}" alt="{{ producto.name }}" />
+            <img
+              src="{{ producto.img }}"
+              alt="{{ producto.name }}"
+              loading="lazy"
+              width="400"
+              height="400"
+            />
             <p class="price">${{ producto.price }}</p>
           </div>
         </ng-container>

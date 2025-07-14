@@ -1,13 +1,12 @@
 import {
   Component,
-  ElementRef,
   HostListener,
   inject,
   ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Router, RouterLink, RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { LoginComponent } from '../../auth/component/login/login.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -220,15 +219,14 @@ export class HeaderComponent {
   @ViewChild('sidenav') sidenav!: MatSidenav;
 
   openLoginFromSideNav() {
-    if(this.sidenav.opened){
+    if (this.sidenav.opened) {
       // 1. Cerrar el sidenav
       this.sidenav.close();
       this.pendingLoginDialog = true;
-    }else{
+    } else {
       // Si esta por x razon cerrado el sidenav, abro directamente el login
       this.openLoginDialog();
     }
-
   }
 
   onSidenavClosed() {

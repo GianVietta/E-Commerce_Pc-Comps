@@ -2,8 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment.development';
 import { User } from '../interface/user';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
-import { BehaviorSubject, Observable, catchError, map, of, tap } from 'rxjs';
+import { Observable, catchError, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +13,8 @@ export class AuthService {
 
   /** Trae un usuario de la DB por clerk_user_id */
   getUserByClerkId(clerk_user_id: string): Observable<User | undefined> {
-    return this.http.get<User>(`${this.urlBase}?clerk_user_id=${clerk_user_id}`)
+    return this.http
+      .get<User>(`${this.urlBase}?clerk_user_id=${clerk_user_id}`)
       .pipe(catchError(() => of(undefined)));
   }
 
@@ -35,5 +35,4 @@ export class AuthService {
   deleteUser(id: number): Observable<any> {
     return this.http.delete<any>(`${this.urlBase}?id=${id}`);
   }
-
 }

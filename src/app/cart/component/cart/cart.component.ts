@@ -2,22 +2,12 @@ import { Product } from './../../../product/interface/product';
 import { Component, inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { CartService } from '../../service/cart.service';
 import { Cart } from '../../interface/cart';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from '../../../auth/component/login/login.component';
 import { ProductService } from '../../../product/service/product.service';
-import {
-  catchError,
-  concatMap,
-  firstValueFrom,
-  from,
-  Observable,
-  tap,
-  throwError,
-} from 'rxjs';
 import { SalesService } from '../../../sales/service/sales.service';
-import { Clerk } from '@clerk/clerk-js';
 import { AuthService } from '../../../auth/service/auth.service';
 import { User } from '../../../auth/interface/user';
 import { MercadoPagoService } from '../../../payments/mercado-pago.service';
