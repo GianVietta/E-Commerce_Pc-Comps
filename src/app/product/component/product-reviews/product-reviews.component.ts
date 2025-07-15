@@ -4,7 +4,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -19,6 +18,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 
+import { NotificationServiceService } from '../../../notification/notification-service.service';
+
 @Component({
   selector: 'app-product-reviews',
   standalone: true,
@@ -31,7 +32,6 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MatIconModule,
     MatDividerModule,
     MatExpansionModule,
-    MatSnackBarModule,
     MatProgressSpinnerModule,
     ReactiveFormsModule,
     MatSelectModule,
@@ -62,7 +62,7 @@ export class ProductReviewsComponent implements OnInit {
   reviewService = inject(ProductReviewService);
   commentService = inject(ReviewCommentsService);
   fb = inject(FormBuilder);
-  snack = inject(MatSnackBar);
+  ns = inject(NotificationServiceService);
 
   ngOnInit(): void {
     this.reviewForm = this.fb.group({
@@ -142,9 +142,7 @@ export class ProductReviewsComponent implements OnInit {
     const clerk_user_id = window.Clerk?.user?.id;
 
     if (!clerk_user_id) {
-      this.snack.open('Debes estar logueado para comentar.', 'Cerrar', {
-        duration: 3000,
-      });
+      this.ns.show('Debes estar logueado para comentar.', 'warn');
       return;
     }
     const commentData = {
@@ -156,19 +154,15 @@ export class ProductReviewsComponent implements OnInit {
     this.commentService.createComment(commentData).subscribe({
       next: (res) => {
         if (res.success) {
-          this.snack.open('Comentario enviado.', 'Cerrar', { duration: 2000 });
+          this.ns.show('Comentario enviado.', 'success');
           form.reset();
           this.loadComments(reviewId);
         } else {
-          this.snack.open(res.error || 'Error al comentar.', 'Cerrar', {
-            duration: 3000,
-          });
+          this.ns.show(res.error || 'Error al comentar.', 'error');
         }
       },
       error: (e) => {
-        this.snack.open('Error al enviar comentario.', 'Cerrar', {
-          duration: 3000,
-        });
+        this.ns.show('Error al enviar comentario.', 'error');
       },
     });
   }
@@ -183,9 +177,7 @@ export class ProductReviewsComponent implements OnInit {
     if (this.reviewForm.invalid) return;
     const clerk_user_id = window.Clerk?.user?.id;
     if (!clerk_user_id) {
-      this.snack.open('Debes estar logueado para opinar.', 'Cerrar', {
-        duration: 3000,
-      });
+      this.ns.show('Debes estar logueado para opinar.', 'warn');
       return;
     }
 
@@ -200,21 +192,15 @@ export class ProductReviewsComponent implements OnInit {
     this.reviewService.createReview(reviewData).subscribe({
       next: (res) => {
         if (res.success) {
-          this.snack.open('¡Gracias por tu opinión!', 'Cerrar', {
-            duration: 2500,
-          });
+          this.ns.show('¡Gracias por tu opinión!', 'success');
           this.reviewForm.reset();
           this.loadReviews();
         } else {
-          this.snack.open(res.error || 'Error al enviar review.', 'Cerrar', {
-            duration: 3000,
-          });
+          this.ns.show(res.error || 'Error al enviar review.', 'error');
         }
       },
       error: () => {
-        this.snack.open('Error al enviar review.', 'Cerrar', {
-          duration: 3000,
-        });
+        this.ns.show('Error al enviar review.', 'error');
       },
     });
   }
@@ -256,22 +242,16 @@ export class ProductReviewsComponent implements OnInit {
         .subscribe({
           next: (res) => {
             if (res.success) {
-              this.snack.open('¡Review actualizada!', 'Cerrar', {
-                duration: 2500,
-              });
+              this.ns.show('¡Review actualizada!', 'success');
               this.editingReview = false;
               this.reviewForm.reset();
               this.loadReviews();
             } else {
-              this.snack.open(res.error || 'Error al actualizar.', 'Cerrar', {
-                duration: 3000,
-              });
+              this.ns.show(res.error || 'Error al actualizar.', 'error');
             }
           },
           error: () => {
-            this.snack.open('Error al actualizar review.', 'Cerrar', {
-              duration: 3000,
-            });
+            this.ns.show('Error al actualizar review.', 'error');
           },
         });
     } else {
@@ -295,21 +275,15 @@ export class ProductReviewsComponent implements OnInit {
         .subscribe({
           next: (res) => {
             if (res.success) {
-              this.snack.open('Review eliminada.', 'Cerrar', {
-                duration: 2500,
-              });
+              this.ns.show('Review eliminada.', 'success');
               this.userReview = undefined;
               this.loadReviews();
             } else {
-              this.snack.open(res.error || 'Error al eliminar.', 'Cerrar', {
-                duration: 3000,
-              });
+              this.ns.show(res.error || 'Error al eliminar.', 'error');
             }
           },
           error: () => {
-            this.snack.open('Error al eliminar review.', 'Cerrar', {
-              duration: 3000,
-            });
+            this.ns.show('Error al eliminar review.', 'error');
           },
         });
     } else {
@@ -322,7 +296,7 @@ export class ProductReviewsComponent implements OnInit {
     this.reviewService.deleteReviewAsAdmin(review.id!).subscribe({
       next: (res) => {
         if (res.success) {
-          this.snack.open('Opinión eliminada.', 'Cerrar', { duration: 2000 });
+          this.ns.show('Opinión eliminada.', 'success');
           this.loadReviews();
         }
       },
@@ -331,18 +305,14 @@ export class ProductReviewsComponent implements OnInit {
 
   deleteCommentAsAdmin(comment: ReviewComment) {
     if (!confirm('¿Eliminar este comentario?')) return;
-    this.commentService
-      .deleteCommentAsAdmin(comment.id!)
-      .subscribe({
-        next: (res) => {
-          if (res.success) {
-            this.snack.open('Comentario eliminado.', 'Cerrar', {
-              duration: 2000,
-            });
-            // Recargá los comentarios de la review correspondiente
-            this.loadComments(comment.review_id);
-          }
-        },
-      });
+    this.commentService.deleteCommentAsAdmin(comment.id!).subscribe({
+      next: (res) => {
+        if (res.success) {
+          this.ns.show('Comentario eliminado.', 'success');
+          // Recargá los comentarios de la review correspondiente
+          this.loadComments(comment.review_id);
+        }
+      },
+    });
   }
 }

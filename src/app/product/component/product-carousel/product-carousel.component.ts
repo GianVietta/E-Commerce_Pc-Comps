@@ -12,6 +12,7 @@ import { ProductService } from '../../service/product.service';
 import { CategoryCarouselComponent } from '../category-carousel/category-carousel.component';
 import { Router, RouterModule } from '@angular/router';
 import { CartService } from '../../../cart/service/cart.service';
+import { NotificationServiceService } from '../../../notification/notification-service.service';
 
 @Component({
   selector: 'app-product-carousel',
@@ -35,6 +36,7 @@ export class ProductCarouselComponent implements OnInit {
   ps = inject(ProductService);
   cd = inject(ChangeDetectorRef);
   router = inject(Router);
+  ns = inject(NotificationServiceService);
 
   isAdmin = false;
 
@@ -101,8 +103,9 @@ export class ProductCarouselComponent implements OnInit {
               : 0;
             //Validar si agregar una unidad mas excede el stock
             if (currentQuantity + 1 > product.stock) {
-              window.alert(
-                'No se pueden agregar mas productos, porque supera el stock disponible. '
+              this.ns.show(
+                'No se pueden agregar mas productos, porque supera el stock disponible. ',
+                'warn'
               );
               console.warn(
                 'No se pueden agregar mas productos, porque supera el stock disponible. '
@@ -112,14 +115,22 @@ export class ProductCarouselComponent implements OnInit {
             //Si hay suficiente stock, agregar el producto al carrito
             this.cs.addProductToCart(productId, 1).subscribe({
               next: () => {
-                console.log('Agregado Correctamente');
+                this.ns.show(
+                  'Producto agregado correctamente al carrito',
+                  'success'
+                );
               },
               error: (e: Error) => {
+                this.ns.show(
+                  'Error al agregar el producto al carrito',
+                  'error'
+                );
                 console.log(e.message);
               },
             });
           },
           error: (e: Error) => {
+            this.ns.show('Error al obtener el carrito', 'error');
             console.error('Error al obtener el carrito: ', e.message);
           },
         });
@@ -135,9 +146,10 @@ export class ProductCarouselComponent implements OnInit {
       this.ps.deleteProduct(product.id).subscribe(() => {
         const idx = this.productList.findIndex((p) => p.id === product.id);
         if (idx !== -1) this.productList[idx].stock = 0;
+        this.ns.show('Producto eliminado correctamente', 'success');
       });
     } else {
-      console.log('eliminacion cancelada');
+      this.ns.show('Eliminación cancelada', 'info');
     }
   }
 

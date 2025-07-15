@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, inject } from '@angular/core';
 import { Product } from '../../interface/product';
 import { ProductService } from '../../service/product.service';
 import { ActivatedRoute } from '@angular/router';
@@ -9,6 +9,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { NotificationServiceService } from '../../../notification/notification-service.service';
 
 @Component({
   selector: 'app-update-product',
@@ -16,13 +17,14 @@ import { CommonModule } from '@angular/common';
   imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './update-product.component.html',
   styleUrls: ['./update-product.component.css'],
+  encapsulation: ViewEncapsulation.Emulated,
 })
 export class UpdateProductComponent implements OnInit {
   product: Product | null = null;
   productService = inject(ProductService);
   fb: FormBuilder = inject(FormBuilder);
   isEditing = false;
-  successMessage: string | null = null;
+  ns = inject(NotificationServiceService);
   categorias = [
     'CPU',
     'MotherBoard',
@@ -36,11 +38,17 @@ export class UpdateProductComponent implements OnInit {
 
   form: FormGroup = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(3)]],
-    price: [0, [Validators.required, Validators.min(1)]],
+    price: [
+      0,
+      [Validators.required, Validators.pattern('^[0-9]+$'), Validators.min(1)],
+    ],
     brand: ['', Validators.required],
     description: ['', Validators.required],
     category: ['', Validators.required],
-    stock: [0, Validators.required],
+    stock: [
+      0,
+      [Validators.required, Validators.pattern('^[0-9]+$'), Validators.min(1)],
+    ],
     img: ['', Validators.required],
   });
 
@@ -96,13 +104,11 @@ export class UpdateProductComponent implements OnInit {
         next: (product: Product) => {
           this.product = product;
           this.toggleEdit();
-          this.successMessage = '¡Producto actualizado correctamente!';
-          setTimeout(() => {
-            this.successMessage = null;
-          }, 2500); // 2.5 segundos
+          this.ns.show('Producto actualizado correctamente', 'success');
           console.log('Agregado Correctamente');
         },
         error: (error) => {
+          this.ns.show('Error al actualizar el producto', 'error');
           console.error('Error al actualizar el producto:', error);
         },
       });

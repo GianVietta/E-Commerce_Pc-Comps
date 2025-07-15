@@ -11,6 +11,7 @@ import { SalesService } from '../../../sales/service/sales.service';
 import { AuthService } from '../../../auth/service/auth.service';
 import { User } from '../../../auth/interface/user';
 import { MercadoPagoService } from '../../../payments/mercado-pago.service';
+import { NotificationServiceService } from '../../../notification/notification-service.service';
 
 @Component({
   selector: 'app-cart',
@@ -30,6 +31,7 @@ export class CartComponent implements OnInit {
   readonly dialog = inject(MatDialog);
   ss = inject(SalesService);
   mpago = inject(MercadoPagoService);
+  ns = inject(NotificationServiceService);
 
   async ngOnInit(): Promise<void> {
     await this.loadCart();
@@ -167,7 +169,7 @@ export class CartComponent implements OnInit {
 
     // Para que no siga sin productos
     if (this.listProducts.length === 0) {
-      alert('El carrito esta vacio.');
+      this.ns.show('El carrito esta vacio.', 'warn');
       return;
     }
 
@@ -184,8 +186,9 @@ export class CartComponent implements OnInit {
           !userDB.phone_number
         ) {
           // Muestra alerta y redirige
-          alert(
-            'Debes completar tus datos de perfil antes de pagar. Serás redirigido a tu perfil.'
+          this.ns.show(
+            'Debes completar tus datos de perfil antes de pagar. Serás redirigido a tu perfil.',
+            'warn'
           );
           this.router.navigate(['/profile']);
           return;
@@ -214,13 +217,16 @@ export class CartComponent implements OnInit {
                 // Redirigís al checkout de MercadoPago
                 window.location.href = res.init_point;
               } else {
-                alert('No se pudo iniciar el pago con MercadoPago');
+                this.ns.show(
+                  'No se pudo iniciar el pago con MercadoPago',
+                  'error'
+                );
                 console.log(JSON.stringify(res));
               }
             },
             error: (err) => {
               console.error('Error en MercadoPago:', err);
-              //alert('Error al iniciar pago con MercadoPago');
+              this.ns.show(JSON.stringify(err.error), 'error');
               alert(JSON.stringify(err.error));
             },
           });

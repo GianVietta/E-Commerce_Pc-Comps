@@ -9,8 +9,9 @@ import {
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ProductService } from '../../service/product.service';
 import { Product } from '../../interface/product';
-import { v4 as uuidv4} from 'uuid';
+import { v4 as uuidv4, validate } from 'uuid';
 import { Router } from '@angular/router';
+import { NotificationServiceService } from '../../../notification/notification-service.service';
 
 @Component({
   selector: 'app-new-product',
@@ -38,16 +39,22 @@ export class NewProductComponent {
   fb = inject(FormBuilder);
   ps = inject(ProductService);
   router = inject(Router);
-  successMessage: string | null = null;
+  ns = inject(NotificationServiceService);
 
   form = this.fb.nonNullable.group({
     id: [],
     name: [``, [Validators.required, Validators.minLength(3)]],
-    price: [0, [Validators.required, Validators.pattern('^[0-9]+$')]],
+    price: [
+      0,
+      [Validators.required, Validators.pattern('^[0-9]+$'), Validators.min(0)],
+    ],
     brand: [``, [Validators.required, Validators.minLength(3)]],
     description: [``, [Validators.required, Validators.minLength(30)]],
     category: [``, Validators.required],
-    stock: [0, [Validators.required, Validators.pattern('^[0-9]+$')]],
+    stock: [
+      0,
+      [Validators.required, Validators.pattern('^[0-9]+$'), Validators.min(0)],
+    ],
     img: [
       ``,
       [
@@ -75,10 +82,10 @@ export class NewProductComponent {
   saveProduct(product: Product) {
     this.ps.postProduct(product).subscribe({
       next: (product: Product) => {
-        this.successMessage = '¡Producto agregado correctamente!';
-        setTimeout(() => {
-          this.successMessage = null;
-        }, 2500); // 2.5 segundos
+        this.ns.show(
+          `Producto ${product.name} agregado correctamente.`,
+          'success'
+        );
         console.log('Agregado Correctamente');
       },
       error: (e: Error) => {

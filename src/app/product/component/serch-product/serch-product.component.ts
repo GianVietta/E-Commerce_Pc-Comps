@@ -4,6 +4,7 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { ProductService } from '../../service/product.service';
 import { CommonModule } from '@angular/common';
 import { CartService } from '../../../cart/service/cart.service';
+import { NotificationServiceService } from '../../../notification/notification-service.service';
 
 @Component({
   selector: 'app-serch-product',
@@ -19,6 +20,7 @@ export class SerchProductComponent implements OnInit {
   route = inject(ActivatedRoute);
   productService = inject(ProductService);
   cs = inject(CartService);
+  ns = inject(NotificationServiceService);
 
   ngOnInit(): void {
     //Verifica si es admin con clerk
@@ -61,8 +63,9 @@ export class SerchProductComponent implements OnInit {
               : 0;
             //Validar si agregar una unidad mas excede el stock
             if (currentQuantity + 1 > product.stock) {
-              window.alert(
-                'No se pueden agregar mas productos, porque supera el stock disponible. '
+              this.ns.show(
+                'No se pueden agregar mas productos, porque supera el stock disponible. ',
+                'warn'
               );
               console.warn(
                 'No se pueden agregar mas productos, porque supera el stock disponible. '
@@ -72,6 +75,7 @@ export class SerchProductComponent implements OnInit {
             //Si hay suficiente stock, agregar el producto al carrito
             this.cs.addProductToCart(productId, 1).subscribe({
               next: () => {
+                this.ns.show('Producto agregado correctamente.', 'success');
                 console.log('Agregado Correctamente');
               },
               error: (e: Error) => {
@@ -92,11 +96,22 @@ export class SerchProductComponent implements OnInit {
 
   removeProduct(product: Product) {
     if (confirm('Seguro que deseas eliminar ' + `${product.name}`)) {
-      this.productService.deleteProduct(product.id).subscribe(() => {
-        window.location.reload(); // Recarga toda la página
+      this.productService.deleteProduct(product.id).subscribe({
+        next: () => {
+          // Remover producto del array en memoria
+          this.products = this.products.filter((p) => p.id !== product.id);
+          this.ns.show(
+            `${product.name} fue eliminado correctamente.`,
+            'success'
+          );
+        },
+        error: (e: Error) => {
+          this.ns.show('Error al eliminar producto.', 'error');
+          console.error(e.message);
+        },
       });
-      alert(`${product.name}` + ' Fue eliminado satisfactoriamente.');
     } else {
+      this.ns.show('Eliminacion cancelada.', 'info');
       console.log('eliminacion cancelada');
     }
   }

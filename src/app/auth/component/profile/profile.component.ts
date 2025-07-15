@@ -13,9 +13,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { CartService } from '../../../cart/service/cart.service';
 import { ActivatedRoute } from '@angular/router';
+import { NotificationServiceService } from '../../../notification/notification-service.service';
 
 @Component({
   selector: 'app-profile',
@@ -36,7 +37,7 @@ import { ActivatedRoute } from '@angular/router';
 export class ProfileComponent implements OnInit {
   fb: FormBuilder = inject(FormBuilder);
   userService = inject(AuthService);
-  snackBar = inject(MatSnackBar);
+  ns = inject(NotificationServiceService);
 
   isEditing = false;
   loading = false;
@@ -108,10 +109,9 @@ export class ProfileComponent implements OnInit {
                 });
             },
             error: () => {
-              this.snackBar.open(
+              this.ns.show(
                 'Error al crear usuario, intentá recargar la página',
-                'Cerrar',
-                { duration: 3500 }
+                'error'
               );
             },
           });
@@ -155,11 +155,7 @@ export class ProfileComponent implements OnInit {
 
   update() {
     if (this.form.invalid || !this.clerkUser?.id) {
-      this.snackBar.open(
-        'Completa los campos obligatorios correctemente',
-        'Cerrar',
-        { duration: 3500 }
-      );
+      this.ns.show('Completa los campos obligatorios correctemente', 'warn');
       return;
     }
     const data = {
@@ -171,15 +167,11 @@ export class ProfileComponent implements OnInit {
     this.userService.updateUser(data).subscribe({
       next: () => {
         this.toggleEdit();
-        this.snackBar.open('Datos guardados correctamente', 'Cerrar', {
-          duration: 2500,
-        });
+        this.ns.show('Datos guardados correctamente', 'warn');
         this.loading = false;
       },
       error: () => {
-        this.snackBar.open('Error al guardar datos', 'Cerrar', {
-          duration: 2500,
-        });
+        this.ns.show('Error al guardar datos', 'error');
         this.loading = false;
       },
     });

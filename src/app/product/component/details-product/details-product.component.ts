@@ -7,6 +7,7 @@ import { CartService } from '../../../cart/service/cart.service';
 import { FormsModule } from '@angular/forms';
 import { ProductReviewsComponent } from '../product-reviews/product-reviews.component';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { NotificationServiceService } from '../../../notification/notification-service.service';
 
 @Component({
   selector: 'app-details-product',
@@ -28,7 +29,7 @@ export class DetailsProductComponent implements OnInit {
   selectedQuantity: number = 1;
   isAdmin = false;
   ps = inject(ProductService);
-  successMessage: string | null = null;
+  ns = inject(NotificationServiceService);
 
   // Variables para mobile
   isMobile: boolean = false;
@@ -45,7 +46,6 @@ export class DetailsProductComponent implements OnInit {
         next: (product) => {
           this.product = product;
           this.selectedQuantity = 1;
-          console.log(this.product);
         },
       });
     }
@@ -72,8 +72,9 @@ export class DetailsProductComponent implements OnInit {
               : 0;
             //Validar si agregar una unidad mas excede el stock
             if (this.selectedQuantity + currentQuantity > product.stock) {
-              window.alert(
-                'No se pueden agregar mas productos, porque supera el stock disponible. '
+              this.ns.show(
+                'No se pueden agregar más productos, supera el stock disponible.',
+                'warn'
               );
               console.warn(
                 'No se pueden agregar mas productos, porque supera el stock disponible. '
@@ -85,10 +86,7 @@ export class DetailsProductComponent implements OnInit {
               .addProductToCart(product.id, this.selectedQuantity)
               .subscribe({
                 next: () => {
-                  this.successMessage = '¡Producto agregado al carrito!';
-                  setTimeout(() => {
-                    this.successMessage = null;
-                  }, 1000); // 10 segundos
+                  this.ns.show('¡Producto agregado al carrito!', 'success');
                   console.log('Agregado Correctamente');
                 },
                 error: (e: Error) => {
@@ -97,11 +95,13 @@ export class DetailsProductComponent implements OnInit {
               });
           },
           error: (e: Error) => {
+            this.ns.show('Error al obtener el carrito', 'error');
             console.error('Error al obtener el carrito: ', e.message);
           },
         });
       },
       error: (e: Error) => {
+        this.ns.show('Error al obtener el producto', 'error');
         console.error('Error al obtener el producto: ', e.message);
       },
     });
@@ -130,13 +130,13 @@ export class DetailsProductComponent implements OnInit {
         if (this.product) {
           this.product.stock = 0;
         }
-        this.successMessage = `${product.name} fue eliminado satisfactoriamente.`;
-        setTimeout(() => {
-          this.successMessage = null;
-        }, 2500); // 2.5 segundos
+        this.ns.show(
+          `${product.name} fue eliminado satisfactoriamente.`,
+          'success'
+        );
       });
     } else {
-      console.log('eliminacion cancelada');
+      this.ns.show('Eliminación cancelada', 'info');
     }
   }
   incrementQuantity() {

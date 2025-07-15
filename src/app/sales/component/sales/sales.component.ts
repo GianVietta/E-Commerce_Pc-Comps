@@ -5,6 +5,7 @@ import { SalesService } from '../../service/sales.service';
 import { CommonModule } from '@angular/common';
 import { Product } from '../../../product/interface/product';
 import { ProductService } from '../../../product/service/product.service';
+import { NotificationServiceService } from '../../../notification/notification-service.service';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
@@ -35,6 +36,7 @@ import { MatSelectModule } from '@angular/material/select';
 export class SalesComponent implements OnInit {
   ss = inject(SalesService);
   ps = inject(ProductService);
+  ns = inject(NotificationServiceService);
   listSales: Sales[] = [];
   userId: string | undefined;
   isAdmin: boolean = false;
@@ -115,7 +117,7 @@ export class SalesComponent implements OnInit {
         if (sales.length > 0) this.loadAllProductForSales(sales);
         else this.productCache = {};
       },
-      error: (e) => alert('Error cargando ventas/compras'),
+      error: (e) => this.ns.show('Error cargando ventas/compras', 'error'),
     });
 
     // 2) Cargar el total para paginación real
@@ -125,7 +127,8 @@ export class SalesComponent implements OnInit {
         this.totalPages = Math.ceil(this.totalSales / this.limit) || 1;
         this.paginas = Array.from({ length: this.totalPages }, (_, i) => i + 1);
       },
-      error: (e) => alert('Error obteniendo total de ventas/compras'),
+      error: (e) =>
+        this.ns.show('Error obteniendo total de ventas/compras', 'error'),
     });
   }
   // Cambiar de página
@@ -180,7 +183,7 @@ export class SalesComponent implements OnInit {
   }
   verComprobanteMP(payment_id: string) {
     if (!payment_id) {
-      alert('No se encontró el comprobante de MercadoPago.');
+      this.ns.show('No se encontro el comprobante.', 'error');
       return;
     }
     // URL pública de comprobante (funciona para pagos reales, y a veces para test)

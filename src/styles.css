@@ -24,6 +24,7 @@ main {
 app-footer {
   flex: 0 0 auto;
 }
+
 /* === Override para el backdrop del MatDialog SOLO en mobile === */
 @media (max-width: 650px) {
   .cdk-overlay-backdrop.cdk-overlay-backdrop-showing {

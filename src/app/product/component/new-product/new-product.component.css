@@ -1,70 +1,109 @@
-/* General */
-body, html {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #3c3636; /* Fondo oscuro */
-    color: #ff4d4d; /* Color principal */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #3c3636;
+  color: #ff4d4d;
 }
 
-.container {
-    max-width: 600px;
-    background-color: #2d2929;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
-    margin: 20px auto 40px auto;
+.form-title {
+  color: #ff4d4d;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 32px;
+  margin-bottom: 0;
 }
 
-h3 {
-    color: #ff4d4d;
-    font-weight: bold;
-    text-align: center;
-    margin-top: 20px;
+.custom-form-container {
+  max-width: 600px;
+  background-color: #2d2929;
+  padding: 30px 22px 22px 22px;
+  border-radius: 12px;
+  margin: 36px auto 40px auto;
+  box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.23);
 }
 
-/* Labels y campos de entrada */
-.form-label {
-    color: #ff4d4d;
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 19px;
 }
 
-.form-control, .form-select {
-    background-color: #4a4545;
-    color: #ffcccc;
-    border: 1px solid #6c6565;
+label {
+  color: #ff4d4d;
+  font-weight: 600;
+  margin-bottom: 5px;
+  font-size: 1rem;
 }
 
-.form-control:focus, .form-select:focus {
-    border-color: #ff4d4d;
-    box-shadow: none;
+input,
+select {
+  padding: 8px 10px;
+  background: #4a4545;
+  border: 1px solid #6c6565;
+  border-radius: 4px;
+  color: #ffcccc;
+  font-size: 1rem;
+  outline: none;
+  margin-bottom: 2px;
+  transition: border 0.2s;
 }
 
-/* Mensajes de error */
-.text-danger {
-    font-size: 0.9em;
-    color: #ff4d4d;
-    margin-top: 5px;
+input:focus,
+select:focus {
+  border-color: #ff4d4d;
 }
 
-/* Botones */
-.btn-primary {
-    background-color: #ff4d4d;
-    border-color: #ff4d4d;
-    color: #fff;
+.error-msg {
+  font-size: 0.92em;
+  color: #ff4d4d;
+  margin-top: 2px;
 }
 
-.btn-primary:hover {
-    background-color: #ff6666;
-    border-color: #ff6666;
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 14px;
+  gap: 12px;
 }
 
+.btn-primary,
 .btn-secondary {
-    background-color: #6c6565;
-    border-color: #6c6565;
-    color: #fff;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.06);
 }
 
+.btn-primary {
+  background-color: #ff4d4d;
+  color: #fff;
+}
+.btn-primary:disabled {
+  background: #b36b6b;
+  cursor: not-allowed;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: #ff6666;
+}
+.btn-secondary {
+  background: #6c6565;
+  color: #fff;
+}
 .btn-secondary:hover {
-    background-color: #888484;
-    border-color: #888484;
+  background: #888484;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .custom-form-container {
+    max-width: 98vw;
+    padding: 20px 7px 12px 7px;
+  }
 }
