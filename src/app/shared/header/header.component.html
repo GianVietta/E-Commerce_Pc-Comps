@@ -165,7 +165,12 @@
       <button mat-icon-button class="close-btn" (click)="sidenav.close()">
         <mat-icon>close</mat-icon>
       </button>
-      <button mat-list-item (click)="cart()" class="side-btn">
+      <button
+        mat-list-item
+        *ngIf="!isAdminUser"
+        (click)="cart()"
+        class="side-btn"
+      >
         <mat-icon>add_shopping_cart</mat-icon>
         <span>Carrito</span>
       </button>

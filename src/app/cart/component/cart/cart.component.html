@@ -1,61 +1,98 @@
-<div class="cointainer">
+<div class="cart-root">
   <h3 class="cart-title">Carrito</h3>
-  <div class="list-group">
-    @for (item of listProducts; track $index) {
-    <div
-      class="list-group-item d-flex justify-content-between align-items-center"
-    >
-      <!--Nombre y cantidad de ese producto-->
-      <div
-        class="d-flex flex-grow-1 align-items-center cursor-pointer"
-        [routerLink]="['/product', item.product.id]"
-      >
-        <span class="me-3">
-          <img src="{{ item.product.img }}" class="product-icon" />
-          <strong>Nombre: </strong>{{ item.product.name }}
-        </span>
-        <span><strong>Cantidad: </strong>{{ item.quantity }}</span>
+  <div class="cart-container">
+    <ng-container *ngIf="listProducts.length === 0; else cartNotEmpty">
+      <div class="empty-cart-box">
+        <div class="cart-svg-anim">
+          <svg viewBox="0 0 64 64" width="80" height="85">
+            <g>
+              <circle class="wheel" cx="20" cy="54" r="6" />
+              <circle class="wheel" cx="48" cy="54" r="6" />
+              <polyline
+                class="cart-body"
+                points="8 18 14 18 20 44 54 44 60 26 16 26"
+              />
+              <rect class="handle" x="6" y="14" width="12" height="4" rx="2" />
+            </g>
+          </svg>
+        </div>
+        <div class="empty-msg">
+          <h2>¡Tu carrito está vacío!</h2>
+          <p>Cuando agregues un producto, podrás verlo aquí.</p>
+        </div>
+        <div class="empty-actions">
+          <button
+            class="cart-btn-main"
+            (click)="router.navigate(['/products'])"
+          >
+            Ver productos
+          </button>
+        </div>
       </div>
-      <!--Botones de sumar y restar cantidad-->
-      <div class="d-flex align-items-center">
-        <button
-          class="btn btn-sm me-2"
-          (click)="increaseQuantity(item.product.id)"
-        >
-          <img
-            src="/resources/icons/cart/plus-red.svg"
-            alt="Incrementar cantidad"
-            class="icon-img"
-          />
-        </button>
-        <button
-          class="btn btn-sm me-2"
-          (click)="decreaseQuantity(item.product.id)"
-        >
-          <img
-            src="/resources/icons/cart/minus-red.svg"
-            alt="Disminuir cantidad"
-            class="icon-img"
-          />
-        </button>
-        <button class="btn btn-sm me-2" (click)="removeItem(item.product.id)">
-          <img
-            src="/resources/icons/cart/trash-red.svg"
-            alt="Eliminar producto"
-            class="icon-img"
-          />
-        </button>
+    </ng-container>
+    <ng-template #cartNotEmpty>
+      <div class="cart-list">
+        @for (item of listProducts; track $index) {
+        <div class="cart-item">
+          <!-- Imagen y nombre con link -->
+          <a
+            class="cart-item-info"
+            [routerLink]="['/product', item.product.id]"
+            tabindex="0"
+          >
+            <img
+              [src]="item.product.img"
+              class="cart-item-img"
+              alt="Imagen {{ item.product.name }}"
+              loading="lazy"
+            />
+            <div class="cart-item-details">
+              <div class="cart-item-name">{{ item.product.name }}</div>
+              <div class="cart-item-cat">{{ item.product.category }}</div>
+            </div>
+          </a>
+          <!-- Cantidad y controles -->
+          <div class="cart-item-controls">
+            <div class="cart-item-qty">
+              <span>Cantidad: </span>
+              <span class="cart-item-qty-value">{{ item.quantity }}</span>
+            </div>
+            <div class="cart-item-btns">
+              <button
+                class="cart-btn"
+                (click)="increaseQuantity(item.product.id)"
+                title="Sumar"
+              >
+                <img src="/resources/icons/cart/plus-red.svg" alt="Sumar" />
+              </button>
+              <button
+                class="cart-btn"
+                (click)="decreaseQuantity(item.product.id)"
+                title="Restar"
+              >
+                <img src="/resources/icons/cart/minus-red.svg" alt="Restar" />
+              </button>
+              <button
+                class="cart-btn"
+                (click)="removeItem(item.product.id)"
+                title="Eliminar"
+              >
+                <img src="/resources/icons/cart/trash-red.svg" alt="Eliminar" />
+              </button>
+            </div>
+          </div>
+        </div>
+        }
       </div>
-    </div>
-    }
-  </div>
-  <!--Seccion del total-->
-  <div class="mt-3">
-    <h5>Total a pagar: ${{ getFormattedAmount(totalAmount) }}</h5>
-  </div>
-  <div class="pay-button">
-    <button class="pay-centered-button" (click)="initiatePayment()">
-      Pagar
-    </button>
+      <div class="cart-total-row">
+        <span class="cart-total-label">Total a pagar:</span>
+        <span class="cart-total-value"
+          >${{ getFormattedAmount(totalAmount) }}</span
+        >
+      </div>
+      <div class="cart-pay-row">
+        <button class="cart-btn-main" (click)="initiatePayment()">Pagar</button>
+      </div>
+    </ng-template>
   </div>
 </div>

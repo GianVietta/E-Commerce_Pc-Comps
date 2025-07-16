@@ -53,15 +53,14 @@ export class CartComponent implements OnInit {
             cart.products.forEach((cartItem) => {
               this.cs.getProductDetails(cartItem.product_id).subscribe({
                 next: (product: Product) => {
-                  console.log('Producto recibido: ', product);
                   this.listProducts.push({
                     product,
                     quantity: cartItem.quantity,
                   });
-                  this.totalAmount += product.price * cartItem.quantity;
                   loadedProducts++;
 
                   if (loadedProducts === totalProducts) {
+                    this.recalculateTotal();
                     resolve();
                   }
                 },
@@ -86,63 +85,87 @@ export class CartComponent implements OnInit {
 
   //Aumentar la cantidad de un producto del carrito
   increaseQuantity(productId: string): void {
-    const productItem = this.listProducts.find(
+    const index = this.listProducts.findIndex(
       (item) => item.product.id === productId
     );
-    if (productItem) {
-      const newQuantity = productItem.quantity + 1;
-      if (newQuantity > productItem.product.stock) {
-        console.warn(
-          'No se puede aumentar la cantidad mas alla del stock disponible. '
-        );
-        return; //Salir si la cantidad excede el stock
-      }
-      productItem.quantity = newQuantity;
-      this.totalAmount += productItem.product.price; // Update total amount
-      this.cs.updateProductQuantity(productId, newQuantity).subscribe({
-        next: () => {
-          this.loadCart(); // Recargar el carrito después de la actualización
-        },
-        error: (error) => {
-          // Handle server errors gracefully (e.g., revert local changes)
-          console.error('Error updating quantity:', error);
-          productItem.quantity = newQuantity - 1; // Revert quantity change
-          this.totalAmount -= productItem.product.price;
-        },
-      });
+    if (index === -1) return;
+
+    const item = this.listProducts[index];
+    if (item.quantity + 1 > item.product.stock) {
+      this.ns.show(
+        'No se pueden agregar mas productos, supera el stock disponible',
+        'warn'
+      );
+      return;
     }
+
+    // Actualiza la UI antes de llamar al backend
+    item.quantity += 1;
+    this.recalculateTotal();
+
+    this.cs.updateProductQuantity(productId, item.quantity).subscribe({
+      next: () => {},
+      error: () => {
+        // Si falla el backend, revierte los cambios en la UI
+        item.quantity -= 1;
+        this.recalculateTotal();
+        this.ns.show('Error actualizando el carrito', 'error');
+      },
+    });
   }
 
   //Disminuir la cantidad de un producto del carrito
   decreaseQuantity(productId: string): void {
-    const productItem = this.listProducts.find(
+    const index = this.listProducts.findIndex(
       (item) => item.product.id === productId
     );
-    if (productItem && productItem.quantity > 1) {
-      const newQuantity = productItem.quantity - 1;
-      productItem.quantity = newQuantity;
-      this.totalAmount -= productItem.product.price; // Update total amount
-      this.cs.updateProductQuantity(productId, newQuantity).subscribe({
-        next: () => {
-          this.loadCart();
-        },
-        error: (error) => {
-          console.error('Error updating quantity:', error);
-          productItem.quantity = newQuantity + 1; // Revert quantity change
-          this.totalAmount += productItem.product.price;
-        },
-      });
-    }
+    if (index === -1) return;
+    const item = this.listProducts[index];
+
+    if (item.quantity <= 1) return; // Evita bajar de 1
+
+    item.quantity -= 1;
+    this.recalculateTotal();
+
+    this.cs.updateProductQuantity(productId, item.quantity).subscribe({
+      next: () => {},
+      error: () => {
+        item.quantity += 1;
+        this.recalculateTotal();
+        this.ns.show('Error actualizando el carrito', 'error');
+      },
+    });
   }
 
   //Remover producto del carrito
   removeItem(productId: string): void {
+    const index = this.listProducts.findIndex(
+      (item) => item.product.id === productId
+    );
+    if (index === -1) return;
+    const item = this.listProducts[index];
+
+    // Eliminá el producto visualmente primero
+    this.listProducts.splice(index, 1);
+    this.recalculateTotal();
+
     this.cs.removeProductFromCart(productId).subscribe({
-      next: () => {
-        this.loadCart();
+      next: () => {},
+      error: () => {
+        // Si falla, volvés a agregar el producto visualmente
+        this.listProducts.splice(index, 0, item);
+        this.recalculateTotal();
+        this.ns.show('Error eliminando el producto', 'error');
       },
-      error: (error) => console.error('Error al eliminar el producto:', error),
     });
+  }
+
+  // Calcula el total real a partir del array actual
+  private recalculateTotal(): void {
+    this.totalAmount = this.listProducts.reduce(
+      (acc, item) => acc + item.product.price * item.quantity,
+      0
+    );
   }
 
   //Precio total redondeado para arriba

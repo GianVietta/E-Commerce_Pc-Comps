@@ -70,11 +70,11 @@ export class UpdateProductComponent implements OnInit {
     if (this.product) {
       this.form.patchValue({
         name: this.product.name,
-        price: this.product.price,
+        price: Number(this.product.price),
         brand: this.product.brand,
         description: this.product.description,
         category: this.product.category,
-        stock: this.product.stock,
+        stock: Number(this.product.stock),
         img: this.product.img,
       });
     }
@@ -91,6 +91,8 @@ export class UpdateProductComponent implements OnInit {
   }
 
   update() {
+    // Forzar que todos los controles muestren errores si hay
+    this.form.markAllAsTouched();
     if (this.form.invalid) return;
 
     const updatedProduct: Product = {
