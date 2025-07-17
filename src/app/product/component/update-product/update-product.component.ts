@@ -40,14 +40,14 @@ export class UpdateProductComponent implements OnInit {
     name: ['', [Validators.required, Validators.minLength(3)]],
     price: [
       0,
-      [Validators.required, Validators.pattern('^[0-9]+$'), Validators.min(1)],
+      [Validators.required, Validators.pattern('^[0-9]+$'), Validators.min(0)],
     ],
-    brand: ['', Validators.required],
+    brand: ['', [Validators.required, Validators.minLength(3)]],
     description: ['', Validators.required],
     category: ['', Validators.required],
     stock: [
       0,
-      [Validators.required, Validators.pattern('^[0-9]+$'), Validators.min(1)],
+      [Validators.required, Validators.pattern('^[0-9]+$'), Validators.min(0)],
     ],
     img: ['', Validators.required],
   });

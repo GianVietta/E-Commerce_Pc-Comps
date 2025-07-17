@@ -82,10 +82,7 @@ export class NewProductComponent {
   saveProduct(product: Product) {
     this.ps.postProduct(product).subscribe({
       next: (product: Product) => {
-        this.ns.show(
-          `Producto ${product.name} agregado correctamente.`,
-          'success'
-        );
+        this.ns.show(`Producto agregado correctamente.`, 'success');
         console.log('Agregado Correctamente');
       },
       error: (e: Error) => {

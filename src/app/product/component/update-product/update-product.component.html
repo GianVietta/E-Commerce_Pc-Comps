@@ -88,7 +88,12 @@
     <!-- Categoría -->
     <div class="form-group">
       <label for="categoryForm">Categoría</label>
-      <input type="text" id="categoryForm" formControlName="category" />
+      <select id="category" formControlName="category">
+        <option value="" disabled selected>Seleccione una categoría</option>
+        <option *ngFor="let category of categorias" [value]="category">
+          {{ category }}
+        </option>
+      </select>
       <div
         class="error-msg"
         *ngIf="

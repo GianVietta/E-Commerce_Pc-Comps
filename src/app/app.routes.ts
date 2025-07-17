@@ -11,6 +11,7 @@ import { LoginComponent } from './auth/component/login/login.component';
 import { ClerkAuthGuard } from './auth/guard/clerk-auth.guard';
 import { ClerkAdminGuard } from './auth/guard/clerk-admin.guard';
 import { ClerkLoginGuard } from './auth/guard/clerk-login.guard';
+import { NoAdminGuard } from './auth/guard/clerk-noAdmin.guard';
 
 export const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -20,14 +21,26 @@ export const routes: Routes = [
     canActivate: [ClerkAuthGuard],
   },
   { path: 'product/:id', component: DetailsProductComponent },
-  { path: 'update-product/:id', component: UpdateProductComponent },
+  {
+    path: 'update-product/:id',
+    component: UpdateProductComponent,
+    canActivate: [ClerkAdminGuard],
+  },
   {
     path: 'new-product',
     component: NewProductPageComponent,
     canActivate: [ClerkAdminGuard],
   },
-  { path: 'cart', component: CartPageComponent },
-  { path: 'sales-page', component: SalesPageComponent },
+  {
+    path: 'cart',
+    component: CartPageComponent,
+    canActivate: [NoAdminGuard],
+  },
+  {
+    path: 'sales-page',
+    component: SalesPageComponent,
+    canActivate: [ClerkAuthGuard],
+  },
   { path: 'search-results', component: SerchProductComponent },
   { path: 'login', component: LoginComponent, canActivate: [ClerkLoginGuard] },
   { path: '**', redirectTo: '' },
